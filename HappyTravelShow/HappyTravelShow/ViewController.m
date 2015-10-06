@@ -19,6 +19,8 @@
     
     NSLog(@"开工");
     
+    NSLog(@"干完活好吃饭~~~~");
+    
 }
 
 - (void)didReceiveMemoryWarning {
