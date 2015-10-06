@@ -19,6 +19,8 @@
 		16988DA61BC3CED3001A1077 /* AroundMainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988DA51BC3CED3001A1077 /* AroundMainModel.m */; };
 		16988DA91BC3D100001A1077 /* ComProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988DA81BC3D100001A1077 /* ComProductModel.m */; };
 		16988DAC1BC3D118001A1077 /* ComPackageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988DAB1BC3D118001A1077 /* ComPackageModel.m */; };
+		16988DB31BC3F131001A1077 /* FinderMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988DB11BC3F131001A1077 /* FinderMainCell.m */; };
+		16988DB41BC3F131001A1077 /* FinderMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16988DB21BC3F131001A1077 /* FinderMainCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,9 @@
 		16988DAA1BC3D118001A1077 /* ComPackageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComPackageModel.h; sourceTree = "<group>"; };
 		16988DAB1BC3D118001A1077 /* ComPackageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComPackageModel.m; sourceTree = "<group>"; };
 		16988DAD1BC3E9CF001A1077 /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
+		16988DB01BC3F131001A1077 /* FinderMainCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderMainCell.h; sourceTree = "<group>"; };
+		16988DB11BC3F131001A1077 /* FinderMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderMainCell.m; sourceTree = "<group>"; };
+		16988DB21BC3F131001A1077 /* FinderMainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinderMainCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +190,8 @@
 		16988D881BC3C864001A1077 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				16988DAE1BC3F0FB001A1077 /* CommonCells */,
+				16988DAF1BC3F0FB001A1077 /* FinderMainCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -282,6 +289,23 @@
 			path = HomepageModel;
 			sourceTree = "<group>";
 		};
+		16988DAE1BC3F0FB001A1077 /* CommonCells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CommonCells;
+			sourceTree = "<group>";
+		};
+		16988DAF1BC3F0FB001A1077 /* FinderMainCell */ = {
+			isa = PBXGroup;
+			children = (
+				16988DB01BC3F131001A1077 /* FinderMainCell.h */,
+				16988DB11BC3F131001A1077 /* FinderMainCell.m */,
+				16988DB21BC3F131001A1077 /* FinderMainCell.xib */,
+			);
+			path = FinderMainCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -362,6 +386,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16988DB41BC3F131001A1077 /* FinderMainCell.xib in Resources */,
 				16988D671BC3A994001A1077 /* Main.storyboard in Resources */,
 				16988D6C1BC3A994001A1077 /* LaunchScreen.xib in Resources */,
 				16988D691BC3A994001A1077 /* Images.xcassets in Resources */,
@@ -390,6 +415,7 @@
 				16988D5E1BC3A994001A1077 /* main.m in Sources */,
 				16988D9A1BC3CCAF001A1077 /* FinderMainModel.m in Sources */,
 				16988D911BC3C864001A1077 /* AppDelegate.m in Sources */,
+				16988DB31BC3F131001A1077 /* FinderMainCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
