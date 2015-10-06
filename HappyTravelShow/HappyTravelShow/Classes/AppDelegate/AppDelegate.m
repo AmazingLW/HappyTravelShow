@@ -7,6 +7,11 @@
 //
 
 #import "AppDelegate.h"
+#import "HomepageVC.h"
+#import "AroundVC.h"
+#import "FinderVC.h"
+#import "MyselfVC.h"
+
 
 @interface AppDelegate ()
 
@@ -16,7 +21,33 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    
+    //首页
+    UINavigationController *HomepageNV = [[UINavigationController alloc] initWithRootViewController:[HomepageVC new]];
+    
+    //周边页
+    UINavigationController *AroundNV = [[UINavigationController alloc] initWithRootViewController:[AroundVC new]];
+    
+    //发现页
+    UINavigationController *FinderNV = [[UINavigationController alloc] initWithRootViewController:[FinderVC new]];
+    
+    
+    //我的
+    UINavigationController *MyselfNV = [[UINavigationController alloc] initWithRootViewController:[MyselfVC new]];
+
+    
+    //创建tabbar
+    UITabBarController *rootController = [[UITabBarController alloc] init];
+    rootController.viewControllers = @[HomepageNV,AroundNV,FinderNV,MyselfNV];
+    rootController.tabBar.tintColor = [UIColor orangeColor];
+    
+    
+    self.window.rootViewController = rootController;
+
+    
+    
+    
     return YES;
 }
 
