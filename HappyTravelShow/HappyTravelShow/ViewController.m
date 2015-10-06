@@ -17,10 +17,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSLog(@"开工");
-    
-    NSLog(@"干完活好吃饭~~~~");
-    NSLog(@"hello");
     
 }
 
