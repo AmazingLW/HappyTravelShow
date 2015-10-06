@@ -7,7 +7,22 @@
 //
 
 #import "FinderKindModel.h"
+#import "FinderURL.h"
 
 @implementation FinderKindModel
+
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key{
+    if ([key isEqualToString:@"url"]) {
+        self.url=kURL(value);
+        
+    }else{
+        NSLog(@"KVC出错");
+        
+    }
+    
+    
+}
+
+
 
 @end
