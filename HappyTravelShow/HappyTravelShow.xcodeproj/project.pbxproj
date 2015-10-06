@@ -14,6 +14,11 @@
 		16988D6C1BC3A994001A1077 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16988D6A1BC3A994001A1077 /* LaunchScreen.xib */; };
 		16988D781BC3A994001A1077 /* HappyTravelShowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988D771BC3A994001A1077 /* HappyTravelShowTests.m */; };
 		16988D911BC3C864001A1077 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988D841BC3C864001A1077 /* AppDelegate.m */; };
+		16988D9A1BC3CCAF001A1077 /* FinderMainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988D991BC3CCAF001A1077 /* FinderMainModel.m */; };
+		16988D9D1BC3CCF3001A1077 /* FinderKindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988D9C1BC3CCF3001A1077 /* FinderKindModel.m */; };
+		16988DA61BC3CED3001A1077 /* AroundMainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988DA51BC3CED3001A1077 /* AroundMainModel.m */; };
+		16988DA91BC3D100001A1077 /* ComProductModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988DA81BC3D100001A1077 /* ComProductModel.m */; };
+		16988DAC1BC3D118001A1077 /* ComPackageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988DAB1BC3D118001A1077 /* ComPackageModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +45,16 @@
 		16988D771BC3A994001A1077 /* HappyTravelShowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HappyTravelShowTests.m; sourceTree = "<group>"; };
 		16988D831BC3C864001A1077 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		16988D841BC3C864001A1077 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		16988D981BC3CCAF001A1077 /* FinderMainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderMainModel.h; sourceTree = "<group>"; };
+		16988D991BC3CCAF001A1077 /* FinderMainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderMainModel.m; sourceTree = "<group>"; };
+		16988D9B1BC3CCF3001A1077 /* FinderKindModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderKindModel.h; sourceTree = "<group>"; };
+		16988D9C1BC3CCF3001A1077 /* FinderKindModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderKindModel.m; sourceTree = "<group>"; };
+		16988DA41BC3CED3001A1077 /* AroundMainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundMainModel.h; sourceTree = "<group>"; };
+		16988DA51BC3CED3001A1077 /* AroundMainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AroundMainModel.m; sourceTree = "<group>"; };
+		16988DA71BC3D100001A1077 /* ComProductModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComProductModel.h; sourceTree = "<group>"; };
+		16988DA81BC3D100001A1077 /* ComProductModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComProductModel.m; sourceTree = "<group>"; };
+		16988DAA1BC3D118001A1077 /* ComPackageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComPackageModel.h; sourceTree = "<group>"; };
+		16988DAB1BC3D118001A1077 /* ComPackageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComPackageModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +205,13 @@
 		16988D8B1BC3C864001A1077 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				16988D921BC3CC60001A1077 /* AroundModel */,
+				16988D931BC3CC60001A1077 /* FinderModel */,
+				16988D941BC3CC60001A1077 /* HomepageModel */,
+				16988DA71BC3D100001A1077 /* ComProductModel.h */,
+				16988DA81BC3D100001A1077 /* ComProductModel.m */,
+				16988DAA1BC3D118001A1077 /* ComPackageModel.h */,
+				16988DAB1BC3D118001A1077 /* ComPackageModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -229,6 +251,33 @@
 			children = (
 			);
 			path = Vendors;
+			sourceTree = "<group>";
+		};
+		16988D921BC3CC60001A1077 /* AroundModel */ = {
+			isa = PBXGroup;
+			children = (
+				16988DA41BC3CED3001A1077 /* AroundMainModel.h */,
+				16988DA51BC3CED3001A1077 /* AroundMainModel.m */,
+			);
+			path = AroundModel;
+			sourceTree = "<group>";
+		};
+		16988D931BC3CC60001A1077 /* FinderModel */ = {
+			isa = PBXGroup;
+			children = (
+				16988D981BC3CCAF001A1077 /* FinderMainModel.h */,
+				16988D991BC3CCAF001A1077 /* FinderMainModel.m */,
+				16988D9B1BC3CCF3001A1077 /* FinderKindModel.h */,
+				16988D9C1BC3CCF3001A1077 /* FinderKindModel.m */,
+			);
+			path = FinderModel;
+			sourceTree = "<group>";
+		};
+		16988D941BC3CC60001A1077 /* HomepageModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HomepageModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,8 +380,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16988DAC1BC3D118001A1077 /* ComPackageModel.m in Sources */,
 				16988D641BC3A994001A1077 /* ViewController.m in Sources */,
+				16988DA91BC3D100001A1077 /* ComProductModel.m in Sources */,
+				16988D9D1BC3CCF3001A1077 /* FinderKindModel.m in Sources */,
+				16988DA61BC3CED3001A1077 /* AroundMainModel.m in Sources */,
 				16988D5E1BC3A994001A1077 /* main.m in Sources */,
+				16988D9A1BC3CCAF001A1077 /* FinderMainModel.m in Sources */,
 				16988D911BC3C864001A1077 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
