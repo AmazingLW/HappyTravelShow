@@ -56,6 +56,7 @@
 		16988DAA1BC3D118001A1077 /* ComPackageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComPackageModel.h; sourceTree = "<group>"; };
 		16988DAB1BC3D118001A1077 /* ComPackageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComPackageModel.m; sourceTree = "<group>"; };
 		16988DAD1BC3E9CF001A1077 /* Test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
+		C2065C1A1BC3EA41007571A8 /* FinderURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderURL.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				16988DAD1BC3E9CF001A1077 /* Test.h */,
+				C2065C1A1BC3EA41007571A8 /* FinderURL.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
