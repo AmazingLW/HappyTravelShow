@@ -7,7 +7,6 @@
 //
 
 #import "HomepageVC.h"
-#import "HomepageHelper.h"
 
 @interface HomepageVC ()
 
@@ -28,19 +27,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [[HomepageHelper shareHelp] requestAllPackageWithFinish:^{
-        NSLog(@"_%@",[HomepageHelper shareHelp].CarouseArray);
-    }];
-    
     self.view.backgroundColor = [UIColor orangeColor];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    
-    
-    
+    // Dispose of any resources that can be recreated.
 }
 
 /*

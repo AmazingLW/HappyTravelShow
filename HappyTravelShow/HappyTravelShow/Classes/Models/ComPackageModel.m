@@ -9,14 +9,5 @@
 #import "ComPackageModel.h"
 
 @implementation ComPackageModel
--(void)setValue:(id)value forUndefinedKey:(NSString *)key
-{
-    
-    NSLog(@"");
-}
 
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"%@", _bigImageUrl];
-}
 @end

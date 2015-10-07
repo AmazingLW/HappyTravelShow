@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface ComProductModel : NSObject
-@property(nonatomic,strong)NSString *app_picpath,*app_url,*title,*adTitle,*adSubTitle,*n_app_picpath;
+
 @end

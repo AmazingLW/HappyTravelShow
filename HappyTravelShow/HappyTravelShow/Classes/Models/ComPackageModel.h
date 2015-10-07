@@ -9,7 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface ComPackageModel : NSObject
-@property(nonatomic,strong)NSString*labelText,*bigImageUrl,*cityName,*productName,*productTitleContent;
-@property(nonatomic,assign)NSInteger price,originalPrice,saledCount;
 
 @end

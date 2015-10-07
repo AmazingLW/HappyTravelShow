@@ -23,6 +23,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     
+    //test
+    
     //首页
     UINavigationController *HomepageNV = [[UINavigationController alloc] initWithRootViewController:[HomepageVC new]];
     
