@@ -55,6 +55,8 @@
 		C22699F71BC50AB5009BBAB0 /* carouseIFingureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C22699F51BC50AB5009BBAB0 /* carouseIFingureCell.xib */; };
 		C22699FB1BC50AE0009BBAB0 /* CategoriesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C22699F91BC50AE0009BBAB0 /* CategoriesCell.m */; };
 		C22699FC1BC50AE0009BBAB0 /* CategoriesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C22699FA1BC50AE0009BBAB0 /* CategoriesCell.xib */; };
+		C2269A031BC51023009BBAB0 /* HomepageScenicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2269A021BC51023009BBAB0 /* HomepageScenicModel.m */; };
+		C2269A061BC51052009BBAB0 /* HomepagePackageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2269A051BC51052009BBAB0 /* HomepagePackageModel.m */; };
 		C27358C41BC4F43900771457 /* option_arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C27358C21BC4F43900771457 /* option_arrow_down@2x.png */; };
 		C27358C51BC4F43900771457 /* option_arrow_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C27358C31BC4F43900771457 /* option_arrow_up@2x.png */; };
 		C27358FF1BC5107C00771457 /* XIArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358E91BC5107C00771457 /* XIArrowView.m */; };
@@ -171,6 +173,10 @@
 		C22699F91BC50AE0009BBAB0 /* CategoriesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesCell.m; sourceTree = "<group>"; };
 		C22699FA1BC50AE0009BBAB0 /* CategoriesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesCell.xib; sourceTree = "<group>"; };
 		C22699FD1BC50BF8009BBAB0 /* HomepageURL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomepageURL.h; sourceTree = "<group>"; };
+		C2269A011BC51023009BBAB0 /* HomepageScenicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepageScenicModel.h; sourceTree = "<group>"; };
+		C2269A021BC51023009BBAB0 /* HomepageScenicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepageScenicModel.m; sourceTree = "<group>"; };
+		C2269A041BC51052009BBAB0 /* HomepagePackageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepagePackageModel.h; sourceTree = "<group>"; };
+		C2269A051BC51052009BBAB0 /* HomepagePackageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepagePackageModel.m; sourceTree = "<group>"; };
 		C27358C21BC4F43900771457 /* option_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "option_arrow_down@2x.png"; sourceTree = "<group>"; };
 		C27358C31BC4F43900771457 /* option_arrow_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "option_arrow_up@2x.png"; sourceTree = "<group>"; };
 		C27358E81BC5107C00771457 /* XIArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIArrowView.h; sourceTree = "<group>"; };
@@ -441,6 +447,10 @@
 			children = (
 				16988DB51BC40965001A1077 /* HomepageHeaderModel.h */,
 				16988DB61BC40965001A1077 /* HomepageHeaderModel.m */,
+				C2269A011BC51023009BBAB0 /* HomepageScenicModel.h */,
+				C2269A021BC51023009BBAB0 /* HomepageScenicModel.m */,
+				C2269A041BC51052009BBAB0 /* HomepagePackageModel.h */,
+				C2269A051BC51052009BBAB0 /* HomepagePackageModel.m */,
 			);
 			path = HomepageModel;
 			sourceTree = "<group>";
@@ -848,6 +858,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2269A061BC51052009BBAB0 /* HomepagePackageModel.m in Sources */,
 				16DB11991BC4228D009D7C7D /* UIImage+MultiFormat.m in Sources */,
 				16DB119A1BC4228D009D7C7D /* UIImage+WebP.m in Sources */,
 				16988DAC1BC3D118001A1077 /* ComPackageModel.m in Sources */,
@@ -878,6 +889,7 @@
 				16988D9A1BC3CCAF001A1077 /* FinderMainModel.m in Sources */,
 				16DB11961BC4228D009D7C7D /* SDWebImagePrefetcher.m in Sources */,
 				16DB11921BC4228D009D7C7D /* SDWebImageDecoder.m in Sources */,
+				C2269A031BC51023009BBAB0 /* HomepageScenicModel.m in Sources */,
 				16DB11901BC4228D009D7C7D /* SDImageCache.m in Sources */,
 				C22699F61BC50AB5009BBAB0 /* carouseIFingureCell.m in Sources */,
 				C27358FF1BC5107C00771457 /* XIArrowView.m in Sources */,

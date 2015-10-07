@@ -53,7 +53,7 @@
     //flowLayout.headerReferenceSize =CGSizeMake(100, 100);
     
     self.collection =[[UICollectionView alloc]initWithFrame:CGRectMake(0,0, self.view.frame.size.width, self.view.frame.size.height) collectionViewLayout:flowLayout];
-    _collection.backgroundColor =[UIColor lightGrayColor];
+    _collection.backgroundColor =[UIColor whiteColor];
     _collection.dataSource =self;
     _collection.delegate =self;
     [self.view addSubview:_collection];
