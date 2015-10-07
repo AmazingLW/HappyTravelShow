@@ -1,5 +1,5 @@
 //
-//  CategoriesCell.h
+//  carouseIFingureCell.h
 //  HappyTravelShow
 //
 //  Created by lanou3g on 15/10/7.
@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CategoriesCell : UICollectionViewCell
+@interface carouseIFingureCell : UICollectionViewCell
+@property (weak, nonatomic) IBOutlet UIView *carousel4view;
 
 @end
