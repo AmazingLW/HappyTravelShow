@@ -59,6 +59,15 @@
 		C2269A061BC51052009BBAB0 /* HomepagePackageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2269A051BC51052009BBAB0 /* HomepagePackageModel.m */; };
 		C27358C41BC4F43900771457 /* option_arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C27358C21BC4F43900771457 /* option_arrow_down@2x.png */; };
 		C27358C51BC4F43900771457 /* option_arrow_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C27358C31BC4F43900771457 /* option_arrow_up@2x.png */; };
+		C27358FF1BC5107C00771457 /* XIArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358E91BC5107C00771457 /* XIArrowView.m */; };
+		C27359001BC5107C00771457 /* XIBorderSideView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358EC1BC5107C00771457 /* XIBorderSideView.m */; };
+		C27359011BC5107C00771457 /* XIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358EE1BC5107C00771457 /* XIButton.m */; };
+		C27359021BC5107C00771457 /* XIGridBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358F01BC5107C00771457 /* XIGridBackgroundView.m */; };
+		C27359031BC5107C00771457 /* XIOptionSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358F41BC5107C00771457 /* XIOptionSelectorView.m */; };
+		C27359041BC5107C00771457 /* XIOptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358F61BC5107C00771457 /* XIOptionView.m */; };
+		C27359051BC5107C00771457 /* XIOtherOptionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358F81BC5107C00771457 /* XIOtherOptionsView.m */; };
+		C27359061BC5107C00771457 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358FB1BC5107C00771457 /* FXBlurView.m */; };
+		C27359071BC5107C00771457 /* XIColorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358FE1BC5107C00771457 /* XIColorHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +179,26 @@
 		C2269A051BC51052009BBAB0 /* HomepagePackageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepagePackageModel.m; sourceTree = "<group>"; };
 		C27358C21BC4F43900771457 /* option_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "option_arrow_down@2x.png"; sourceTree = "<group>"; };
 		C27358C31BC4F43900771457 /* option_arrow_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "option_arrow_up@2x.png"; sourceTree = "<group>"; };
+		C27358E81BC5107C00771457 /* XIArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIArrowView.h; sourceTree = "<group>"; };
+		C27358E91BC5107C00771457 /* XIArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIArrowView.m; sourceTree = "<group>"; };
+		C27358EA1BC5107C00771457 /* XIBackgroundViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIBackgroundViewProtocol.h; sourceTree = "<group>"; };
+		C27358EB1BC5107C00771457 /* XIBorderSideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIBorderSideView.h; sourceTree = "<group>"; };
+		C27358EC1BC5107C00771457 /* XIBorderSideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIBorderSideView.m; sourceTree = "<group>"; };
+		C27358ED1BC5107C00771457 /* XIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIButton.h; sourceTree = "<group>"; };
+		C27358EE1BC5107C00771457 /* XIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIButton.m; sourceTree = "<group>"; };
+		C27358EF1BC5107C00771457 /* XIGridBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIGridBackgroundView.h; sourceTree = "<group>"; };
+		C27358F01BC5107C00771457 /* XIGridBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIGridBackgroundView.m; sourceTree = "<group>"; };
+		C27358F21BC5107C00771457 /* XIDropdownlistViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIDropdownlistViewProtocol.h; sourceTree = "<group>"; };
+		C27358F31BC5107C00771457 /* XIOptionSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIOptionSelectorView.h; sourceTree = "<group>"; };
+		C27358F41BC5107C00771457 /* XIOptionSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIOptionSelectorView.m; sourceTree = "<group>"; };
+		C27358F51BC5107C00771457 /* XIOptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIOptionView.h; sourceTree = "<group>"; };
+		C27358F61BC5107C00771457 /* XIOptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIOptionView.m; sourceTree = "<group>"; };
+		C27358F71BC5107C00771457 /* XIOtherOptionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIOtherOptionsView.h; sourceTree = "<group>"; };
+		C27358F81BC5107C00771457 /* XIOtherOptionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIOtherOptionsView.m; sourceTree = "<group>"; };
+		C27358FA1BC5107C00771457 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
+		C27358FB1BC5107C00771457 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
+		C27358FD1BC5107C00771457 /* XIColorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIColorHelper.h; sourceTree = "<group>"; };
+		C27358FE1BC5107C00771457 /* XIColorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIColorHelper.m; sourceTree = "<group>"; };
 		E74A25802C8BAEBB910EC920 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -459,6 +488,10 @@
 		16988DBE1BC40AA4001A1077 /* AroundVC */ = {
 			isa = PBXGroup;
 			children = (
+				C27358E71BC5107C00771457 /* AdditionalVIews */,
+				C27358F11BC5107C00771457 /* DropdownListView */,
+				C27358F91BC5107C00771457 /* FXBlurView */,
+				C27358FC1BC5107C00771457 /* Utils */,
 				16DB11A21BC42303009D7C7D /* AroundVC.h */,
 				16DB11A31BC42303009D7C7D /* AroundVC.m */,
 			);
@@ -633,6 +666,54 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C27358E71BC5107C00771457 /* AdditionalVIews */ = {
+			isa = PBXGroup;
+			children = (
+				C27358E81BC5107C00771457 /* XIArrowView.h */,
+				C27358E91BC5107C00771457 /* XIArrowView.m */,
+				C27358EA1BC5107C00771457 /* XIBackgroundViewProtocol.h */,
+				C27358EB1BC5107C00771457 /* XIBorderSideView.h */,
+				C27358EC1BC5107C00771457 /* XIBorderSideView.m */,
+				C27358ED1BC5107C00771457 /* XIButton.h */,
+				C27358EE1BC5107C00771457 /* XIButton.m */,
+				C27358EF1BC5107C00771457 /* XIGridBackgroundView.h */,
+				C27358F01BC5107C00771457 /* XIGridBackgroundView.m */,
+			);
+			path = AdditionalVIews;
+			sourceTree = "<group>";
+		};
+		C27358F11BC5107C00771457 /* DropdownListView */ = {
+			isa = PBXGroup;
+			children = (
+				C27358F21BC5107C00771457 /* XIDropdownlistViewProtocol.h */,
+				C27358F31BC5107C00771457 /* XIOptionSelectorView.h */,
+				C27358F41BC5107C00771457 /* XIOptionSelectorView.m */,
+				C27358F51BC5107C00771457 /* XIOptionView.h */,
+				C27358F61BC5107C00771457 /* XIOptionView.m */,
+				C27358F71BC5107C00771457 /* XIOtherOptionsView.h */,
+				C27358F81BC5107C00771457 /* XIOtherOptionsView.m */,
+			);
+			path = DropdownListView;
+			sourceTree = "<group>";
+		};
+		C27358F91BC5107C00771457 /* FXBlurView */ = {
+			isa = PBXGroup;
+			children = (
+				C27358FA1BC5107C00771457 /* FXBlurView.h */,
+				C27358FB1BC5107C00771457 /* FXBlurView.m */,
+			);
+			path = FXBlurView;
+			sourceTree = "<group>";
+		};
+		C27358FC1BC5107C00771457 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C27358FD1BC5107C00771457 /* XIColorHelper.h */,
+				C27358FE1BC5107C00771457 /* XIColorHelper.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -783,19 +864,26 @@
 				16988DAC1BC3D118001A1077 /* ComPackageModel.m in Sources */,
 				16DB11951BC4228D009D7C7D /* SDWebImageManager.m in Sources */,
 				16DB11A71BC4230F009D7C7D /* FinderVC.m in Sources */,
+				C27359061BC5107C00771457 /* FXBlurView.m in Sources */,
+				C27359051BC5107C00771457 /* XIOtherOptionsView.m in Sources */,
+				C27359011BC5107C00771457 /* XIButton.m in Sources */,
+				C27359041BC5107C00771457 /* XIOptionView.m in Sources */,
 				16DEF3911BC4BBEE00F64A66 /* FinderMainView.m in Sources */,
 				16988D641BC3A994001A1077 /* ViewController.m in Sources */,
 				16DB11621BC41D45009D7C7D /* AroundHelper.m in Sources */,
 				16988DA91BC3D100001A1077 /* ComProductModel.m in Sources */,
 				16DB11A41BC42303009D7C7D /* AroundVC.m in Sources */,
+				C27359021BC5107C00771457 /* XIGridBackgroundView.m in Sources */,
 				16DB11931BC4228D009D7C7D /* SDWebImageDownloader.m in Sources */,
 				16988D9D1BC3CCF3001A1077 /* FinderKindModel.m in Sources */,
 				16988DA61BC3CED3001A1077 /* AroundMainModel.m in Sources */,
 				C22699FB1BC50AE0009BBAB0 /* CategoriesCell.m in Sources */,
+				C27359001BC5107C00771457 /* XIBorderSideView.m in Sources */,
 				16988D5E1BC3A994001A1077 /* main.m in Sources */,
 				16DB118E1BC4228D009D7C7D /* MKAnnotationView+WebCache.m in Sources */,
 				16988DB71BC40965001A1077 /* HomepageHeaderModel.m in Sources */,
 				16DB118F1BC4228D009D7C7D /* NSData+ImageContentType.m in Sources */,
+				C27359031BC5107C00771457 /* XIOptionSelectorView.m in Sources */,
 				16DB11981BC4228D009D7C7D /* UIImage+GIF.m in Sources */,
 				16DB11971BC4228D009D7C7D /* UIButton+WebCache.m in Sources */,
 				16988D9A1BC3CCAF001A1077 /* FinderMainModel.m in Sources */,
@@ -804,6 +892,8 @@
 				C2269A031BC51023009BBAB0 /* HomepageScenicModel.m in Sources */,
 				16DB11901BC4228D009D7C7D /* SDImageCache.m in Sources */,
 				C22699F61BC50AB5009BBAB0 /* carouseIFingureCell.m in Sources */,
+				C27358FF1BC5107C00771457 /* XIArrowView.m in Sources */,
+				C27359071BC5107C00771457 /* XIColorHelper.m in Sources */,
 				16DB11911BC4228D009D7C7D /* SDWebImageCompat.m in Sources */,
 				16DB119D1BC4228D009D7C7D /* UIView+WebCacheOperation.m in Sources */,
 				16988D911BC3C864001A1077 /* AppDelegate.m in Sources */,
