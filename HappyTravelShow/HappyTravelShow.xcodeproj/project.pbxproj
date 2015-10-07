@@ -22,8 +22,6 @@
 		16988DB31BC3F131001A1077 /* FinderMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988DB11BC3F131001A1077 /* FinderMainCell.m */; };
 		16988DB41BC3F131001A1077 /* FinderMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16988DB21BC3F131001A1077 /* FinderMainCell.xib */; };
 		16988DB71BC40965001A1077 /* HomepageHeaderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988DB61BC40965001A1077 /* HomepageHeaderModel.m */; };
-		16988DBC1BC409EB001A1077 /* CategoriesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988DBA1BC409EB001A1077 /* CategoriesCell.m */; };
-		16988DBD1BC409EB001A1077 /* CategoriesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16988DBB1BC409EB001A1077 /* CategoriesCell.xib */; };
 		16DB11621BC41D45009D7C7D /* AroundHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB11611BC41D45009D7C7D /* AroundHelper.m */; };
 		16DB11651BC41D53009D7C7D /* FinderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB11641BC41D53009D7C7D /* FinderHelper.m */; };
 		16DB11681BC41D63009D7C7D /* HomepageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB11671BC41D63009D7C7D /* HomepageHelper.m */; };
@@ -52,6 +50,13 @@
 		16DB11B41BC42653009D7C7D /* myself.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB11B31BC42653009D7C7D /* myself.png */; };
 		16DB11B61BC4265A009D7C7D /* finder.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB11B51BC4265A009D7C7D /* finder.png */; };
 		4A957A2EF5660C98B1F9A33A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6396AF70E7E22D763CB7E2 /* libPods.a */; };
+		C2FAED3A1BC4B1FC0055EC6A /* carouseIFingureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FAED391BC4B1FC0055EC6A /* carouseIFingureCell.m */; };
+		C2FAED3E1BC4B2310055EC6A /* CategoriesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FAED3C1BC4B2310055EC6A /* CategoriesCell.m */; };
+		C2FAED3F1BC4B2310055EC6A /* CategoriesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2FAED3D1BC4B2310055EC6A /* CategoriesCell.xib */; };
+		C2FAED461BC4B5D10055EC6A /* IanScrollImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FAED421BC4B5D10055EC6A /* IanScrollImageView.m */; };
+		C2FAED471BC4B5D10055EC6A /* IanScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FAED441BC4B5D10055EC6A /* IanScrollView.m */; };
+		C2FAED481BC4B5D10055EC6A /* IanScrollViewDefault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2FAED451BC4B5D10055EC6A /* IanScrollViewDefault@2x.png */; };
+		C2FAED541BC4BD470055EC6A /* ComScenicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FAED531BC4BD470055EC6A /* ComScenicModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,9 +99,6 @@
 		16988DB21BC3F131001A1077 /* FinderMainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinderMainCell.xib; sourceTree = "<group>"; };
 		16988DB51BC40965001A1077 /* HomepageHeaderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepageHeaderModel.h; sourceTree = "<group>"; };
 		16988DB61BC40965001A1077 /* HomepageHeaderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepageHeaderModel.m; sourceTree = "<group>"; };
-		16988DB91BC409EB001A1077 /* CategoriesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesCell.h; sourceTree = "<group>"; };
-		16988DBA1BC409EB001A1077 /* CategoriesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesCell.m; sourceTree = "<group>"; };
-		16988DBB1BC409EB001A1077 /* CategoriesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesCell.xib; sourceTree = "<group>"; };
 		16DB11601BC41D45009D7C7D /* AroundHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundHelper.h; sourceTree = "<group>"; };
 		16DB11611BC41D45009D7C7D /* AroundHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AroundHelper.m; sourceTree = "<group>"; };
 		16DB11631BC41D53009D7C7D /* FinderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderHelper.h; sourceTree = "<group>"; };
@@ -151,6 +153,19 @@
 		5A6396AF70E7E22D763CB7E2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E736BAB2AF440074C178494 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C2065C1A1BC3EA41007571A8 /* FinderURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderURL.h; sourceTree = "<group>"; };
+		C2FAED381BC4B1FC0055EC6A /* carouseIFingureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = carouseIFingureCell.h; sourceTree = "<group>"; };
+		C2FAED391BC4B1FC0055EC6A /* carouseIFingureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = carouseIFingureCell.m; sourceTree = "<group>"; };
+		C2FAED3B1BC4B2310055EC6A /* CategoriesCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesCell.h; sourceTree = "<group>"; };
+		C2FAED3C1BC4B2310055EC6A /* CategoriesCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesCell.m; sourceTree = "<group>"; };
+		C2FAED3D1BC4B2310055EC6A /* CategoriesCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesCell.xib; sourceTree = "<group>"; };
+		C2FAED411BC4B5D10055EC6A /* IanScrollImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IanScrollImageView.h; sourceTree = "<group>"; };
+		C2FAED421BC4B5D10055EC6A /* IanScrollImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IanScrollImageView.m; sourceTree = "<group>"; };
+		C2FAED431BC4B5D10055EC6A /* IanScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IanScrollView.h; sourceTree = "<group>"; };
+		C2FAED441BC4B5D10055EC6A /* IanScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IanScrollView.m; sourceTree = "<group>"; };
+		C2FAED451BC4B5D10055EC6A /* IanScrollViewDefault@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IanScrollViewDefault@2x.png"; sourceTree = "<group>"; };
+		C2FAED521BC4BD470055EC6A /* ComScenicModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComScenicModel.h; sourceTree = "<group>"; };
+		C2FAED531BC4BD470055EC6A /* ComScenicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComScenicModel.m; sourceTree = "<group>"; };
+		C2FAED551BC4C2750055EC6A /* HomepageURL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomepageURL.h; sourceTree = "<group>"; };
 		E74A25802C8BAEBB910EC920 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -306,6 +321,7 @@
 			children = (
 				16988DAD1BC3E9CF001A1077 /* Test.h */,
 				C2065C1A1BC3EA41007571A8 /* FinderURL.h */,
+				C2FAED551BC4C2750055EC6A /* HomepageURL.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -318,6 +334,8 @@
 				16988D941BC3CC60001A1077 /* HomepageModel */,
 				16988DA71BC3D100001A1077 /* ComProductModel.h */,
 				16988DA81BC3D100001A1077 /* ComProductModel.m */,
+				C2FAED521BC4BD470055EC6A /* ComScenicModel.h */,
+				C2FAED531BC4BD470055EC6A /* ComScenicModel.m */,
 				16988DAA1BC3D118001A1077 /* ComPackageModel.h */,
 				16988DAB1BC3D118001A1077 /* ComPackageModel.m */,
 			);
@@ -368,6 +386,7 @@
 		16988D901BC3C864001A1077 /* Vendors */ = {
 			isa = PBXGroup;
 			children = (
+				C2FAED401BC4B5D10055EC6A /* IanScrollViewLib */,
 				16DB116C1BC4228D009D7C7D /* SDWebImage */,
 			);
 			path = Vendors;
@@ -422,9 +441,11 @@
 		16988DB81BC409D0001A1077 /* HomepageCell */ = {
 			isa = PBXGroup;
 			children = (
-				16988DB91BC409EB001A1077 /* CategoriesCell.h */,
-				16988DBA1BC409EB001A1077 /* CategoriesCell.m */,
-				16988DBB1BC409EB001A1077 /* CategoriesCell.xib */,
+				C2FAED381BC4B1FC0055EC6A /* carouseIFingureCell.h */,
+				C2FAED391BC4B1FC0055EC6A /* carouseIFingureCell.m */,
+				C2FAED3B1BC4B2310055EC6A /* CategoriesCell.h */,
+				C2FAED3C1BC4B2310055EC6A /* CategoriesCell.m */,
+				C2FAED3D1BC4B2310055EC6A /* CategoriesCell.xib */,
 			);
 			path = HomepageCell;
 			sourceTree = "<group>";
@@ -602,6 +623,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C2FAED401BC4B5D10055EC6A /* IanScrollViewLib */ = {
+			isa = PBXGroup;
+			children = (
+				C2FAED411BC4B5D10055EC6A /* IanScrollImageView.h */,
+				C2FAED421BC4B5D10055EC6A /* IanScrollImageView.m */,
+				C2FAED431BC4B5D10055EC6A /* IanScrollView.h */,
+				C2FAED441BC4B5D10055EC6A /* IanScrollView.m */,
+				C2FAED451BC4B5D10055EC6A /* IanScrollViewDefault@2x.png */,
+			);
+			name = IanScrollViewLib;
+			path = ../../IanScrollViewLib;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -684,7 +718,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16988DBD1BC409EB001A1077 /* CategoriesCell.xib in Resources */,
 				16988DB41BC3F131001A1077 /* FinderMainCell.xib in Resources */,
 				16DB11B21BC425B3009D7C7D /* around.png in Resources */,
 				16988D671BC3A994001A1077 /* Main.storyboard in Resources */,
@@ -693,6 +726,8 @@
 				16988D6C1BC3A994001A1077 /* LaunchScreen.xib in Resources */,
 				16DB11B01BC42505009D7C7D /* homepage.png in Resources */,
 				16988D691BC3A994001A1077 /* Images.xcassets in Resources */,
+				C2FAED3F1BC4B2310055EC6A /* CategoriesCell.xib in Resources */,
+				C2FAED481BC4B5D10055EC6A /* IanScrollViewDefault@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,6 +778,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2FAED461BC4B5D10055EC6A /* IanScrollImageView.m in Sources */,
 				16DB11991BC4228D009D7C7D /* UIImage+MultiFormat.m in Sources */,
 				16DB119A1BC4228D009D7C7D /* UIImage+WebP.m in Sources */,
 				16988DAC1BC3D118001A1077 /* ComPackageModel.m in Sources */,
@@ -750,17 +786,19 @@
 				16DB11A71BC4230F009D7C7D /* FinderVC.m in Sources */,
 				16988D641BC3A994001A1077 /* ViewController.m in Sources */,
 				16DB11621BC41D45009D7C7D /* AroundHelper.m in Sources */,
+				C2FAED3E1BC4B2310055EC6A /* CategoriesCell.m in Sources */,
 				16988DA91BC3D100001A1077 /* ComProductModel.m in Sources */,
 				16DB11A41BC42303009D7C7D /* AroundVC.m in Sources */,
 				16DB11931BC4228D009D7C7D /* SDWebImageDownloader.m in Sources */,
 				16988D9D1BC3CCF3001A1077 /* FinderKindModel.m in Sources */,
 				16988DA61BC3CED3001A1077 /* AroundMainModel.m in Sources */,
 				16988D5E1BC3A994001A1077 /* main.m in Sources */,
-				16988DBC1BC409EB001A1077 /* CategoriesCell.m in Sources */,
 				16DB118E1BC4228D009D7C7D /* MKAnnotationView+WebCache.m in Sources */,
 				16988DB71BC40965001A1077 /* HomepageHeaderModel.m in Sources */,
+				C2FAED3A1BC4B1FC0055EC6A /* carouseIFingureCell.m in Sources */,
 				16DB118F1BC4228D009D7C7D /* NSData+ImageContentType.m in Sources */,
 				16DB11981BC4228D009D7C7D /* UIImage+GIF.m in Sources */,
+				C2FAED471BC4B5D10055EC6A /* IanScrollView.m in Sources */,
 				16DB11971BC4228D009D7C7D /* UIButton+WebCache.m in Sources */,
 				16988D9A1BC3CCAF001A1077 /* FinderMainModel.m in Sources */,
 				16DB11961BC4228D009D7C7D /* SDWebImagePrefetcher.m in Sources */,
@@ -770,6 +808,7 @@
 				16DB119D1BC4228D009D7C7D /* UIView+WebCacheOperation.m in Sources */,
 				16988D911BC3C864001A1077 /* AppDelegate.m in Sources */,
 				16DB11651BC41D53009D7C7D /* FinderHelper.m in Sources */,
+				C2FAED541BC4BD470055EC6A /* ComScenicModel.m in Sources */,
 				16DB11941BC4228D009D7C7D /* SDWebImageDownloaderOperation.m in Sources */,
 				16988DB31BC3F131001A1077 /* FinderMainCell.m in Sources */,
 				16DB119C1BC4228D009D7C7D /* UIImageView+WebCache.m in Sources */,
