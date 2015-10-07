@@ -199,6 +199,7 @@
 		C27358FB1BC5107C00771457 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
 		C27358FD1BC5107C00771457 /* XIColorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIColorHelper.h; sourceTree = "<group>"; };
 		C27358FE1BC5107C00771457 /* XIColorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIColorHelper.m; sourceTree = "<group>"; };
+		C27359081BC5154E00771457 /* AroundURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundURL.h; sourceTree = "<group>"; };
 		E74A25802C8BAEBB910EC920 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -355,6 +356,7 @@
 				16988DAD1BC3E9CF001A1077 /* Test.h */,
 				C2065C1A1BC3EA41007571A8 /* FinderURL.h */,
 				C22699FD1BC50BF8009BBAB0 /* HomepageURL.h */,
+				C27359081BC5154E00771457 /* AroundURL.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";

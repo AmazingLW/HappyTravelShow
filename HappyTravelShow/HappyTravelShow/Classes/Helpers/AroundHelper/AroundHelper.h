@@ -7,7 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "AroundHelper.h"
 @interface AroundHelper : NSObject
+
+
+//根据城市名 获取目的城市和景点名列表
+
+- (void)requestWithCityName:(NSString *)name finish:(void (^)(NSArray * array))result;
 
 @end
