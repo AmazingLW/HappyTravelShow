@@ -51,6 +51,7 @@
 		16DB11B21BC425B3009D7C7D /* around.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB11B11BC425B3009D7C7D /* around.png */; };
 		16DB11B41BC42653009D7C7D /* myself.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB11B31BC42653009D7C7D /* myself.png */; };
 		16DB11B61BC4265A009D7C7D /* finder.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB11B51BC4265A009D7C7D /* finder.png */; };
+		16DEF3911BC4BBEE00F64A66 /* FinderMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DEF3901BC4BBEE00F64A66 /* FinderMainView.m */; };
 		4A957A2EF5660C98B1F9A33A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6396AF70E7E22D763CB7E2 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -148,6 +149,8 @@
 		16DB11B11BC425B3009D7C7D /* around.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = around.png; sourceTree = "<group>"; };
 		16DB11B31BC42653009D7C7D /* myself.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = myself.png; sourceTree = "<group>"; };
 		16DB11B51BC4265A009D7C7D /* finder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = finder.png; sourceTree = "<group>"; };
+		16DEF38F1BC4BBEE00F64A66 /* FinderMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderMainView.h; sourceTree = "<group>"; };
+		16DEF3901BC4BBEE00F64A66 /* FinderMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderMainView.m; sourceTree = "<group>"; };
 		5A6396AF70E7E22D763CB7E2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E736BAB2AF440074C178494 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C2065C1A1BC3EA41007571A8 /* FinderURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderURL.h; sourceTree = "<group>"; };
@@ -493,6 +496,8 @@
 		16DB116A1BC41DBF009D7C7D /* FinderView */ = {
 			isa = PBXGroup;
 			children = (
+				16DEF38F1BC4BBEE00F64A66 /* FinderMainView.h */,
+				16DEF3901BC4BBEE00F64A66 /* FinderMainView.m */,
 			);
 			path = FinderView;
 			sourceTree = "<group>";
@@ -748,6 +753,7 @@
 				16988DAC1BC3D118001A1077 /* ComPackageModel.m in Sources */,
 				16DB11951BC4228D009D7C7D /* SDWebImageManager.m in Sources */,
 				16DB11A71BC4230F009D7C7D /* FinderVC.m in Sources */,
+				16DEF3911BC4BBEE00F64A66 /* FinderMainView.m in Sources */,
 				16988D641BC3A994001A1077 /* ViewController.m in Sources */,
 				16DB11621BC41D45009D7C7D /* AroundHelper.m in Sources */,
 				16988DA91BC3D100001A1077 /* ComProductModel.m in Sources */,
