@@ -15,11 +15,7 @@
     if ([key isEqualToString:@"url"]) {
         self.url=kURL(value);
         
-    }else{
-        NSLog(@"KVC出错");
-        
     }
-    
     
 }
 

@@ -22,5 +22,4 @@
 //id
 @property(nonatomic,strong) NSString  *themeId;
 
-
 @end
