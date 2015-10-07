@@ -19,11 +19,13 @@
 @implementation AroundHelper
 
 
+
+
 - (void)requestWithCityName:(NSString *)name finish:(void (^)(NSArray * array))result{
-    
+   
     NSString *urlString = AROUNDCITY(name);
     NSString *codeUrl = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    //有问题 线程
+    // 异步 async
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
     
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
