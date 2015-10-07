@@ -10,4 +10,14 @@
 
 @implementation AroundMainModel
 
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key{
+    
+}
+
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%@,%@", _city,_tags];
+}
+
 @end

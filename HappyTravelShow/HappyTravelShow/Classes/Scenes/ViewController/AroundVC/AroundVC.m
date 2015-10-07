@@ -11,12 +11,15 @@
 #import "XIOptionView.h"
 #import "XIOtherOptionsView.h"
 #import "XIColorHelper.h"
-
+#import "AroundHelper.h"
+#import "AroundMainModel.h"
 @interface AroundVC ()<XIDropdownlistViewProtocol,UITableViewDelegate,UITableViewDataSource>
 {
      XIOptionSelectorView *ddltView;
+     NSMutableArray *destinationCity;
+    
 }
-
+@property (nonatomic, strong)UITableView *tableView;
 
 @end
 
@@ -39,14 +42,41 @@
     
     
  //tableview 创建
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
     
-    tableView.delegate = self;
-    tableView.dataSource = self;
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
     
-    [self.view addSubview:tableView];
+    [self.view addSubview:_tableView];
+    
+
+
+    [self requestData];
     
     [self setupDropdownList];
+}
+
+//数据请求
+- (void)requestData{
+    
+    [[AroundHelper new] requestWithCityName:@"北京" finish:^(NSArray *array) {
+        NSMutableArray *arr = [NSMutableArray arrayWithArray:array];
+        destinationCity = [NSMutableArray array];
+        for (AroundMainModel *model in arr) {
+            
+            [destinationCity addObject:model.city];
+            
+            
+            
+            
+        }
+        
+       // [_tableView reloadData];
+    }];
+    
+    
+    
+    
 }
 
 
@@ -85,30 +115,44 @@
         CGFloat py = strongOpSelectorRef.frame.size.height+strongOpSelectorRef.frame.origin.y;
         CGFloat dpW = weakSelf.view.frame.size.width;
         
-        if(index<2){
+        if(index == 0){
             
             aView = [[XIOptionView alloc] initWithFrame:CGRectMake(0, py, dpW, 240)];
             aView.backgroundColor = [UIColor whiteColor];
             aView.delegate = weakSelf;
             aView.viewIndex = index;
-            //第二个数组的个数是根据数据请求来得
-            NSArray *tmpArray = (index==0)? @[@"默认排序", @"价格由低至高", @"价格由高至低",@"销量优先",@"新品优先",@"离我最近"]:@[@"全部",@"北京"];
+           
+            NSArray *tmpArray = @[@"默认排序", @"价格由低至高", @"价格由高至低",@"销量优先",@"新品优先",@"离我最近"];
             [aView setFetchDataSource:^NSArray *{
                 return tmpArray;
             }];
+        }else if (index == 1){
+            //Hight 根据数组的个数 * 40
+            aView = [[XIOptionView alloc] initWithFrame:CGRectMake(0, py, dpW, 480)];
+            aView.backgroundColor = [UIColor whiteColor];
+            aView.delegate = weakSelf;
+            aView.viewIndex = index;
+            //第二个数组的个数是根据数据请求来得
+            NSArray *tmpArray = @[@"全部",@"北京"];
+            [aView setFetchDataSource:^NSArray *{
+                return tmpArray;
+            }];
+
+            
+            
         }else if (index == 3){
             aView = [[XIOptionView alloc] initWithFrame:CGRectMake(0, py, dpW, 240)];
             aView.backgroundColor = [UIColor whiteColor];
             aView.delegate = weakSelf;
             aView.viewIndex = index;
-            //第二个数组的个数是根据数据请求来得
             NSArray *tmpArray = @[@"全部",@"门票",@"仅酒店",@"酒店套餐"];
             [aView setFetchDataSource:^NSArray *{
                 return tmpArray;
             }];
             
         }else{
-            aView = [[XIOtherOptionsView alloc] initWithFrame:CGRectMake(0, py, dpW, 240)];
+            ////长度根据数组的个数 * 40
+            aView = [[XIOtherOptionsView alloc] initWithFrame:CGRectMake(0, py, dpW, 480)];
             aView.backgroundColor = [UIColor whiteColor];
             aView.delegate = weakSelf;
             aView.viewIndex = index;
