@@ -46,14 +46,11 @@
     
     
     
+
     self.window.rootViewController = rootController;
 
-
-    //sdf
     
 
-    
-    //zjw
    
 
     return YES;
