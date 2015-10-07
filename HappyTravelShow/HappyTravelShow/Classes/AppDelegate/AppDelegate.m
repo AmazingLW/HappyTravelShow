@@ -45,10 +45,13 @@
     rootController.tabBar.tintColor = [UIColor orangeColor];
     
     
+    
+    
+    
+    
     self.window.rootViewController = rootController;
 
     
-    //sdf
     
     return YES;
 }
