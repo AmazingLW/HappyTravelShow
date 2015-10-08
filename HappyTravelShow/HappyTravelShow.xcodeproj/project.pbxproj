@@ -23,6 +23,7 @@
 		16988DAC1BC3D118001A1077 /* ComPackageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988DAB1BC3D118001A1077 /* ComPackageModel.m */; };
 		16988DB31BC3F131001A1077 /* FinderMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988DB11BC3F131001A1077 /* FinderMainCell.m */; };
 		16988DB71BC40965001A1077 /* HomepageHeaderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988DB61BC40965001A1077 /* HomepageHeaderModel.m */; };
+		16B224D91BC67365004C125D /* CommonCells+SetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B224D81BC67365004C125D /* CommonCells+SetModel.m */; };
 		16DB11621BC41D45009D7C7D /* AroundHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB11611BC41D45009D7C7D /* AroundHelper.m */; };
 		16DB11651BC41D53009D7C7D /* FinderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB11641BC41D53009D7C7D /* FinderHelper.m */; };
 		16DB11681BC41D63009D7C7D /* HomepageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB11671BC41D63009D7C7D /* HomepageHelper.m */; };
@@ -126,6 +127,8 @@
 		16988DB11BC3F131001A1077 /* FinderMainCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderMainCell.m; sourceTree = "<group>"; };
 		16988DB51BC40965001A1077 /* HomepageHeaderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepageHeaderModel.h; sourceTree = "<group>"; };
 		16988DB61BC40965001A1077 /* HomepageHeaderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepageHeaderModel.m; sourceTree = "<group>"; };
+		16B224D71BC67365004C125D /* CommonCells+SetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CommonCells+SetModel.h"; sourceTree = "<group>"; };
+		16B224D81BC67365004C125D /* CommonCells+SetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CommonCells+SetModel.m"; sourceTree = "<group>"; };
 		16DB11601BC41D45009D7C7D /* AroundHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundHelper.h; sourceTree = "<group>"; };
 		16DB11611BC41D45009D7C7D /* AroundHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AroundHelper.m; sourceTree = "<group>"; };
 		16DB11631BC41D53009D7C7D /* FinderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderHelper.h; sourceTree = "<group>"; };
@@ -354,6 +357,8 @@
 		16988D861BC3C864001A1077 /* CateGories */ = {
 			isa = PBXGroup;
 			children = (
+				16B224D71BC67365004C125D /* CommonCells+SetModel.h */,
+				16B224D81BC67365004C125D /* CommonCells+SetModel.m */,
 			);
 			path = CateGories;
 			sourceTree = "<group>";
@@ -977,6 +982,7 @@
 				16DB119D1BC4228D009D7C7D /* UIView+WebCacheOperation.m in Sources */,
 				16988D911BC3C864001A1077 /* AppDelegate.m in Sources */,
 				16DB11651BC41D53009D7C7D /* FinderHelper.m in Sources */,
+				16B224D91BC67365004C125D /* CommonCells+SetModel.m in Sources */,
 				16DB11941BC4228D009D7C7D /* SDWebImageDownloaderOperation.m in Sources */,
 				16988DB31BC3F131001A1077 /* FinderMainCell.m in Sources */,
 				16DB119C1BC4228D009D7C7D /* UIImageView+WebCache.m in Sources */,
