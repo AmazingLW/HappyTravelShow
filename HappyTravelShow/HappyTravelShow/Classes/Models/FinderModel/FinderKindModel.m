@@ -13,7 +13,7 @@
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{
     if ([key isEqualToString:@"url"]) {
-        self.url=kURL(value);
+        self.URL=kURL(value);
         
     }
     
