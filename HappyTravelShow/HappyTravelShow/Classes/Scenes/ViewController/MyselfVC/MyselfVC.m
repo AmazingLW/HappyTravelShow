@@ -7,8 +7,11 @@
 //
 
 #import "MyselfVC.h"
+#import <BaiduMapAPI/BMapKit.h>
 
-@interface MyselfVC ()
+@interface MyselfVC ()<BMKMapViewDelegate>
+
+@property (nonatomic,strong)BMKMapView * mapView;
 
 @end
 
@@ -26,7 +29,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor purpleColor];
+    
+    _mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 80, 320, 200)];
+    [self.view addSubview:_mapView];
+    
+}
+
+
+-( void)viewWillAppear:(BOOL)animated
+{
+    [_mapView viewWillAppear];
+    _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
+}
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [_mapView viewWillDisappear];
+    _mapView.delegate = nil; // 不用时，置nil
 }
 
 - (void)didReceiveMemoryWarning {
