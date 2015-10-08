@@ -10,13 +10,12 @@
 #import "FinderURL.h"
 @implementation AroundKindModel
 
+
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{
     
-    if ([key isEqualToString:_URL]) {
-        self.URL = kURL(value);
-    }
+   // NSLog(@"kvc出错%@",key);
+    
 }
-
 
 - (NSString *)description
 {

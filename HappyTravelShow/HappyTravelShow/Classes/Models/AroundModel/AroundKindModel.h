@@ -23,7 +23,7 @@
 //已售数量
 @property(nonatomic,assign) NSInteger   saledCount;
 //图片链接
-@property(nonatomic,strong) NSString  *URL;
+@property(nonatomic,strong) NSString  *url;
 
 //所属城市
 @property(nonatomic,strong) NSString  *cityName;

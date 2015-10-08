@@ -27,6 +27,8 @@
     if(self=[super initWithFrame:frame]){
         
         _contentTable = [[UITableView alloc] initWithFrame:self.bounds style:UITableViewStylePlain];
+        
+       // _contentTable.backgroundColor = [UIColor redColor];
         _contentTable.dataSource = self;
         _contentTable.delegate = self;
         _contentTable.separatorColor = [XIColorHelper SeparatorLineColor];
