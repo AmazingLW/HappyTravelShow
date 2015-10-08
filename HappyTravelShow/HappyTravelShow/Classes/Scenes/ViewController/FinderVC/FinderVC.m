@@ -9,6 +9,7 @@
 #import "FinderVC.h"
 #import "FinderHelper.h"
 #import "FinderMainCell.h"
+#import "FindKindOfSceneController.h"
 @interface FinderVC ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *uiTableView;
 
@@ -32,18 +33,21 @@
     return self;
 }
 
+
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blueColor];
     //注册
     [self.uiTableView registerNib:[UINib nibWithNibName:@"FinderMainCell" bundle:nil] forCellReuseIdentifier:@"mainCell"];
     
-    
     [[FinderHelper sharedHelper]getDataWithCityCode:@"110100" pageIndex:1 Finish:^{
         
         [self.uiTableView reloadData];
     }];
-    
+ 
 
     
 }
@@ -77,7 +81,16 @@
     return 200;
 }
 
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    FindKindOfSceneController *findVC=[FindKindOfSceneController new];
+    FinderMainModel *mainModel=[FinderHelper sharedHelper].dataArray[indexPath.row];
+    findVC.model=mainModel;
+    [self.navigationController pushViewController:findVC animated:NO];
+   
+    
+    
+}
 
 
 
