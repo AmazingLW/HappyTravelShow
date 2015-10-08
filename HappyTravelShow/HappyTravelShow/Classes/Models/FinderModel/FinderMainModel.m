@@ -9,18 +9,11 @@
 #import "FinderMainModel.h"
 
 @implementation FinderMainModel
- 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{
     if ([key isEqualToString:@"description"]) {
         self.numDescription=value;
-    
-    }else{
         
-        NSLog(@"KVC出错");
     }
-    
-    
 }
-
 
 @end
