@@ -22,42 +22,49 @@
 
 @implementation HomepageHelper
 
-+(HomepageHelper*)shareHelp{
-    static HomepageHelper*helper = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        helper =[HomepageHelper new];
-    });
-    
-    return helper;
-}
+//+(HomepageHelper*)shareHelp{
+//    static HomepageHelper*helper = nil;
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        helper =[HomepageHelper new];
+//    });
+//    
+//    return helper;
+//}
 
-- (void)requestAllPackageWithFinish:(void (^)())result{
-    
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-    manager.responseSerializer.acceptableContentTypes  = [NSSet setWithObject:@"text/html"];
-    [manager GET:kPackage parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSDictionary *dict= (NSDictionary *)responseObject;
-        self.CarouseArr=[NSMutableArray array];
-        NSArray*arr=dict[@"content"];
-        for (NSDictionary*dic1 in arr) {
-            if ([dic1[@"titleAlias"] isEqualToString:@"bannerScroll"]) {
-                NSArray*array=dic1[@"ad"];
-                for (NSDictionary*dic in array) {
-                    NSDictionary*dict1=dic[@"ct"];
-                    HomepageHeaderModel*product=[HomepageHeaderModel new];
-                    [product setValuesForKeysWithDictionary:dict1];
-                    [self.CarouseArr addObject:product];
+- (void)requestAllPackage:(NSString*)title
+               WithFinish:(void (^)(NSMutableArray *arr))result{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer.acceptableContentTypes  = [NSSet setWithObject:@"text/html"];
+        [manager GET:kPackage parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSDictionary *dict= (NSDictionary *)responseObject;
+            self.CarouseArr=[NSMutableArray array];
+            NSArray*arr=dict[@"content"];
+            for (NSDictionary*dic1 in arr) {
+                if ([dic1[@"titleAlias"] isEqualToString:title]) {
+                    NSArray*array=dic1[@"ad"];
+                    for (NSDictionary*dic in array) {
+                        NSDictionary*dict1=dic[@"ct"];
+                        HomepageHeaderModel*product=[HomepageHeaderModel new];
+                        [product setValuesForKeysWithDictionary:dict1];
+                        [self.CarouseArr addObject:product];
+                    }
                 }
             }
-        }
-        //NSLog(@"===============%@",self.CarouseArr);
-        result();
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error: %@", error);
-        
-    }];
+           // [self.CarouseArr removeObjectAtIndex:4];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                result(self.CarouseArr);
+            });
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+            
+        }];
+
+    });
+    
+    
     
 }
 

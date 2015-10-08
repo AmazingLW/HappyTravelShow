@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 
 @interface HomepageHelper : NSObject
-+(HomepageHelper*)shareHelp;
+
 
 @property(nonatomic,strong)NSArray*CarouseArray;
 @property(nonatomic,strong)NSArray*ProductArray;
 @property(nonatomic,strong)NSArray*PackageArray;
-- (void)requestAllPackageWithFinish:(void (^)())result;
+- (void)requestAllPackage:(NSString*)title
+               WithFinish:(void (^)(NSMutableArray *arr))result;
 @end
