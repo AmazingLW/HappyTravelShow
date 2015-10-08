@@ -17,6 +17,8 @@
 #import "HotScenicCell.h"
 #import "RecommendationCell.h"
 #import "HomepagePackageModel.h"
+#import "CarouselWebViewVC.h"
+
 
 @interface HomepageVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property(nonatomic,strong)UICollectionView*collection;
@@ -153,10 +155,17 @@
                 NSString*url = [header app_picpath];
                 [_ScrollArr addObject:url];
             }
-            NSLog(@"%@",self.ScrollArr);
+         
             scrollView.slideImagesArray = _ScrollArr;
+            
+            
             scrollView.ianEcrollViewSelectAction = ^(NSInteger i){
-                NSLog(@"点击了%ld张图片",(long)i);
+                HomepageHeaderModel*header = self.CarouseArray[i-0];
+                if ([header.app_url length] >11) {
+                    CarouselWebViewVC*WebVC =[CarouselWebViewVC new];
+                    WebVC.url = header.app_url;
+                    [self.navigationController pushViewController:WebVC animated:YES];
+                }
                 
             };
            
@@ -226,7 +235,7 @@
     if (indexPath.section ==0) {
         return CGSizeMake(375, 120);
     }else if (indexPath.section ==1) {
-        return CGSizeMake(93.75, 60);
+        return CGSizeMake(70, 60);
     }else if (indexPath.section ==2){
         return CGSizeMake(187.5, 60);
         
