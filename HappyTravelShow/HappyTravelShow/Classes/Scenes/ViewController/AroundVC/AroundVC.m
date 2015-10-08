@@ -14,6 +14,8 @@
 #import "AroundHelper.h"
 #import "AroundMainModel.h"
 #import "FinderKindModel.h"
+#import "CommonCells.h"
+
 @interface AroundVC ()<XIDropdownlistViewProtocol,UITableViewDelegate,UITableViewDataSource>
 {
      XIOptionSelectorView *ddltView;
@@ -31,9 +33,18 @@
 //全部景点
 @property (nonatomic, strong)NSMutableArray *allScenic;
 
+//请求数据需要的cityName
+
+@property (nonatomic, strong)NSString *cityName;
+
+//请求数据需要的scenicName
+
+@property (nonatomic, strong)NSString *scenicName;
+
 @end
 
 @implementation AroundVC
+static NSString *const reuse = @"cell";
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -60,17 +71,17 @@
     [self.view addSubview:_tableView];
     
 
-
-    [self requestData];
+    [self.tableView registerNib:[UINib nibWithNibName:@"CommonCells" bundle:nil] forCellReuseIdentifier:reuse];
+ 
     
     [self setupDropdownList];
-  
+     [self requestData];
     
 }
 
 //数据请求
 - (void)requestData{
-    
+    // CityName 应该是定位的
     [[AroundHelper new] requestWithCityName:@"北京" finish:^(NSArray *array) {
         NSMutableArray *arr = [NSMutableArray arrayWithArray:array];
         _destinationCity = [NSMutableArray array];
@@ -90,7 +101,7 @@
         [self setupDropdownList];
        // [_tableView reloadData];
     }];
-    
+    //CityName 是请求到的目的城市
     [[AroundHelper new]requsetAllScenicsWithCityName:@"北京" finish:^(NSArray *scenic) {
         
         _allScenic = [NSMutableArray arrayWithArray:scenic];
@@ -101,11 +112,8 @@
     }];
     
     
-    //字符串接受到的点击的那个景点 赋给scenicName
-    [[AroundHelper new] requestLittleScenicWithCithName:@"北京" scenicName:@"毛主席纪念馆" finish:^{
-       
-        
-    }];
+
+    
 }
 
 #pragma mark ---tableview 代理事件
@@ -116,15 +124,22 @@
     
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    static NSString *const reuse = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
-    }
-    cell.textLabel.text = @"sdgswh";
+
+    CommonCells *cell = [tableView dequeueReusableCellWithIdentifier:reuse forIndexPath:indexPath];
+    
+    //NSLog(@"====%@",_allScenic[indexPath.row]);
+    
+    cell.kindModel = _allScenic[indexPath.row];
+    
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 135;
 }
 
 #pragma mark --顶部4个按钮的创建
@@ -193,7 +208,6 @@
             
             [weakSelf.tmpArray1 addObjectsFromArray:weakSelf.scenicArray];
 
-            NSLog(@"========%@",weakSelf.tmpArray1);
             [aView setFetchDataSource:^NSArray *{
                 //根据数据请求的数组
                 return weakSelf.tmpArray1;
@@ -218,6 +232,8 @@
         //根据请求数组
         //tmpArry = @[@"全部", @"北京"];
         [ddltView setTitle:self.tmpArray[index] forItem:segment];
+        //本页面传值
+        self.cityName = self.tmpArray[index];
     }
     else if(segment == 2){
         //请求数组
@@ -225,8 +241,9 @@
        // tmpArry = @[@"全部", @"bbb",@"cvvv"];
         [ddltView setTitle:self.tmpArray1[index] forItem:segment];
         //可以取到点击的景点名
-        NSLog(@"%@",self.tmpArray1[index]);
-        
+       // NSLog(@"%@",self.tmpArray1[index]);
+       
+        self.scenicName = self.tmpArray1[index];
     }else{
         
         tmpArry = @[@"全部",@"门票",@"仅酒店",@"酒店套餐"];
