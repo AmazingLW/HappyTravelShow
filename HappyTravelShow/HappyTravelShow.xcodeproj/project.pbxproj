@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		165D666F1BC5F8CB00BE6567 /* CommonCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 165D666D1BC5F8CB00BE6567 /* CommonCells.m */; };
+		165D66701BC5F8CB00BE6567 /* CommonCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165D666E1BC5F8CB00BE6567 /* CommonCells.xib */; };
 		16988D5E1BC3A994001A1077 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988D5D1BC3A994001A1077 /* main.m */; };
 		16988D641BC3A994001A1077 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988D631BC3A994001A1077 /* ViewController.m */; };
 		16988D671BC3A994001A1077 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16988D651BC3A994001A1077 /* Main.storyboard */; };
@@ -93,6 +95,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		165D666C1BC5F8CB00BE6567 /* CommonCells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonCells.h; sourceTree = "<group>"; };
+		165D666D1BC5F8CB00BE6567 /* CommonCells.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonCells.m; sourceTree = "<group>"; };
+		165D666E1BC5F8CB00BE6567 /* CommonCells.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonCells.xib; sourceTree = "<group>"; };
 		16988D581BC3A994001A1077 /* HappyTravelShow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyTravelShow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16988D5C1BC3A994001A1077 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16988D5D1BC3A994001A1077 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -489,6 +494,9 @@
 		16988DAE1BC3F0FB001A1077 /* CommonCells */ = {
 			isa = PBXGroup;
 			children = (
+				165D666C1BC5F8CB00BE6567 /* CommonCells.h */,
+				165D666D1BC5F8CB00BE6567 /* CommonCells.m */,
+				165D666E1BC5F8CB00BE6567 /* CommonCells.xib */,
 			);
 			path = CommonCells;
 			sourceTree = "<group>";
@@ -847,6 +855,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				165D66701BC5F8CB00BE6567 /* CommonCells.xib in Resources */,
 				C27358C51BC4F43900771457 /* option_arrow_up@2x.png in Resources */,
 
 				C2269A0B1BC512B1009BBAB0 /* PackageCell.xib in Resources */,
@@ -923,6 +932,7 @@
 				16DB119A1BC4228D009D7C7D /* UIImage+WebP.m in Sources */,
 				C2269A121BC51911009BBAB0 /* IanScrollImageView.m in Sources */,
 				16988DAC1BC3D118001A1077 /* ComPackageModel.m in Sources */,
+				165D666F1BC5F8CB00BE6567 /* CommonCells.m in Sources */,
 				16DB11951BC4228D009D7C7D /* SDWebImageManager.m in Sources */,
 				16DB11A71BC4230F009D7C7D /* FinderVC.m in Sources */,
 				C27359061BC5107C00771457 /* FXBlurView.m in Sources */,
