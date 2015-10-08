@@ -175,12 +175,12 @@ static NSString *const reuse = @"cell";
         }else if (index == 1){
             //Hight 根据数组的个数 * 40
             CGFloat Hight = 0;
-            if (weakSelf.tmpArray.count <= 6) {
+            if ((weakSelf.destinationCity.count + 1) <= 6) {
                 Hight = 40 * 6;
-            }else if (weakSelf.tmpArray.count >= 13){
+            }else if ((weakSelf.destinationCity.count + 1) >= 13){
                 Hight = 515;
             }else{
-                Hight = weakSelf.tmpArray.count * 40;
+                Hight = weakSelf.destinationCity.count * 40;
             }
             //可以添加判断如果数组个数少于6个 返回高度240 如果大于整个屏幕就返回屏幕- 104
             aView = [[XIOptionView alloc] initWithFrame:CGRectMake(0, py, dpW, Hight)];
@@ -207,19 +207,19 @@ static NSString *const reuse = @"cell";
             }];
             
         }else{
-            //待解决
-//            CGFloat Hight = 0;
-//            if (weakSelf.tmpArray1.count <= 6) {
-//                Hight = 40 * 6;
-//            }else if (weakSelf.tmpArray1.count >= 13){
-//                Hight = 515;
-//            }else{
-//                Hight = weakSelf.tmpArray1.count * 40;
-//            }
-//            NSLog(@"%ld",weakSelf.tmpArray1.count);
+            
+            CGFloat Hight = 0;
+            if ((weakSelf.scenicArray.count + 1) <= 6) {
+                Hight = 40 * 6;
+            }else if ((weakSelf.scenicArray.count + 1) >= 13){
+                Hight = 515;
+            }else{
+                Hight = (weakSelf.scenicArray.count + 1) * 40;
+            }
+            //NSLog(@"%ld",weakSelf.tmpArray1.count);
 
             ////长度根据数组的个数 * 40
-            aView = [[XIOptionView alloc] initWithFrame:CGRectMake(0, py, dpW, 520)];
+            aView = [[XIOptionView alloc] initWithFrame:CGRectMake(0, py, dpW, Hight)];
             aView.backgroundColor = [UIColor whiteColor];
             aView.delegate = weakSelf;
             aView.viewIndex = index;
