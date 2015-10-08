@@ -84,13 +84,13 @@
 
 
 
-//所有景点求情数据
+//所有景点数据
 - (void)requsetAllScenicsWithCityName:(NSString *)name finish:(void(^)(NSArray *scenic))result{
     
     NSString *url = AllScenic(name);
     
     NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    //NSLog(@"%@",codeUrl);
+   // NSLog(@"all%@",codeUrl);
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         _allScien = [NSMutableArray array];
@@ -123,12 +123,12 @@
 }
 
 //列表小景点请求数据
-- (void)requestLittleScenicWithCithName:(NSString *)cityName scenicName:(NSString *)scenicName finish:(void (^)())result{
+- (void)requestLittleScenicWithCithName:(NSString *)cityName scenicName:(NSString *)scenicName finish:(void (^)(NSArray * array))result{
     
     NSString *url = littleScenicURL(scenicName, cityName);
     
     NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"%@",codeUrl);
+   // NSLog(@"little%@",codeUrl);
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         _littleScine = [NSMutableArray array];
@@ -157,6 +157,42 @@
         
         
     });
+    
+    
+    
+}
+
+
+//当目的城市为全部使筛选  cityName 是定位时的城市
+
+- (void)chooseScenicWithTagName:(NSString *)tagName cityName:(NSString *)cityName finish:(void (^)(NSArray * array))result{
+    
+    NSString *url = chooseAllCity(tagName, cityName);
+    
+    NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+   // NSLog(@"%@",codeUrl);
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSMutableArray *array = [NSMutableArray array];
+    [manager GET:codeUrl parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        NSDictionary *dic = responseObject[@"data"];
+        NSArray *arr = dic[@"items"];
+        for (NSDictionary *d in arr) {
+            FinderKindModel *model = [FinderKindModel new];
+            [model setValuesForKeysWithDictionary:d];
+            [_allScien addObject:model];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+           
+            result(array);
+        });
+        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    }];
     
     
     
