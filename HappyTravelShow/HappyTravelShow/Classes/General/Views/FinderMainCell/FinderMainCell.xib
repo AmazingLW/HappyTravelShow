@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -28,8 +29,8 @@
                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T1T-tF-i7d">
-                        <rect key="frame" x="302" y="135" width="68" height="24"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1T-tF-i7d">
+                        <rect key="frame" x="299" y="135" width="68" height="24"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="location.png" translatesAutoresizingMaskIntoConstraints="NO" id="lyh-Gq-Dys">
                                 <rect key="frame" x="8" y="2" width="22" height="20"/>
@@ -42,13 +43,19 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.17999999999999999" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="Dvq-nr-Dia"/>
+                            <constraint firstAttribute="width" constant="68" id="nTL-PD-jYI"/>
+                        </constraints>
                     </view>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="RFL-my-G7A" secondAttribute="trailing" constant="5" id="1xo-g0-IKR"/>
                     <constraint firstAttribute="bottom" secondItem="RFL-my-G7A" secondAttribute="bottom" constant="5" id="E7y-oY-WJm"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="T1T-tF-i7d" secondAttribute="trailing" id="OTe-BD-3PN"/>
                     <constraint firstItem="RFL-my-G7A" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="WE4-OK-20E"/>
                     <constraint firstItem="RFL-my-G7A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="WQm-Rr-E3N"/>
+                    <constraint firstItem="T1T-tF-i7d" firstAttribute="top" secondItem="RFL-my-G7A" secondAttribute="bottom" constant="-59" id="b2W-ro-hMU"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

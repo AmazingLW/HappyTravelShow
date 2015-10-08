@@ -10,27 +10,20 @@
 #import "AFNetworking.h"
 #import "HomepageURL.h"
 #import "HomepageHeaderModel.h"
+#import "HomepageScenicModel.h"
+#import "HomepagePackageModel.h"
 
 @interface HomepageHelper()
 
 @property(nonatomic,strong)NSMutableArray*CarouseArr;
-@property(nonatomic,strong)NSMutableArray*ProductArr;
-@property(nonatomic,strong)NSMutableArray*PackageArr;
-
+@property(nonatomic,strong)NSMutableArray*CityArr;
+@property(nonatomic,strong)NSMutableArray*RecommendationArr;
 
 @end
 
 @implementation HomepageHelper
 
-//+(HomepageHelper*)shareHelp{
-//    static HomepageHelper*helper = nil;
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        helper =[HomepageHelper new];
-//    });
-//    
-//    return helper;
-//}
+
 
 - (void)requestAllPackage:(NSString*)title
                WithFinish:(void (^)(NSMutableArray *arr))result{
@@ -52,7 +45,10 @@
                     }
                 }
             }
-           // [self.CarouseArr removeObjectAtIndex:4];
+            if (_CarouseArr.count==5) {
+                 [self.CarouseArr removeObjectAtIndex:4];
+            }
+          
             dispatch_async(dispatch_get_main_queue(), ^{
                 result(self.CarouseArr);
             });
@@ -63,20 +59,79 @@
         }];
 
     });
-    
-    
+  
+}
+
+
+
+
+- (void)requestAllCity:(NSString*)kind
+            WithFinish:(void (^)(NSMutableArray *arr))result{
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer.acceptableContentTypes  = [NSSet setWithObject:@"text/html"];
+        [manager GET:kCity parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSDictionary *dict= (NSDictionary *)responseObject;
+            self.CityArr=[NSMutableArray array];
+            
+            NSDictionary*dic=dict[@"content"];
+            NSArray*cityArray=dic[kind];
+            for (NSDictionary*dict1 in cityArray) {
+                HomepageScenicModel*scenic=[HomepageScenicModel new];
+                [scenic setValuesForKeysWithDictionary:dict1];
+                [_CityArr addObject:scenic];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                result(self.CityArr);
+            });
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+            
+        }];
+        
+    });
     
 }
+
+
+- (void)requestAllRecommendation:(void (^)(NSMutableArray *arr))result{
+    
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer.acceptableContentTypes  = [NSSet setWithObject:@"text/html"];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+        [manager GET:kRecommendation parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSDictionary *dict= (NSDictionary *)responseObject;
+            self.RecommendationArr=[NSMutableArray array];
+
+            NSArray*Array=dict[@"content"];
+            for (NSDictionary*dict in Array) {
+                HomepagePackageModel*package =[HomepagePackageModel new];
+                [package setValuesForKeysWithDictionary:dict];
+                [_RecommendationArr addObject:package];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                result(self.RecommendationArr);
+            });
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Error: %@", error);
+            
+        }];
+        
+    });
+ 
+}
+
+
+
 
 
 -(NSArray*)CarouseArray{
     return [_CarouseArr mutableCopy];
 }
--(NSArray*)ProductArray{
-    return [_ProductArr mutableCopy];
-}
--(NSArray*)PackageArray{
-    return [_PackageArr mutableCopy];
-}
+
 @end
 
