@@ -11,9 +11,12 @@
 @interface HomepageHelper : NSObject
 
 
-@property(nonatomic,strong)NSArray*CarouseArray;
-@property(nonatomic,strong)NSArray*ProductArray;
-@property(nonatomic,strong)NSArray*PackageArray;
+//轮播图
 - (void)requestAllPackage:(NSString*)title
                WithFinish:(void (^)(NSMutableArray *arr))result;
+//城市
+- (void)requestAllCity:(NSString*)kind
+            WithFinish:(void (^)(NSMutableArray *arr))result;
+//精品推荐
+- (void)requestAllRecommendation:(void (^)(NSMutableArray *arr))result;
 @end

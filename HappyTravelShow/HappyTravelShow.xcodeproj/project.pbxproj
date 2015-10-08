@@ -52,13 +52,15 @@
 		16DB11B61BC4265A009D7C7D /* finder.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB11B51BC4265A009D7C7D /* finder.png */; };
 		16DEF3911BC4BBEE00F64A66 /* FinderMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DEF3901BC4BBEE00F64A66 /* FinderMainView.m */; };
 		4A957A2EF5660C98B1F9A33A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6396AF70E7E22D763CB7E2 /* libPods.a */; };
+		C209F53D1BC6187D00946675 /* RecommendationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C209F53B1BC6187D00946675 /* RecommendationCell.m */; };
+		C209F53E1BC6187D00946675 /* RecommendationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C209F53C1BC6187D00946675 /* RecommendationCell.xib */; };
+		C209F5411BC690AB00946675 /* CarouselWebViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C209F5401BC690AB00946675 /* CarouselWebViewVC.m */; };
 		C22699F61BC50AB5009BBAB0 /* carouseIFingureCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C22699F41BC50AB5009BBAB0 /* carouseIFingureCell.m */; };
 		C22699F71BC50AB5009BBAB0 /* carouseIFingureCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C22699F51BC50AB5009BBAB0 /* carouseIFingureCell.xib */; };
 		C22699FB1BC50AE0009BBAB0 /* CategoriesCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C22699F91BC50AE0009BBAB0 /* CategoriesCell.m */; };
 		C22699FC1BC50AE0009BBAB0 /* CategoriesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C22699FA1BC50AE0009BBAB0 /* CategoriesCell.xib */; };
 		C2269A031BC51023009BBAB0 /* HomepageScenicModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2269A021BC51023009BBAB0 /* HomepageScenicModel.m */; };
 		C2269A061BC51052009BBAB0 /* HomepagePackageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2269A051BC51052009BBAB0 /* HomepagePackageModel.m */; };
-
 		C2269A0A1BC512B1009BBAB0 /* PackageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2269A081BC512B1009BBAB0 /* PackageCell.m */; };
 		C2269A0B1BC512B1009BBAB0 /* PackageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2269A091BC512B1009BBAB0 /* PackageCell.xib */; };
 		C2269A121BC51911009BBAB0 /* IanScrollImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C2269A0E1BC51911009BBAB0 /* IanScrollImageView.m */; };
@@ -67,10 +69,8 @@
 		C2269A171BC53FC9009BBAB0 /* HotScenicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2269A161BC53FC9009BBAB0 /* HotScenicCell.m */; };
 		C2269A1A1BC5415B009BBAB0 /* hot.png in Resources */ = {isa = PBXBuildFile; fileRef = C2269A181BC5415B009BBAB0 /* hot.png */; };
 		C2269A1B1BC5415B009BBAB0 /* city.png in Resources */ = {isa = PBXBuildFile; fileRef = C2269A191BC5415B009BBAB0 /* city.png */; };
-
 		C2429DD51BC544B700151E6E /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = C2429DD41BC544B700151E6E /* location.png */; };
 		C2429DD71BC5454C00151E6E /* FinderMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2429DD61BC5454C00151E6E /* FinderMainCell.xib */; };
-
 		C27358C41BC4F43900771457 /* option_arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C27358C21BC4F43900771457 /* option_arrow_down@2x.png */; };
 		C27358C51BC4F43900771457 /* option_arrow_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C27358C31BC4F43900771457 /* option_arrow_up@2x.png */; };
 		C27358FF1BC5107C00771457 /* XIArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358E91BC5107C00771457 /* XIArrowView.m */; };
@@ -182,6 +182,11 @@
 		5A6396AF70E7E22D763CB7E2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E736BAB2AF440074C178494 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C2065C1A1BC3EA41007571A8 /* FinderURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderURL.h; sourceTree = "<group>"; };
+		C209F53A1BC6187D00946675 /* RecommendationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendationCell.h; sourceTree = "<group>"; };
+		C209F53B1BC6187D00946675 /* RecommendationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecommendationCell.m; sourceTree = "<group>"; };
+		C209F53C1BC6187D00946675 /* RecommendationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecommendationCell.xib; sourceTree = "<group>"; };
+		C209F53F1BC690AB00946675 /* CarouselWebViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarouselWebViewVC.h; sourceTree = "<group>"; };
+		C209F5401BC690AB00946675 /* CarouselWebViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarouselWebViewVC.m; sourceTree = "<group>"; };
 		C22699F31BC50AB5009BBAB0 /* carouseIFingureCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = carouseIFingureCell.h; sourceTree = "<group>"; };
 		C22699F41BC50AB5009BBAB0 /* carouseIFingureCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = carouseIFingureCell.m; sourceTree = "<group>"; };
 		C22699F51BC50AB5009BBAB0 /* carouseIFingureCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = carouseIFingureCell.xib; sourceTree = "<group>"; };
@@ -193,7 +198,6 @@
 		C2269A021BC51023009BBAB0 /* HomepageScenicModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepageScenicModel.m; sourceTree = "<group>"; };
 		C2269A041BC51052009BBAB0 /* HomepagePackageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepagePackageModel.h; sourceTree = "<group>"; };
 		C2269A051BC51052009BBAB0 /* HomepagePackageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepagePackageModel.m; sourceTree = "<group>"; };
-
 		C2269A071BC512B1009BBAB0 /* PackageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PackageCell.h; sourceTree = "<group>"; };
 		C2269A081BC512B1009BBAB0 /* PackageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PackageCell.m; sourceTree = "<group>"; };
 		C2269A091BC512B1009BBAB0 /* PackageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PackageCell.xib; sourceTree = "<group>"; };
@@ -206,10 +210,8 @@
 		C2269A161BC53FC9009BBAB0 /* HotScenicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotScenicCell.m; sourceTree = "<group>"; };
 		C2269A181BC5415B009BBAB0 /* hot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hot.png; sourceTree = "<group>"; };
 		C2269A191BC5415B009BBAB0 /* city.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = city.png; sourceTree = "<group>"; };
-
 		C2429DD41BC544B700151E6E /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
 		C2429DD61BC5454C00151E6E /* FinderMainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinderMainCell.xib; sourceTree = "<group>"; };
-
 		C27358C21BC4F43900771457 /* option_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "option_arrow_down@2x.png"; sourceTree = "<group>"; };
 		C27358C31BC4F43900771457 /* option_arrow_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "option_arrow_up@2x.png"; sourceTree = "<group>"; };
 		C27358E81BC5107C00771457 /* XIArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIArrowView.h; sourceTree = "<group>"; };
@@ -525,6 +527,9 @@
 				C2269A091BC512B1009BBAB0 /* PackageCell.xib */,
 				C2269A151BC53FC9009BBAB0 /* HotScenicCell.h */,
 				C2269A161BC53FC9009BBAB0 /* HotScenicCell.m */,
+				C209F53A1BC6187D00946675 /* RecommendationCell.h */,
+				C209F53B1BC6187D00946675 /* RecommendationCell.m */,
+				C209F53C1BC6187D00946675 /* RecommendationCell.xib */,
 			);
 			path = HomepageCell;
 			sourceTree = "<group>";
@@ -556,6 +561,8 @@
 			children = (
 				16DB11A81BC4231E009D7C7D /* HomepageVC.h */,
 				16DB11A91BC4231E009D7C7D /* HomepageVC.m */,
+				C209F53F1BC690AB00946675 /* CarouselWebViewVC.h */,
+				C209F5401BC690AB00946675 /* CarouselWebViewVC.m */,
 			);
 			path = HomepageVC;
 			sourceTree = "<group>";
@@ -857,15 +864,12 @@
 			files = (
 				165D66701BC5F8CB00BE6567 /* CommonCells.xib in Resources */,
 				C27358C51BC4F43900771457 /* option_arrow_up@2x.png in Resources */,
-
 				C2269A0B1BC512B1009BBAB0 /* PackageCell.xib in Resources */,
-				16988DB41BC3F131001A1077 /* FinderMainCell.xib in Resources */,
 				C2269A141BC51911009BBAB0 /* IanScrollViewDefault@2x.png in Resources */,
 				C2269A1B1BC5415B009BBAB0 /* city.png in Resources */,
-
-
 				16DB11B21BC425B3009D7C7D /* around.png in Resources */,
 				C27358C41BC4F43900771457 /* option_arrow_down@2x.png in Resources */,
+				C209F53E1BC6187D00946675 /* RecommendationCell.xib in Resources */,
 				16988D671BC3A994001A1077 /* Main.storyboard in Resources */,
 				C22699FC1BC50AE0009BBAB0 /* CategoriesCell.xib in Resources */,
 				C2429DD71BC5454C00151E6E /* FinderMainCell.xib in Resources */,
@@ -944,6 +948,7 @@
 				16DB11621BC41D45009D7C7D /* AroundHelper.m in Sources */,
 				16988DA91BC3D100001A1077 /* ComProductModel.m in Sources */,
 				16DB11A41BC42303009D7C7D /* AroundVC.m in Sources */,
+				C209F53D1BC6187D00946675 /* RecommendationCell.m in Sources */,
 				C27359021BC5107C00771457 /* XIGridBackgroundView.m in Sources */,
 				16DB11931BC4228D009D7C7D /* SDWebImageDownloader.m in Sources */,
 				16988D9D1BC3CCF3001A1077 /* FinderKindModel.m in Sources */,
@@ -968,6 +973,7 @@
 				C27358FF1BC5107C00771457 /* XIArrowView.m in Sources */,
 				C27359071BC5107C00771457 /* XIColorHelper.m in Sources */,
 				C2269A0A1BC512B1009BBAB0 /* PackageCell.m in Sources */,
+				C209F5411BC690AB00946675 /* CarouselWebViewVC.m in Sources */,
 				16DB11911BC4228D009D7C7D /* SDWebImageCompat.m in Sources */,
 				16DB119D1BC4228D009D7C7D /* UIView+WebCacheOperation.m in Sources */,
 				16988D911BC3C864001A1077 /* AppDelegate.m in Sources */,

@@ -14,7 +14,6 @@
                 <subviews>
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WKg-2Z-TbO">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
-                        <color key="backgroundColor" red="0.49281245880000002" green="1" blue="0.47333879420000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
