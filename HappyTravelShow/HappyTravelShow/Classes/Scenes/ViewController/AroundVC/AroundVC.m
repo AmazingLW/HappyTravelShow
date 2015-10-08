@@ -83,7 +83,7 @@ static NSString *const reuse = @"cell";
 //数据请求
 - (void)requestData{
     // CityName 应该是定位的
-    [[AroundHelper new] requestWithCityName:@"北京" finish:^(NSArray *array) {
+    [[AroundHelper new] requestWithCityName:@"景德镇" finish:^(NSArray *array) {
         NSMutableArray *arr = [NSMutableArray arrayWithArray:array];
         _destinationCity = [NSMutableArray array];
         _scenicArray = [NSMutableArray array];
@@ -103,7 +103,7 @@ static NSString *const reuse = @"cell";
        // [_tableView reloadData];
     }];
     //CityName 是请求到的目的城市
-    [[AroundHelper new]requsetAllScenicsWithCityName:@"北京" finish:^(NSArray *scenic) {
+    [[AroundHelper new]requsetAllScenicsWithCityName:@"景德镇" finish:^(NSArray *scenic) {
         
         _allScenic = [NSMutableArray arrayWithArray:scenic];
         
@@ -175,12 +175,12 @@ static NSString *const reuse = @"cell";
         }else if (index == 1){
             //Hight 根据数组的个数 * 40
             CGFloat Hight = 0;
-            if (weakSelf.tmpArray.count <= 6) {
+            if ((weakSelf.destinationCity.count + 1) <= 6) {
                 Hight = 40 * 6;
-            }else if (weakSelf.tmpArray.count >= 13){
+            }else if ((weakSelf.destinationCity.count + 1) >= 13){
                 Hight = 515;
             }else{
-                Hight = weakSelf.tmpArray.count * 40;
+                Hight = (weakSelf.destinationCity.count + 1) * 40;
             }
             //可以添加判断如果数组个数少于6个 返回高度240 如果大于整个屏幕就返回屏幕- 104
             aView = [[XIOptionView alloc] initWithFrame:CGRectMake(0, py, dpW, Hight)];
@@ -207,19 +207,19 @@ static NSString *const reuse = @"cell";
             }];
             
         }else{
-            //待解决
-//            CGFloat Hight = 0;
-//            if (weakSelf.tmpArray1.count <= 6) {
-//                Hight = 40 * 6;
-//            }else if (weakSelf.tmpArray1.count >= 13){
-//                Hight = 515;
-//            }else{
-//                Hight = weakSelf.tmpArray1.count * 40;
-//            }
-//            NSLog(@"%ld",weakSelf.tmpArray1.count);
+            
+            CGFloat Hight = 0;
+            if ((weakSelf.scenicArray.count + 1) <= 6) {
+                Hight = 40 * 6;
+            }else if ((weakSelf.scenicArray.count + 1) >= 13){
+                Hight = 515;
+            }else{
+                Hight = (weakSelf.scenicArray.count + 1) * 40;
+            }
+            //NSLog(@"%ld",weakSelf.tmpArray1.count);
 
             ////长度根据数组的个数 * 40
-            aView = [[XIOptionView alloc] initWithFrame:CGRectMake(0, py, dpW, 520)];
+            aView = [[XIOptionView alloc] initWithFrame:CGRectMake(0, py, dpW, Hight)];
             aView.backgroundColor = [UIColor whiteColor];
             aView.delegate = weakSelf;
             aView.viewIndex = index;
