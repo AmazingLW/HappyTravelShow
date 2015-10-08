@@ -84,7 +84,14 @@
     if (indexPath.section==0) {
         static NSString * const cellIdentifier = @"FindMainDetaiCell" ;
         FindMainDetaiCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-        
+        cell.mainModel=self.model;
+        cell.lab4numdescription.text=self.model.numDescription;
+        cell.lab4subTitle.text=self.model.subTitle;
+       [cell.imgView sd_setImageWithURL:[NSURL URLWithString:self.model.imageUrl]];
+        cell.locationView.image=[UIImage imageNamed:@"location.png"];
+        cell.lab4cityName.text=self.model.districtName;
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+
         if (cell == nil) {
             cell = [[FindMainDetaiCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         }
@@ -108,9 +115,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section==0) {
-        return 300;
+        return 350;
     }
-    return 135;
+    return 100;
     
     
 }
