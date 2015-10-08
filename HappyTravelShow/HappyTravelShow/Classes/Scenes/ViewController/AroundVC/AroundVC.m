@@ -14,6 +14,8 @@
 #import "AroundHelper.h"
 #import "AroundMainModel.h"
 #import "FinderKindModel.h"
+#import "CommonCells.h"
+
 @interface AroundVC ()<XIDropdownlistViewProtocol,UITableViewDelegate,UITableViewDataSource>
 {
      XIOptionSelectorView *ddltView;
@@ -42,6 +44,7 @@
 @end
 
 @implementation AroundVC
+static NSString *const reuse = @"cell";
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -68,7 +71,7 @@
     [self.view addSubview:_tableView];
     
 
-
+    [self.tableView registerNib:[UINib nibWithNibName:@"CommonCells" bundle:nil] forCellReuseIdentifier:reuse];
  
     
     [self setupDropdownList];
@@ -121,15 +124,22 @@
     
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    static NSString *const reuse = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuse];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuse];
-    }
-    cell.textLabel.text = @"sdgswh";
+
+    CommonCells *cell = [tableView dequeueReusableCellWithIdentifier:reuse forIndexPath:indexPath];
+    
+    //NSLog(@"====%@",_allScenic[indexPath.row]);
+    
+    cell.kindModel = _allScenic[indexPath.row];
+    
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    return 135;
 }
 
 #pragma mark --顶部4个按钮的创建

@@ -79,6 +79,7 @@
 		C27359051BC5107C00771457 /* XIOtherOptionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358F81BC5107C00771457 /* XIOtherOptionsView.m */; };
 		C27359061BC5107C00771457 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358FB1BC5107C00771457 /* FXBlurView.m */; };
 		C27359071BC5107C00771457 /* XIColorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358FE1BC5107C00771457 /* XIColorHelper.m */; };
+		C2ADF1FE1BC66DCA00E39332 /* AroundKindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ADF1FD1BC66DCA00E39332 /* AroundKindModel.m */; };
 		C2F423B91BC5FC6900194989 /* FindKindOfSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F423B81BC5FC6900194989 /* FindKindOfSceneController.m */; };
 		C2F423BB1BC61F4A00194989 /* money.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F423BA1BC61F4A00194989 /* money.png */; };
 		C2F423BE1BC64DE600194989 /* FindMainDetaiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F423BD1BC64DE600194989 /* FindMainDetaiCell.m */; };
@@ -230,6 +231,8 @@
 		C27358FD1BC5107C00771457 /* XIColorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIColorHelper.h; sourceTree = "<group>"; };
 		C27358FE1BC5107C00771457 /* XIColorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIColorHelper.m; sourceTree = "<group>"; };
 		C27359081BC5154E00771457 /* AroundURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundURL.h; sourceTree = "<group>"; };
+		C2ADF1FC1BC66DCA00E39332 /* AroundKindModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundKindModel.h; sourceTree = "<group>"; };
+		C2ADF1FD1BC66DCA00E39332 /* AroundKindModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AroundKindModel.m; sourceTree = "<group>"; };
 		C2F423B71BC5FC6900194989 /* FindKindOfSceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindKindOfSceneController.h; sourceTree = "<group>"; };
 		C2F423B81BC5FC6900194989 /* FindKindOfSceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindKindOfSceneController.m; sourceTree = "<group>"; };
 		C2F423BA1BC61F4A00194989 /* money.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = money.png; sourceTree = "<group>"; };
@@ -465,6 +468,8 @@
 			children = (
 				16988DA41BC3CED3001A1077 /* AroundMainModel.h */,
 				16988DA51BC3CED3001A1077 /* AroundMainModel.m */,
+				C2ADF1FC1BC66DCA00E39332 /* AroundKindModel.h */,
+				C2ADF1FD1BC66DCA00E39332 /* AroundKindModel.m */,
 			);
 			path = AroundModel;
 			sourceTree = "<group>";
@@ -948,6 +953,7 @@
 				16DB11621BC41D45009D7C7D /* AroundHelper.m in Sources */,
 				16988DA91BC3D100001A1077 /* ComProductModel.m in Sources */,
 				16DB11A41BC42303009D7C7D /* AroundVC.m in Sources */,
+				C2ADF1FE1BC66DCA00E39332 /* AroundKindModel.m in Sources */,
 				C27359021BC5107C00771457 /* XIGridBackgroundView.m in Sources */,
 				16DB11931BC4228D009D7C7D /* SDWebImageDownloader.m in Sources */,
 				16988D9D1BC3CCF3001A1077 /* FinderKindModel.m in Sources */,

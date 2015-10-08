@@ -10,7 +10,7 @@
 #import "AFNetworking.h"
 #import "AroundURL.h"
 #import "AroundMainModel.h"
-#import "FinderKindModel.h"
+#import "AroundKindModel.h"
 @interface AroundHelper ()
 //AroundMainModel.h数组
 @property (nonatomic, strong)NSMutableArray *mutableArray;
@@ -90,7 +90,7 @@
     NSString *url = AllScenic(name);
     
     NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-   // NSLog(@"all%@",codeUrl);
+   NSLog(@"all%@",codeUrl);
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         _allScien = [NSMutableArray array];
@@ -98,7 +98,7 @@
             NSDictionary *dic = responseObject[@"data"];
             NSArray *array = dic[@"items"];
             for (NSDictionary *d in array) {
-                FinderKindModel *model = [FinderKindModel new];
+                AroundKindModel *model = [AroundKindModel new];
                 [model setValuesForKeysWithDictionary:d];
                 [_allScien addObject:model];
             }
@@ -136,7 +136,7 @@
             NSDictionary *dic = responseObject[@"data"];
             NSArray *array = dic[@"items"];
             for (NSDictionary *d in array) {
-                FinderKindModel *model = [FinderKindModel new];
+                AroundKindModel *model = [AroundKindModel new];
                 [model setValuesForKeysWithDictionary:d];
                 [_allScien addObject:model];
             }
@@ -180,7 +180,7 @@
         NSDictionary *dic = responseObject[@"data"];
         NSArray *arr = dic[@"items"];
         for (NSDictionary *d in arr) {
-            FinderKindModel *model = [FinderKindModel new];
+            AroundKindModel *model = [AroundKindModel new];
             [model setValuesForKeysWithDictionary:d];
             [_allScien addObject:model];
         }
