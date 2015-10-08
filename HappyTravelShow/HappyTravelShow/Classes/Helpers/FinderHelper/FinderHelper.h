@@ -21,6 +21,6 @@
 //外界可用到的发现各种景点的数组
 @property(nonatomic,strong) NSArray  *kindArray;
 
-
+- (void)requestDataWithThemeId:(NSString *)themeId cityCode:(NSString *)cityCode pageIndex:(NSInteger)pageIndex Finish:(void (^)())result;
 
 @end

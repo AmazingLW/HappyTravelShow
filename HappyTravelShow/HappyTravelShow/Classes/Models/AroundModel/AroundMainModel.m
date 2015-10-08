@@ -12,12 +12,13 @@
 
 - (void)setValue:(id)value forUndefinedKey:(NSString *)key{
     
+    NSLog(@"kvc出错%@",key);
 }
 
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%@,%@", _city,_tags];
+    return [NSString stringWithFormat:@"%@,%@,%@",_city,_scenics,_tags];
 }
 
 @end

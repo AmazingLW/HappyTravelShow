@@ -77,6 +77,10 @@
             //
             ///定义一个数组接收responseObject的数据;
             NSDictionary *tempDict=responseObject[@"content"];
+            if (self.muArray!=0) {
+                [self.muArray removeAllObjects];
+            }
+            
             for (NSString *key in tempDict) {
                 if ([key isEqualToString:@"themeList"]) {
                     NSArray *tempArr= tempDict[key];
@@ -102,6 +106,52 @@
         
     });
     
+    
+}
+#pragma mark----------发现各种景点数据解析-------------
+- (void)requestDataWithThemeId:(NSString* )themeId cityCode:(NSString *)cityCode pageIndex:(NSInteger)pageIndex Finish:(void (^)())result{
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        
+       // NSString *ID=[NSString stringWithFormat:@"%@",themeId];
+        NSString *url=mURL(themeId, cityCode, pageIndex);
+        
+        NSLog(@"%@",url);
+        AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
+        manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/html"];
+        
+        [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSLog(@"%@",responseObject);
+            NSDictionary *tempDict=responseObject[@"content"];
+            if (self.dataSource!=0) {
+                [self.dataSource removeAllObjects];
+            }
+            
+            for (NSString *key in tempDict) {
+                if ([key isEqualToString:@"productList"]) {
+                    NSArray *array=tempDict[key];
+                    for (NSDictionary *dict in array) {
+                        FinderKindModel *model=[FinderKindModel new];
+                        [model setValuesForKeysWithDictionary:dict];
+                        [self.dataSource addObject:model];
+                    }
+                    
+                }
+                
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                result();
+            });
+            
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+            NSLog(@"%@",error);
+        }];
+        
+        
+        
+    });
     
 }
 
