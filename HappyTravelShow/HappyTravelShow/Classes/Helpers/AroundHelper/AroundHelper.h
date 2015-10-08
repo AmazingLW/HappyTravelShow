@@ -15,4 +15,8 @@
 
 - (void)requestWithCityName:(NSString *)name finish:(void (^)(NSArray * array))result;
 
+- (void)requsetAllScenicsWithCityName:(NSString *)name finish:(void(^)(NSArray *scenic))result;
+
+- (void)requestLittleScenicWithCithName:(NSString *)cityName scenicName:(NSString *)scenicName finish:(void (^)())result;
+
 @end

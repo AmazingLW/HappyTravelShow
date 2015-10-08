@@ -19,6 +19,9 @@
 //详情页
 #define detailURL(productID) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetProductInfoById?productId=%ld &version=4.3.1&system=iOS&channel=AppStore",productID]
 
+//点击景点列表弹出的小景点列表
+#warning 需要经纬度 默认北京的经纬度(后期如果不加就删去)
+#define littleScenicURL(scenicName,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.34362&latitude=40.030591&scenicName=%@&version=4.3.1&sort=n&province=0&system=iOS&pageSize=20&channel=AppStore&city=%@",scenicName,cityName]
 
 
 #endif

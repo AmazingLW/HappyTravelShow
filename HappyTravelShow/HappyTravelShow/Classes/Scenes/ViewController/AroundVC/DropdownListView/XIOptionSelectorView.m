@@ -30,6 +30,7 @@
         //
         blurView.blurRadius = 12;
         blurView.tintColor = [UIColor clearColor];
+        //
         blurView.dynamic = NO;
         [self addSubview:blurView];
         blurView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
