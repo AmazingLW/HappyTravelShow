@@ -254,6 +254,22 @@
     }
 }
 
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section==1&& indexPath.row == 4) {
+        
+        CarouselWebViewVC*WebVC =[CarouselWebViewVC new];
+        WebVC.url = [self.ProductArr[4] app_url];
+        [self.navigationController pushViewController:WebVC animated:YES];
+        
+    }else if (indexPath.section == 2 && indexPath.row ==0){
+        
+        CarouselWebViewVC*WebVC =[CarouselWebViewVC new];
+        WebVC.url = [self.PackageArr[0] app_url];
+        [self.navigationController pushViewController:WebVC animated:YES];
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     
