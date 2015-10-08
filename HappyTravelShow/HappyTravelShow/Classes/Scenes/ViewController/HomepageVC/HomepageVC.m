@@ -143,17 +143,17 @@
         return cell;
     }else if (indexPath.section==1){
         CategoriesCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"cate" forIndexPath:indexPath];
-        HomepageHeaderModel*header =self.ProductArr[indexPath.row];
-        cell.cate4lable.text=header.title;
-        [cell.cate4image sd_setImageWithURL:[NSURL URLWithString:header.app_picpath]placeholderImage:[UIImage imageNamed:@"picholder"]];
+//        HomepageHeaderModel*header =self.ProductArr[indexPath.row];
+//        cell.cate4lable.text=header.title;
+//        [cell.cate4image sd_setImageWithURL:[NSURL URLWithString:header.app_picpath]placeholderImage:[UIImage imageNamed:@"picholder"]];
         
         return cell;
     }else if (indexPath.section==2){
         PackageCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"pack" forIndexPath:indexPath];
-        HomepageHeaderModel*header =self.PackageArr[indexPath.row];
-        cell.adTitle4lable.text=header.adTitle;
-        cell.asSub4lable.text=header.adSubTitle;
-        [cell.path4image sd_setImageWithURL:[NSURL URLWithString:header.n_app_picpath]placeholderImage:[UIImage imageNamed:@"picholder"]];
+//        HomepageHeaderModel*header =self.PackageArr[indexPath.row];
+//        cell.adTitle4lable.text=header.adTitle;
+//        cell.asSub4lable.text=header.adSubTitle;
+//        [cell.path4image sd_setImageWithURL:[NSURL URLWithString:header.n_app_picpath]placeholderImage:[UIImage imageNamed:@"picholder"]];
         cell.layer.borderWidth = 0.3;
         cell.layer.borderColor = [UIColor lightGrayColor].CGColor;
         return cell;
