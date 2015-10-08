@@ -80,9 +80,7 @@
     cell.textLabel.highlightedTextColor = [XIColorHelper ThemeColor];
     cell.textLabel.text = _selectionItems[indexPath.row];
     if(indexPath.row==0){
-        /**
-         *  更改
-         */
+  
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     else{
