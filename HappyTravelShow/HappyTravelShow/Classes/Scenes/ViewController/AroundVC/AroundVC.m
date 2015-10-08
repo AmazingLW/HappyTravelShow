@@ -31,6 +31,14 @@
 //全部景点
 @property (nonatomic, strong)NSMutableArray *allScenic;
 
+//请求数据需要的cityName
+
+@property (nonatomic, strong)NSString *cityName;
+
+//请求数据需要的scenicName
+
+@property (nonatomic, strong)NSString *scenicName;
+
 @end
 
 @implementation AroundVC
@@ -61,16 +69,16 @@
     
 
 
-    [self requestData];
+ 
     
     [self setupDropdownList];
-  
+     [self requestData];
     
 }
 
 //数据请求
 - (void)requestData{
-    
+    // CityName 应该是定位的
     [[AroundHelper new] requestWithCityName:@"北京" finish:^(NSArray *array) {
         NSMutableArray *arr = [NSMutableArray arrayWithArray:array];
         _destinationCity = [NSMutableArray array];
@@ -90,7 +98,7 @@
         [self setupDropdownList];
        // [_tableView reloadData];
     }];
-    
+    //CityName 是请求到的目的城市
     [[AroundHelper new]requsetAllScenicsWithCityName:@"北京" finish:^(NSArray *scenic) {
         
         _allScenic = [NSMutableArray arrayWithArray:scenic];
@@ -101,11 +109,8 @@
     }];
     
     
-    //字符串接受到的点击的那个景点 赋给scenicName
-    [[AroundHelper new] requestLittleScenicWithCithName:@"北京" scenicName:@"毛主席纪念馆" finish:^{
-       
-        
-    }];
+
+    
 }
 
 #pragma mark ---tableview 代理事件
@@ -193,7 +198,6 @@
             
             [weakSelf.tmpArray1 addObjectsFromArray:weakSelf.scenicArray];
 
-            NSLog(@"========%@",weakSelf.tmpArray1);
             [aView setFetchDataSource:^NSArray *{
                 //根据数据请求的数组
                 return weakSelf.tmpArray1;
@@ -218,6 +222,8 @@
         //根据请求数组
         //tmpArry = @[@"全部", @"北京"];
         [ddltView setTitle:self.tmpArray[index] forItem:segment];
+        //本页面传值
+        self.cityName = self.tmpArray[index];
     }
     else if(segment == 2){
         //请求数组
@@ -225,8 +231,9 @@
        // tmpArry = @[@"全部", @"bbb",@"cvvv"];
         [ddltView setTitle:self.tmpArray1[index] forItem:segment];
         //可以取到点击的景点名
-        NSLog(@"%@",self.tmpArray1[index]);
-        
+       // NSLog(@"%@",self.tmpArray1[index]);
+       
+        self.scenicName = self.tmpArray1[index];
     }else{
         
         tmpArry = @[@"全部",@"门票",@"仅酒店",@"酒店套餐"];
