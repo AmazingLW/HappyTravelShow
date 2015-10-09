@@ -22,6 +22,7 @@
     self.fetchDataSource = nil;
 }
 
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if(self=[super initWithFrame:frame]){
@@ -41,6 +42,9 @@
         if([_contentTable respondsToSelector:@selector(setLayoutMargins:)]){
             _contentTable.layoutMargins = UIEdgeInsetsZero;
         }
+        
+        //添加的
+        [_contentTable reloadData];
     }
     return self;
 }

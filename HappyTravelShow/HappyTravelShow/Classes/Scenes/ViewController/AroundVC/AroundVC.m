@@ -15,7 +15,7 @@
 #import "AroundMainModel.h"
 #import "FinderKindModel.h"
 #import "CommonCells+SetModel.h"
-
+#import "ComDetailVC.h"
 @interface AroundVC ()<XIDropdownlistViewProtocol,UITableViewDelegate,UITableViewDataSource>
 {
      XIOptionSelectorView *ddltView;
@@ -41,6 +41,25 @@
 
 @property (nonatomic, strong)NSString *scenicName;
 
+//组装景点用到的字典
+@property (nonatomic, strong)NSMutableDictionary *dic;
+
+//组装是用到的临时数组
+
+@property (nonatomic, strong)NSMutableArray *tempArray;
+
+//字典 allkeys
+
+@property (nonatomic, strong)NSMutableArray *keyArray;
+
+//字典 allValues
+
+@property (nonatomic, strong)NSMutableArray *ValueArray;
+
+//判断是否是全部
+
+@property (nonatomic, assign)BOOL isAll;
+
 @end
 
 @implementation AroundVC
@@ -50,6 +69,7 @@ static NSString *const reuse = @"cell";
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         UIImage *image = [UIImage imageNamed:@"around"];
         self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"周边" image:image tag:1002];
+        _isAll = YES;
     }
     
     return self;
@@ -83,8 +103,10 @@ static NSString *const reuse = @"cell";
 //数据请求
 - (void)requestData{
     // CityName 应该是定位的
+    _dic = [[NSMutableDictionary alloc] init];
     [[AroundHelper new] requestWithCityName:@"景德镇" finish:^(NSArray *array) {
         NSMutableArray *arr = [NSMutableArray arrayWithArray:array];
+          _tempArray = [[NSMutableArray alloc] init];
         _destinationCity = [NSMutableArray array];
         _scenicArray = [NSMutableArray array];
         for (AroundMainModel *model in arr) {
@@ -92,12 +114,22 @@ static NSString *const reuse = @"cell";
             [_destinationCity addObject:model.city];
             //scenics 数组 取出里面的小字典的值
             NSArray * array = model.scenics;
+             NSMutableArray *arr = [[NSMutableArray alloc] init];
             for (NSDictionary *scenics in array) {
                 NSString *scenicName = scenics[@"scenic"];
             [_scenicArray addObject:scenicName];
+                
+                //从新组装数组
+                //存放每个小city中scenics的数组
+               
+                [arr addObject:scenicName];
+
             }
-            }
+            [_tempArray addObject:arr];
+
+        }
         
+      
         //调用方法
         [self setupDropdownList];
        // [_tableView reloadData];
@@ -143,10 +175,33 @@ static NSString *const reuse = @"cell";
     return 135;
 }
 
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    AroundKindModel *model = _allScenic[indexPath.row];
+    
+    NSInteger productId = model.productId;
+    NSString *packageID = model.channelLinkId;
+    
+    ComDetailVC *comDetail = [[ComDetailVC alloc] init];
+    
+}
+
 #pragma mark --顶部4个按钮的创建
 - (void)setupDropdownList
 {
+
+    for (int i = 0; i < _destinationCity.count; i ++) {
+        NSArray *array = _tempArray[i];
+        [_dic setObject:array forKey:_destinationCity[i]];
+        
+    }
     
+    
+//     NSLog(@"dic = %@",_dic);
+    
+    
+//    NSLog(@"%@",[_dic allKeys]);
     
     ddltView = [[XIOptionSelectorView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 40)];
     ddltView.parentView = self.view;
@@ -188,12 +243,17 @@ static NSString *const reuse = @"cell";
             aView.delegate = weakSelf;
             aView.viewIndex = index;
             //第二个数组的个数是根据数据请求来得
-          weakSelf.tmpArray = [NSMutableArray arrayWithObjects:@"全部", nil];
             
-            [weakSelf.tmpArray addObjectsFromArray:weakSelf.destinationCity];
+          
+            
+          weakSelf.keyArray = [NSMutableArray arrayWithObjects:@"全部", nil];
+           
+            
+            [weakSelf.keyArray addObjectsFromArray:[weakSelf.dic allKeys]];
+            
             
             [aView setFetchDataSource:^NSArray *{
-                return weakSelf.tmpArray;
+                return weakSelf.keyArray;
             }];
 
         }else if (index == 3){
@@ -219,51 +279,106 @@ static NSString *const reuse = @"cell";
             //NSLog(@"%ld",weakSelf.tmpArray1.count);
 
             ////长度根据数组的个数 * 40
+            
+            
+            if (weakSelf.isAll) {
+                aView = [[XIOptionView alloc] initWithFrame:CGRectMake(0, py, dpW, Hight)];
+                aView.backgroundColor = [UIColor whiteColor];
+                aView.delegate = weakSelf;
+                aView.viewIndex = index;
+                
+                weakSelf.ValueArray = [NSMutableArray arrayWithObjects:@"全部", nil];
+                
+                [weakSelf.ValueArray addObjectsFromArray:weakSelf.scenicArray];
+                
+                [aView setFetchDataSource:^NSArray *{
+                    //根据数据请求的数组
+                    return weakSelf.ValueArray;
+                }];
+ 
+            }else{
+                
+                
             aView = [[XIOptionView alloc] initWithFrame:CGRectMake(0, py, dpW, Hight)];
             aView.backgroundColor = [UIColor whiteColor];
             aView.delegate = weakSelf;
             aView.viewIndex = index;
             
-            weakSelf.tmpArray1 = [NSMutableArray arrayWithObjects:@"全部", nil];
+            weakSelf.ValueArray = [NSMutableArray array];
             
-            [weakSelf.tmpArray1 addObjectsFromArray:weakSelf.scenicArray];
+            [weakSelf.ValueArray addObjectsFromArray:weakSelf.tmpArray1];
 
             [aView setFetchDataSource:^NSArray *{
                 //根据数据请求的数组
-                return weakSelf.tmpArray1;
+                return weakSelf.ValueArray;
             }];
+            }
         }
-        //aView.hidden = YES;
+       // aView.hidden = YES;
         [weakSelf.view addSubview:aView];
+      
         return aView;
     }];
 }
 
 #pragma XIDropdownlistViewProtocol method  点击方法
 
+//点击显示的内容 数量必须与上面的相等
+
 - (void)didSelectItemAtIndex:(NSInteger)index inSegment:(NSInteger)segment
 {
+    
+ 
     NSArray *tmpArry;
     if(segment==0){
         tmpArry = @[@"默认排序", @"价格变高", @"价格变低",@"销量优先",@"新品优先",@"离我最近"];
         [ddltView setTitle:tmpArry[index] forItem:segment];
     }
     else if(segment==1){
+       
+            
+       
+        _tmpArray1 = [NSMutableArray arrayWithObjects:@"全部", nil];
+        
+        if (index == 0) {
+        
         //根据请求数组
         //tmpArry = @[@"全部", @"北京"];
-        [ddltView setTitle:self.tmpArray[index] forItem:segment];
+        [ddltView setTitle:self.keyArray[index] forItem:segment];
         //本页面传值
-        self.cityName = self.tmpArray[index];
+        self.cityName = self.keyArray[index];
+                //如果不是全部的目的城市 点击 景点会跟随改变
+      //  NSLog(@"%@",self.keyArray[index]);
+            _isAll = YES;
+        
+            [_tmpArray1 addObjectsFromArray:[self.dic allValues]];
+            
+        }else{
+            _isAll = NO;
+            [ddltView setTitle:self.keyArray[index] forItem:segment];
+            //本页面传值
+            self.cityName = self.keyArray[index];
+          
+        [_tmpArray1 addObjectsFromArray:self.dic[self.keyArray[index]]];
+        
+        }
     }
     else if(segment == 2){
         //请求数组
         //NSLog(@"%s, %ld", __FUNCTION__, (long)index);
-       // tmpArry = @[@"全部", @"bbb",@"cvvv"];
+        //tmpArry = @[@"全部", @"bbb",@"cvvv"];
+      
+       
+        
         [ddltView setTitle:self.tmpArray1[index] forItem:segment];
         //可以取到点击的景点名
        // NSLog(@"%@",self.tmpArray1[index]);
-       
+        
         self.scenicName = self.tmpArray1[index];
+     
+   
+    
+        
     }else{
         
         tmpArry = @[@"全部",@"门票",@"仅酒店",@"酒店套餐"];
