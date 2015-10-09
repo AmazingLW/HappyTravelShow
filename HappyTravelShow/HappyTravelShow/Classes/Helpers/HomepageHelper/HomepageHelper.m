@@ -12,6 +12,7 @@
 #import "HomepageHeaderModel.h"
 #import "HomepageScenicModel.h"
 #import "HomepagePackageModel.h"
+#import "AroundKindModel.h"
 
 @interface HomepageHelper()
 
@@ -126,8 +127,75 @@
 }
 
 
+- (void)requestAllTicket:(NSString*)tagId
+                withSort:(NSString*)sort
+            WithFinish:(void (^)(NSMutableArray *arr))result{
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer.acceptableContentTypes  = [NSSet setWithObject:@"text/html"];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+        NSString*url = KTicket(tagId, @"%E5%8C%97%E4%BA%AC", sort);
+        [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSDictionary *dict= (NSDictionary *)responseObject;
+            
+            self.CityArr=[NSMutableArray array];
+        
+            NSDictionary*dic=dict[@"data"];
+            NSArray*cityArray=dic[@"items"];
+            for (NSDictionary*dict1 in cityArray) {
+               AroundKindModel *scenic=[AroundKindModel new];
+                [scenic setValuesForKeysWithDictionary:dict1];
+                [_CityArr addObject:scenic];
+            }
+        
+            dispatch_async(dispatch_get_main_queue(), ^{
+                result(self.CityArr);
+            });
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+           // NSLog(@"Error: %@", error);
+            
+        }];
+        
+    });
+    
+}
 
+- (void)requestAllFamily:(NSString*)tagId
+                withSort:(NSString*)sort
+              WithFinish:(void (^)(NSMutableArray *arr))result
+{  dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer.acceptableContentTypes  = [NSSet setWithObject:@"text/html"];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+        NSString*url = KFamily(tagId, @"%E5%8C%97%E4%BA%AC", sort);
+        [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSDictionary *dict= (NSDictionary *)responseObject;
+            
+            self.CityArr=[NSMutableArray array];
+            
+            NSDictionary*dic=dict[@"data"];
+            NSArray*cityArray=dic[@"items"];
+            for (NSDictionary*dict1 in cityArray) {
+                AroundKindModel *scenic=[AroundKindModel new];
+                [scenic setValuesForKeysWithDictionary:dict1];
+                [_CityArr addObject:scenic];
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                result(self.CityArr);
+            });
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            
+        }];
+        
+    });
 
+    
+    
+}
 
 -(NSArray*)CarouseArray{
     return [_CarouseArr mutableCopy];

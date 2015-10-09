@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface HomepagePackageModel : NSObject
+
+//精品推荐
 @property(nonatomic,strong)NSString*labelText,*bigImageUrl,*cityName,*productName,*productTitleContent;
-@property(nonatomic,assign)NSInteger price,originalPrice,saledCount;
+@property(nonatomic,assign)NSInteger price,originalPrice,saledCount,channelLinkId,productId;
 @end
