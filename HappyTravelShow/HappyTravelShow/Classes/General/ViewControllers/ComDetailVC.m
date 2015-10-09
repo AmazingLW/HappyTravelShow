@@ -51,8 +51,8 @@ static BOOL  isOpen = NO;
 
     //请求 预订数据
 #warning 更改 此id
-    NSInteger bookID = 67207;
-    [[ComDetailHelper new] requestBookData:URL_RequestBookData(bookID) type:@"bookData" block:^(NSMutableArray *arr) {
+//    NSInteger bookID = 67207;
+    [[ComDetailHelper new] requestBookData:URL_RequestBookData(self.bookID)type:@"bookData" block:^(NSMutableArray *arr) {
         _bookArr = [NSMutableArray array];
         self.bookArr = arr;
         [self.detailTableView reloadData];
@@ -60,8 +60,8 @@ static BOOL  isOpen = NO;
     
     //请求 详情数据
 #warning 更改 此id
-    NSInteger detailID = 11790;
-    [[ComDetailHelper new] requestBookData:URL_requestDetailData(detailID) type:@"detailData" block:^(NSMutableArray *arr) {
+//    NSInteger detailID = 11790;
+    [[ComDetailHelper new] requestBookData:URL_requestDetailData(self.detailID) type:@"detailData" block:^(NSMutableArray *arr) {
         _detailArr = [NSMutableArray array];
         self.detailArr = arr;
         [self.detailTableView reloadData];

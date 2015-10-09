@@ -12,4 +12,11 @@
 
 @property (nonatomic,strong) UITableView * detailTableView;
 
+
+//预定 id
+@property (nonatomic,assign) NSInteger bookID;
+
+//详情 id
+@property (nonatomic,assign) NSInteger detailID;
+
 @end
