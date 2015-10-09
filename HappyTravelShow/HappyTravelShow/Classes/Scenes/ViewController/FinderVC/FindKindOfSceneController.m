@@ -149,14 +149,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     ComDetailVC *comVC = [ComDetailVC new];
-    
+    if (indexPath.section==1) {
+        
     //获取model对象
     FinderKindModel *model = [FinderHelper sharedHelper].kindArray[indexPath.row];
     comVC.bookID = [model.channelLinkId intValue];
     comVC.detailID = [model.productId intValue];
-    
-    
     [self.navigationController pushViewController:comVC animated:YES];
+
+     }
+    
     
 }
 

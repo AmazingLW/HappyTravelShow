@@ -656,8 +656,8 @@
 			children = (
 				16DB11A51BC4230F009D7C7D /* FinderVC.h */,
 				16DB11A61BC4230F009D7C7D /* FinderVC.m */,
-				C2F423B71BC5FC6900194989 /* FindKindOfSceneController.h */,
 				C2F423B81BC5FC6900194989 /* FindKindOfSceneController.m */,
+				C2F423B71BC5FC6900194989 /* FindKindOfSceneController.h */,
 			);
 			path = FinderVC;
 			sourceTree = "<group>";
