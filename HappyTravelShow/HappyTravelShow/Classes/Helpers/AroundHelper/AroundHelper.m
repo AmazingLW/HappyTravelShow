@@ -33,7 +33,7 @@
    
     NSString *urlString = AROUNDCITY(name);
     NSString *codeUrl = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    //NSLog(@"======================%@",codeUrl);//有值
+   // NSLog(@"======================%@",codeUrl);//有值
     // 异步 async
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
     
@@ -74,10 +74,7 @@
     });
 
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            
-            
         }];
-        
          
     });
 }
@@ -113,13 +110,8 @@
         }];
         
         
-        
-        
     });
-    
-    
-    
-    
+
 }
 
 //列表小景点请求数据
@@ -128,7 +120,7 @@
     NSString *url = littleScenicURL(scenicName, cityName);
     
     NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-   // NSLog(@"little%@",codeUrl);
+   NSLog(@"little%@",codeUrl);
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         _littleScine = [NSMutableArray array];
@@ -140,26 +132,18 @@
                 [model setValuesForKeysWithDictionary:d];
                 [_allScien addObject:model];
             }
-            
-            
-            
+ 
             dispatch_async(dispatch_get_main_queue(), ^{
                 result(_littleScine);
                 
             });
-            
-            
+
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
             
         }];
-        
-        
-        
-        
+
     });
-    
-    
-    
+ 
 }
 
 
@@ -193,10 +177,84 @@
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     }];
+
+}
+
+//排序  目的城市全部 景点全部 city传进来的城市 (景德镇的经纬度)
+
+- (void)sortDataWithType:(NSString *)type cityName:(NSString *)cityName finish:(void(^)(NSArray * array))result{
+    
+    NSString *url = sortDataUp(type, cityName);
+   
+    NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+   // NSLog(@"%@",codeUrl);
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        NSMutableArray * sortDataUp = [NSMutableArray array];
+        [manager GET:codeUrl parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSDictionary *dic = responseObject[@"data"];
+            NSArray *array = dic[@"items"];
+            for (NSDictionary *d in array) {
+                AroundKindModel *model = [AroundKindModel new];
+                [model setValuesForKeysWithDictionary:d];
+                [sortDataUp addObject:model];
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                result(sortDataUp);
+                
+            });
+            
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+        
+    });
+
+}
+
+
+//当目的城市选定 景点全部时 列表
+- (void)requsetAllScenicsWithScenicName:(NSString *)scenicName finish:(void(^)(NSArray *scenic))result{
+    
+    NSString *url = partScenic(scenicName);
+    
+    NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    //NSLog(@"%@",codeUrl);
+     dispatch_async(dispatch_get_global_queue(0, 0), ^{
+         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+          NSMutableArray * sortDataUp = [NSMutableArray array];
+         [manager GET:codeUrl parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+             NSDictionary *dic = responseObject[@"data"];
+             NSArray *array = dic[@"items"];
+             for (NSDictionary *d in array) {
+                 AroundKindModel *model = [AroundKindModel new];
+                 [model setValuesForKeysWithDictionary:d];
+                 [sortDataUp addObject:model];
+             }
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 result(sortDataUp);
+                 
+             });
+
+             
+             
+         } failure:^(NSURLSessionDataTask *task, NSError *error) {
+             
+         }];
+         
+         
+         
+     });
     
     
     
 }
+
+
+
 
 
 @end

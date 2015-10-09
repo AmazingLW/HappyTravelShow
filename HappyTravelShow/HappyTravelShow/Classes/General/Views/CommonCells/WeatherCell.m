@@ -19,7 +19,7 @@
         [self addSubview:self.weatherImgView];
         
         //地区
-        self.placeLabel = [[UILabel alloc] initWithFrame:CGRectMake(35, 10, 250, 30)];
+        self.placeLabel = [[UILabel alloc] initWithFrame:CGRectMake(35, 8, 250, 30)];
         self.placeLabel.font = [UIFont systemFontOfSize:15];
         self.placeLabel.textColor = [UIColor grayColor];
         [self addSubview:self.placeLabel];
@@ -48,11 +48,17 @@
 
 
 - (void)setWeatherViewWithCityname:(NSString *)cityName date:(NSString *)date temperature:(NSString *)temperature typeDay:(NSString *)typeDay{
+    [self.weatherImgView setFrame:CGRectMake(5, 25, 20, 20)];
     self.placeLabel.text = cityName;
     NSArray *arr = [date componentsSeparatedByString:@" "];
     self.dateLabel.text = arr[1];
     self.tempLabel.text = temperature;
     self.typeLabel.text = typeDay;
+}
+
+- (void)setWeatherViewWithCityname:(NSString *)cityName{
+    [self.weatherImgView setFrame:CGRectMake(5, 13, 20, 20)];
+    self.placeLabel.text = cityName;
 }
 
 
