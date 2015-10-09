@@ -15,7 +15,7 @@
 		16988D691BC3A994001A1077 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16988D681BC3A994001A1077 /* Images.xcassets */; };
 		16988D6C1BC3A994001A1077 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16988D6A1BC3A994001A1077 /* LaunchScreen.xib */; };
 		16988D781BC3A994001A1077 /* HappyTravelShowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988D771BC3A994001A1077 /* HappyTravelShowTests.m */; };
-		16988D911BC3C864001A1077 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988D841BC3C864001A1077 /* AppDelegate.m */; };
+		16988D911BC3C864001A1077 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 16988D841BC3C864001A1077 /* AppDelegate.mm */; };
 		16988D9A1BC3CCAF001A1077 /* FinderMainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988D991BC3CCAF001A1077 /* FinderMainModel.m */; };
 		16988D9D1BC3CCF3001A1077 /* FinderKindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988D9C1BC3CCF3001A1077 /* FinderKindModel.m */; };
 		16988DA61BC3CED3001A1077 /* AroundMainModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988DA51BC3CED3001A1077 /* AroundMainModel.m */; };
@@ -24,6 +24,14 @@
 		16988DB31BC3F131001A1077 /* FinderMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988DB11BC3F131001A1077 /* FinderMainCell.m */; };
 		16988DB71BC40965001A1077 /* HomepageHeaderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988DB61BC40965001A1077 /* HomepageHeaderModel.m */; };
 		16B224D91BC67365004C125D /* CommonCells+SetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B224D81BC67365004C125D /* CommonCells+SetModel.m */; };
+		16D8C5D61BC6C681001175AB /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D8C5D51BC6C681001175AB /* BaiduMapAPI.framework */; };
+		16D8C5DA1BC6C728001175AB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D8C5D91BC6C728001175AB /* CoreLocation.framework */; };
+		16D8C5DC1BC6C732001175AB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D8C5DB1BC6C732001175AB /* QuartzCore.framework */; };
+		16D8C5DE1BC6C73C001175AB /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D8C5DD1BC6C73C001175AB /* OpenGLES.framework */; };
+		16D8C5E01BC6C747001175AB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D8C5DF1BC6C747001175AB /* SystemConfiguration.framework */; };
+		16D8C5E21BC6C751001175AB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D8C5E11BC6C751001175AB /* CoreGraphics.framework */; };
+		16D8C5E41BC6C75A001175AB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D8C5E31BC6C75A001175AB /* Security.framework */; };
+		16D8C5E61BC6C7EF001175AB /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 16D8C5E51BC6C7EF001175AB /* mapapi.bundle */; };
 		16DB11621BC41D45009D7C7D /* AroundHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB11611BC41D45009D7C7D /* AroundHelper.m */; };
 		16DB11651BC41D53009D7C7D /* FinderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB11641BC41D53009D7C7D /* FinderHelper.m */; };
 		16DB11681BC41D63009D7C7D /* HomepageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB11671BC41D63009D7C7D /* HomepageHelper.m */; };
@@ -52,6 +60,19 @@
 		16DB11B41BC42653009D7C7D /* myself.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB11B31BC42653009D7C7D /* myself.png */; };
 		16DB11B61BC4265A009D7C7D /* finder.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB11B51BC4265A009D7C7D /* finder.png */; };
 		16DEF3911BC4BBEE00F64A66 /* FinderMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DEF3901BC4BBEE00F64A66 /* FinderMainView.m */; };
+		16EB2DCA1BC6AB7800F51A9F /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 16EB2DC71BC6AB7800F51A9F /* back.png */; };
+		16EB2DCB1BC6AB7800F51A9F /* place.png in Resources */ = {isa = PBXBuildFile; fileRef = 16EB2DC81BC6AB7800F51A9F /* place.png */; };
+		16EB2DCC1BC6AB7800F51A9F /* xiiangqing.png in Resources */ = {isa = PBXBuildFile; fileRef = 16EB2DC91BC6AB7800F51A9F /* xiiangqing.png */; };
+		16EB2DD21BC6AC0D00F51A9F /* BookModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EB2DCF1BC6AC0D00F51A9F /* BookModel.m */; };
+		16EB2DD31BC6AC0D00F51A9F /* DetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EB2DD11BC6AC0D00F51A9F /* DetailModel.m */; };
+		16EB2DDE1BC6ACBB00F51A9F /* BookCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EB2DD51BC6ACBB00F51A9F /* BookCell.m */; };
+		16EB2DDF1BC6ACBB00F51A9F /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EB2DD71BC6ACBB00F51A9F /* CommentCell.m */; };
+		16EB2DE01BC6ACBB00F51A9F /* HeadCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EB2DD91BC6ACBB00F51A9F /* HeadCell.m */; };
+		16EB2DE11BC6ACBB00F51A9F /* WeatherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EB2DDB1BC6ACBB00F51A9F /* WeatherCell.m */; };
+		16EB2DE21BC6ACBB00F51A9F /* WebViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EB2DDD1BC6ACBB00F51A9F /* WebViewCell.m */; };
+		16EB2DE61BC6AD0A00F51A9F /* ComDetailHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EB2DE51BC6AD0A00F51A9F /* ComDetailHelper.m */; };
+		16EB2DEB1BC6AD8300F51A9F /* ComDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EB2DE81BC6AD8300F51A9F /* ComDetailVC.m */; };
+		16EB2DEC1BC6AD8300F51A9F /* DetailIntroduceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EB2DEA1BC6AD8300F51A9F /* DetailIntroduceController.m */; };
 		4A957A2EF5660C98B1F9A33A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6396AF70E7E22D763CB7E2 /* libPods.a */; };
 		C209F53D1BC6187D00946675 /* RecommendationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C209F53B1BC6187D00946675 /* RecommendationCell.m */; };
 		C209F53E1BC6187D00946675 /* RecommendationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C209F53C1BC6187D00946675 /* RecommendationCell.xib */; };
@@ -70,9 +91,6 @@
 		C2269A171BC53FC9009BBAB0 /* HotScenicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2269A161BC53FC9009BBAB0 /* HotScenicCell.m */; };
 		C2269A1A1BC5415B009BBAB0 /* hot.png in Resources */ = {isa = PBXBuildFile; fileRef = C2269A181BC5415B009BBAB0 /* hot.png */; };
 		C2269A1B1BC5415B009BBAB0 /* city.png in Resources */ = {isa = PBXBuildFile; fileRef = C2269A191BC5415B009BBAB0 /* city.png */; };
-		C2429DD51BC544B700151E6E /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = C2429DD41BC544B700151E6E /* location.png */; };
-
-
 		C2429DD71BC5454C00151E6E /* FinderMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2429DD61BC5454C00151E6E /* FinderMainCell.xib */; };
 		C27358C41BC4F43900771457 /* option_arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C27358C21BC4F43900771457 /* option_arrow_down@2x.png */; };
 		C27358C51BC4F43900771457 /* option_arrow_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C27358C31BC4F43900771457 /* option_arrow_up@2x.png */; };
@@ -119,7 +137,7 @@
 		16988D761BC3A994001A1077 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16988D771BC3A994001A1077 /* HappyTravelShowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HappyTravelShowTests.m; sourceTree = "<group>"; };
 		16988D831BC3C864001A1077 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		16988D841BC3C864001A1077 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		16988D841BC3C864001A1077 /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		16988D981BC3CCAF001A1077 /* FinderMainModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderMainModel.h; sourceTree = "<group>"; };
 		16988D991BC3CCAF001A1077 /* FinderMainModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderMainModel.m; sourceTree = "<group>"; };
 		16988D9B1BC3CCF3001A1077 /* FinderKindModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderKindModel.h; sourceTree = "<group>"; };
@@ -137,6 +155,15 @@
 		16988DB61BC40965001A1077 /* HomepageHeaderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepageHeaderModel.m; sourceTree = "<group>"; };
 		16B224D71BC67365004C125D /* CommonCells+SetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CommonCells+SetModel.h"; sourceTree = "<group>"; };
 		16B224D81BC67365004C125D /* CommonCells+SetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CommonCells+SetModel.m"; sourceTree = "<group>"; };
+		16D8C5D41BC6C09F001175AB /* CommomURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommomURL.h; sourceTree = "<group>"; };
+		16D8C5D51BC6C681001175AB /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI.framework; path = HappyTravelShow/Classes/Vendors/BaiduMapAPI.framework; sourceTree = "<group>"; };
+		16D8C5D91BC6C728001175AB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		16D8C5DB1BC6C732001175AB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		16D8C5DD1BC6C73C001175AB /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		16D8C5DF1BC6C747001175AB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		16D8C5E11BC6C751001175AB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		16D8C5E31BC6C75A001175AB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		16D8C5E51BC6C7EF001175AB /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = mapapi.bundle; path = HappyTravelShow/Classes/Vendors/BaiduMapAPI.framework/Resources/mapapi.bundle; sourceTree = "<group>"; };
 		16DB11601BC41D45009D7C7D /* AroundHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundHelper.h; sourceTree = "<group>"; };
 		16DB11611BC41D45009D7C7D /* AroundHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AroundHelper.m; sourceTree = "<group>"; };
 		16DB11631BC41D53009D7C7D /* FinderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderHelper.h; sourceTree = "<group>"; };
@@ -190,6 +217,30 @@
 		16DB11B51BC4265A009D7C7D /* finder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = finder.png; sourceTree = "<group>"; };
 		16DEF38F1BC4BBEE00F64A66 /* FinderMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderMainView.h; sourceTree = "<group>"; };
 		16DEF3901BC4BBEE00F64A66 /* FinderMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderMainView.m; sourceTree = "<group>"; };
+		16EB2DC71BC6AB7800F51A9F /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		16EB2DC81BC6AB7800F51A9F /* place.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = place.png; sourceTree = "<group>"; };
+		16EB2DC91BC6AB7800F51A9F /* xiiangqing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiiangqing.png; sourceTree = "<group>"; };
+		16EB2DCE1BC6AC0D00F51A9F /* BookModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookModel.h; sourceTree = "<group>"; };
+		16EB2DCF1BC6AC0D00F51A9F /* BookModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookModel.m; sourceTree = "<group>"; };
+		16EB2DD01BC6AC0D00F51A9F /* DetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailModel.h; sourceTree = "<group>"; };
+		16EB2DD11BC6AC0D00F51A9F /* DetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailModel.m; sourceTree = "<group>"; };
+		16EB2DD41BC6ACBB00F51A9F /* BookCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookCell.h; sourceTree = "<group>"; };
+		16EB2DD51BC6ACBB00F51A9F /* BookCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookCell.m; sourceTree = "<group>"; };
+		16EB2DD61BC6ACBB00F51A9F /* CommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
+		16EB2DD71BC6ACBB00F51A9F /* CommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
+		16EB2DD81BC6ACBB00F51A9F /* HeadCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadCell.h; sourceTree = "<group>"; };
+		16EB2DD91BC6ACBB00F51A9F /* HeadCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadCell.m; sourceTree = "<group>"; };
+		16EB2DDA1BC6ACBB00F51A9F /* WeatherCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherCell.h; sourceTree = "<group>"; };
+		16EB2DDB1BC6ACBB00F51A9F /* WeatherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherCell.m; sourceTree = "<group>"; };
+		16EB2DDC1BC6ACBB00F51A9F /* WebViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewCell.h; sourceTree = "<group>"; };
+		16EB2DDD1BC6ACBB00F51A9F /* WebViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewCell.m; sourceTree = "<group>"; };
+		16EB2DE41BC6AD0A00F51A9F /* ComDetailHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComDetailHelper.h; sourceTree = "<group>"; };
+		16EB2DE51BC6AD0A00F51A9F /* ComDetailHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComDetailHelper.m; sourceTree = "<group>"; };
+		16EB2DE71BC6AD8300F51A9F /* ComDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComDetailVC.h; sourceTree = "<group>"; };
+		16EB2DE81BC6AD8300F51A9F /* ComDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComDetailVC.m; sourceTree = "<group>"; };
+		16EB2DE91BC6AD8300F51A9F /* DetailIntroduceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailIntroduceController.h; sourceTree = "<group>"; };
+		16EB2DEA1BC6AD8300F51A9F /* DetailIntroduceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailIntroduceController.m; sourceTree = "<group>"; };
+		16EB2DED1BC6AE1200F51A9F /* HappyTravelShow.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HappyTravelShow.pch; sourceTree = "<group>"; };
 		5A6396AF70E7E22D763CB7E2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E736BAB2AF440074C178494 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C2065C1A1BC3EA41007571A8 /* FinderURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderURL.h; sourceTree = "<group>"; };
@@ -221,9 +272,6 @@
 		C2269A161BC53FC9009BBAB0 /* HotScenicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotScenicCell.m; sourceTree = "<group>"; };
 		C2269A181BC5415B009BBAB0 /* hot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hot.png; sourceTree = "<group>"; };
 		C2269A191BC5415B009BBAB0 /* city.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = city.png; sourceTree = "<group>"; };
-
-		C2429DD41BC544B700151E6E /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
-
 		C2429DD61BC5454C00151E6E /* FinderMainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinderMainCell.xib; sourceTree = "<group>"; };
 		C27358C21BC4F43900771457 /* option_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "option_arrow_down@2x.png"; sourceTree = "<group>"; };
 		C27358C31BC4F43900771457 /* option_arrow_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "option_arrow_up@2x.png"; sourceTree = "<group>"; };
@@ -266,6 +314,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16D8C5E41BC6C75A001175AB /* Security.framework in Frameworks */,
+				16D8C5E21BC6C751001175AB /* CoreGraphics.framework in Frameworks */,
+				16D8C5E01BC6C747001175AB /* SystemConfiguration.framework in Frameworks */,
+				16D8C5DE1BC6C73C001175AB /* OpenGLES.framework in Frameworks */,
+				16D8C5DC1BC6C732001175AB /* QuartzCore.framework in Frameworks */,
+				16D8C5DA1BC6C728001175AB /* CoreLocation.framework in Frameworks */,
+				16D8C5D61BC6C681001175AB /* BaiduMapAPI.framework in Frameworks */,
 				4A957A2EF5660C98B1F9A33A /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +338,7 @@
 		16988D4F1BC3A994001A1077 = {
 			isa = PBXGroup;
 			children = (
+				16D8C5E51BC6C7EF001175AB /* mapapi.bundle */,
 				16988D5A1BC3A994001A1077 /* HappyTravelShow */,
 				16988D741BC3A994001A1077 /* HappyTravelShowTests */,
 				16988D591BC3A994001A1077 /* Products */,
@@ -319,6 +375,7 @@
 			children = (
 				16988D5C1BC3A994001A1077 /* Info.plist */,
 				16988D5D1BC3A994001A1077 /* main.m */,
+				16EB2DED1BC6AE1200F51A9F /* HappyTravelShow.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -359,7 +416,7 @@
 			isa = PBXGroup;
 			children = (
 				16988D831BC3C864001A1077 /* AppDelegate.h */,
-				16988D841BC3C864001A1077 /* AppDelegate.m */,
+				16988D841BC3C864001A1077 /* AppDelegate.mm */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -386,6 +443,10 @@
 		16988D871BC3C864001A1077 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				16EB2DE71BC6AD8300F51A9F /* ComDetailVC.h */,
+				16EB2DE81BC6AD8300F51A9F /* ComDetailVC.m */,
+				16EB2DE91BC6AD8300F51A9F /* DetailIntroduceController.h */,
+				16EB2DEA1BC6AD8300F51A9F /* DetailIntroduceController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -403,6 +464,7 @@
 		16988D891BC3C864001A1077 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				16EB2DE31BC6AD0A00F51A9F /* CommonHelper */,
 				16DB115D1BC41D33009D7C7D /* AroundHelper */,
 				16DB115E1BC41D33009D7C7D /* FinderHelper */,
 				16DB115F1BC41D33009D7C7D /* HomepageHelper */,
@@ -417,6 +479,7 @@
 				C2065C1A1BC3EA41007571A8 /* FinderURL.h */,
 				C22699FD1BC50BF8009BBAB0 /* HomepageURL.h */,
 				C27359081BC5154E00771457 /* AroundURL.h */,
+				16D8C5D41BC6C09F001175AB /* CommomURL.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -424,6 +487,7 @@
 		16988D8B1BC3C864001A1077 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				16EB2DCD1BC6AC0D00F51A9F /* CommonModel */,
 				16988D921BC3CC60001A1077 /* AroundModel */,
 				16988D931BC3CC60001A1077 /* FinderModel */,
 				16988D941BC3CC60001A1077 /* HomepageModel */,
@@ -438,6 +502,7 @@
 		16988D8C1BC3C864001A1077 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				16EB2DC61BC6AB7800F51A9F /* CommonRes */,
 				16DB11AB1BC4240B009D7C7D /* AroundRes */,
 				16DB11AC1BC4240B009D7C7D /* FinderRes */,
 				16DB11AD1BC4240B009D7C7D /* HomepageRes */,
@@ -523,6 +588,16 @@
 		16988DAE1BC3F0FB001A1077 /* CommonCells */ = {
 			isa = PBXGroup;
 			children = (
+				16EB2DD41BC6ACBB00F51A9F /* BookCell.h */,
+				16EB2DD51BC6ACBB00F51A9F /* BookCell.m */,
+				16EB2DD61BC6ACBB00F51A9F /* CommentCell.h */,
+				16EB2DD71BC6ACBB00F51A9F /* CommentCell.m */,
+				16EB2DD81BC6ACBB00F51A9F /* HeadCell.h */,
+				16EB2DD91BC6ACBB00F51A9F /* HeadCell.m */,
+				16EB2DDA1BC6ACBB00F51A9F /* WeatherCell.h */,
+				16EB2DDB1BC6ACBB00F51A9F /* WeatherCell.m */,
+				16EB2DDC1BC6ACBB00F51A9F /* WebViewCell.h */,
+				16EB2DDD1BC6ACBB00F51A9F /* WebViewCell.m */,
 				C2F423BC1BC64DE600194989 /* FindMainDetaiCell.h */,
 				C2F423BD1BC64DE600194989 /* FindMainDetaiCell.m */,
 				165D666C1BC5F8CB00BE6567 /* CommonCells.h */,
@@ -737,6 +812,36 @@
 			path = MyselfRes;
 			sourceTree = "<group>";
 		};
+		16EB2DC61BC6AB7800F51A9F /* CommonRes */ = {
+			isa = PBXGroup;
+			children = (
+				16EB2DC71BC6AB7800F51A9F /* back.png */,
+				16EB2DC81BC6AB7800F51A9F /* place.png */,
+				16EB2DC91BC6AB7800F51A9F /* xiiangqing.png */,
+			);
+			path = CommonRes;
+			sourceTree = "<group>";
+		};
+		16EB2DCD1BC6AC0D00F51A9F /* CommonModel */ = {
+			isa = PBXGroup;
+			children = (
+				16EB2DCE1BC6AC0D00F51A9F /* BookModel.h */,
+				16EB2DCF1BC6AC0D00F51A9F /* BookModel.m */,
+				16EB2DD01BC6AC0D00F51A9F /* DetailModel.h */,
+				16EB2DD11BC6AC0D00F51A9F /* DetailModel.m */,
+			);
+			path = CommonModel;
+			sourceTree = "<group>";
+		};
+		16EB2DE31BC6AD0A00F51A9F /* CommonHelper */ = {
+			isa = PBXGroup;
+			children = (
+				16EB2DE41BC6AD0A00F51A9F /* ComDetailHelper.h */,
+				16EB2DE51BC6AD0A00F51A9F /* ComDetailHelper.m */,
+			);
+			path = CommonHelper;
+			sourceTree = "<group>";
+		};
 		30C60801BA924C4947E78F7E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -749,6 +854,13 @@
 		80A0BDAE59E7F5C785DDF5EA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				16D8C5E31BC6C75A001175AB /* Security.framework */,
+				16D8C5E11BC6C751001175AB /* CoreGraphics.framework */,
+				16D8C5DF1BC6C747001175AB /* SystemConfiguration.framework */,
+				16D8C5DD1BC6C73C001175AB /* OpenGLES.framework */,
+				16D8C5DB1BC6C732001175AB /* QuartzCore.framework */,
+				16D8C5D91BC6C728001175AB /* CoreLocation.framework */,
+				16D8C5D51BC6C681001175AB /* BaiduMapAPI.framework */,
 				5A6396AF70E7E22D763CB7E2 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -899,9 +1011,7 @@
 				165D66701BC5F8CB00BE6567 /* CommonCells.xib in Resources */,
 				C27358C51BC4F43900771457 /* option_arrow_up@2x.png in Resources */,
 				C2269A0B1BC512B1009BBAB0 /* PackageCell.xib in Resources */,
-
 				C2F423BB1BC61F4A00194989 /* money.png in Resources */,
-
 				C2269A141BC51911009BBAB0 /* IanScrollViewDefault@2x.png in Resources */,
 				C2269A1B1BC5415B009BBAB0 /* city.png in Resources */,
 				16DB11B21BC425B3009D7C7D /* around.png in Resources */,
@@ -909,6 +1019,7 @@
 				C27358C41BC4F43900771457 /* option_arrow_down@2x.png in Resources */,
 				C209F53E1BC6187D00946675 /* RecommendationCell.xib in Resources */,
 				16988D671BC3A994001A1077 /* Main.storyboard in Resources */,
+				16EB2DCA1BC6AB7800F51A9F /* back.png in Resources */,
 				C22699FC1BC50AE0009BBAB0 /* CategoriesCell.xib in Resources */,
 				C2429DD71BC5454C00151E6E /* FinderMainCell.xib in Resources */,
 				16DB11B41BC42653009D7C7D /* myself.png in Resources */,
@@ -916,6 +1027,9 @@
 				16988D6C1BC3A994001A1077 /* LaunchScreen.xib in Resources */,
 				16DB11B01BC42505009D7C7D /* homepage.png in Resources */,
 				C2269A1A1BC5415B009BBAB0 /* hot.png in Resources */,
+				16EB2DCC1BC6AB7800F51A9F /* xiiangqing.png in Resources */,
+				16EB2DCB1BC6AB7800F51A9F /* place.png in Resources */,
+				16D8C5E61BC6C7EF001175AB /* mapapi.bundle in Resources */,
 				16988D691BC3A994001A1077 /* Images.xcassets in Resources */,
 				C22699F71BC50AB5009BBAB0 /* carouseIFingureCell.xib in Resources */,
 			);
@@ -968,6 +1082,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16EB2DD31BC6AC0D00F51A9F /* DetailModel.m in Sources */,
 				C2269A061BC51052009BBAB0 /* HomepagePackageModel.m in Sources */,
 				16DB11991BC4228D009D7C7D /* UIImage+MultiFormat.m in Sources */,
 				16DB119A1BC4228D009D7C7D /* UIImage+WebP.m in Sources */,
@@ -976,24 +1091,27 @@
 				165D666F1BC5F8CB00BE6567 /* CommonCells.m in Sources */,
 				16DB11951BC4228D009D7C7D /* SDWebImageManager.m in Sources */,
 				16DB11A71BC4230F009D7C7D /* FinderVC.m in Sources */,
+				16EB2DEC1BC6AD8300F51A9F /* DetailIntroduceController.m in Sources */,
 				C27359061BC5107C00771457 /* FXBlurView.m in Sources */,
 				C27359051BC5107C00771457 /* XIOtherOptionsView.m in Sources */,
 				C27359011BC5107C00771457 /* XIButton.m in Sources */,
 				C27359041BC5107C00771457 /* XIOptionView.m in Sources */,
 				C2ADF2011BC681F100E39332 /* LPLabel.m in Sources */,
 				16DEF3911BC4BBEE00F64A66 /* FinderMainView.m in Sources */,
+				16EB2DD21BC6AC0D00F51A9F /* BookModel.m in Sources */,
+				16EB2DDE1BC6ACBB00F51A9F /* BookCell.m in Sources */,
 				16988D641BC3A994001A1077 /* ViewController.m in Sources */,
 				16DB11621BC41D45009D7C7D /* AroundHelper.m in Sources */,
 				16988DA91BC3D100001A1077 /* ComProductModel.m in Sources */,
+				16EB2DE61BC6AD0A00F51A9F /* ComDetailHelper.m in Sources */,
 				16DB11A41BC42303009D7C7D /* AroundVC.m in Sources */,
-
 				C209F53D1BC6187D00946675 /* RecommendationCell.m in Sources */,
-
 				C2ADF1FE1BC66DCA00E39332 /* AroundKindModel.m in Sources */,
-
+				16EB2DE01BC6ACBB00F51A9F /* HeadCell.m in Sources */,
 				C27359021BC5107C00771457 /* XIGridBackgroundView.m in Sources */,
 				16DB11931BC4228D009D7C7D /* SDWebImageDownloader.m in Sources */,
 				16988D9D1BC3CCF3001A1077 /* FinderKindModel.m in Sources */,
+				16EB2DE11BC6ACBB00F51A9F /* WeatherCell.m in Sources */,
 				C2269A171BC53FC9009BBAB0 /* HotScenicCell.m in Sources */,
 				C2F423BE1BC64DE600194989 /* FindMainDetaiCell.m in Sources */,
 				16988DA61BC3CED3001A1077 /* AroundMainModel.m in Sources */,
@@ -1005,11 +1123,13 @@
 				16DB118F1BC4228D009D7C7D /* NSData+ImageContentType.m in Sources */,
 				C27359031BC5107C00771457 /* XIOptionSelectorView.m in Sources */,
 				16DB11981BC4228D009D7C7D /* UIImage+GIF.m in Sources */,
+				16EB2DDF1BC6ACBB00F51A9F /* CommentCell.m in Sources */,
 				16DB11971BC4228D009D7C7D /* UIButton+WebCache.m in Sources */,
 				16988D9A1BC3CCAF001A1077 /* FinderMainModel.m in Sources */,
 				16DB11961BC4228D009D7C7D /* SDWebImagePrefetcher.m in Sources */,
 				16DB11921BC4228D009D7C7D /* SDWebImageDecoder.m in Sources */,
 				C2269A131BC51911009BBAB0 /* IanScrollView.m in Sources */,
+				16EB2DE21BC6ACBB00F51A9F /* WebViewCell.m in Sources */,
 				C2269A031BC51023009BBAB0 /* HomepageScenicModel.m in Sources */,
 				16DB11901BC4228D009D7C7D /* SDImageCache.m in Sources */,
 				C22699F61BC50AB5009BBAB0 /* carouseIFingureCell.m in Sources */,
@@ -1019,9 +1139,10 @@
 				C209F5411BC690AB00946675 /* CarouselWebViewVC.m in Sources */,
 				16DB11911BC4228D009D7C7D /* SDWebImageCompat.m in Sources */,
 				16DB119D1BC4228D009D7C7D /* UIView+WebCacheOperation.m in Sources */,
-				16988D911BC3C864001A1077 /* AppDelegate.m in Sources */,
+				16988D911BC3C864001A1077 /* AppDelegate.mm in Sources */,
 				16DB11651BC41D53009D7C7D /* FinderHelper.m in Sources */,
 				16B224D91BC67365004C125D /* CommonCells+SetModel.m in Sources */,
+				16EB2DEB1BC6AD8300F51A9F /* ComDetailVC.m in Sources */,
 				16DB11941BC4228D009D7C7D /* SDWebImageDownloaderOperation.m in Sources */,
 				16988DB31BC3F131001A1077 /* FinderMainCell.m in Sources */,
 				16DB119C1BC4228D009D7C7D /* UIImageView+WebCache.m in Sources */,
@@ -1156,6 +1277,11 @@
 			baseConfigurationReference = E74A25802C8BAEBB910EC920 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HappyTravelShow/Classes/Vendors",
+				);
+				GCC_PREFIX_HEADER = HappyTravelShow/HappyTravelShow.pch;
 				INFOPLIST_FILE = HappyTravelShow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1167,6 +1293,11 @@
 			baseConfigurationReference = 5E736BAB2AF440074C178494 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HappyTravelShow/Classes/Vendors",
+				);
+				GCC_PREFIX_HEADER = HappyTravelShow/HappyTravelShow.pch;
 				INFOPLIST_FILE = HappyTravelShow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -45,9 +45,9 @@
                     }
                 }
             }
-            if (_CarouseArr.count==5) {
-                 [self.CarouseArr removeObjectAtIndex:4];
-            }
+//            if (_CarouseArr.count==5) {
+//                 [self.CarouseArr removeObjectAtIndex:4];
+//            }
           
             dispatch_async(dispatch_get_main_queue(), ^{
                 result(self.CarouseArr);
