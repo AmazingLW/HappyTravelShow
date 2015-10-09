@@ -10,11 +10,15 @@
 
 #define kCellHeight 40
 
+
+
 @implementation XIOptionView
 @synthesize selectedIndex=_selectedIndex;
 @synthesize fetchDataSource=_fetchDataSource;
 @synthesize delegate=_delegate;
 @synthesize viewIndex;
+
+
 
 - (void)dealloc
 {
