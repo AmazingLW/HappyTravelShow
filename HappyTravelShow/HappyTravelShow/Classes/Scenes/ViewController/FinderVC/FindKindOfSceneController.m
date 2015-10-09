@@ -12,6 +12,7 @@
 #import "CommonCells.h"
 #import "FindMainDetaiCell.h"
 #import "UIImageView+WebCache.h"
+#import "ComDetailVC.h"
 
 @interface FindKindOfSceneController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *uiTableView;
@@ -127,6 +128,20 @@
     return 20;
 }
 
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ComDetailVC *comVC = [ComDetailVC new];
+    
+    //获取model对象
+    FinderKindModel *model = [FinderHelper sharedHelper].kindArray[indexPath.row];
+    comVC.bookID = [model.channelLinkId intValue];
+    comVC.detailID = [model.productId intValue];
+    
+    
+    [self.navigationController pushViewController:comVC animated:YES];
+    
+}
 
 
 
