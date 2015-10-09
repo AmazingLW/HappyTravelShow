@@ -25,7 +25,6 @@
 
 
 - (void)requestBookData:(NSString *)strUrl type:(NSString *)strType block:(void (^)(NSMutableArray *arr))block{
-    NSLog(@"%@",strUrl);
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];

@@ -27,4 +27,6 @@
 
 - (void)setWeatherViewWithCityname:(NSString *)cityName date:(NSString *)date temperature:(NSString *)temperature typeDay:(NSString *)typeDay;
 
+- (void)setWeatherViewWithCityname:(NSString *)cityName;
+
 @end

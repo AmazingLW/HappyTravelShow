@@ -19,4 +19,12 @@
             WithFinish:(void (^)(NSMutableArray *arr))result;
 //精品推荐
 - (void)requestAllRecommendation:(void (^)(NSMutableArray *arr))result;
+
+- (void)requestAllTicket:(NSString*)tagId
+                withSort:(NSString*)sort
+              WithFinish:(void (^)(NSMutableArray *arr))result;
+
+- (void)requestAllFamily:(NSString*)tagId
+                withSort:(NSString*)sort
+              WithFinish:(void (^)(NSMutableArray *arr))result;
 @end

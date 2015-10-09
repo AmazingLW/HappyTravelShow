@@ -13,4 +13,6 @@
 @property(nonatomic, weak) id<XIDropdownlistViewProtocol> delegate;
 
 - (void)didSelectItemAtIndex:(NSInteger)index inSegment:(NSInteger)segment;
+
+
 @end

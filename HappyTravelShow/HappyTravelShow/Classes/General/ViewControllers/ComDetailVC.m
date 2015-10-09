@@ -16,6 +16,7 @@
 #import "DetailModel.h"
 #import "DetailIntroduceController.h"
 #import "CommomURL.h"
+#import "FindPlaceVC.h"
 
 
 
@@ -133,8 +134,16 @@ static BOOL  isOpen = NO;
             //给cell赋值 图片 title 和内容
             DetailModel *model = (DetailModel *)_detailArr.firstObject;
             NSArray *weathcerArr = model.weathcerArr;
-            DetailModel *detailWeatherModel = weathcerArr[0];
-            [cell setWeatherViewWithCityname:model.address date:detailWeatherModel.date temperature:detailWeatherModel.temperature typeDay:detailWeatherModel.weather];
+            
+#warning ---天气信息是空
+            if (weathcerArr.count != 0) {
+                DetailModel *detailWeatherModel = weathcerArr[0];
+                [cell setWeatherViewWithCityname:model.address date:detailWeatherModel.date temperature:detailWeatherModel.temperature typeDay:detailWeatherModel.weather];
+            }else{
+                [cell setWeatherViewWithCityname:model.address];
+            }
+            
+            
         }
         
         
@@ -164,7 +173,12 @@ static BOOL  isOpen = NO;
         if (cell == nil) {
             cell = [[WebViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
         }
-        cell.delegate = self;
+        if (_detailArr.count != 0) {
+            DetailModel *model = (DetailModel *)_detailArr.firstObject;
+            [cell setWebViewWithContentStr:model.packageDetial];
+            cell.delegate = self;
+        }
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
         
@@ -185,13 +199,14 @@ static BOOL  isOpen = NO;
     
 }
 
-- (void)didClickCell:(NSInteger)index height:(CGFloat)height{
+- (void)didClickCell:(NSInteger)index height:(CGFloat)height isopen:(bool)isopen{
     _cellBigHeight = height;
     if (index == 4) {
-        isOpen = !isOpen;
+        isOpen = isopen;
         NSIndexPath * indexPath = [NSIndexPath indexPathForRow:0 inSection:4];
         [self.detailTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
+
 }
 
 
@@ -201,12 +216,20 @@ static BOOL  isOpen = NO;
     }else if (indexPath.section == 1){
         return 40;
     }else if (indexPath.section == 2){
+        if (_detailArr.count != 0) {
+            //给cell赋值 图片 title 和内容
+            DetailModel *model = (DetailModel *)_detailArr.firstObject;
+            NSArray *weathcerArr = model.weathcerArr;
+            if (weathcerArr.count == 0) {
+                return 40;
+            }
+        }
         return 80;
     }else if (indexPath.section == 3) {
         return 80;
     }else if (indexPath.section == 4){
         if (isOpen) {
-            return _cellBigHeight;
+            return _cellBigHeight + 10;
         }else{
             return 80;
         }
@@ -227,8 +250,6 @@ static BOOL  isOpen = NO;
     return 3;
 }
 
-
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 5) {
         DetailIntroduceController *detailVC = [DetailIntroduceController new];
@@ -240,13 +261,27 @@ static BOOL  isOpen = NO;
         
         UINavigationController *detailNV = [[UINavigationController alloc] initWithRootViewController:detailVC];
         [self presentViewController:detailNV animated:YES completion:nil];
+    }else if (indexPath.section == 2) {
+        FindPlaceVC *findVC = [FindPlaceVC new];
+        findVC.isHaveWeatherInfo = NO;
+        DetailModel *model = (DetailModel *)_detailArr.firstObject;
+        findVC.address = model.address;
+        findVC.placeTitle = model.productName;
+        findVC.longitude = [model.longitude floatValue];
+        findVC.latitude = [model.latitude floatValue];
+        findVC.cityName = model.cityName;
+        if (model.weathcerArr.count != 0) {
+            //数组里面有天气信息
+            findVC.weatherArr = [model.weathcerArr mutableCopy];
+            findVC.isHaveWeatherInfo = YES;
+        }
+        
+        [self.navigationController pushViewController:findVC animated:YES];
     }
 }
 
 
-
 #pragma mark ----lazy load----
-
 
 - (UITableView *)detailTableView{
     if (_detailTableView == nil) {

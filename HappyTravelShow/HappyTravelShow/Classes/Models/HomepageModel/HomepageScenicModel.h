@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface HomepageScenicModel : NSObject
+
+//热门城市and周边城市
 @property(nonatomic,strong)NSString*name,*cityCode,*cityId;
 @end

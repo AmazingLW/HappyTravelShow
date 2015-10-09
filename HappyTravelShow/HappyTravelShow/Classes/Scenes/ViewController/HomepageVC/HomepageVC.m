@@ -18,6 +18,8 @@
 #import "RecommendationCell.h"
 #import "HomepagePackageModel.h"
 #import "CarouselWebViewVC.h"
+#import "CategoryVC.h"
+#import "ComDetailVC.h"
 
 
 @interface HomepageVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
@@ -25,10 +27,15 @@
 
 //轮播数组
 @property(nonatomic,strong)NSMutableArray*CarouseArray;
+//5个分类
 @property(nonatomic,strong)NSMutableArray*ProductArr;
+//4个标题
 @property(nonatomic,strong)NSMutableArray*PackageArr;
+//轮播图数组(仅url)
 @property(nonatomic,strong)NSMutableArray*ScrollArr;
+//热门推荐
 @property(nonatomic,strong)NSMutableArray*RecommendationArr;
+//热门景区,周边城市
 @property(nonatomic,strong)NSMutableArray*ScenicArr,*cityArr;
 @end
 
@@ -79,7 +86,6 @@
     [[HomepageHelper new] requestAllCity:@"cityInfo" WithFinish:^(NSMutableArray *arr) {
         self.cityArr = [NSMutableArray new];
         self.cityArr = [arr mutableCopy];
-        [self reloadInputViews];
         [self.collection reloadData];
     }];
     
@@ -155,16 +161,23 @@
                 NSString*url = [header app_picpath];
                 [_ScrollArr addObject:url];
             }
-         
             scrollView.slideImagesArray = _ScrollArr;
-            
-            
             scrollView.ianEcrollViewSelectAction = ^(NSInteger i){
                 HomepageHeaderModel*header = self.CarouseArray[i-0];
                 if ([header.app_url length] >11) {
                     CarouselWebViewVC*WebVC =[CarouselWebViewVC new];
                     WebVC.url = header.app_url;
                     [self.navigationController pushViewController:WebVC animated:YES];
+                }else{
+                    NSString *url = [self.CarouseArray[i-0] app_url];
+                    NSString *productId = [url substringWithRange:NSMakeRange(0, 5)];
+                    NSString *linkId = [url substringWithRange:NSMakeRange(6, 5)];
+                    
+                    ComDetailVC*detali =[ComDetailVC new];
+                    detali.bookID = [linkId integerValue];
+                    detali.detailID =[productId integerValue];
+                    [self.navigationController pushViewController:detali animated:YES];
+                    
                 }
                 
             };
@@ -211,7 +224,14 @@
         [cell.b14 setTitle:[self.cityArr[5] name] forState:UIControlStateNormal];
         [cell.b15 setTitle:[self.cityArr[6] name] forState:UIControlStateNormal];
         [cell.b16 setTitle:@"更多"forState:UIControlStateNormal];
-        
+        [cell.b9 addTarget:self action:@selector(jumpWithDetailsB9) forControlEvents:UIControlEventTouchUpInside];
+        [cell.b10 addTarget:self action:@selector(jumpWithDetailsB10) forControlEvents:UIControlEventTouchUpInside];
+        [cell.b11 addTarget:self action:@selector(jumpWithDetailsB11) forControlEvents:UIControlEventTouchUpInside];
+        [cell.b12 addTarget:self action:@selector(jumpWithDetailsB12) forControlEvents:UIControlEventTouchUpInside];
+        [cell.b13 addTarget:self action:@selector(jumpWithDetailsB13) forControlEvents:UIControlEventTouchUpInside];
+        [cell.b14 addTarget:self action:@selector(jumpWithDetailsB14) forControlEvents:UIControlEventTouchUpInside];
+        [cell.b15 addTarget:self action:@selector(jumpWithDetailsB15) forControlEvents:UIControlEventTouchUpInside];
+        [cell.b16 addTarget:self action:@selector(jumpWithDetailsB16) forControlEvents:UIControlEventTouchUpInside];
         
         return cell;
     }else if (indexPath.section==4){
@@ -229,7 +249,7 @@
         return cell;}
     
 }
-
+//返回区的高度
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section ==0) {
@@ -254,21 +274,51 @@
     }
 }
 
-
+//点击cell
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.section==1&& indexPath.row == 4) {
+    if (indexPath.section==1) {
+        if (indexPath.row<4) {
+            CategoryVC*cateVC=[CategoryVC new];
+            cateVC.urlNum = [self.ProductArr[indexPath.row] app_url];
+            [self.navigationController pushViewController:cateVC animated:YES];
+            
+        }else{
         
         CarouselWebViewVC*WebVC =[CarouselWebViewVC new];
         WebVC.url = [self.ProductArr[4] app_url];
-        [self.navigationController pushViewController:WebVC animated:YES];
+            [self.navigationController pushViewController:WebVC animated:YES];}
         
-    }else if (indexPath.section == 2 && indexPath.row ==0){
-        
+    }else if (indexPath.section == 2){
+        if ([[self.PackageArr[indexPath.row] app_url] length]>12) {
         CarouselWebViewVC*WebVC =[CarouselWebViewVC new];
         WebVC.url = [self.PackageArr[0] app_url];
         [self.navigationController pushViewController:WebVC animated:YES];
+        }else{
+            NSString *url = [self.PackageArr[indexPath.row] app_url];
+            NSString *productId = [url substringWithRange:NSMakeRange(0, 5)];
+            NSString *linkId = [url substringWithRange:NSMakeRange(6, 5)];
+            
+            ComDetailVC*detali =[ComDetailVC new];
+            detali.bookID = [linkId integerValue];
+            detali.detailID =[productId integerValue];
+            [self.navigationController pushViewController:detali animated:YES];
+            
+        }
+    }else if (indexPath.section==4){
+        
+        NSInteger productld=[self.RecommendationArr[indexPath.row] productId];
+        NSInteger nlinkId=[self.RecommendationArr[indexPath.row] channelLinkId];
+        
+        ComDetailVC*detailVC =[ComDetailVC new];
+        detailVC.bookID = nlinkId;
+        detailVC.detailID = productld;
+        [self.navigationController pushViewController:detailVC animated:YES];
+        
     }
+    
+    
+    
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -277,6 +327,32 @@
     
 }
 
-
-
+-(void)jumpWithDetailsB9{
+    
+//    CategoryVC*cateVC =[CategoryVC new];
+//    cateVC.URLCityCode =  [self.cityArr[1] name];
+//    [self.navigationController pushViewController:cateVC animated:YES];
+    
+}
+-(void)jumpWithDetailsB10{
+    
+}
+-(void)jumpWithDetailsB11{
+    
+}
+-(void)jumpWithDetailsB12{
+    
+}
+-(void)jumpWithDetailsB13{
+    
+}
+-(void)jumpWithDetailsB14{
+    
+}
+-(void)jumpWithDetailsB15{
+    
+}
+-(void)jumpWithDetailsB16{
+    
+}
 @end

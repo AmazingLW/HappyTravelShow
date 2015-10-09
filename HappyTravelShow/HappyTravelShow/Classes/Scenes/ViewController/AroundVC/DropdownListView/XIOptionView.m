@@ -10,17 +10,22 @@
 
 #define kCellHeight 40
 
+
+
 @implementation XIOptionView
 @synthesize selectedIndex=_selectedIndex;
 @synthesize fetchDataSource=_fetchDataSource;
 @synthesize delegate=_delegate;
 @synthesize viewIndex;
 
+
+
 - (void)dealloc
 {
     self.delegate = nil;
     self.fetchDataSource = nil;
 }
+
 
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -41,6 +46,9 @@
         if([_contentTable respondsToSelector:@selector(setLayoutMargins:)]){
             _contentTable.layoutMargins = UIEdgeInsetsZero;
         }
+        
+        //添加的
+        [_contentTable reloadData];
     }
     return self;
 }
