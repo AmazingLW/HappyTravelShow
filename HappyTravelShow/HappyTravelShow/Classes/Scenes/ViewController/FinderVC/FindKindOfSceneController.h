@@ -13,6 +13,9 @@
 
 //绑定的model,用于传值
 @property(nonatomic,strong) FinderMainModel  *model;
+//字符串用于传值(标题)
+@property(nonatomic,strong) NSString  *titleString;
+
 
 
 @end

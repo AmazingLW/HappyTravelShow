@@ -86,6 +86,7 @@
     FindKindOfSceneController *findVC=[FindKindOfSceneController new];
     FinderMainModel *mainModel=[FinderHelper sharedHelper].dataArray[indexPath.row];
     findVC.model=mainModel;
+    findVC.titleString=mainModel.title;
     [self.navigationController pushViewController:findVC animated:NO];
    
     

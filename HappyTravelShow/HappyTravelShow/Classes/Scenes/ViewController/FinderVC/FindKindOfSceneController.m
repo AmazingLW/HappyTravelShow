@@ -31,7 +31,9 @@
         [self.view addSubview:self.uiTableView];
         self.uiTableView.delegate=self;
         self.uiTableView.dataSource=self;
-              
+        
+       /// self.navigationItem.hidesBackButton=YES;
+        
     }
     return self;
     
@@ -50,13 +52,28 @@
 }
 
 
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    //自定义title颜色
+    UILabel *customLab = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
+    //[customLab setTextColor:[UIColor cyanColor]];
+    customLab.text=self.model.title;
+    customLab.font = [UIFont boldSystemFontOfSize:20];
+    self.navigationItem.titleView = customLab;
+  
+    
+}
+
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     //注册
     [self.uiTableView registerNib:[UINib nibWithNibName:@"CommonCells" bundle:nil] forCellReuseIdentifier:@"commonCell"];
-    //[self.uiTableView registerClass:[FindMainDetaiCell class] forCellReuseIdentifier:@"FindMainDetaiCell"];
+ 
+  
+ 
 }
 
 
