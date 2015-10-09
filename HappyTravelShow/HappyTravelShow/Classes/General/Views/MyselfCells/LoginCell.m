@@ -1,40 +1,34 @@
 //
-//  MyselfContentCell.m
+//  LoginCell.m
 //  HappyTravelShow
 //
-//  Created by Amazing on 15/10/9.
+//  Created by lanou3g on 15/10/9.
 //  Copyright (c) 2015年 com.liuwei. All rights reserved.
 //
 
-#import "MyselfContentCell.h"
-#define kWdith [UIScreen mainScreen].bounds.size.width
+#import "LoginCell.h"
 
-@implementation MyselfContentCell
+@implementation LoginCell
 
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        
         [self drawView];
-        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
     }
     return self;
-    
     
 }
 
 - (void)drawView{
     
-    self.titleView=[[UIImageView alloc]initWithFrame:CGRectMake(20, 8, 24, 24)];
-    self.label=[[UILabel alloc]initWithFrame:CGRectMake(58, 12, 150, 14)];
-
-    [self.contentView addSubview:self.titleView];
-    [self.contentView addSubview:self.label];
+    self.loginView=[[UIImageView alloc]initWithFrame:CGRectMake(20, 8, 30, 30)];
     
+    [self.contentView addSubview:self.loginView];
     
 }
- 
+
 
 
 

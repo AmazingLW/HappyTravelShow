@@ -8,8 +8,12 @@
 
 #import "MyselfVC.h"
 #import <BaiduMapAPI/BMapKit.h>
+#import "MyselfHeadCell.h"
+#import "MyselfContentCell.h"
+#import "LoginController.h"
 
-@interface MyselfVC ()<BMKMapViewDelegate,UITableViewDataSource,UITableViewDelegate>
+
+@interface MyselfVC ()<BMKMapViewDelegate,UITableViewDataSource,UITableViewDelegate,LoginDelegate>
 @property(nonatomic,strong)UITableView *tableView;
 
 @property (nonatomic,strong)BMKMapView * mapView;
@@ -23,6 +27,14 @@
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         UIImage *image = [UIImage imageNamed:@"myself"];
         self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"我的" image:image tag:1004];
+    
+        self.tableView=[[UITableView alloc]initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+        self.tableView.delegate=self;
+        self.tableView.dataSource=self;
+        [self.view addSubview:self.tableView];
+        
+        
+        
     }
     
     return self;
@@ -30,12 +42,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    
+  
 //    _mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 80, 320, 200)];
 //    [self.view addSubview:_mapView];
-    self.tableView.delegate=self;
-    self.tableView.dataSource=self;
-    
+
     
 }
 
@@ -58,26 +68,88 @@
     }else{
         return 2;
     }
-
+   
 }
-//设置分区距离
+
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    return 20;
+    return 1;
 }
 
 
 
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
 
-//- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-//    
-//    
-//    
-//    
-//    
-//    
-//}
+    
+    if (indexPath.section==0) {
+        
+        static NSString *const cellIdentifier=@"headerCell";
+        MyselfHeadCell *cell=[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+        
+
+        if (cell==nil) {
+            
+            cell=[[MyselfHeadCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+            cell.delegate=self;
+        }
+        return cell;
+    }
+    
+    static NSString *const cellID=@"contentCell";
+        MyselfContentCell *cell=[tableView dequeueReusableCellWithIdentifier:cellID];
+         
+    
+        if (cell==nil) {
+            cell=[[MyselfContentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+        }
+    
+    if (indexPath.section == 1 &&indexPath.row==0) {
+        cell.label.text=@"我的订单";
+        cell.titleView.image=[UIImage imageNamed:@"aa.png"];
+    }else if (indexPath.section==2&&indexPath.row==0){
+        cell.label.text=@"我的收藏";
+        cell.titleView.image=[UIImage imageNamed:@"22.png"];
+    }else if (indexPath.section==2&&indexPath.row==1){
+        cell.label.text=@"浏览历史";
+        cell.titleView.image=[UIImage imageNamed:@"33.png"];
+    }else if (indexPath.section==3&&indexPath.row==0){
+        cell.label.text=@"分享要出发给朋友";
+        cell.titleView.image=[UIImage imageNamed:@"66.png"];
+    }else{
+        cell.label.text=@"常用设置";
+        cell.titleView.image=[UIImage imageNamed:@"55.png"];
+        
+    }
+        
+
+    return cell;
+  
+    
+}
+
+#pragma mark-------代理方法进入登陆界面------
+
+- (void)getIntoLoginController:(UIButton *)button{
+    LoginController *lgVC=[LoginController new];
+    [self.navigationController pushViewController:lgVC animated:NO];
+    
+
+    
+}
+
+
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section==0) {
+        return 150;
+    }
+    
+    return 40;
+}
+
 
 
 
