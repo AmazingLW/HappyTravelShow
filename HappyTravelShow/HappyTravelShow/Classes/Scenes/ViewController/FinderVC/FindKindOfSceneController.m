@@ -157,7 +157,7 @@
     comVC.detailID = [model.productId intValue];
     [self.navigationController pushViewController:comVC animated:YES];
 
-     }
+    }
     
     
 }
