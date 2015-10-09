@@ -13,7 +13,7 @@
 @optional
 
 //参数是 点的是哪个分区的row ，cell内容的实际高度
-- (void)didClickCell:(NSInteger)index height:(CGFloat)height;
+- (void)didClickCell:(NSInteger)index height:(CGFloat)height isopen:(bool)isopen;
 
 @end
 
@@ -25,10 +25,12 @@
 
 @property (nonatomic,strong) UITextView *textView;
 
+@property (nonatomic,strong) UILabel *contentLabel;
 
 @property (nonatomic,assign) id<webViewDelegate> delegate;
 
 
+- (void)setWebViewWithContentStr:(NSString *)contentStr;
 
 
 
