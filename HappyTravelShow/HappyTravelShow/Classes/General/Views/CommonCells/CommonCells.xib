@@ -79,6 +79,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="D45-qW-cwF" secondAttribute="bottom" constant="5" id="Cqd-CC-mAv"/>
                     <constraint firstAttribute="bottomMargin" secondItem="EW0-su-H75" secondAttribute="bottom" id="E0Y-Xb-zWk"/>
@@ -97,6 +98,7 @@
                     <constraint firstItem="5BI-d4-TFG" firstAttribute="leading" secondItem="D45-qW-cwF" secondAttribute="trailing" constant="28" id="sOJ-ak-5nU"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="image4scenes" destination="D45-qW-cwF" id="6e0-Lf-lbB"/>
                 <outlet property="lab4originalPrice" destination="NR0-eM-ScH" id="5SE-gx-q7x"/>

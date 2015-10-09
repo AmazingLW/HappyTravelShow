@@ -50,6 +50,7 @@
     self.lab4cityName=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-40, 320, 30, 25)];
     self.lab4cityName.font=[UIFont systemFontOfSize:14];
     self.lab4cityName.textColor=[UIColor darkGrayColor];
+    //self.contentView.backgroundColor=[UIColor lightGrayColor];
 
     [self addSubview:self.lab4numdescription];
     [self addSubview:self.imgView];
