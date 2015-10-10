@@ -31,28 +31,32 @@
 - (void)drawView{
     
     self.groundView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 150)];
-    self.groundView.image=[UIImage imageNamed:@"back.jpg"];
+    self.groundView.image=[UIImage imageNamed:@"my.jpg"];
     self.groundView.userInteractionEnabled=YES;
     
-    self.loginButton=[UIButton buttonWithType:UIButtonTypeSystem];
-    self.loginButton.frame=CGRectMake(kWidth-300, 70, 100, 35);
+    self.loginButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    self.loginButton.frame=CGRectMake(kWidth-300, 60, 100, 35);
     [self.loginButton setTitle:@"登录" forState:UIControlStateNormal];
     [self.loginButton addTarget:self action:@selector(loginAction:) forControlEvents:UIControlEventTouchUpInside];
-    self.loginButton.alpha=0.75;
 
+    [self.loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    CALayer *buttonLayer = [self.loginButton layer];
+    [buttonLayer setMasksToBounds:YES];
+    [buttonLayer setCornerRadius:10];
+    [buttonLayer setBorderWidth:1.5];
+    [buttonLayer setBorderColor:[[UIColor colorWithWhite:1.00 alpha:1.000] CGColor]];
     
-    [self.loginButton.layer setMasksToBounds:YES];
-    [self.loginButton.layer setCornerRadius:10];
-    self.loginButton.backgroundColor=[UIColor darkTextColor];
-    
-    
-    self.registerButton=[UIButton buttonWithType:UIButtonTypeSystem];
-    self.registerButton.frame=CGRectMake(kWidth-165, 70, 100, 35);
+    self.registerButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    self.registerButton.frame=CGRectMake(kWidth-165, 60, 100, 35);
     [self.registerButton setTitle:@"注册" forState:UIControlStateNormal];
-    [self.registerButton.layer setMasksToBounds:YES];
-    [self.registerButton.layer setCornerRadius:10];
-    self.registerButton.backgroundColor=[UIColor blackColor];
-    self.registerButton.alpha=0.75;
+    //设置边框
+    CALayer *buttonLayer1 = [self.registerButton layer];
+    [buttonLayer1 setMasksToBounds:YES];
+    [buttonLayer1 setCornerRadius:10];
+
+    [buttonLayer1 setBorderWidth:1.5];
+    [buttonLayer1 setBorderColor:[[UIColor colorWithWhite:1.00 alpha:1.000] CGColor]];
+    
     
     [self.registerButton addTarget:self action:@selector(registerAction:) forControlEvents:UIControlEventTouchUpInside];
     
