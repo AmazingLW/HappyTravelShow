@@ -22,4 +22,11 @@
 #define  KFamily(propertyId,city,sort)[NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetProductList?system=ios&version=4.3.0&channel=AppStore&pageIndex=1&longitude=116.35027617524&latitude=40.036361935048&type=property&propertyId=%@&city=%@&sort=%@&pageSize=20",propertyId,city,sort]
 //%E5%8C%97%E4%BA%AC
 
+
+#define  KCityDetails(CityName,cityCode,sort) [NSString stringWithFormat:@"http://apiphp.yaochufa.com/portal/circum/searchlist?p=1&system=ios&channel=AppStore&version=4.3.0&minPrice=0&keyWord=%@&cityCode=%@&s=20&lat=40.036354004545&lng=116.35025721584&sort=%ld&maxPrice=999999",CityName,cityCode,sort]
+
+//%E5%A4%A9%E6%B4%A5
+
+#define k @"http://apiphp.yaochufa.com/portal/circum/searchlist?p=1&system=ios&channel=AppStore&version=4.3.0&minPrice=0&keyWord=%E5%A4%A9%E6%B4%A5&cityCode=120100&s=20&lat=40.036354004545&lng=116.35025721584&sort=2&maxPrice=999999"
+
 #endif

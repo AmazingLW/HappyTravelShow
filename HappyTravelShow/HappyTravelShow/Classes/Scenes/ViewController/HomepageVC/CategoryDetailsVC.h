@@ -14,5 +14,6 @@
 @property(nonatomic,strong)NSString*URLNumber;
 @property(nonatomic,strong)NSString*sort;
 @property(nonatomic,assign)NSInteger CitySort;
-@property(nonatomic,strong)NSString*URLCityCode;
+@property(nonatomic,strong)NSMutableArray*CityArray;
+@property(nonatomic,strong)NSString*CityName,*CityCode;
 @end

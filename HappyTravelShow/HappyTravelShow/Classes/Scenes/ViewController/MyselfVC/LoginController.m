@@ -7,6 +7,7 @@
 //
 
 #import "LoginController.h"
+#import "RegisterController.h"
 #define kWidth [UIScreen mainScreen].bounds.size.width
 
 @interface LoginController ()<UITableViewDataSource,UITableViewDelegate>
@@ -31,19 +32,24 @@
         
         //登陆按钮
         UIButton *loginButton=[UIButton buttonWithType:UIButtonTypeCustom];
-        loginButton.frame=CGRectMake(20, 310, kWidth-40, 50);
+        loginButton.frame=CGRectMake(20, 290, kWidth-40, 45);
         loginButton.backgroundColor=[UIColor orangeColor];
         
         [loginButton setTitle:@"登录" forState:UIControlStateNormal];
         [self.view addSubview:loginButton];
         //找回密码
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(kWidth-120, 380, 1000, 40)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(kWidth-110, 340, 100, 40)];
         NSMutableAttributedString *content = [[NSMutableAttributedString alloc] initWithString:@"找回密码"];
         NSRange contentRange = {0, [content length]};
         [content addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:contentRange];
         
         label.attributedText = content;
         [self.view addSubview:label];
+        //注册
+        
+        self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(registerAction)];
+        
+        
 
         
     }
@@ -51,11 +57,27 @@
     
     
 }
+//注册页面跳转
+
+- (void)registerAction{
+    
+    
+    RegisterController *rgVC=[RegisterController new];
+    [self.navigationController pushViewController:rgVC animated:NO];
+    
+    
+}
+
+
+
+
+
+
 //输入框懒加载
 - (UITextField *)userTextField{
     if (_userTextField==nil) {
         
-        _userTextField=[[UITextField alloc]initWithFrame:CGRectMake(60, 11, kWidth-60, 40)];
+        _userTextField=[[UITextField alloc]initWithFrame:CGRectMake(60, 9, kWidth-60, 30)];
         
     }
     return _userTextField;
@@ -63,7 +85,7 @@
 
 - (UITextField *)passwordTextField{
     if (_passwordTextField==nil) {
-        _passwordTextField=[[UITextField alloc]initWithFrame:CGRectMake(60, 11, kWidth-60, 40)];
+        _passwordTextField=[[UITextField alloc]initWithFrame:CGRectMake(60, 9, kWidth-60, 30)];
     }
     return _passwordTextField;
     
@@ -106,14 +128,14 @@
 
     if (indexPath.section==2&&indexPath.row==0) {
         
-        cell.imageView.image=[UIImage imageNamed:@"user.png"];
+        cell.imageView.image=[UIImage imageNamed:@"x.png"];
         self.userTextField.placeholder=@"请输入用户名";
         self.userTextField.clearButtonMode=UITextFieldViewModeWhileEditing;
         [cell.contentView addSubview:self.userTextField];
         
     }else if (indexPath.section==2&&indexPath.row==1){
     
-        cell.imageView.image=[UIImage imageNamed:@"password.png"];
+        cell.imageView.image=[UIImage imageNamed:@"y.png"];
         self.passwordTextField.placeholder=@"请输入密码";
         self.passwordTextField.clearButtonMode=UITextFieldViewModeWhileEditing;
         self.passwordTextField.secureTextEntry=YES;
@@ -134,7 +156,7 @@
 //}
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 53;
+    return 45;
 }
 
 

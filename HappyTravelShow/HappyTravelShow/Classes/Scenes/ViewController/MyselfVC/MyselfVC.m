@@ -11,9 +11,13 @@
 #import "MyselfHeadCell.h"
 #import "MyselfContentCell.h"
 #import "LoginController.h"
+#import "RegisterController.h"
+#import "FavoriteController.h"
+#import "browsedController.h"
+#import "WeatherDetailController.h"
 
 
-@interface MyselfVC ()<BMKMapViewDelegate,UITableViewDataSource,UITableViewDelegate,LoginDelegate>
+@interface MyselfVC ()<UITableViewDataSource,UITableViewDelegate,LoginDelegate,RegisterDelegate>
 @property(nonatomic,strong)UITableView *tableView;
 
 @property (nonatomic,strong)BMKMapView * mapView;
@@ -43,10 +47,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
   
-//    _mapView = [[BMKMapView alloc]initWithFrame:CGRectMake(0, 80, 320, 200)];
-//    [self.view addSubview:_mapView];
 
-    
 }
 
 
@@ -92,16 +93,19 @@
             
             cell=[[MyselfHeadCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
             cell.delegate=self;
+            cell.regDelegate=self;
         }
         return cell;
     }
     
     static NSString *const cellID=@"contentCell";
         MyselfContentCell *cell=[tableView dequeueReusableCellWithIdentifier:cellID];
-         
+
     
         if (cell==nil) {
             cell=[[MyselfContentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+            cell.selectionStyle=UITableViewCellSelectionStyleNone;
+
         }
     
     if (indexPath.section == 1 &&indexPath.row==0) {
@@ -110,7 +114,7 @@
     }else if (indexPath.section==2&&indexPath.row==0){
         cell.label.text=@"我的收藏";
         cell.titleView.image=[UIImage imageNamed:@"22.png"];
-    }else if (indexPath.section==2&&indexPath.row==1){
+           }else if (indexPath.section==2&&indexPath.row==1){
         cell.label.text=@"浏览历史";
         cell.titleView.image=[UIImage imageNamed:@"33.png"];
     }else if (indexPath.section==3&&indexPath.row==0){
@@ -128,15 +132,21 @@
     
 }
 
-#pragma mark-------代理方法进入登陆界面------
+#pragma mark-------代理方法进入登陆界面和注册界面------
 
 - (void)getIntoLoginController:(UIButton *)button{
     LoginController *lgVC=[LoginController new];
-    [self.navigationController pushViewController:lgVC animated:NO];
-    
+    [self.navigationController pushViewController:lgVC animated:YES];
 
-    
 }
+
+- (void)getIntoRegisterController:(UIButton *)button{
+    
+    RegisterController *rgVC=[RegisterController new];
+    
+    [self.navigationController pushViewController:rgVC animated:YES];
+}
+
 
 
 
@@ -149,6 +159,33 @@
     
     return 40;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section==2&&indexPath.row==0) {
+        FavoriteController *fVC=[FavoriteController new];
+        [self.navigationController pushViewController:fVC animated:NO];
+        
+
+    }else if (indexPath.section==2&&indexPath.row==1)
+    {
+        
+        browsedController *bVC=[browsedController new];
+        [self.navigationController pushViewController:bVC animated:NO];
+     
+        
+
+    }else if (indexPath.section==3&&indexPath.row==1){
+        WeatherDetailController *wVC=[WeatherDetailController new];
+        [self.navigationController pushViewController:wVC animated:NO];
+        
+    }
+    
+}
+
+
+
+
 
 
 

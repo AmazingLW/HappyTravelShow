@@ -8,6 +8,7 @@
 
 #import "HotScenicCell.h"
 #import "HomepageHelper.h"
+#import "CategoryVC.h"
 
 @implementation HotScenicCell
 
@@ -52,10 +53,11 @@
     //[buttonCity setTitle:@"周边城市" forState:UIControlStateHighlighted];
     [buttonCity setImage:[UIImage imageNamed:@"city"] forState:UIControlStateNormal];
     [buttonCity addTarget:self action:@selector(jumpWithCity) forControlEvents:UIControlEventTouchUpInside];
-    _view =[[UIView alloc]initWithFrame:CGRectMake(0, 40, 375*2, 80)];
-
     
-   _b1=[UIButton buttonWithType:UIButtonTypeCustom];
+    _view =[[UIView alloc]initWithFrame:CGRectMake(0, 40, 375*2, 60)];
+    self.view.userInteractionEnabled = YES;
+    
+   _b1=[UIButton buttonWithType:UIButtonTypeCustom];            
     _b1.frame = CGRectMake(0,0,93.75, 30);
     _b1.titleLabel.font = [UIFont systemFontOfSize:15];
     [_b1 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -74,7 +76,7 @@
     [_b3 setTitle:@"古井水镇" forState:UIControlStateNormal];
     
     _b4=[UIButton buttonWithType:UIButtonTypeCustom];
-    _b4.frame = CGRectMake(93.75*3-15,0,375/3, 30);
+    _b4.frame = CGRectMake(93.75*3,0,375/4, 30);
     _b4.titleLabel.font = [UIFont systemFontOfSize:15];
     [_b4 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_b4 setTitle:@"古井水镇" forState:UIControlStateNormal];
@@ -98,7 +100,7 @@
     [_b7 setTitle:@"古井水镇" forState:UIControlStateNormal];
     
     _b8=[UIButton buttonWithType:UIButtonTypeCustom];
-    _b8.frame = CGRectMake(93.75*3-15,30,375/3, 30);
+    _b8.frame = CGRectMake(93.75*3,30,375/4, 30);
     _b8.titleLabel.font = [UIFont systemFontOfSize:15];
     [_b8 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_b8 setTitle:@"古井水镇" forState:UIControlStateNormal];
@@ -108,6 +110,7 @@
     _b9.titleLabel.font = [UIFont systemFontOfSize:15];
     [_b9 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_b9 setTitle:@"古井水镇" forState:UIControlStateNormal];
+    [_b9 setTitle:@"" forState:UIControlStateHighlighted];
     
     _b10=[UIButton buttonWithType:UIButtonTypeCustom];
     _b10.frame = CGRectMake(93.75+375,0,375/4, 30);
@@ -122,7 +125,7 @@
     [_b11 setTitle:@"古井水镇" forState:UIControlStateNormal];
     
     _b12=[UIButton buttonWithType:UIButtonTypeCustom];
-    _b12.frame = CGRectMake(93.75*3-15+375,0,375/3, 30);
+    _b12.frame = CGRectMake(93.75*3+375,0,375/4, 30);
     _b12.titleLabel.font = [UIFont systemFontOfSize:15];
     [_b12 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_b12 setTitle:@"古井水镇" forState:UIControlStateNormal];
@@ -146,10 +149,20 @@
     [_b15 setTitle:@"古井水镇" forState:UIControlStateNormal];
     
     _b16=[UIButton buttonWithType:UIButtonTypeCustom];
-    _b16.frame = CGRectMake(93.75*3-15+375,30,375/3, 30);
+    _b16.frame = CGRectMake(93.75*3+375,30,375/4, 30);
     _b16.titleLabel.font = [UIFont systemFontOfSize:15];
     [_b16 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_b16 setTitle:@"古井" forState:UIControlStateNormal];
+    
+
+    [_b9 addTarget:self action:@selector(jumpWithDetailsB9) forControlEvents:UIControlEventTouchUpInside];
+    [_b10 addTarget:self action:@selector(jumpWithDetailsB10) forControlEvents:UIControlEventTouchUpInside];
+    [_b11 addTarget:self action:@selector(jumpWithDetailsB11) forControlEvents:UIControlEventTouchUpInside];
+    [_b12 addTarget:self action:@selector(jumpWithDetailsB12) forControlEvents:UIControlEventTouchUpInside];
+    [_b13 addTarget:self action:@selector(jumpWithDetailsB13) forControlEvents:UIControlEventTouchUpInside];
+    [_b14 addTarget:self action:@selector(jumpWithDetailsB14) forControlEvents:UIControlEventTouchUpInside];
+    [_b15 addTarget:self action:@selector(jumpWithDetailsB15) forControlEvents:UIControlEventTouchUpInside];
+    [_b16 addTarget:self action:@selector(jumpWithDetailsB16) forControlEvents:UIControlEventTouchUpInside];
     
     [_view addSubview:_b1];
     [_view addSubview:_b2];
@@ -167,13 +180,11 @@
     [_view addSubview:_b14];
     [_view addSubview:_b15];
     [_view addSubview:_b16];
-    [self addSubview:_view];
-    [self  addSubview:buttonCity];
-    [self  addSubview:button];
-   
-
-
-
+    [self.contentView addSubview:_view];
+    //_view.backgroundColor = [UIColor redColor];
+    [self.contentView  addSubview:buttonCity];
+    [self.contentView  addSubview:button];
+    self.contentView.userInteractionEnabled = YES;
 
 
 
@@ -183,15 +194,60 @@
     [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
     [UIView setAnimationDuration:0.3f];
     
-    _view.frame = CGRectMake(-375, 40, 375, 80);
+    _view.frame = CGRectMake(-375, 40, 375 * 2, 60);
+    self.view.userInteractionEnabled = YES;
      [UIView commitAnimations];
 }
 -(void)jumpWithhot{
     [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
     [UIView setAnimationDuration:0.3f];
-    
-    _view.frame = CGRectMake(0, 40, 375, 80);
+       self.view.userInteractionEnabled = YES;
+    _view.frame = CGRectMake(0, 40, 375 * 2, 60);
     [UIView commitAnimations];
 }
 
+
+-(void)jumpWithDetailsB9{
+    if (self.delegate &&[self.delegate respondsToSelector:@selector(getDetailControllerB9)]) {
+        [self.delegate getDetailControllerB9];
+    }
+  
+    
+}
+-(void)jumpWithDetailsB10{
+    if (self.delegate &&[self.delegate respondsToSelector:@selector(getDetailControllerB10)]) {
+        [self.delegate getDetailControllerB10];
+    }
+
+}
+-(void)jumpWithDetailsB11{
+    if (self.delegate &&[self.delegate respondsToSelector:@selector(getDetailControllerB11)]) {
+        [self.delegate getDetailControllerB11];
+    }
+}
+-(void)jumpWithDetailsB12{
+    if (self.delegate &&[self.delegate respondsToSelector:@selector(getDetailControllerB12)]) {
+        [self.delegate getDetailControllerB12];
+    }
+}
+-(void)jumpWithDetailsB13{
+    if (self.delegate &&[self.delegate respondsToSelector:@selector(getDetailControllerB13)]) {
+        [self.delegate getDetailControllerB13];
+    }
+}
+-(void)jumpWithDetailsB14{
+    if (self.delegate &&[self.delegate respondsToSelector:@selector(getDetailControllerB14)]) {
+        [self.delegate getDetailControllerB14];
+    }
+}
+-(void)jumpWithDetailsB15{
+    if (self.delegate &&[self.delegate respondsToSelector:@selector(getDetailControllerB15)]) {
+        [self.delegate getDetailControllerB15];
+    }
+}
+-(void)jumpWithDetailsB16{
+    if (self.delegate &&[self.delegate respondsToSelector:@selector(getDetailControllerB16)]) {
+        [self.delegate getDetailControllerB16];
+    }
+}
 @end

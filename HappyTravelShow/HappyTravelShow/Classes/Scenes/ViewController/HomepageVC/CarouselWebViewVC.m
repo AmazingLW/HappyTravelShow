@@ -38,10 +38,7 @@
         NSURL *url=[NSURL URLWithString:urlStr];
         NSURLRequest *request=[[NSURLRequest alloc] initWithURL:url];
         [self.webView loadRequest:request];
-        
-        
     }
-    
     return _webView;
     
 }

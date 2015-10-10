@@ -73,7 +73,9 @@
     //注册
     [self.uiTableView registerNib:[UINib nibWithNibName:@"CommonCells" bundle:nil] forCellReuseIdentifier:@"commonCell"];
  
-  
+    self.navigationItem.hidesBackButton = YES;
+    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem = leftBtn;
  
 }
 
@@ -163,6 +165,9 @@
 }
 
 
+- (void)backAction{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 - (void)didReceiveMemoryWarning {
