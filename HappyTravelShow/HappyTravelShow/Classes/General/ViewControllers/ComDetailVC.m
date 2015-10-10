@@ -321,7 +321,9 @@ static BOOL  isOpen = NO;
 #warning -----页面跳转有点慢
     photoVC.imgArr = [NSKeyedUnarchiver unarchiveObjectWithData: [NSKeyedArchiver archivedDataWithRootObject:imgviewArr]];
     
-    [self.navigationController pushViewController:photoVC animated:YES];
+    UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:photoVC];
+    
+    [self presentViewController:rootNC animated:YES completion:nil];
 }
 
 

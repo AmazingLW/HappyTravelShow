@@ -19,6 +19,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.hidesBackButton = YES;
+    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem = leftBtn;
+    
     [self drawView];
     
     [self setValueWithIndex:self.pageIndex];
@@ -26,30 +30,29 @@
 
 
 - (void)drawView{
-    _backView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64 - 48)];
-    _backView.backgroundColor = [UIColor greenColor];
+    _backView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight - 64)];
+    _backView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:_backView];
     
     //轮播图
     self.photoScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 150, kScreenWidth, 150)];
-    self.photoScrollView.backgroundColor = [UIColor redColor];
     [_backView addSubview:self.photoScrollView];
     
     self.photoScrollView.delegate = self;
     //主标题
-    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, kScreenHeight - 160, 120, 25)];
-    self.mainLabel.text = @"~~~~";
+    self.mainLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, kScreenHeight - 140, 180, 25)];
+    self.mainLabel.textColor = [UIColor whiteColor];
     [_backView addSubview:self.mainLabel];
     
     
     //子标题
-    self.subLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, kScreenHeight - 135, 150, 15)];
-    self.subLabel.text = @"酒店大厅";
+    self.subLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, kScreenHeight - 115, 150, 15)];
+    self.subLabel.textColor = [UIColor grayColor];
     [_backView addSubview:self.subLabel];
     
     //浏览位置
-    self.locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 60, kScreenHeight - 160, 70, 15)];
-    
+    self.locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 60, kScreenHeight - 140, 70, 15)];
+    self.locationLabel.textColor = [UIColor whiteColor];
     self.locationLabel.text = @"3/14";
     [_backView addSubview:self.locationLabel];
     
@@ -108,6 +111,9 @@
 }
 
 
+- (void)backAction{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 - (void)didReceiveMemoryWarning {
