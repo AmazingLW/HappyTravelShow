@@ -17,13 +17,14 @@
 #import "DetailIntroduceController.h"
 #import "CommomURL.h"
 #import "FindPlaceVC.h"
+#import "PhotoBrowserVC.h"
 
 
 
 
 static BOOL  isOpen = NO;
 
-@interface ComDetailVC ()<UITableViewDelegate,UITableViewDataSource,webViewDelegate>
+@interface ComDetailVC ()<UITableViewDelegate,UITableViewDataSource,webViewDelegate,HeadCellprotocal>
 
 //保存头部图片的数组
 @property (nonatomic,strong) NSMutableArray * picArr;
@@ -102,6 +103,7 @@ static BOOL  isOpen = NO;
             //给cell赋值 图片 title 和内容
             DetailModel *model = (DetailModel *)_detailArr.firstObject;
             [cell setHeadViewValue:model.imgArr title:model.appMainTitle strContent:model.appSubTitle];
+            cell.delegate = self;
         }
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -251,6 +253,7 @@ static BOOL  isOpen = NO;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     if (indexPath.section == 5) {
         DetailIntroduceController *detailVC = [DetailIntroduceController new];
         
@@ -307,7 +310,19 @@ static BOOL  isOpen = NO;
 }
 
 
+#pragma mark ----轮播图页面跳转代理方法----
 
+- (void)jumpPhotoVCWithPhotoArr:(NSArray *)imgviewArr index:(NSInteger)photoIndex{
+    PhotoBrowserVC *photoVC = [PhotoBrowserVC new];
+    DetailModel *model = (DetailModel *)_detailArr.firstObject;
+    photoVC.photoInfoArr = model.imgArr;
+    photoVC.strMain = model.productName;
+    photoVC.pageIndex = photoIndex;
+#warning -----页面跳转有点慢
+    photoVC.imgArr = [NSKeyedUnarchiver unarchiveObjectWithData: [NSKeyedArchiver archivedDataWithRootObject:imgviewArr]];
+    
+    [self.navigationController pushViewController:photoVC animated:YES];
+}
 
 
 

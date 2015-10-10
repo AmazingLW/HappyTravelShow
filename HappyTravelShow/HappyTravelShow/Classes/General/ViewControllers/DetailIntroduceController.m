@@ -32,6 +32,8 @@
     [self.view addSubview:_webView];
     _webView.scalesPageToFit = YES;
     [_webView loadHTMLString:self.htmlData baseURL:nil];
+
+    
     self.view.backgroundColor = [UIColor redColor];
     
 }
@@ -48,7 +50,11 @@
     
     // 禁用长按弹出框
     [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
+    
+    
+    
 }
+
 
 
 - (void)didReceiveMemoryWarning {
