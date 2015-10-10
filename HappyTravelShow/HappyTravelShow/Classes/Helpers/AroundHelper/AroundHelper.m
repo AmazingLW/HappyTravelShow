@@ -115,12 +115,12 @@
 }
 
 //列表小景点请求数据
-- (void)requestLittleScenicWithCithName:(NSString *)cityName scenicName:(NSString *)scenicName finish:(void (^)(NSArray * array))result{
+- (void)requestLittleScenicWithScenicName:(NSString *)scenicName cityName:(NSString *)cityName finish:(void (^)(NSArray * array))result{
     
     NSString *url = littleScenicURL(scenicName, cityName);
     
     NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-   NSLog(@"little%@",codeUrl);
+   //NSLog(@"little%@",codeUrl);
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         _littleScine = [NSMutableArray array];
@@ -130,7 +130,7 @@
             for (NSDictionary *d in array) {
                 AroundKindModel *model = [AroundKindModel new];
                 [model setValuesForKeysWithDictionary:d];
-                [_allScien addObject:model];
+                [_littleScine addObject:model];
             }
  
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -239,21 +239,45 @@
                  
              });
 
-             
-             
          } failure:^(NSURLSessionDataTask *task, NSError *error) {
              
          }];
          
-         
-         
      });
-    
-    
-    
+
 }
 
+//排序 目的城市选定 景点全部
 
+- (void)partSortDataWithType:(NSString *)type cityName:(NSString *)cityName finish:(void (^)(NSArray *))result{
+    
+    NSString *url = sortPartDataUp(type, cityName);
+    NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+   // NSLog(@"%@",codeUrl);
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        NSMutableArray * sortDataUp = [NSMutableArray array];
+        [manager GET:codeUrl parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSDictionary *dic = responseObject[@"data"];
+            NSArray *array = dic[@"items"];
+            for (NSDictionary *d in array) {
+                AroundKindModel *model = [AroundKindModel new];
+                [model setValuesForKeysWithDictionary:d];
+                [sortDataUp addObject:model];
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                result(sortDataUp);
+                
+            });
+            
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+        
+    });
+
+}
 
 
 
