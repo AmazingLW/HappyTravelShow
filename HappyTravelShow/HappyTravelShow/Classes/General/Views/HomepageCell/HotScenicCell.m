@@ -9,7 +9,7 @@
 #import "HotScenicCell.h"
 #import "HomepageHelper.h"
 #import "CategoryVC.h"
-
+#define kWidth [UIScreen mainScreen].bounds.size.width
 @implementation HotScenicCell
 
 -(instancetype)initWithFrame:(CGRect)frame
@@ -25,7 +25,7 @@
 {
 
     UIButton*button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0,0,187.5, 40);
+    button.frame = CGRectMake(0,0,kWidth/2, 40);
     [button setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     button.titleLabel.font = [UIFont systemFontOfSize:15];
@@ -41,7 +41,7 @@
     
     
     UIButton*buttonCity = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonCity.frame = CGRectMake(187.5,0,187.5, 40);
+    buttonCity.frame = CGRectMake(kWidth/2,0,kWidth/2, 40);
     [buttonCity setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
     [buttonCity setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
     buttonCity.titleLabel.font = [UIFont systemFontOfSize:15];
@@ -54,7 +54,7 @@
     [buttonCity setImage:[UIImage imageNamed:@"city"] forState:UIControlStateNormal];
     [buttonCity addTarget:self action:@selector(jumpWithCity) forControlEvents:UIControlEventTouchUpInside];
     
-    _view =[[UIView alloc]initWithFrame:CGRectMake(0, 40, 375*2, 60)];
+    _view =[[UIView alloc]initWithFrame:CGRectMake(0, 40, kWidth*2, 60)];
     self.view.userInteractionEnabled = YES;
     
    _b1=[UIButton buttonWithType:UIButtonTypeCustom];            
