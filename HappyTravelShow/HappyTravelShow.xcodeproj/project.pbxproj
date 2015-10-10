@@ -128,6 +128,7 @@
 		C27D31A91BC7633D005B049D /* SCPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27D31A51BC7633D005B049D /* SCPopView.m */; };
 		C2ADF1FE1BC66DCA00E39332 /* AroundKindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ADF1FD1BC66DCA00E39332 /* AroundKindModel.m */; };
 		C2ADF2011BC681F100E39332 /* LPLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ADF2001BC681F100E39332 /* LPLabel.m */; };
+		C2ECC67A1BC9141400115824 /* HomepageCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ECC6791BC9141400115824 /* HomepageCityModel.m */; };
 		C2F423B91BC5FC6900194989 /* FindKindOfSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F423B81BC5FC6900194989 /* FindKindOfSceneController.m */; };
 		C2F423BB1BC61F4A00194989 /* money.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F423BA1BC61F4A00194989 /* money.png */; };
 		C2F423BE1BC64DE600194989 /* FindMainDetaiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F423BD1BC64DE600194989 /* FindMainDetaiCell.m */; };
@@ -365,6 +366,8 @@
 		C2ADF1FD1BC66DCA00E39332 /* AroundKindModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AroundKindModel.m; sourceTree = "<group>"; };
 		C2ADF1FF1BC681F100E39332 /* LPLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPLabel.h; sourceTree = "<group>"; };
 		C2ADF2001BC681F100E39332 /* LPLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPLabel.m; sourceTree = "<group>"; };
+		C2ECC6781BC9141400115824 /* HomepageCityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepageCityModel.h; sourceTree = "<group>"; };
+		C2ECC6791BC9141400115824 /* HomepageCityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepageCityModel.m; sourceTree = "<group>"; };
 		C2F423B71BC5FC6900194989 /* FindKindOfSceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindKindOfSceneController.h; sourceTree = "<group>"; };
 		C2F423B81BC5FC6900194989 /* FindKindOfSceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindKindOfSceneController.m; sourceTree = "<group>"; };
 		C2F423BA1BC61F4A00194989 /* money.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = money.png; sourceTree = "<group>"; };
@@ -656,6 +659,8 @@
 				C2269A021BC51023009BBAB0 /* HomepageScenicModel.m */,
 				C2269A041BC51052009BBAB0 /* HomepagePackageModel.h */,
 				C2269A051BC51052009BBAB0 /* HomepagePackageModel.m */,
+				C2ECC6781BC9141400115824 /* HomepageCityModel.h */,
+				C2ECC6791BC9141400115824 /* HomepageCityModel.m */,
 			);
 			path = HomepageModel;
 			sourceTree = "<group>";
@@ -1260,6 +1265,7 @@
 				C2ADF2011BC681F100E39332 /* LPLabel.m in Sources */,
 				16DBAC661BC7C0A60082A143 /* CurrentPlaceSkyCell.m in Sources */,
 				16DEF3911BC4BBEE00F64A66 /* FinderMainView.m in Sources */,
+				C2ECC67A1BC9141400115824 /* HomepageCityModel.m in Sources */,
 				C250742B1BC7AAEC00F62844 /* LoginController.m in Sources */,
 				16EB2DD21BC6AC0D00F51A9F /* BookModel.m in Sources */,
 				16977EC81BC8B50700026522 /* PhotoBrowserVC.m in Sources */,

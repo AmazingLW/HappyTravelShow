@@ -19,6 +19,6 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%@", _name];
+    return [NSString stringWithFormat:@"%@,%@,%@", _name,_cityId,_cityCode];
 }
 @end
