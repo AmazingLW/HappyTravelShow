@@ -13,6 +13,13 @@
 - (void)getIntoLoginController:(UIButton *)button ;
 
 @end
+//注册代理
+@protocol RegisterDelegate <NSObject>
+
+- (void)getIntoRegisterController:(UIButton *)button;
+
+@end
+
 
 
 @interface MyselfHeadCell : UITableViewCell
@@ -23,6 +30,7 @@
 //注册按钮
 @property(nonatomic,strong) UIButton  *registerButton;
 @property(nonatomic,strong) id <LoginDelegate> delegate;
+@property(nonatomic,strong) id  <RegisterDelegate> regDelegate;
 
 
 @end

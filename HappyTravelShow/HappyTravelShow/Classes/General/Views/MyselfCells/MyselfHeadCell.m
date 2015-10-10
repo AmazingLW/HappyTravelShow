@@ -31,20 +31,30 @@
 - (void)drawView{
     
     self.groundView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 150)];
-    self.groundView.image=[UIImage imageNamed:@"backg.jpg"];
+    self.groundView.image=[UIImage imageNamed:@"back.jpg"];
     self.groundView.userInteractionEnabled=YES;
     
     self.loginButton=[UIButton buttonWithType:UIButtonTypeSystem];
-    self.loginButton.frame=CGRectMake(kWidth-280, 70, 50, 15);
+    self.loginButton.frame=CGRectMake(kWidth-300, 70, 100, 35);
     [self.loginButton setTitle:@"登录" forState:UIControlStateNormal];
     [self.loginButton addTarget:self action:@selector(loginAction:) forControlEvents:UIControlEventTouchUpInside];
-       //self.block(self.loginButton);
+    self.loginButton.alpha=0.75;
+
+    
+    [self.loginButton.layer setMasksToBounds:YES];
+    [self.loginButton.layer setCornerRadius:10];
+    self.loginButton.backgroundColor=[UIColor darkTextColor];
     
     
     self.registerButton=[UIButton buttonWithType:UIButtonTypeSystem];
-    self.registerButton.frame=CGRectMake(kWidth-155, 70, 50, 15);
+    self.registerButton.frame=CGRectMake(kWidth-165, 70, 100, 35);
     [self.registerButton setTitle:@"注册" forState:UIControlStateNormal];
-    [self.registerButton addTarget:self action:@selector(registerAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.registerButton.layer setMasksToBounds:YES];
+    [self.registerButton.layer setCornerRadius:10];
+    self.registerButton.backgroundColor=[UIColor blackColor];
+    self.registerButton.alpha=0.75;
+    
+    [self.registerButton addTarget:self action:@selector(registerAction:) forControlEvents:UIControlEventTouchUpInside];
     
     [self.contentView addSubview:self.groundView];
 
@@ -65,9 +75,13 @@
 
 
 
-- (void)registerAction{
+- (void)registerAction:(UIButton *)button{
     
-    NSLog(@"注册");
+    if (self.regDelegate &&[self.regDelegate respondsToSelector:@selector(getIntoRegisterController:)]) {
+        [self.regDelegate getIntoRegisterController:button];
+    }
+    
+
 }
 
 
