@@ -1,4 +1,4 @@
-//
+      //
 //  CategoryDetailsVC.m
 //  HappyTravelShow
 //
@@ -11,6 +11,8 @@
 #import "HomepageHelper.h"
 #import "AroundKindModel.h"
 #import "CommonCells+SetModel.h"
+#import "HomepageVC.h"
+#import "ComDetailVC.h"
 
 @interface CategoryDetailsVC ()
 
@@ -35,7 +37,9 @@
         self.FamilyArray= [arr mutableCopy];
         [self.tableView reloadData];
     }];
-  
+    
+    
+    NSLog(@"%@",self.CityArray);
 }
 
 
@@ -89,7 +93,17 @@
     
     return 111;
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+//    NSInteger productld=[self.array[indexPath.row] productId];
+//    NSInteger nlinkId=[self.array[indexPath.row] channelLinkId];
+    
+//    ComDetailVC*detailVC =[ComDetailVC new];
+//    detailVC.bookID = nlinkId;
+//    detailVC.detailID = productld;
+//    [self.navigationController pushViewController:detailVC animated:YES];
+    
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

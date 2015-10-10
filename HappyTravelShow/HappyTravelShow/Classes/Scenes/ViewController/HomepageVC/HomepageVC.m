@@ -35,8 +35,7 @@
 @property(nonatomic,strong)NSMutableArray*ScrollArr;
 //热门推荐
 @property(nonatomic,strong)NSMutableArray*RecommendationArr;
-//热门景区,周边城市
-@property(nonatomic,strong)NSMutableArray*ScenicArr,*cityArr;
+
 @end
 
 @implementation HomepageVC
@@ -224,6 +223,7 @@
         [cell.b14 setTitle:[self.cityArr[5] name] forState:UIControlStateNormal];
         [cell.b15 setTitle:[self.cityArr[6] name] forState:UIControlStateNormal];
         [cell.b16 setTitle:@"更多"forState:UIControlStateNormal];
+        
         [cell.b9 addTarget:self action:@selector(jumpWithDetailsB9) forControlEvents:UIControlEventTouchUpInside];
         [cell.b10 addTarget:self action:@selector(jumpWithDetailsB10) forControlEvents:UIControlEventTouchUpInside];
         [cell.b11 addTarget:self action:@selector(jumpWithDetailsB11) forControlEvents:UIControlEventTouchUpInside];
@@ -329,16 +329,21 @@
 
 -(void)jumpWithDetailsB9{
     
-//    CategoryVC*cateVC =[CategoryVC new];
-//    cateVC.URLCityCode =  [self.cityArr[1] name];
-//    [self.navigationController pushViewController:cateVC animated:YES];
+    CategoryVC*cateVC =[CategoryVC new];
+    cateVC.CityArray =[self.cityArr mutableCopy];
+    [self.navigationController pushViewController:cateVC animated:YES];
+    NSLog(@"===============");
     
 }
 -(void)jumpWithDetailsB10{
-    
+    CategoryVC*cateVC =[CategoryVC new];
+    cateVC.CityArray =[self.cityArr mutableCopy];
+    [self.navigationController pushViewController:cateVC animated:YES];
 }
 -(void)jumpWithDetailsB11{
-    
+    CategoryVC*cateVC =[CategoryVC new];
+    cateVC.CityArray =[self.cityArr mutableCopy];
+    [self.navigationController pushViewController:cateVC animated:YES];
 }
 -(void)jumpWithDetailsB12{
     
