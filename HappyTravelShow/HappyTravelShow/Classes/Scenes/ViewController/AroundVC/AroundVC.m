@@ -144,7 +144,8 @@ static NSString *const reuse = @"cell";
         _allScenic = [NSMutableArray arrayWithArray:scenic];
         [self.tableView reloadData];
     }];
-    //当目的城市选定 景点全部时 列表
+    
+    
     // pa 价格变高 pd 价格变低  s 销量优先  xp新品优先  d 离我最近
     //目的城市全部 景点全部 价格变高
     [[AroundHelper new] sortDataWithType:@"pa" cityName:@"景德镇" finish:^(NSArray *array) {
@@ -202,10 +203,11 @@ static NSString *const reuse = @"cell";
     AroundKindModel *model = _allScenic[indexPath.row];
     
     NSInteger productId = model.productId;
-    NSString *packageID = model.channelLinkId;
+    //
+    NSInteger packageID = model.channelLinkId;
     ComDetailVC *comDetail = [[ComDetailVC alloc] init];
     
-    comDetail.bookID = [packageID integerValue];
+    comDetail.bookID = packageID;
     comDetail.detailID = productId;
     
     [self.navigationController pushViewController:comDetail animated:YES];
@@ -222,6 +224,8 @@ static NSString *const reuse = @"cell";
         
     }
     ddltView = [[XIOptionSelectorView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 40)];
+    
+    NSLog(@"%@----",ddltView);
     ddltView.parentView = self.view;
     ddltView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:ddltView];
@@ -338,7 +342,7 @@ static NSString *const reuse = @"cell";
 
 - (void)didSelectItemAtIndex:(NSInteger)index inSegment:(NSInteger)segment
 {
-    
+  // pa 价格变高 pd 价格变低  s 销量优先  xp新品优先  d 离我最近
     NSArray *tmpArry;
     if(segment==0){
         tmpArry = @[@"默认排序", @"价格变高", @"价格变低",@"销量优先",@"新品优先",@"离我最近"];
@@ -347,20 +351,31 @@ static NSString *const reuse = @"cell";
         if (index == 1) {
             _allScenic = _sortDataUp;
             [self.tableView reloadData];
+            NSString  *type = @"pa";
            // 如果 两个其中有一个有值 那么点击过 在排序 走不通的排序方法
-            if (self.cityName || self.scenicName) {
-                
-                [self sort];
+            if (self.cityName) {
+                [self partSortWithType:type];
             }
             
-            
+            if (self.cityName || self.scenicName) {
+                
+                
+                
+            }
         }else if(index == 2){
             _allScenic = _sortDataDown;
             [self.tableView reloadData];
+            NSString *type = @"pd";
+            
+            
+            
             
         }else if (index == 3){
             _allScenic = _sales;
             [self.tableView reloadData];
+            NSString *type = @"s";
+            
+            
         }else if (index == 4){
             _allScenic = _news;
             [self.tableView reloadData];
@@ -385,6 +400,9 @@ static NSString *const reuse = @"cell";
         [self request];
         
         NSLog(@"%@",self.cityName);
+        
+        
+        
       //如果不是全部的目的城市 点击 景点会跟随改变
       //  NSLog(@"%@",self.keyArray[index]);
 //            isAll = YES;
@@ -459,15 +477,15 @@ static NSString *const reuse = @"cell";
             
         }
         
-    [[AroundHelper new] requestLittleScenicWithCithName:self.cityName scenicName:self.scenicName finish:^(NSArray *array) {
-        
+    [[AroundHelper new] requestLittleScenicWithScenicName:self.scenicName cityName:self.cityName finish:^(NSArray *array) {
+    
         _allScenic = [array mutableCopy];
         [self.tableView reloadData];
         
     }];
     }else{
         
-        [[AroundHelper new] requestLittleScenicWithCithName:self.scenicName scenicName:self.cityName finish:^(NSArray *array) {
+        [[AroundHelper new] requestLittleScenicWithScenicName:self.scenicName cityName:self.cityName finish:^(NSArray *array) {
             
             _allScenic = [array mutableCopy];
             [self.tableView reloadData];
@@ -480,14 +498,27 @@ static NSString *const reuse = @"cell";
     
 }
 
-- (void)sort{
+
+//目的城市选定排序
+// pa 价格变高 pd 价格变低  s 销量优先  xp新品优先  d 离我最近
+
+- (void)partSortWithType:(NSString *)type{
+
+    [[AroundHelper new] partSortDataWithType:type cityName:@"上饶" finish:^(NSArray *array) {
+       
+        _allScenic = [array mutableCopy];
+        [self.tableView reloadData];
+        
+    }];
+}
+
+
+- (void)littleSortWithType:(NSString *)type{
     
     
     
     
 }
-
-    
 /*
 #pragma mark - Navigation
 
