@@ -13,6 +13,7 @@
 #import "HomepageScenicModel.h"
 #import "HomepagePackageModel.h"
 #import "AroundKindModel.h"
+#import "HomepageCityModel.h"
 
 @interface HomepageHelper()
 
@@ -205,17 +206,20 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes  = [NSSet setWithObject:@"text/html"];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-    NSString*urlString = KCityDetails(cityName, citycold, sort);
-    NSString *codeUrl = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString*url = KCityDetails(citycold, cityName, sort);
+    NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+   // NSLog(@"=-=-=-=-=-=-=-=-=-=-=-=-=-=%@",codeUrl);
     [manager GET:codeUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        //NSLog(@"=============%@",responseObject);
         NSDictionary *dict= (NSDictionary *)responseObject;
         
         self.CityArr=[NSMutableArray array];
         
-        NSDictionary*dic=dict[@"data"];
-        NSArray*cityArray=dic[@"items"];
+       
+        NSArray*cityArray=dict[@"content"];
         for (NSDictionary*dict1 in cityArray) {
-            AroundKindModel *scenic=[AroundKindModel new];
+//            AroundKindModel *scenic=[AroundKindModel new];
+            HomepageCityModel*scenic =[HomepageCityModel new];
             [scenic setValuesForKeysWithDictionary:dict1];
             [_CityArr addObject:scenic];
         }
@@ -225,7 +229,7 @@
         });
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
+         NSLog(@"Error: %@", error);
     }];
     
 });
