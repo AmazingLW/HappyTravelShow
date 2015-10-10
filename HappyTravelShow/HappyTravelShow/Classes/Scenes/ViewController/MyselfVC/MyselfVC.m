@@ -97,10 +97,12 @@
     
     static NSString *const cellID=@"contentCell";
         MyselfContentCell *cell=[tableView dequeueReusableCellWithIdentifier:cellID];
-         
+
     
         if (cell==nil) {
             cell=[[MyselfContentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
+            cell.selectionStyle=UITableViewCellSelectionStyleNone;
+
         }
     
     if (indexPath.section == 1 &&indexPath.row==0) {
