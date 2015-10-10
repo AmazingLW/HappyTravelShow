@@ -20,9 +20,10 @@
 #import "CarouselWebViewVC.h"
 #import "CategoryVC.h"
 #import "ComDetailVC.h"
+#import "HomepageScenicModel.h"
 
 
-@interface HomepageVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface HomepageVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,CityDelegate>
 @property(nonatomic,strong)UICollectionView*collection;
 
 //轮播数组
@@ -59,6 +60,11 @@
     [[HomepageHelper new] requestAllPackage:@"bannerScroll" WithFinish:^(NSMutableArray *arr) {
         self.CarouseArray=[NSMutableArray array];
         self.CarouseArray = [arr mutableCopy];
+       // self.ScrollArr =[NSMutableArray new];
+        for (HomepageHeaderModel*header in _CarouseArray) {
+            NSString*url = [header app_picpath];
+            [self.ScrollArr addObject:url];
+        }
         [self.collection reloadData];
     }];
     [[HomepageHelper new] requestAllPackage:@"bannerRound" WithFinish:^(NSMutableArray *arr) {
@@ -152,14 +158,10 @@
     if (indexPath.section==0) {
         
         carouseIFingureCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"carousel" forIndexPath:indexPath];
-        if (_CarouseArray.count != 0) {
+//        if (_CarouseArray.count != 0) {
             IanScrollView *scrollView = [[IanScrollView alloc] initWithFrame:CGRectMake(0,0,375,120)];
             
-            self.ScrollArr = [NSMutableArray new];
-            for (HomepageHeaderModel*header in _CarouseArray) {
-                NSString*url = [header app_picpath];
-                [_ScrollArr addObject:url];
-            }
+
             scrollView.slideImagesArray = _ScrollArr;
             scrollView.ianEcrollViewSelectAction = ^(NSInteger i){
                 HomepageHeaderModel*header = self.CarouseArray[i-0];
@@ -176,16 +178,13 @@
                     detali.bookID = [linkId integerValue];
                     detali.detailID =[productId integerValue];
                     [self.navigationController pushViewController:detali animated:YES];
-                    
                 }
-                
             };
-           
             scrollView.PageControlPageIndicatorTintColor = [UIColor whiteColor];
             scrollView.pageControlCurrentPageIndicatorTintColor = [UIColor orangeColor];
             [scrollView startLoading];
             [cell.carousel4view addSubview:scrollView];
-        }
+//        }
    
         return cell;
     }else if (indexPath.section==1){
@@ -208,6 +207,7 @@
         HotScenicCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"hot" forIndexPath:indexPath];
         
         [cell.b1 setTitle:[self.ScenicArr[0] name] forState:UIControlStateNormal];
+        [cell.b1 setTitle:@"" forState:UIControlStateHighlighted];
         [cell.b2 setTitle:[self.ScenicArr[1] name] forState:UIControlStateNormal];
         [cell.b3 setTitle:[self.ScenicArr[2] name] forState:UIControlStateNormal];
         [cell.b4 setTitle:[self.ScenicArr[3] name] forState:UIControlStateNormal];
@@ -216,6 +216,7 @@
         [cell.b7 setTitle:[self.ScenicArr[6] name] forState:UIControlStateNormal];
         [cell.b8 setTitle:[self.ScenicArr[7] name] forState:UIControlStateNormal];
         [cell.b9 setTitle:[self.cityArr[0] name] forState:UIControlStateNormal];
+        [cell.b9 setTitle:@"" forState:UIControlStateHighlighted];
         [cell.b10 setTitle:[self.cityArr[1] name] forState:UIControlStateNormal];
         [cell.b11 setTitle:[self.cityArr[2] name] forState:UIControlStateNormal];
         [cell.b12 setTitle:[self.cityArr[3] name] forState:UIControlStateNormal];
@@ -223,16 +224,10 @@
         [cell.b14 setTitle:[self.cityArr[5] name] forState:UIControlStateNormal];
         [cell.b15 setTitle:[self.cityArr[6] name] forState:UIControlStateNormal];
         [cell.b16 setTitle:@"更多"forState:UIControlStateNormal];
-        
-        [cell.b9 addTarget:self action:@selector(jumpWithDetailsB9) forControlEvents:UIControlEventTouchUpInside];
-        [cell.b10 addTarget:self action:@selector(jumpWithDetailsB10) forControlEvents:UIControlEventTouchUpInside];
-        [cell.b11 addTarget:self action:@selector(jumpWithDetailsB11) forControlEvents:UIControlEventTouchUpInside];
-        [cell.b12 addTarget:self action:@selector(jumpWithDetailsB12) forControlEvents:UIControlEventTouchUpInside];
-        [cell.b13 addTarget:self action:@selector(jumpWithDetailsB13) forControlEvents:UIControlEventTouchUpInside];
-        [cell.b14 addTarget:self action:@selector(jumpWithDetailsB14) forControlEvents:UIControlEventTouchUpInside];
-        [cell.b15 addTarget:self action:@selector(jumpWithDetailsB15) forControlEvents:UIControlEventTouchUpInside];
-        [cell.b16 addTarget:self action:@selector(jumpWithDetailsB16) forControlEvents:UIControlEventTouchUpInside];
-        
+        cell.userInteractionEnabled = YES;
+
+        cell.delegate =self;
+        cell.view.userInteractionEnabled =YES;
         return cell;
     }else if (indexPath.section==4){
         RecommendationCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"rec" forIndexPath:indexPath];
@@ -242,7 +237,7 @@
         cell.package = package;
         [cell.bigUrl4image sd_setImageWithURL:[NSURL URLWithString:package.bigImageUrl]placeholderImage:[UIImage imageNamed:@"picholder"]];
         }
-        
+        cell.selected=NO;
         return cell;
     }else{
         UICollectionViewCell*cell  =[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
@@ -326,38 +321,74 @@
     
     
 }
+- (void)getDetailControllerB9{
+    
+    CategoryVC*cateVC =[CategoryVC new];
+    HomepageScenicModel*a = self.cityArr[0];
+    cateVC.CityName =a.name;
+    cateVC.CityCode =a.cityCode;
+    [self.navigationController pushViewController:cateVC animated:YES];
+}
+- (void)getDetailControllerB10{
+    
+    CategoryVC*cateVC =[CategoryVC new];
+    HomepageScenicModel*a = self.cityArr[1];
+    cateVC.CityName =a.name;
+    cateVC.CityCode =a.cityCode;
+    [self.navigationController pushViewController:cateVC animated:YES];
+}
+- (void)getDetailControllerB11{
+    
+    CategoryVC*cateVC =[CategoryVC new];
+    HomepageScenicModel*a = self.cityArr[2];
+    cateVC.CityName =a.name;
+    cateVC.CityCode =a.cityCode;
+    [self.navigationController pushViewController:cateVC animated:YES];
+}
+- (void)getDetailControllerB12{
+    
+    CategoryVC*cateVC =[CategoryVC new];
+    HomepageScenicModel*a = self.cityArr[3];
+    cateVC.CityName =a.name;
+    cateVC.CityCode =a.cityCode;
+    [self.navigationController pushViewController:cateVC animated:YES];
+}
+- (void)getDetailControllerB13{
+    CategoryVC*cateVC =[CategoryVC new];
+    HomepageScenicModel*a = self.cityArr[4];
+    cateVC.CityName =a.name;
+    cateVC.CityCode =a.cityCode;
+    [self.navigationController pushViewController:cateVC animated:YES];
+}
+- (void)getDetailControllerB14{
+    
+    CategoryVC*cateVC =[CategoryVC new];
+    HomepageScenicModel*a = self.cityArr[5];
+    cateVC.CityName =a.name;
+    cateVC.CityCode =a.cityCode;
+    [self.navigationController pushViewController:cateVC animated:YES];
+}
+- (void)getDetailControllerB15{
+    
+    CategoryVC*cateVC =[CategoryVC new];
+    HomepageScenicModel*a = self.cityArr[6];
+    cateVC.CityName =a.name;
+    cateVC.CityCode =a.cityCode;
+    [self.navigationController pushViewController:cateVC animated:YES];
+}
+- (void)getDetailControllerB16{
+  //更多为城市列表
+  
+}
 
--(void)jumpWithDetailsB9{
+-(NSMutableArray*)ScrollArr{
     
-    CategoryVC*cateVC =[CategoryVC new];
-    cateVC.CityArray =[self.cityArr mutableCopy];
-    [self.navigationController pushViewController:cateVC animated:YES];
-    NSLog(@"===============");
-    
-}
--(void)jumpWithDetailsB10{
-    CategoryVC*cateVC =[CategoryVC new];
-    cateVC.CityArray =[self.cityArr mutableCopy];
-    [self.navigationController pushViewController:cateVC animated:YES];
-}
--(void)jumpWithDetailsB11{
-    CategoryVC*cateVC =[CategoryVC new];
-    cateVC.CityArray =[self.cityArr mutableCopy];
-    [self.navigationController pushViewController:cateVC animated:YES];
-}
--(void)jumpWithDetailsB12{
+    if (_ScrollArr == nil) {
+        _ScrollArr = [NSMutableArray new];
+    }
+    return _ScrollArr;
     
 }
--(void)jumpWithDetailsB13{
-    
-}
--(void)jumpWithDetailsB14{
-    
-}
--(void)jumpWithDetailsB15{
-    
-}
--(void)jumpWithDetailsB16{
-    
-}
+
+
 @end

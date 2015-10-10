@@ -98,7 +98,10 @@
     FinderMainModel *mainModel=[FinderHelper sharedHelper].dataArray[indexPath.row];
     findVC.model=mainModel;
     findVC.titleString=mainModel.title;
-    [self.navigationController pushViewController:findVC animated:NO];
+    
+    UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:findVC];
+    
+    [self presentViewController:rootNC animated:YES completion:nil];
    
     
     

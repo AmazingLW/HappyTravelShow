@@ -13,11 +13,14 @@
 #import "CommonCells+SetModel.h"
 #import "HomepageVC.h"
 #import "ComDetailVC.h"
-
+#import "HomepageScenicModel.h"
+#import "HomepageCityModel.h"
+#import "UIImageView+WebCache.h"
 @interface CategoryDetailsVC ()
 
 @property(nonatomic,strong)NSMutableArray*array;
 @property(nonatomic,strong)NSMutableArray*FamilyArray;
+@property(nonatomic,strong)NSMutableArray*CityArr;
 @end
 
 @implementation CategoryDetailsVC
@@ -38,8 +41,15 @@
         [self.tableView reloadData];
     }];
     
-    
-    NSLog(@"%@",self.CityArray);
+
+    [[HomepageHelper new] requestAllCityDetail:self.CityName cityName:self.CityCode withSort:self.CitySort WithFinish:^(NSMutableArray *arr) {
+        self.CityArr =[NSMutableArray array];
+        self.CityArr = [arr mutableCopy];
+        [self.tableView reloadData];
+        
+    }];
+
+  
 }
 
 
@@ -70,8 +80,10 @@
 
     if ([self.URLNumber length]==2) {
         return self.array.count;
-    }else{
+    }else if([self.URLNumber length]==3){
         return self.FamilyArray.count;
+    }else{
+        return self.CityArr.count;
     }
 
 }
@@ -81,9 +93,19 @@
     if ([self.URLNumber length]==2) {
     AroundKindModel*kind =self.array[indexPath.row];
     cell.Model = kind;
-    }else{
+    }else if([self.URLNumber length]==3){
     AroundKindModel*kind =self.FamilyArray[indexPath.row];
     cell.Model = kind;
+    }else{
+      HomepageCityModel*city  =self.CityArr[indexPath.row];
+
+    [cell.image4scenes sd_setImageWithURL:[NSURL URLWithString:city.homeImageUrl ]placeholderImage:[UIImage imageNamed:@"picholder"]];
+        cell.lab4productName.text = city.productName;
+        cell.lab4productTitleContent.text =[NSString stringWithFormat:@"[%@]%@",city.city,city.productTitleContent];
+        cell.lab4originalPrice.text = [NSString stringWithFormat:@"￥%ld",city.retailPrice];
+        cell.lab4price.text = [NSString stringWithFormat:@"%ld",city.price];
+        cell.lab4saledCount.text = [NSString stringWithFormat:@"已售%ld",city.saledCount];
+
     }
   
     
@@ -95,13 +117,38 @@
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-//    NSInteger productld=[self.array[indexPath.row] productId];
-//    NSInteger nlinkId=[self.array[indexPath.row] channelLinkId];
-    
-//    ComDetailVC*detailVC =[ComDetailVC new];
-//    detailVC.bookID = nlinkId;
-//    detailVC.detailID = productld;
-//    [self.navigationController pushViewController:detailVC animated:YES];
+    if ([self.URLNumber length]==2) {
+ 
+        AroundKindModel *model = _array[indexPath.row];
+        
+        NSInteger productId = model.productId;
+        NSInteger packageID = model.channelLinkId;
+        ComDetailVC *comDetail = [[ComDetailVC alloc] init];
+        
+        comDetail.bookID = packageID;
+        comDetail.detailID = productId;
+        
+        [self.navigationController pushViewController:comDetail animated:YES];
+    }else if([self.URLNumber length]==3){
+        AroundKindModel *model = _FamilyArray[indexPath.row];
+        NSInteger productId = model.productId;
+        NSInteger packageID = model.channelLinkId;
+        ComDetailVC *comDetail = [[ComDetailVC alloc] init];
+        comDetail.bookID = packageID;
+        comDetail.detailID = productId;
+        
+        [self.navigationController pushViewController:comDetail animated:YES];
+    }else{
+        
+        AroundKindModel *model = _CityArr[indexPath.row];
+        NSInteger productId = model.productId;
+        NSInteger packageID = model.channelLinkId;
+        ComDetailVC *comDetail = [[ComDetailVC alloc] init];
+        comDetail.bookID = packageID;
+        comDetail.detailID = productId;
+        [self.navigationController pushViewController:comDetail animated:YES];
+    }
+
     
 }
 /*
