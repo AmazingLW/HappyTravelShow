@@ -10,6 +10,7 @@
 		165D666F1BC5F8CB00BE6567 /* CommonCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 165D666D1BC5F8CB00BE6567 /* CommonCells.m */; };
 		165D66701BC5F8CB00BE6567 /* CommonCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165D666E1BC5F8CB00BE6567 /* CommonCells.xib */; };
 		16977EC81BC8B50700026522 /* PhotoBrowserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16977EC71BC8B50700026522 /* PhotoBrowserVC.m */; };
+		16977ECB1BC9254500026522 /* ScenicDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16977ECA1BC9254500026522 /* ScenicDetailVC.m */; };
 		16988D5E1BC3A994001A1077 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988D5D1BC3A994001A1077 /* main.m */; };
 		16988D641BC3A994001A1077 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988D631BC3A994001A1077 /* ViewController.m */; };
 		16988D671BC3A994001A1077 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16988D651BC3A994001A1077 /* Main.storyboard */; };
@@ -154,6 +155,8 @@
 		165D666E1BC5F8CB00BE6567 /* CommonCells.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonCells.xib; sourceTree = "<group>"; };
 		16977EC61BC8B50700026522 /* PhotoBrowserVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoBrowserVC.h; sourceTree = "<group>"; };
 		16977EC71BC8B50700026522 /* PhotoBrowserVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoBrowserVC.m; sourceTree = "<group>"; };
+		16977EC91BC9254500026522 /* ScenicDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicDetailVC.h; sourceTree = "<group>"; };
+		16977ECA1BC9254500026522 /* ScenicDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicDetailVC.m; sourceTree = "<group>"; };
 		16988D581BC3A994001A1077 /* HappyTravelShow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyTravelShow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16988D5C1BC3A994001A1077 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16988D5D1BC3A994001A1077 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -754,6 +757,8 @@
 				C27D31961BC7624A005B049D /* CategoryVC.m */,
 				C27D31981BC7629B005B049D /* CategoryDetailsVC.h */,
 				C27D31991BC7629B005B049D /* CategoryDetailsVC.m */,
+				16977EC91BC9254500026522 /* ScenicDetailVC.h */,
+				16977ECA1BC9254500026522 /* ScenicDetailVC.m */,
 			);
 			path = HomepageVC;
 			sourceTree = "<group>";
@@ -1265,6 +1270,7 @@
 				16EB2DD21BC6AC0D00F51A9F /* BookModel.m in Sources */,
 				16977EC81BC8B50700026522 /* PhotoBrowserVC.m in Sources */,
 				16EB2DDE1BC6ACBB00F51A9F /* BookCell.m in Sources */,
+				16977ECB1BC9254500026522 /* ScenicDetailVC.m in Sources */,
 				16988D641BC3A994001A1077 /* ViewController.m in Sources */,
 				16DB11621BC41D45009D7C7D /* AroundHelper.m in Sources */,
 				16988DA91BC3D100001A1077 /* ComProductModel.m in Sources */,

@@ -106,8 +106,6 @@
     self.mainLabel.text = self.strMain;
     self.subLabel.text = [self.photoInfoArr[index] title];
     self.locationLabel.text = [NSString stringWithFormat:@"%ld/%ld",index+1,self.photoInfoArr.count];
-    
-
 }
 
 
