@@ -130,7 +130,7 @@
             for (NSDictionary *d in array) {
                 AroundKindModel *model = [AroundKindModel new];
                 [model setValuesForKeysWithDictionary:d];
-                [_allScien addObject:model];
+                [_littleScine addObject:model];
             }
  
             dispatch_async(dispatch_get_main_queue(), ^{

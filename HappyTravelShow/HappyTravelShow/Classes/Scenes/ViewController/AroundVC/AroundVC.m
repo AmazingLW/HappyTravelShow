@@ -70,8 +70,6 @@
 
 
 
-
-
 @end
 
 @implementation AroundVC
@@ -94,11 +92,8 @@ static NSString *const reuse = @"cell";
   
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    
     
  //tableview 创建
     _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
@@ -109,17 +104,10 @@ static NSString *const reuse = @"cell";
     
     [self.view addSubview:_tableView];
     
-
     [self.tableView registerNib:[UINib nibWithNibName:@"CommonCells" bundle:nil] forCellReuseIdentifier:reuse];
- 
-    
-  
     
     [self setupDropdownList];
     [self requestData];
-    
-
-    
 }
 
 //数据请求
@@ -140,18 +128,12 @@ static NSString *const reuse = @"cell";
             for (NSDictionary *scenics in array) {
                 NSString *scenicName = scenics[@"scenic"];
             [_scenicArray addObject:scenicName];
-                
                 //从新组装数组
                 //存放每个小city中scenics的数组
-               
                 [arr addObject:scenicName];
-
             }
             [_tempArray addObject:arr];
-
         }
-        
-      
         //调用方法
         [self setupDropdownList];
        // [_tableView reloadData];
@@ -160,78 +142,47 @@ static NSString *const reuse = @"cell";
     [[AroundHelper new]requsetAllScenicsWithCityName:@"景德镇" finish:^(NSArray *scenic) {
         
         _allScenic = [NSMutableArray arrayWithArray:scenic];
-        
-        
         [self.tableView reloadData];
-        
     }];
     //当目的城市选定 景点全部时 列表
-    
-
-    
-    
     // pa 价格变高 pd 价格变低  s 销量优先  xp新品优先  d 离我最近
     //目的城市全部 景点全部 价格变高
     [[AroundHelper new] sortDataWithType:@"pa" cityName:@"景德镇" finish:^(NSArray *array) {
        
         _sortDataUp = [NSMutableArray arrayWithArray:array];
-        
-        
     }];
-    
     //目的城市全部 景点全部 价格变低
     [[AroundHelper new] sortDataWithType:@"pd" cityName:@"景德镇" finish:^(NSArray *array) {
         
         _sortDataDown = [NSMutableArray arrayWithArray:array];
-        
-        
     }];
-    
     //目的城市全部 景点全部 s 销量优先
     [[AroundHelper new] sortDataWithType:@"s" cityName:@"景德镇" finish:^(NSArray *array) {
-        
+
         _sales = [NSMutableArray arrayWithArray:array];
-        
-        
     }];
-    
     //目的城市全部 景点全部 xp新品优先
-    
     [[AroundHelper new] sortDataWithType:@"xp" cityName:@"景德镇" finish:^(NSArray *array) {
         
         _news = [NSMutableArray arrayWithArray:array];
-        
-        
     }];
-    
-    
     //目的城市全部 景点全部 d 离我最近
-    
     [[AroundHelper new] sortDataWithType:@"xp" cityName:@"景德镇" finish:^(NSArray *array) {
         
         _distance = [NSMutableArray arrayWithArray:array];
-        
-        
+ 
     }];
-    
-    
-    
-    
-
-    
 }
 
 #pragma mark ---tableview 代理事件
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
-    
+ 
     return _allScenic.count;
     
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
 
     CommonCells *cell = [tableView dequeueReusableCellWithIdentifier:reuse forIndexPath:indexPath];
     
@@ -247,14 +198,11 @@ static NSString *const reuse = @"cell";
     return 135;
 }
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     AroundKindModel *model = _allScenic[indexPath.row];
     
     NSInteger productId = model.productId;
     NSString *packageID = model.channelLinkId;
-    
-    
     ComDetailVC *comDetail = [[ComDetailVC alloc] init];
     
     comDetail.bookID = [packageID integerValue];
@@ -273,8 +221,6 @@ static NSString *const reuse = @"cell";
         [_dic setObject:array forKey:_destinationCity[i]];
         
     }
-
-    
     ddltView = [[XIOptionSelectorView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 40)];
     ddltView.parentView = self.view;
     ddltView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
@@ -401,6 +347,13 @@ static NSString *const reuse = @"cell";
         if (index == 1) {
             _allScenic = _sortDataUp;
             [self.tableView reloadData];
+           // 如果 两个其中有一个有值 那么点击过 在排序 走不通的排序方法
+            if (self.cityName || self.scenicName) {
+                
+                [self sort];
+            }
+            
+            
         }else if(index == 2){
             _allScenic = _sortDataDown;
             [self.tableView reloadData];
@@ -459,6 +412,7 @@ static NSString *const reuse = @"cell";
         self.scenicName = self.tmpArray[index];
         
         [self litleRequest];
+        
     }else{
         tmpArry = @[@"全部",@"门票",@"仅酒店",@"酒店套餐"];
     }
@@ -481,45 +435,59 @@ static NSString *const reuse = @"cell";
     }];
 }
 
-//请求url可能有问题
+
+#warning  必须 根据目的城市 选出 景点名
+
+#warning  只能以上饶 和 上饶景点为例
 
 - (void)litleRequest{
     
     //如果目的城市是全部 也就是没有点击目的城市  根据 dic 取得
-//    if (self.cityName == NULL) {
-//        
-//        NSString *sc = self.scenicName;
-//        
-//        for (NSString * cityName in self.dic) {
-//            NSArray *array = self.dic[cityName];
-//            for (NSString *scen in array) {
-//                if (scen == sc) {
-//                    
-//                    self.cityName = cityName;
-//                }
-//                
-//            }
-//            
-//        }
-//        
+    if (self.cityName == NULL) {
+        
+        NSString *sc = self.scenicName;
+        
+        for (NSString * cityName in self.dic) {
+            NSArray *array = self.dic[cityName];
+            for (NSString *scen in array) {
+                if (scen == sc) {
+                    
+                    self.cityName = cityName;
+                }
+                
+            }
+            
+        }
+        
     [[AroundHelper new] requestLittleScenicWithCithName:self.cityName scenicName:self.scenicName finish:^(NSArray *array) {
         
         _allScenic = [array mutableCopy];
         [self.tableView reloadData];
         
     }];
-//    }else{
-//        
-//        [[AroundHelper new] requestLittleScenicWithCithName:self.scenicName scenicName:self.cityName finish:^(NSArray *array) {
-//            
-//            _allScenic = [array mutableCopy];
-//            [self.tableView reloadData];
-//        }];
-//    }
-//    
+    }else{
+        
+        [[AroundHelper new] requestLittleScenicWithCithName:self.scenicName scenicName:self.cityName finish:^(NSArray *array) {
+            
+            _allScenic = [array mutableCopy];
+            [self.tableView reloadData];
+        }];
+    }
+    
+    
+    
+    
     
 }
 
+- (void)sort{
+    
+    
+    
+    
+}
+
+    
 /*
 #pragma mark - Navigation
 
