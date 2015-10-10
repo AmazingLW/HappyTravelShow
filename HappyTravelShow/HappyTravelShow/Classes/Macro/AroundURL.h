@@ -21,7 +21,7 @@
 
 //点击景点列表弹出的小景点列表
 #warning 需要经纬度 默认景德镇的经纬度(后期如果不加就删去)
-#define littleScenicURL(scenicName,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343648&latitude=40.030561&scenicName=%@&version=4.3.1&sort=n&province=0&system=iOS&pageSize=20&channel=AppStore&city=%@",scenicName,cityName]
+#define littleScenicURL(scenicName,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343658&latitude=40.030583&scenicName=%@&version=4.3.1&sort=n&province=0&system=iOS&pageSize=20&channel=AppStore&city=%@",scenicName,cityName]
 
 //当目的城市选定 景点全部时 列表
 

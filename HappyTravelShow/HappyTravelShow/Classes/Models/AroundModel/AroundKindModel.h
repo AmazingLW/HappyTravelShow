@@ -29,6 +29,6 @@
 @property(nonatomic,strong) NSString  *cityName;
 
 //package详情id
-@property(nonatomic,strong) NSString  *channelLinkId;
+@property(nonatomic,assign) NSInteger  channelLinkId;
 
 @end

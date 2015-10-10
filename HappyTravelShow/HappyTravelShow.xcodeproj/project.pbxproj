@@ -103,6 +103,13 @@
 		C25074221BC7631000F62844 /* 22.png in Resources */ = {isa = PBXBuildFile; fileRef = C250741D1BC7631000F62844 /* 22.png */; };
 		C25074231BC7631000F62844 /* aa.png in Resources */ = {isa = PBXBuildFile; fileRef = C250741E1BC7631000F62844 /* aa.png */; };
 		C25074241BC7631000F62844 /* 55.png in Resources */ = {isa = PBXBuildFile; fileRef = C250741F1BC7631000F62844 /* 55.png */; };
+		C25074261BC769AA00F62844 /* backg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C25074251BC769AA00F62844 /* backg.jpg */; };
+		C25074281BC79E1600F62844 /* 66.png in Resources */ = {isa = PBXBuildFile; fileRef = C25074271BC79E1600F62844 /* 66.png */; };
+		C250742B1BC7AAEC00F62844 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C250742A1BC7AAEC00F62844 /* LoginController.m */; };
+		C250742E1BC7AB0000F62844 /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = C250742D1BC7AB0000F62844 /* RegisterController.m */; };
+		C25F356D1BC7EA2B0064AA04 /* LoginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C25F356C1BC7EA2B0064AA04 /* LoginCell.m */; };
+		C25F35701BC7EED00064AA04 /* password.png in Resources */ = {isa = PBXBuildFile; fileRef = C25F356E1BC7EED00064AA04 /* password.png */; };
+		C25F35711BC7EED00064AA04 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = C25F356F1BC7EED00064AA04 /* user.png */; };
 		C27358C41BC4F43900771457 /* option_arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C27358C21BC4F43900771457 /* option_arrow_down@2x.png */; };
 		C27358C51BC4F43900771457 /* option_arrow_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C27358C31BC4F43900771457 /* option_arrow_up@2x.png */; };
 		C27358FF1BC5107C00771457 /* XIArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358E91BC5107C00771457 /* XIArrowView.m */; };
@@ -306,6 +313,16 @@
 		C250741D1BC7631000F62844 /* 22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 22.png; sourceTree = "<group>"; };
 		C250741E1BC7631000F62844 /* aa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aa.png; sourceTree = "<group>"; };
 		C250741F1BC7631000F62844 /* 55.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 55.png; sourceTree = "<group>"; };
+		C25074251BC769AA00F62844 /* backg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = backg.jpg; sourceTree = "<group>"; };
+		C25074271BC79E1600F62844 /* 66.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 66.png; sourceTree = "<group>"; };
+		C25074291BC7AAEC00F62844 /* LoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginController.h; sourceTree = "<group>"; };
+		C250742A1BC7AAEC00F62844 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
+		C250742C1BC7AB0000F62844 /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
+		C250742D1BC7AB0000F62844 /* RegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterController.m; sourceTree = "<group>"; };
+		C25F356B1BC7EA2B0064AA04 /* LoginCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginCell.h; sourceTree = "<group>"; };
+		C25F356C1BC7EA2B0064AA04 /* LoginCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginCell.m; sourceTree = "<group>"; };
+		C25F356E1BC7EED00064AA04 /* password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = password.png; sourceTree = "<group>"; };
+		C25F356F1BC7EED00064AA04 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
 		C27358C21BC4F43900771457 /* option_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "option_arrow_down@2x.png"; sourceTree = "<group>"; };
 		C27358C31BC4F43900771457 /* option_arrow_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "option_arrow_up@2x.png"; sourceTree = "<group>"; };
 		C27358E81BC5107C00771457 /* XIArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIArrowView.h; sourceTree = "<group>"; };
@@ -827,6 +844,10 @@
 			children = (
 				16DB119F1BC422F5009D7C7D /* MyselfVC.h */,
 				16DB11A01BC422F5009D7C7D /* MyselfVC.m */,
+				C25074291BC7AAEC00F62844 /* LoginController.h */,
+				C250742A1BC7AAEC00F62844 /* LoginController.m */,
+				C250742C1BC7AB0000F62844 /* RegisterController.h */,
+				C250742D1BC7AB0000F62844 /* RegisterController.m */,
 			);
 			path = MyselfVC;
 			sourceTree = "<group>";
@@ -870,6 +891,10 @@
 				C250741D1BC7631000F62844 /* 22.png */,
 				C250741E1BC7631000F62844 /* aa.png */,
 				C250741F1BC7631000F62844 /* 55.png */,
+				C25074251BC769AA00F62844 /* backg.jpg */,
+				C25074271BC79E1600F62844 /* 66.png */,
+				C25F356E1BC7EED00064AA04 /* password.png */,
+				C25F356F1BC7EED00064AA04 /* user.png */,
 			);
 			path = MyselfRes;
 			sourceTree = "<group>";
@@ -881,6 +906,8 @@
 				16DBAC251BC764B40082A143 /* MyselfHeadCell.m */,
 				16DBAC271BC764DC0082A143 /* MyselfContentCell.h */,
 				16DBAC281BC764DC0082A143 /* MyselfContentCell.m */,
+				C25F356B1BC7EA2B0064AA04 /* LoginCell.h */,
+				C25F356C1BC7EA2B0064AA04 /* LoginCell.m */,
 			);
 			path = MyselfCells;
 			sourceTree = "<group>";
@@ -1128,10 +1155,14 @@
 				16988D671BC3A994001A1077 /* Main.storyboard in Resources */,
 				16EB2DCA1BC6AB7800F51A9F /* back.png in Resources */,
 				C25074211BC7631000F62844 /* 44.png in Resources */,
+				C25F35711BC7EED00064AA04 /* user.png in Resources */,
 				C22699FC1BC50AE0009BBAB0 /* CategoriesCell.xib in Resources */,
 				C2429DD71BC5454C00151E6E /* FinderMainCell.xib in Resources */,
 				C25074221BC7631000F62844 /* 22.png in Resources */,
 				16DB11B41BC42653009D7C7D /* myself.png in Resources */,
+				C25F35701BC7EED00064AA04 /* password.png in Resources */,
+				C25074261BC769AA00F62844 /* backg.jpg in Resources */,
+				C25074281BC79E1600F62844 /* 66.png in Resources */,
 				16DB11B61BC4265A009D7C7D /* finder.png in Resources */,
 				16988D6C1BC3A994001A1077 /* LaunchScreen.xib in Resources */,
 				16DB11B01BC42505009D7C7D /* homepage.png in Resources */,
@@ -1216,6 +1247,7 @@
 				C2ADF2011BC681F100E39332 /* LPLabel.m in Sources */,
 				16DBAC661BC7C0A60082A143 /* CurrentPlaceSkyCell.m in Sources */,
 				16DEF3911BC4BBEE00F64A66 /* FinderMainView.m in Sources */,
+				C250742B1BC7AAEC00F62844 /* LoginController.m in Sources */,
 				16EB2DD21BC6AC0D00F51A9F /* BookModel.m in Sources */,
 				16EB2DDE1BC6ACBB00F51A9F /* BookCell.m in Sources */,
 				16988D641BC3A994001A1077 /* ViewController.m in Sources */,
@@ -1233,6 +1265,7 @@
 				16EB2DE11BC6ACBB00F51A9F /* WeatherCell.m in Sources */,
 				16DBAC291BC764DC0082A143 /* MyselfContentCell.m in Sources */,
 				C2269A171BC53FC9009BBAB0 /* HotScenicCell.m in Sources */,
+				C250742E1BC7AB0000F62844 /* RegisterController.m in Sources */,
 				C2F423BE1BC64DE600194989 /* FindMainDetaiCell.m in Sources */,
 				16988DA61BC3CED3001A1077 /* AroundMainModel.m in Sources */,
 				C22699FB1BC50AE0009BBAB0 /* CategoriesCell.m in Sources */,
@@ -1242,6 +1275,7 @@
 				C27D31A91BC7633D005B049D /* SCPopView.m in Sources */,
 				16988DB71BC40965001A1077 /* HomepageHeaderModel.m in Sources */,
 				16DB118F1BC4228D009D7C7D /* NSData+ImageContentType.m in Sources */,
+				C25F356D1BC7EA2B0064AA04 /* LoginCell.m in Sources */,
 				C27359031BC5107C00771457 /* XIOptionSelectorView.m in Sources */,
 				16DB11981BC4228D009D7C7D /* UIImage+GIF.m in Sources */,
 				16EB2DDF1BC6ACBB00F51A9F /* CommentCell.m in Sources */,

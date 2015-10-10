@@ -8,6 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@class MyselfHeadCell;
+@protocol LoginDelegate <NSObject>
+- (void)getIntoLoginController:(UIButton *)button ;
+
+@end
+
+
 @interface MyselfHeadCell : UITableViewCell
+//背景图片
+@property(nonatomic,strong) UIImageView   *groundView;
+//登陆按钮
+@property(nonatomic,strong) UIButton  *loginButton;
+//注册按钮
+@property(nonatomic,strong) UIButton  *registerButton;
+@property(nonatomic,strong) id <LoginDelegate> delegate;
+
 
 @end
