@@ -27,10 +27,8 @@
     if(self=[super initWithFrame:frame]){
         
         blurView = [[FXBlurView alloc] initWithFrame:self.bounds];
-        //
         blurView.blurRadius = 12;
-        blurView.tintColor = [UIColor clearColor];
-        //
+        blurView.tintColor = [UIColor blackColor];
         blurView.dynamic = NO;
         [self addSubview:blurView];
         blurView.autoresizingMask = UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth;
@@ -71,14 +69,12 @@
 }
 @end
 
-//原值3
-static NSInteger const _number_items = 4;
+
+static NSInteger const _number_items = 3;
 #define kItemTagBase 100
 
 @interface XIOptionSelectorView ()
 {
-    //增加筛选
-    XISelectorItem *shaixuanButton;
     XISelectorItem *statusSwitchButton;
     XISelectorItem *sortButton;
     XISelectorItem *moreItemButton;
@@ -108,7 +104,7 @@ static NSInteger const _number_items = 4;
         _dropdownListViews = [NSMutableArray array];
         _rawFrames = [NSMutableArray arrayWithObjects:[NSValue valueWithCGRect:CGRectZero],
                       [NSValue valueWithCGRect:CGRectZero],
-                      [NSValue valueWithCGRect:CGRectZero],[NSValue valueWithCGRect:CGRectZero], nil];
+                      [NSValue valueWithCGRect:CGRectZero], nil];
         _items = [NSMutableArray array];
         
         self.borderColor = [XIColorHelper SeparatorLineColor];
@@ -118,8 +114,8 @@ static NSInteger const _number_items = 4;
         self.numberOfItems = _number_items;
         self.separatorLineColor = [XIColorHelper SeparatorLineColor];
         self.lineInsets = UIEdgeInsetsMake(10, 0, 10, 0);
-        //标签按钮的名字
-        NSArray *_itemTitles = @[NSLocalizedString(@"默认排序", nil), NSLocalizedString(@"目的城市", nil), NSLocalizedString(@"景点", nil),NSLocalizedStringFromTable(@"筛选", nil, nil)];
+        
+        NSArray *_itemTitles = @[NSLocalizedString(@"默认排序", nil), NSLocalizedString(@"景点", nil), NSLocalizedString(@"筛选", nil)];
         
         for(int i=0; i< _itemTitles.count; i++){
             XISelectorItem *item = [XISelectorItem createItemButtonWithType:XIContentAlignHorizontalCenterImageRight];
@@ -131,12 +127,10 @@ static NSInteger const _number_items = 4;
             
             _items[i]=item;
         }
-        
         statusSwitchButton = _items[0];
         sortButton = _items[1];
         moreItemButton = _items[2];
-        //增加
-        shaixuanButton = _items[3];
+        
         for(int i=0; i<_number_items; i++){
             _dropdownListViews[i] = [NSNull null];
         }
@@ -176,12 +170,9 @@ static NSInteger const _number_items = 4;
     statusSwitchButton.translatesAutoresizingMaskIntoConstraints = NO;
     sortButton.translatesAutoresizingMaskIntoConstraints = NO;
     moreItemButton.translatesAutoresizingMaskIntoConstraints = NO;
-    //增加
-    shaixuanButton.translatesAutoresizingMaskIntoConstraints = NO;
-    //
-    NSDictionary *bindingViews = NSDictionaryOfVariableBindings(statusSwitchButton, sortButton, moreItemButton,shaixuanButton);
-    //
-    NSArray *contraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[statusSwitchButton]-[sortButton(==statusSwitchButton)]-[moreItemButton(==statusSwitchButton)]-[shaixuanButton(==statusSwitchButton)]-|"
+    
+    NSDictionary *bindingViews = NSDictionaryOfVariableBindings(statusSwitchButton, sortButton, moreItemButton);
+    NSArray *contraints = [NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[statusSwitchButton]-[sortButton(==statusSwitchButton)]-[moreItemButton(==statusSwitchButton)]-|"
                                                                   options:0
                                                                   metrics:nil
                                                                     views:bindingViews];
@@ -191,9 +182,6 @@ static NSInteger const _number_items = 4;
     contraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-2-[sortButton]-2-|" options:0 metrics:nil views:bindingViews];
     [self addConstraints:contraints];
     contraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-2-[moreItemButton]-2-|" options:0 metrics:nil views:bindingViews];
-    [self addConstraints:contraints];
-    
-    contraints = [NSLayoutConstraint constraintsWithVisualFormat:@"V:|-2-[shaixuanButton]-2-|" options:0 metrics:nil views:bindingViews];
     [self addConstraints:contraints];
 }
 

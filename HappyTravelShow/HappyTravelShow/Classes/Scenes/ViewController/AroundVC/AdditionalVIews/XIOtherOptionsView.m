@@ -22,9 +22,6 @@
     self.fetchDataSource = nil;
 }
 
-
-
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if(self=[super initWithFrame:frame]){
@@ -83,7 +80,6 @@
     cell.textLabel.highlightedTextColor = [XIColorHelper ThemeColor];
     cell.textLabel.text = _selectionItems[indexPath.row];
     if(indexPath.row==0){
-  
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     else{

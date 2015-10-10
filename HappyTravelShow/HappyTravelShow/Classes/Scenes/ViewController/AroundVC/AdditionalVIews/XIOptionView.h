@@ -9,10 +9,8 @@
 
 @interface XIOptionView : XIBorderSideView<XIDropdownlistViewProtocol, UITableViewDataSource, UITableViewDelegate>
 {
-@public
+@private
     UITableView *_contentTable;
     NSArray *_selectionItems;
 }
-
-
 @end
