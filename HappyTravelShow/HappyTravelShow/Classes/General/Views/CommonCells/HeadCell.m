@@ -71,6 +71,12 @@
         UIImageView *imgView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenWidth*(i), 0, kScreenWidth, 120)];
         DetailModel *model = imgArr[i];
         [imgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://cdn1.jinxidao.com/%@",model.url]]];
+        imgView.userInteractionEnabled = YES;
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imgAction:)];
+        imgView.tag = 300 + i;
+        [imgView addGestureRecognizer:tap];
+        
         [_imgScrollView addSubview:imgView];
     }
     
@@ -78,6 +84,15 @@
     self.titleLabel.text = title;
     //内容
     self.contentLabel.text = strContent;
+    
+}
+
+- (void)imgAction:(UITapGestureRecognizer *)sender{
+    NSInteger index = sender.view.tag - 300;
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(jumpPhotoVCWithPhotoArr:index:)]) {
+        [self.delegate jumpPhotoVCWithPhotoArr:_imgScrollView.subviews index:index];
+    }
     
 }
 
