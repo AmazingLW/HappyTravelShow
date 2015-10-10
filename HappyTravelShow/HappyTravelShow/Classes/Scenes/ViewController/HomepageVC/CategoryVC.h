@@ -10,5 +10,5 @@
 
 @interface CategoryVC : UIViewController
 @property(nonatomic,strong)NSString*urlNum;
-@property(nonatomic,strong)NSString*URLCityCode;
+@property(nonatomic,strong)NSMutableArray*CityArray;
 @end

@@ -8,6 +8,7 @@
 
 #import "HotScenicCell.h"
 #import "HomepageHelper.h"
+#import "CategoryVC.h"
 
 @implementation HotScenicCell
 
@@ -150,6 +151,7 @@
     _b16.titleLabel.font = [UIFont systemFontOfSize:15];
     [_b16 setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_b16 setTitle:@"古井" forState:UIControlStateNormal];
+    
     
     [_view addSubview:_b1];
     [_view addSubview:_b2];

@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface HomepageVC : UIViewController
-
+//热门景区,周边城市
+@property(nonatomic,strong)NSMutableArray*ScenicArr,*cityArr;
 @end

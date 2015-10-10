@@ -19,12 +19,17 @@
             WithFinish:(void (^)(NSMutableArray *arr))result;
 //精品推荐
 - (void)requestAllRecommendation:(void (^)(NSMutableArray *arr))result;
-
+//点击门票and温泉
 - (void)requestAllTicket:(NSString*)tagId
                 withSort:(NSString*)sort
               WithFinish:(void (^)(NSMutableArray *arr))result;
-
+//点击亲子游and市区
 - (void)requestAllFamily:(NSString*)tagId
                 withSort:(NSString*)sort
               WithFinish:(void (^)(NSMutableArray *arr))result;
+//点击周边城市
+- (void)requestAllCityDetail:(NSString*)citycold
+                    cityName:(NSString*)cityName
+                    withSort:(NSInteger)sort
+                  WithFinish:(void (^)(NSMutableArray *arr))result;
 @end

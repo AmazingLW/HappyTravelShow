@@ -197,6 +197,43 @@
     
 }
 
+- (void)requestAllCityDetail:(NSString*)citycold
+                    cityName:(NSString*)cityName
+                withSort:(NSInteger)sort
+              WithFinish:(void (^)(NSMutableArray *arr))result
+{  dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes  = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+    NSString*urlString = KCityDetails(cityName, citycold, sort);
+    NSString *codeUrl = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [manager GET:codeUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSDictionary *dict= (NSDictionary *)responseObject;
+        
+        self.CityArr=[NSMutableArray array];
+        
+        NSDictionary*dic=dict[@"data"];
+        NSArray*cityArray=dic[@"items"];
+        for (NSDictionary*dict1 in cityArray) {
+            AroundKindModel *scenic=[AroundKindModel new];
+            [scenic setValuesForKeysWithDictionary:dict1];
+            [_CityArr addObject:scenic];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            result(self.CityArr);
+        });
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+    }];
+    
+});
+    
+    
+    
+}
+
 -(NSArray*)CarouseArray{
     return [_CarouseArr mutableCopy];
 }

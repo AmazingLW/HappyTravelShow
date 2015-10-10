@@ -26,16 +26,19 @@
     RecommendVC.title =@"     推荐       ";
     //RecommendVC.view.backgroundColor =[UIColor greenColor];
     RecommendVC.URLNumber =self.urlNum;
+    RecommendVC.CityArray = [self.CityArray mutableCopy];
 //    CategoryDetailsVC*NewVC =[[CategoryDetailsVC alloc]initWithStyle:UITableViewStylePlain AndWithSort:@"xp"];
     CategoryDetailsVC*NewVC  =[[CategoryDetailsVC alloc]initWithStyle:UITableViewStylePlain AndWithSort:@"xp" AndWithCitySort:5];
     NewVC.title=@"     最新       ";
     //NewVC.view.backgroundColor =[UIColor cyanColor];
     NewVC.URLNumber =self.urlNum;
+    NewVC.CityArray = [self.CityArray mutableCopy];
 //    CategoryDetailsVC*DistanceVC =[[CategoryDetailsVC alloc]initWithStyle:UITableViewStylePlain AndWithSort:@"d"];
     CategoryDetailsVC*DistanceVC =[[CategoryDetailsVC alloc]initWithStyle:UITableViewStylePlain AndWithSort:@"d" AndWithCitySort:6];
     DistanceVC.title=@"    距离       ";
     //DistanceVC.view.backgroundColor =[UIColor yellowColor];
     DistanceVC.URLNumber =self.urlNum;
+    DistanceVC.CityArray = [self.CityArray mutableCopy];
     SCNavTabBarController *navTabBarController = [[SCNavTabBarController alloc] initWithShowArrowButton:YES];
     navTabBarController.subViewControllers = @[RecommendVC,NewVC,DistanceVC];
     //    箭头
