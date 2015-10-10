@@ -99,6 +99,11 @@
 		C2269A1A1BC5415B009BBAB0 /* hot.png in Resources */ = {isa = PBXBuildFile; fileRef = C2269A181BC5415B009BBAB0 /* hot.png */; };
 		C2269A1B1BC5415B009BBAB0 /* city.png in Resources */ = {isa = PBXBuildFile; fileRef = C2269A191BC5415B009BBAB0 /* city.png */; };
 		C228D7941BC9032A009E383A /* my.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C228D7931BC9032A009E383A /* my.jpg */; };
+		C228D7971BC9079B009E383A /* FavoriteController.m in Sources */ = {isa = PBXBuildFile; fileRef = C228D7961BC9079B009E383A /* FavoriteController.m */; };
+		C228D79A1BC90AB0009E383A /* browsedController.m in Sources */ = {isa = PBXBuildFile; fileRef = C228D7991BC90AB0009E383A /* browsedController.m */; };
+		C228D79D1BC91003009E383A /* WeatherDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C228D79C1BC91003009E383A /* WeatherDetailCell.m */; };
+		C228D7A01BC93129009E383A /* WeatherDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = C228D79F1BC93129009E383A /* WeatherDetailController.m */; };
+		C228D7A21BC93AD8009E383A /* w.png in Resources */ = {isa = PBXBuildFile; fileRef = C228D7A11BC93AD8009E383A /* w.png */; };
 		C2429DD71BC5454C00151E6E /* FinderMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2429DD61BC5454C00151E6E /* FinderMainCell.xib */; };
 		C25074201BC7631000F62844 /* 33.png in Resources */ = {isa = PBXBuildFile; fileRef = C250741B1BC7631000F62844 /* 33.png */; };
 		C25074211BC7631000F62844 /* 44.png in Resources */ = {isa = PBXBuildFile; fileRef = C250741C1BC7631000F62844 /* 44.png */; };
@@ -312,6 +317,15 @@
 		C2269A181BC5415B009BBAB0 /* hot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hot.png; sourceTree = "<group>"; };
 		C2269A191BC5415B009BBAB0 /* city.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = city.png; sourceTree = "<group>"; };
 		C228D7931BC9032A009E383A /* my.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = my.jpg; sourceTree = "<group>"; };
+		C228D7951BC9079B009E383A /* FavoriteController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoriteController.h; sourceTree = "<group>"; };
+		C228D7961BC9079B009E383A /* FavoriteController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoriteController.m; sourceTree = "<group>"; };
+		C228D7981BC90AB0009E383A /* browsedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = browsedController.h; sourceTree = "<group>"; };
+		C228D7991BC90AB0009E383A /* browsedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = browsedController.m; sourceTree = "<group>"; };
+		C228D79B1BC91003009E383A /* WeatherDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherDetailCell.h; sourceTree = "<group>"; };
+		C228D79C1BC91003009E383A /* WeatherDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherDetailCell.m; sourceTree = "<group>"; };
+		C228D79E1BC93129009E383A /* WeatherDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherDetailController.h; sourceTree = "<group>"; };
+		C228D79F1BC93129009E383A /* WeatherDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherDetailController.m; sourceTree = "<group>"; };
+		C228D7A11BC93AD8009E383A /* w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = w.png; sourceTree = "<group>"; };
 		C2429DD61BC5454C00151E6E /* FinderMainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinderMainCell.xib; sourceTree = "<group>"; };
 		C250741B1BC7631000F62844 /* 33.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 33.png; sourceTree = "<group>"; };
 		C250741C1BC7631000F62844 /* 44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 44.png; sourceTree = "<group>"; };
@@ -702,6 +716,8 @@
 				C22699F81BC50AE0009BBAB0 /* CategoriesCell.h */,
 				C22699F91BC50AE0009BBAB0 /* CategoriesCell.m */,
 				C22699FA1BC50AE0009BBAB0 /* CategoriesCell.xib */,
+				C228D79B1BC91003009E383A /* WeatherDetailCell.h */,
+				C228D79C1BC91003009E383A /* WeatherDetailCell.m */,
 				C2269A071BC512B1009BBAB0 /* PackageCell.h */,
 				C2269A081BC512B1009BBAB0 /* PackageCell.m */,
 				C2269A091BC512B1009BBAB0 /* PackageCell.xib */,
@@ -743,6 +759,8 @@
 			children = (
 				16DB11A81BC4231E009D7C7D /* HomepageVC.h */,
 				16DB11A91BC4231E009D7C7D /* HomepageVC.m */,
+				C228D79E1BC93129009E383A /* WeatherDetailController.h */,
+				C228D79F1BC93129009E383A /* WeatherDetailController.m */,
 				C209F53F1BC690AB00946675 /* CarouselWebViewVC.h */,
 				C209F5401BC690AB00946675 /* CarouselWebViewVC.m */,
 				C27D31951BC7624A005B049D /* CategoryVC.h */,
@@ -854,6 +872,10 @@
 				C250742A1BC7AAEC00F62844 /* LoginController.m */,
 				C250742C1BC7AB0000F62844 /* RegisterController.h */,
 				C250742D1BC7AB0000F62844 /* RegisterController.m */,
+				C228D7951BC9079B009E383A /* FavoriteController.h */,
+				C228D7961BC9079B009E383A /* FavoriteController.m */,
+				C228D7981BC90AB0009E383A /* browsedController.h */,
+				C228D7991BC90AB0009E383A /* browsedController.m */,
 			);
 			path = MyselfVC;
 			sourceTree = "<group>";
@@ -884,6 +906,7 @@
 				16DB11AF1BC42505009D7C7D /* homepage.png */,
 				C2269A181BC5415B009BBAB0 /* hot.png */,
 				C2269A191BC5415B009BBAB0 /* city.png */,
+				C228D7A11BC93AD8009E383A /* w.png */,
 			);
 			path = HomepageRes;
 			sourceTree = "<group>";
@@ -1163,6 +1186,7 @@
 				C209F53E1BC6187D00946675 /* RecommendationCell.xib in Resources */,
 				16988D671BC3A994001A1077 /* Main.storyboard in Resources */,
 				16EB2DCA1BC6AB7800F51A9F /* back.png in Resources */,
+				C228D7A21BC93AD8009E383A /* w.png in Resources */,
 				C2F486211BC8E5F30017C434 /* background.jpg in Resources */,
 				C25074211BC7631000F62844 /* 44.png in Resources */,
 				C22699FC1BC50AE0009BBAB0 /* CategoriesCell.xib in Resources */,
@@ -1238,9 +1262,11 @@
 				16DB11991BC4228D009D7C7D /* UIImage+MultiFormat.m in Sources */,
 				16DB119A1BC4228D009D7C7D /* UIImage+WebP.m in Sources */,
 				C27D31971BC7624A005B049D /* CategoryVC.m in Sources */,
+				C228D7971BC9079B009E383A /* FavoriteController.m in Sources */,
 				C27D31A71BC7633D005B049D /* SCNavTabBarController.m in Sources */,
 				C27D319A1BC7629B005B049D /* CategoryDetailsVC.m in Sources */,
 				C2269A121BC51911009BBAB0 /* IanScrollImageView.m in Sources */,
+				C228D7A01BC93129009E383A /* WeatherDetailController.m in Sources */,
 				16988DAC1BC3D118001A1077 /* ComPackageModel.m in Sources */,
 				165D666F1BC5F8CB00BE6567 /* CommonCells.m in Sources */,
 				16DBAC5E1BC7ACE30082A143 /* FindPlaceVC.m in Sources */,
@@ -1260,6 +1286,7 @@
 				16977EC81BC8B50700026522 /* PhotoBrowserVC.m in Sources */,
 				16EB2DDE1BC6ACBB00F51A9F /* BookCell.m in Sources */,
 				16988D641BC3A994001A1077 /* ViewController.m in Sources */,
+				C228D79D1BC91003009E383A /* WeatherDetailCell.m in Sources */,
 				16DB11621BC41D45009D7C7D /* AroundHelper.m in Sources */,
 				16988DA91BC3D100001A1077 /* ComProductModel.m in Sources */,
 				16EB2DE61BC6AD0A00F51A9F /* ComDetailHelper.m in Sources */,
@@ -1268,6 +1295,7 @@
 				C2ADF1FE1BC66DCA00E39332 /* AroundKindModel.m in Sources */,
 				16EB2DE01BC6ACBB00F51A9F /* HeadCell.m in Sources */,
 				C27359021BC5107C00771457 /* XIGridBackgroundView.m in Sources */,
+				C228D79A1BC90AB0009E383A /* browsedController.m in Sources */,
 				16DB11931BC4228D009D7C7D /* SDWebImageDownloader.m in Sources */,
 				16988D9D1BC3CCF3001A1077 /* FinderKindModel.m in Sources */,
 				16DBAC691BC7E6650082A143 /* SpecificWeatherCell.m in Sources */,
