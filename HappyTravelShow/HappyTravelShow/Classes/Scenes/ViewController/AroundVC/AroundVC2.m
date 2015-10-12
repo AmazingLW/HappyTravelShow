@@ -122,10 +122,13 @@ static NSString *const reuse = @"cell";
     [self.view addSubview:_tableView];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"CommonCells" bundle:nil] forCellReuseIdentifier:reuse];
+    //取不到
+   // NSLog(@"%@",self.destinationCity);
     
     [self setupDropdownList];
     [self requestData];
     
+
     
 }
 
@@ -133,13 +136,6 @@ static NSString *const reuse = @"cell";
 - (void)setupDropdownList
 {
     
-    //组装字典
-    for (int i = 0; i < _destinationCity.count; i ++) {
-        NSArray *array = _tempArray[i];
-        [_dic setObject:array forKey:_destinationCity[i]];
-        
-    }
-
     
     ddltView = [[XIOptionSelectorView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 40)];
     ddltView.parentView = self.view;
@@ -206,12 +202,13 @@ static NSString *const reuse = @"cell";
 
 #pragma XIDropdownlistViewProtocol method
 
-//默认选中第一个但是 只有点击才会走
+//默认选中第一个但是 只有点击才会走 当全都不
+
 - (void)didSelectItemAtIndex:(NSInteger)index inSegment:(NSInteger)segment
 {
     NSArray *tmpArry;
     if(segment==0){
-        tmpArry = @[@"默认排序", @"价格升高", @"价格降低",@"销量优先",@"新品优先",@"离我最近"];
+        tmpArry = @[@"默认排序", @"价格由低至高", @"价格由高至低",@"销量优先",@"新品优先",@"离我最近"];
         [ddltView setTitle:tmpArry[index] forItem:segment];
       //  _sortName = tmpArry[index];
 //        if (!_sort) {
@@ -225,6 +222,8 @@ static NSString *const reuse = @"cell";
 //            
 //            
 //        }
+      
+        
         
         _tmpsort = _type[tmpArry[index]];
         
@@ -257,23 +256,18 @@ static NSString *const reuse = @"cell";
             //在次点击全部
             if (index == 0) {
                 
-                [[AroundHelper new]requsetAllScenicsWithCityName:@"景德镇" finish:^(NSArray *scenic) {
-                    
-                    NSArray *array = [NSArray arrayWithArray:scenic];
-                    _allScenic = [array mutableCopy];
-                    [self.tableView reloadData];
-                }];
+                [self request];
                 
             }else{
             
-            _tmpscenic = self.scenicArray[index];
+            _tmpscenic = _scenicArray[index - 1];
             
-            NSString *sc = self.scenicName;
+           // NSString *sc = self.scenicName;
             
             for (NSString * cityName in self.dic) {
                 NSArray *array = self.dic[cityName];
                 for (NSString *scen in array) {
-                    if (scen == sc) {
+                    if (scen == _tmpscenic) {
                         
                         self.cityName = cityName;
                     }
@@ -282,7 +276,6 @@ static NSString *const reuse = @"cell";
  
             }
         
-
             }
  
         //}
@@ -304,18 +297,11 @@ static NSString *const reuse = @"cell";
 //         _tmptag = tmpArry[index];
 //            
 //        }
-        if (index == 0) {
-            
-            [self requestDataWithScenicName:_tmpscenic sort:_tmpsort tagName:nil cityName:self.cityName];
-            
-        }
         
         _tmptag = tmpArry[index];
         
         _tag++;
     }
-    
-    
     
     
     [self fuck];
@@ -324,18 +310,54 @@ static NSString *const reuse = @"cell";
 }
 
 - (void)fuck{
-    if (_sort == 0 && _tag == 0 && _scenic != 0) {
+    
+    
+    //如果第一次进入程序
+    if (_sort == 0 && _tag == 0 && _scenic == 0) {
         
-        [self requestDataWithScenicName:_scenicName sort:@"n" tagName:nil cityName:self.cityName];
+        [self request];
+    }
+    
+    //如果 只点击了 景点 排序是默认 sort = n 筛选是全部
+    if ((_sort == 0 && _tag == 0 && _scenic != 0) || ([_tmpsort isEqualToString:@"默认排序"] && [_tmptag isEqualToString:@"全部"])) {
         
-    }else if (_sort == 0 && _tag != 0 && _scenic != 0){
+        [self requestDataWithScenicName:_tmpscenic sort:@"n" tagName:nil cityName:self.cityName];
         
+        //如果 点击了 景点 和筛选  排序是默认 sort = n
+    }else if ((_sort == 0 && _tag != 0 && _scenic != 0)|| [_tmpsort isEqualToString:@"默认排序"]){
         
+        if ([_tmptag isEqualToString:@"全部"]) {
+            
+             [self requestDataWithScenicName:_tmpscenic sort:_tmpsort tagName:nil cityName:self.cityName];
+        }
+        [self requestDataWithScenicName:_tmpscenic sort:@"n" tagName:_tmptag cityName:self.cityName];
         
-    }else{
+       //如果三个都点击了 并且都不是第一个
+    }else if ((_sort != 0 && _tag != 0 && _scenic != 0) && ((![_tmpsort isEqualToString:@"默认排序"]) && (![_tmptag isEqualToString:@"全部"])&& (![_tmpscenic isEqualToString:@"全部"]))){
         
+          [self requestDataWithScenicName:_tmpscenic sort:_tmpsort tagName:_tmptag cityName:self.cityName];
+        //如果只点击了 筛选  景点全部 排序是默认 sort = n
+    }else if ((_sort == 0 && _tag != 0 && _scenic == 0) || ([_tmpsort isEqualToString:@"默认排序"] &&[_tmpscenic isEqualToString:@"全部"])){
+        [self sortWithType:@"n" tagName:_tmptag];
+        
+       //如果只点击了 排序  景点全部 筛选是默认
+    }else if ((_sort != 0 && _tag == 0 && _scenic == 0) ||([_tmptag isEqualToString:@"全部"] && [_tmpscenic isEqualToString:@"全部"])){
+        
+        [self onlySortWithType:_tmpsort];
+        // 当点击了 排序 和 筛选  景点全部时
+    }else if ((_sort != 0 && _tag != 0 && _scenic == 0) || [_tmpscenic isEqualToString:@"全部"]){
+        
+        [self sortWithType:_tmpsort tagName:_tmptag];
+        
+        //当 点击 排序 和 景点 筛选是全部
+    }else if ((_sort != 0 && _tag == 0 && _scenic != 0) || ([_tmptag isEqualToString:@"全部"])){
+        
+        [self requestDataWithScenicName:_tmpscenic sort:_tmpsort tagName:nil cityName:self.cityName];
         
     }
+
+    
+    
     
     
 }
@@ -351,6 +373,36 @@ static NSString *const reuse = @"cell";
         
     }];
 }
+
+
+//只点击排序
+
+- (void)onlySortWithType:(NSString *) type{
+    
+    [[AroundHelper new] sortDataWithType:type cityName:@"景德镇" finish:^(NSArray *array) {
+        
+        _allScenic = [NSMutableArray arrayWithArray:array];
+        [self.tableView reloadData];
+        
+    }];
+    
+}
+
+//筛选
+//当 目的城市为全部 景点全部  排序方式改变   筛选方式改变
+- (void)sortWithType:(NSString *)type tagName:(NSString *)tagName{
+    
+    [[AroundHelper new] chooseScenicWithSortType:type TagName:tagName cityName:@"景德镇" finish:^(NSArray *array) {
+        
+        _allScenic = [array mutableCopy];
+        
+        [self.tableView reloadData];
+        
+    }];
+    
+    
+}
+
 
 
 
@@ -425,10 +477,21 @@ static NSString *const reuse = @"cell";
             }
             [_tempArray addObject:arr];
         }
+        
+        
+        
+        //组装字典
+        for (int i = 0; i < _destinationCity.count; i ++) {
+            NSArray *array = _tempArray[i];
+            [_dic setObject:array forKey:_destinationCity[i]];
+            
+        }
+        
         //调用方法
         [self setupDropdownList];
         // [_tableView reloadData];
     }];
+    
     //CityName 是请求到的目的城市
     
     [[AroundHelper new]requsetAllScenicsWithCityName:@"景德镇" finish:^(NSArray *scenic) {
@@ -439,7 +502,15 @@ static NSString *const reuse = @"cell";
     
 }
 
+- (void)request{
+    [[AroundHelper new]requsetAllScenicsWithCityName:@"景德镇" finish:^(NSArray *scenic) {
+        
+        _allScenic = [NSMutableArray arrayWithArray:scenic];
+        [self.tableView reloadData];
+    }];
 
+    
+}
 
 
 

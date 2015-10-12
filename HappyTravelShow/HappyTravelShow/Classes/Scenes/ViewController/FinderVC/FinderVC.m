@@ -100,7 +100,7 @@
     findVC.titleString=mainModel.title;
     
     UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:findVC];
-    
+//    self.navigationController 
     [self presentViewController:rootNC animated:YES completion:nil];
    
     
