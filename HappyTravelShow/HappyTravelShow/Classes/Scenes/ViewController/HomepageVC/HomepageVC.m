@@ -22,6 +22,7 @@
 #import "ComDetailVC.h"
 #import "HomepageScenicModel.h"
 #import "LocationVC.h"
+#import "ScenicDetailVC.h"
 
 #define kWidth [UIScreen mainScreen].bounds.size.width
 
@@ -420,12 +421,68 @@
     UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
     [self presentViewController:rootNC animated:YES completion:nil];
 }
-
-
-
 - (void)getDetailControllerB16{
-  //更多为城市列表
-  
+    //更多为城市列表
+    
+}
+
+- (void)getDetailControllerB1{
+    
+    ScenicDetailVC*dateailVC =[ScenicDetailVC new];
+    HomepageScenicModel*scenic = self.ScenicArr[0];
+    dateailVC.scenicID =[scenic.cityId integerValue];
+   
+    [self presentViewController:dateailVC animated:YES completion:nil];
+}
+
+- (void)getDetailControllerB2{
+    
+    ScenicDetailVC*dateailVC =[ScenicDetailVC new];
+    HomepageScenicModel*scenic = self.ScenicArr[1];
+    dateailVC.scenicID =[scenic.cityId integerValue];
+    [self presentViewController:dateailVC animated:YES completion:nil];
+}
+- (void)getDetailControllerB3{
+    
+    ScenicDetailVC*dateailVC =[ScenicDetailVC new];
+    HomepageScenicModel*scenic = self.ScenicArr[2];
+    dateailVC.scenicID =[scenic.cityId integerValue];
+    [self presentViewController:dateailVC animated:YES completion:nil];
+}
+- (void)getDetailControllerB4{
+    
+    ScenicDetailVC*dateailVC =[ScenicDetailVC new];
+    HomepageScenicModel*scenic = self.ScenicArr[3];
+    dateailVC.scenicID =[scenic.cityId integerValue];
+    [self presentViewController:dateailVC animated:YES completion:nil];
+}
+- (void)getDetailControllerB5{
+    
+    ScenicDetailVC*dateailVC =[ScenicDetailVC new];
+    HomepageScenicModel*scenic = self.ScenicArr[4];
+    dateailVC.scenicID =[scenic.cityId integerValue];
+    [self presentViewController:dateailVC animated:YES completion:nil];
+}
+- (void)getDetailControllerB6{
+    
+    ScenicDetailVC*dateailVC =[ScenicDetailVC new];
+    HomepageScenicModel*scenic = self.ScenicArr[5];
+    dateailVC.scenicID =[scenic.cityId integerValue];
+    [self presentViewController:dateailVC animated:YES completion:nil];
+}
+- (void)getDetailControllerB7{
+    
+    ScenicDetailVC*dateailVC =[ScenicDetailVC new];
+    HomepageScenicModel*scenic = self.ScenicArr[6];
+    dateailVC.scenicID =[scenic.cityId integerValue];
+    [self presentViewController:dateailVC animated:YES completion:nil];
+}
+- (void)getDetailControllerB8{
+    
+    ScenicDetailVC*dateailVC =[ScenicDetailVC new];
+    HomepageScenicModel*scenic = self.ScenicArr[7];
+    dateailVC.scenicID =[scenic.cityId integerValue];
+    [self presentViewController:dateailVC animated:YES completion:nil];
 }
 
 
