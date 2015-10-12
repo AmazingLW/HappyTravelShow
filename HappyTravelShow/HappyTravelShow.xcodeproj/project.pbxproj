@@ -134,6 +134,8 @@
 		C27D31A91BC7633D005B049D /* SCPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27D31A51BC7633D005B049D /* SCPopView.m */; };
 		C2ADF1FE1BC66DCA00E39332 /* AroundKindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ADF1FD1BC66DCA00E39332 /* AroundKindModel.m */; };
 		C2ADF2011BC681F100E39332 /* LPLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ADF2001BC681F100E39332 /* LPLabel.m */; };
+		C2C2001F1BCB5D10000F2AC7 /* LocationNacItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C2001E1BCB5D10000F2AC7 /* LocationNacItem.m */; };
+		C2C200251BCB674C000F2AC7 /* HomepageCityListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C200241BCB674C000F2AC7 /* HomepageCityListModel.m */; };
 		C2ECC67A1BC9141400115824 /* HomepageCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ECC6791BC9141400115824 /* HomepageCityModel.m */; };
 		C2F423B91BC5FC6900194989 /* FindKindOfSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F423B81BC5FC6900194989 /* FindKindOfSceneController.m */; };
 		C2F423BB1BC61F4A00194989 /* money.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F423BA1BC61F4A00194989 /* money.png */; };
@@ -143,6 +145,7 @@
 		C2F4861A1BC8A5CA0017C434 /* x.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F486171BC8A5CA0017C434 /* x.png */; };
 		C2F4861D1BC8A7D90017C434 /* zz.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F4861C1BC8A7D90017C434 /* zz.png */; };
 		C2F486211BC8E5F30017C434 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2F486201BC8E5F30017C434 /* background.jpg */; };
+		C2FE4D681BCBB0370012075C /* LocationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE4D671BCBB0370012075C /* LocationVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -383,6 +386,10 @@
 		C2ADF1FD1BC66DCA00E39332 /* AroundKindModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AroundKindModel.m; sourceTree = "<group>"; };
 		C2ADF1FF1BC681F100E39332 /* LPLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPLabel.h; sourceTree = "<group>"; };
 		C2ADF2001BC681F100E39332 /* LPLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPLabel.m; sourceTree = "<group>"; };
+		C2C2001D1BCB5D10000F2AC7 /* LocationNacItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocationNacItem.h; path = HappyTravelShow/Classes/Models/HomepageModel/LocationNacItem.h; sourceTree = SOURCE_ROOT; };
+		C2C2001E1BCB5D10000F2AC7 /* LocationNacItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocationNacItem.m; path = HappyTravelShow/Classes/Models/HomepageModel/LocationNacItem.m; sourceTree = SOURCE_ROOT; };
+		C2C200231BCB674C000F2AC7 /* HomepageCityListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepageCityListModel.h; sourceTree = "<group>"; };
+		C2C200241BCB674C000F2AC7 /* HomepageCityListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepageCityListModel.m; sourceTree = "<group>"; };
 		C2ECC6781BC9141400115824 /* HomepageCityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepageCityModel.h; sourceTree = "<group>"; };
 		C2ECC6791BC9141400115824 /* HomepageCityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepageCityModel.m; sourceTree = "<group>"; };
 		C2F423B71BC5FC6900194989 /* FindKindOfSceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindKindOfSceneController.h; sourceTree = "<group>"; };
@@ -395,6 +402,8 @@
 		C2F486171BC8A5CA0017C434 /* x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = x.png; path = ../../x.png; sourceTree = "<group>"; };
 		C2F4861C1BC8A7D90017C434 /* zz.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = zz.png; path = ../../zz.png; sourceTree = "<group>"; };
 		C2F486201BC8E5F30017C434 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
+		C2FE4D661BCBB0370012075C /* LocationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationVC.h; sourceTree = "<group>"; };
+		C2FE4D671BCBB0370012075C /* LocationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationVC.m; sourceTree = "<group>"; };
 		E74A25802C8BAEBB910EC920 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -678,6 +687,8 @@
 				C2269A051BC51052009BBAB0 /* HomepagePackageModel.m */,
 				C2ECC6781BC9141400115824 /* HomepageCityModel.h */,
 				C2ECC6791BC9141400115824 /* HomepageCityModel.m */,
+				C2C200231BCB674C000F2AC7 /* HomepageCityListModel.h */,
+				C2C200241BCB674C000F2AC7 /* HomepageCityListModel.m */,
 			);
 			path = HomepageModel;
 			sourceTree = "<group>";
@@ -772,6 +783,8 @@
 			children = (
 				16DB11A81BC4231E009D7C7D /* HomepageVC.h */,
 				16DB11A91BC4231E009D7C7D /* HomepageVC.m */,
+				C2FE4D661BCBB0370012075C /* LocationVC.h */,
+				C2FE4D671BCBB0370012075C /* LocationVC.m */,
 				C228D79E1BC93129009E383A /* WeatherDetailController.h */,
 				C228D79F1BC93129009E383A /* WeatherDetailController.m */,
 				C209F53F1BC690AB00946675 /* CarouselWebViewVC.h */,
@@ -834,6 +847,8 @@
 		16DB116B1BC41DBF009D7C7D /* HomepageView */ = {
 			isa = PBXGroup;
 			children = (
+				C2C2001D1BCB5D10000F2AC7 /* LocationNacItem.h */,
+				C2C2001E1BCB5D10000F2AC7 /* LocationNacItem.m */,
 			);
 			path = HomepageView;
 			sourceTree = "<group>";
@@ -1307,9 +1322,11 @@
 				C228D79D1BC91003009E383A /* WeatherDetailCell.m in Sources */,
 				16DB11621BC41D45009D7C7D /* AroundHelper.m in Sources */,
 				C268C98F1BC90F500043B541 /* XIBorderSideView.m in Sources */,
+				C2FE4D681BCBB0370012075C /* LocationVC.m in Sources */,
 				16988DA91BC3D100001A1077 /* ComProductModel.m in Sources */,
 				16EB2DE61BC6AD0A00F51A9F /* ComDetailHelper.m in Sources */,
 				16DB11A41BC42303009D7C7D /* AroundVC.m in Sources */,
+				C2C200251BCB674C000F2AC7 /* HomepageCityListModel.m in Sources */,
 				C209F53D1BC6187D00946675 /* RecommendationCell.m in Sources */,
 				C2ADF1FE1BC66DCA00E39332 /* AroundKindModel.m in Sources */,
 				16EB2DE01BC6ACBB00F51A9F /* HeadCell.m in Sources */,
@@ -1340,6 +1357,7 @@
 				16DB11961BC4228D009D7C7D /* SDWebImagePrefetcher.m in Sources */,
 				16DB11921BC4228D009D7C7D /* SDWebImageDecoder.m in Sources */,
 				C2269A131BC51911009BBAB0 /* IanScrollView.m in Sources */,
+				C2C2001F1BCB5D10000F2AC7 /* LocationNacItem.m in Sources */,
 				16EB2DE21BC6ACBB00F51A9F /* WebViewCell.m in Sources */,
 				C2269A031BC51023009BBAB0 /* HomepageScenicModel.m in Sources */,
 				C27D31A81BC7633D005B049D /* SCNavTabBar.m in Sources */,

@@ -21,6 +21,8 @@
 #import "CategoryVC.h"
 #import "ComDetailVC.h"
 #import "HomepageScenicModel.h"
+#import "LocationVC.h"
+
 #define kWidth [UIScreen mainScreen].bounds.size.width
 
 @interface HomepageVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,CityDelegate>
@@ -55,7 +57,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self drawview];
-    
     [[HomepageHelper new] requestAllPackage:@"bannerScroll" WithFinish:^(NSMutableArray *arr) {
         self.CarouseArray=[NSMutableArray array];
         self.CarouseArray = [arr mutableCopy];
@@ -93,15 +94,37 @@
         [self.collection reloadData];
     }];
     
+ 
+    [self setupCollectionView];
+    self.view.backgroundColor = [UIColor orangeColor];
+    
+    [self creatNavBar];
+}
+
+- (void)creatNavBar {
+
+    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"北京∨" style:(UIBarButtonItemStylePlain) target:self action:@selector(locationBBIClicked)];
+    self.navigationItem.leftBarButtonItem.tintColor=[UIColor blackColor];
+
+}
+
+- (void)locationBBIClicked {
+    
+    LocationVC *locationVC = [LocationVC new];
+    locationVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:locationVC animated:YES];
+    
+}
+
+//注册cell
+-(void)setupCollectionView{
+    
     [_collection registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     [_collection registerNib:[UINib nibWithNibName:@"carouseIFingureCell" bundle:nil] forCellWithReuseIdentifier:@"carousel"];
     [_collection registerNib:[UINib nibWithNibName:@"CategoriesCell" bundle:nil] forCellWithReuseIdentifier:@"cate"];
     [_collection registerNib:[UINib nibWithNibName:@"PackageCell" bundle:nil] forCellWithReuseIdentifier:@"pack"];
     [_collection registerNib:[UINib nibWithNibName:@"RecommendationCell" bundle:nil] forCellWithReuseIdentifier:@"rec"];
     [_collection registerClass:[HotScenicCell class] forCellWithReuseIdentifier:@"hot"];
-    
-    self.view.backgroundColor = [UIColor orangeColor];
-    
     
 }
 
@@ -117,6 +140,7 @@
     _collection.backgroundColor =[UIColor whiteColor];
     _collection.dataSource =self;
     _collection.delegate =self;
+    _collection.backgroundColor =[UIColor lightGrayColor];
     [self.view addSubview:_collection];
     
 }
@@ -235,7 +259,8 @@
         cell.package = package;
         [cell.bigUrl4image sd_setImageWithURL:[NSURL URLWithString:package.bigImageUrl]placeholderImage:[UIImage imageNamed:@"picholder"]];
         }
-        cell.selected=NO;
+        cell.layer.borderWidth = 0.3;
+        cell.layer.borderColor = [UIColor lightGrayColor].CGColor;
         return cell;
     }else{
         UICollectionViewCell*cell  =[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
@@ -248,7 +273,7 @@
     if (indexPath.section ==0) {
         return CGSizeMake(kWidth, 120);
     }else if (indexPath.section ==1) {
-        return CGSizeMake(kWidth/5, 60);
+        return CGSizeMake(kWidth/5, 65);
     }else if (indexPath.section ==2){
         return CGSizeMake(kWidth/2, 60);
         
@@ -256,7 +281,7 @@
         return CGSizeMake(kWidth, 100);
         
     }else if (indexPath.section ==4){
-        return CGSizeMake(kWidth-10, 200);
+        return CGSizeMake(kWidth, 200);
         
     }else if (indexPath.section ==5){
         return CGSizeMake(kWidth, 30);
@@ -266,7 +291,17 @@
         return CGSizeMake(80, 80);
     }
 }
+//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+//{
+//    return 5.0;
+//}
 
+- (UIEdgeInsets)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    if (section==2||section==3||section==1) {
+        return UIEdgeInsetsMake(0, 0, 5, 0);
+    }
+    return UIEdgeInsetsMake(0, 0, 0, 0); // top, left, bottom, right
+}
 //点击cell
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -385,10 +420,18 @@
     UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
     [self presentViewController:rootNC animated:YES completion:nil];
 }
+
+
+
 - (void)getDetailControllerB16{
   //更多为城市列表
   
 }
+
+
+
+
+
 
 -(NSMutableArray*)ScrollArr{
     
