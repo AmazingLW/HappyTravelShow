@@ -88,7 +88,11 @@
 #define partScenicList(scenicName,sort,tagName,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343635&latitude=40.030579&scenicName=%@&version=4.3.1&sort=%@&province=0&tagName=%@&system=iOS&pageSize=20&channel=AppStore&city=%@",scenicName,sort,tagName,cityName]
 
 
+//----------------------搜索
 
+// http://appapi.yaochufa.com/v2/Util/GetSearchHotKeys?machineCode=00000000-62a0-833f-ffff-ffffc33ba23b&version=4.3.1&keyCount=12&system=android&cityId=1&channel=huaweimarket
+
+#define hotCity(cityID) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Util/GetSearchHotKeys?version=4.3.1&keyCount=12&system=iOS&cityId=%ld&channel=AppStore",cityID]
 
 
 

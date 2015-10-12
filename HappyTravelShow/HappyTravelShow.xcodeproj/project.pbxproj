@@ -135,6 +135,9 @@
 		C2ADF1FE1BC66DCA00E39332 /* AroundKindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ADF1FD1BC66DCA00E39332 /* AroundKindModel.m */; };
 		C2ADF2011BC681F100E39332 /* LPLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ADF2001BC681F100E39332 /* LPLabel.m */; };
 		C2ECC67A1BC9141400115824 /* HomepageCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ECC6791BC9141400115824 /* HomepageCityModel.m */; };
+		C2F1A0A61BCB937F00060A9A /* SearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F1A0A51BCB937F00060A9A /* SearchVC.m */; };
+		C2F1A0A81BCB948000060A9A /* arrows.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F1A0A71BCB948000060A9A /* arrows.png */; };
+		C2F1A0AA1BCB993900060A9A /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F1A0A91BCB993900060A9A /* search.png */; };
 		C2F423B91BC5FC6900194989 /* FindKindOfSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F423B81BC5FC6900194989 /* FindKindOfSceneController.m */; };
 		C2F423BB1BC61F4A00194989 /* money.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F423BA1BC61F4A00194989 /* money.png */; };
 		C2F423BE1BC64DE600194989 /* FindMainDetaiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F423BD1BC64DE600194989 /* FindMainDetaiCell.m */; };
@@ -385,6 +388,10 @@
 		C2ADF2001BC681F100E39332 /* LPLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPLabel.m; sourceTree = "<group>"; };
 		C2ECC6781BC9141400115824 /* HomepageCityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepageCityModel.h; sourceTree = "<group>"; };
 		C2ECC6791BC9141400115824 /* HomepageCityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepageCityModel.m; sourceTree = "<group>"; };
+		C2F1A0A41BCB937F00060A9A /* SearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchVC.h; sourceTree = "<group>"; };
+		C2F1A0A51BCB937F00060A9A /* SearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchVC.m; sourceTree = "<group>"; };
+		C2F1A0A71BCB948000060A9A /* arrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrows.png; sourceTree = "<group>"; };
+		C2F1A0A91BCB993900060A9A /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		C2F423B71BC5FC6900194989 /* FindKindOfSceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindKindOfSceneController.h; sourceTree = "<group>"; };
 		C2F423B81BC5FC6900194989 /* FindKindOfSceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindKindOfSceneController.m; sourceTree = "<group>"; };
 		C2F423BA1BC61F4A00194989 /* money.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = money.png; sourceTree = "<group>"; };
@@ -540,6 +547,8 @@
 				16DBAC5D1BC7ACE30082A143 /* FindPlaceVC.m */,
 				16977EC61BC8B50700026522 /* PhotoBrowserVC.h */,
 				16977EC71BC8B50700026522 /* PhotoBrowserVC.m */,
+				C2F1A0A41BCB937F00060A9A /* SearchVC.h */,
+				C2F1A0A51BCB937F00060A9A /* SearchVC.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -901,6 +910,8 @@
 				C27358C21BC4F43900771457 /* option_arrow_down@2x.png */,
 				C27358C31BC4F43900771457 /* option_arrow_up@2x.png */,
 				16DB11B11BC425B3009D7C7D /* around.png */,
+				C2F1A0A71BCB948000060A9A /* arrows.png */,
+				C2F1A0A91BCB993900060A9A /* search.png */,
 			);
 			path = AroundRes;
 			sourceTree = "<group>";
@@ -1217,9 +1228,11 @@
 				C228D7941BC9032A009E383A /* my.jpg in Resources */,
 				C25074231BC7631000F62844 /* aa.png in Resources */,
 				16EB2DCB1BC6AB7800F51A9F /* place.png in Resources */,
+				C2F1A0AA1BCB993900060A9A /* search.png in Resources */,
 				C25074241BC7631000F62844 /* 55.png in Resources */,
 				16D8C5E61BC6C7EF001175AB /* mapapi.bundle in Resources */,
 				C27D31A61BC7633D005B049D /* SCNavTabBar.bundle in Resources */,
+				C2F1A0A81BCB948000060A9A /* arrows.png in Resources */,
 				16988D691BC3A994001A1077 /* Images.xcassets in Resources */,
 				C22699F71BC50AB5009BBAB0 /* carouseIFingureCell.xib in Resources */,
 			);
@@ -1330,6 +1343,7 @@
 				16DB118E1BC4228D009D7C7D /* MKAnnotationView+WebCache.m in Sources */,
 				C268C9721BC90D230043B541 /* AroundVC2.m in Sources */,
 				C27D31A91BC7633D005B049D /* SCPopView.m in Sources */,
+				C2F1A0A61BCB937F00060A9A /* SearchVC.m in Sources */,
 				16988DB71BC40965001A1077 /* HomepageHeaderModel.m in Sources */,
 				16DB118F1BC4228D009D7C7D /* NSData+ImageContentType.m in Sources */,
 				16DB11981BC4228D009D7C7D /* UIImage+GIF.m in Sources */,

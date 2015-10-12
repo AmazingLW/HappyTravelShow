@@ -1,0 +1,272 @@
+//
+//  SearchVC.m
+//  HappyTravelShow
+//
+//  Created by lanou3g on 15/10/12.
+//  Copyright (c) 2015年 com.liuwei. All rights reserved.
+//
+
+#import "SearchVC.h"
+#import "AroundHelper.h"
+@interface SearchVC ()<UITextFieldDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
+@property (nonatomic, strong)UITextField *textfield;
+@property (nonatomic, strong)UIButton *button;
+
+@property (nonatomic, strong)UIButton *button1;
+
+@property (nonatomic, strong)UIView *a;
+
+@property (nonatomic, strong)NSMutableArray *cityArray;
+@property (nonatomic, strong) UICollectionView *collection;
+@end
+
+@implementation SearchVC
+static NSString *const reuse = @"cell";
+static NSString *const header = @"header";
+static NSString *const footer = @"footer";
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        
+         self.navigationItem.hidesBackButton = YES;
+        
+//        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleDone target:self action:@selector(cancel:)];
+//        self.navigationItem.rightBarButtonItem.width = 30;
+//        self.navigationItem.rightBarButtonItem.tag = 1001;
+//        
+//        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"arrows"] style:UIBarButtonItemStyleDone target:self action:@selector(back:)];
+//        self.navigationItem.leftBarButtonItem.width = 30;
+        _a = [[UIView alloc] initWithFrame:CGRectMake(0, 10, self.view.frame.size.width, 29)];
+       // _a.backgroundColor = [UIColor redColor];
+        
+        _button = [UIButton buttonWithType:UIButtonTypeCustom];
+        _button.frame = CGRectMake(0, 0, 30, 29);
+        [_button setBackgroundImage:[UIImage imageNamed:@"arrows"] forState:UIControlStateNormal];
+          [_button setBackgroundColor:[UIColor whiteColor]];
+        [_button addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+       _button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+        _button1.frame = CGRectMake(_a.frame.size.width - 60, 0,40, 29);
+        //[button1 setBackgroundColor:[UIColor redColor]];
+        [_button1 setTitle:@"取消" forState:UIControlStateNormal];
+        [_button1 setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+        [_button1 addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+        _textfield = [[UITextField alloc] initWithFrame:CGRectMake(30 , 0,_a.frame.size.width - 90 , 29)];
+        _textfield.placeholder = @"搜索目的地/景点/酒店";
+        _textfield.backgroundColor = [UIColor lightGrayColor];
+        _textfield.delegate = self;
+        
+        [_a addSubview:_button];
+        [_a addSubview:_button1];
+        [_a addSubview:_textfield];
+        
+//        
+       self.navigationItem.titleView = _a;
+        
+        
+         }
+    
+    return self;
+    
+    
+}
+
+
+- (void)request{
+    
+    
+    [[AroundHelper new] requestHotCityWithCityID:1 result:^(NSArray *array) {
+        
+        _cityArray = [NSMutableArray arrayWithArray:array];
+        
+        [self.collection reloadData];
+        
+    }];
+    
+    
+}
+
+
+//左侧按钮方法
+- (void)back:(UIBarButtonItem *)barButton{
+    
+    [self.navigationController popViewControllerAnimated:YES];
+
+}
+//右侧按钮方法
+- (void)cancel:(UIBarButtonItem *)barButton{
+    
+    [UIView animateWithDuration:0.5 animations:^{
+       
+        _button1.frame = CGRectMake(_a.frame.size.width + 10, 0, 0, 29);
+          _textfield.frame = CGRectMake(30, 0,_a.frame.size.width - 30, 29);
+        
+        
+        
+    }];
+    
+    [self textFieldShouldReturn:_textfield];
+    
+}
+
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        
+      _button1.frame = _button1.frame = CGRectMake(_a.frame.size.width - 60, 0,40, 29);
+        
+        _textfield.frame = CGRectMake(30, 0,_a.frame.size.width - 90, 29);
+        
+    }];
+
+     return YES;
+
+    
+    
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+  
+   UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+    
+    layout.itemSize = CGSizeMake(95, 30);
+    
+    layout.sectionInset = UIEdgeInsetsMake(20, 20, 20, 20);
+    layout.headerReferenceSize = CGSizeMake(20, 30);
+    
+    
+    
+    _collection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)collectionViewLayout:layout];
+    _collection.backgroundColor = [UIColor whiteColor];
+    _collection.dataSource = self;
+    _collection.delegate = self;
+    
+    
+    [_collection registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuse];
+    
+    [_collection registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
+//    [collection registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footer];
+//    
+    [self.view addSubview:_collection];
+    _collection.scrollEnabled = NO;
+    
+    [self request];
+    // Do any additional setup after loading the view.
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    
+}
+
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    
+    return 2;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    if (section == 0) {
+        //如果没有历史 就返回0 header有两种
+        
+        return 10;
+    }else {
+        //根据请求的数据
+        return _cityArray.count;
+    }
+
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuse forIndexPath:indexPath];
+    
+    cell.backgroundColor = [UIColor lightGrayColor];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(cell.frame.size.width / 2, cell.frame.size.height / 2, 80, 20)];
+    label.text = _cityArray[indexPath.row];
+    
+    [cell addSubview:label];
+    
+    return cell;
+    
+}
+
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+//    
+    
+        if (indexPath.section == 0) {
+            
+          
+           //如果有历史返回一中头 没有返回另一种
+            
+            UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
+           
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, header.frame.size.height / 2, 200, 10)];
+            
+            label.text = @"暂无历史搜索记录";
+            label.textColor = [UIColor grayColor];
+            
+            [header addSubview:label];
+            
+            
+            return header;
+            
+            //如果有历史
+            
+            
+            
+            
+            
+            
+        }else{
+            
+            UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
+            
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, header.frame.size.height / 2, 200, 10)];
+            
+            label.text = @"热门搜索";
+            label.textColor = [UIColor grayColor];
+            
+            [header addSubview:label];
+            
+            
+            return header;
+        }
+    
+  
+}
+
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+@end
