@@ -1,5 +1,5 @@
 //
-//  ScenicDetailVC.h
+//  PlaceTempTimeCell.h
 //  HappyTravelShow
 //
 //  Created by Amazing on 15/10/10.
@@ -8,11 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ScenicDetailVC : UIViewController
+@interface PlaceTempTimeCell : UITableViewCell
 
-
-//景区id
-@property (nonatomic,assign) NSInteger scenicID;
-
+- (void)setViewWithIndex:(NSInteger)index strDetail:(NSString *)strDetail;
 
 @end

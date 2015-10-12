@@ -7,10 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		161D35741BCBB55C00DB7F70 /* detailback.png in Resources */ = {isa = PBXBuildFile; fileRef = 161D35731BCBB55C00DB7F70 /* detailback.png */; };
+		161D35761BCBB60A00DB7F70 /* detailshare.png in Resources */ = {isa = PBXBuildFile; fileRef = 161D35751BCBB60A00DB7F70 /* detailshare.png */; };
+		16411AAB1BCB77AF00E7A54C /* shijian.png in Resources */ = {isa = PBXBuildFile; fileRef = 16411AAA1BCB77AF00E7A54C /* shijian.png */; };
 		165D666F1BC5F8CB00BE6567 /* CommonCells.m in Sources */ = {isa = PBXBuildFile; fileRef = 165D666D1BC5F8CB00BE6567 /* CommonCells.m */; };
 		165D66701BC5F8CB00BE6567 /* CommonCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = 165D666E1BC5F8CB00BE6567 /* CommonCells.xib */; };
 		16977EC81BC8B50700026522 /* PhotoBrowserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16977EC71BC8B50700026522 /* PhotoBrowserVC.m */; };
 		16977ECB1BC9254500026522 /* ScenicDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16977ECA1BC9254500026522 /* ScenicDetailVC.m */; };
+		16977ECF1BC9478700026522 /* SDHeaderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16977ECE1BC9478700026522 /* SDHeaderCell.m */; };
+		16977ED21BC949B800026522 /* PlaceTempTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16977ED11BC949B800026522 /* PlaceTempTimeCell.m */; };
 		16988D5E1BC3A994001A1077 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988D5D1BC3A994001A1077 /* main.m */; };
 		16988D641BC3A994001A1077 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988D631BC3A994001A1077 /* ViewController.m */; };
 		16988D671BC3A994001A1077 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 16988D651BC3A994001A1077 /* Main.storyboard */; };
@@ -26,6 +31,8 @@
 		16988DB31BC3F131001A1077 /* FinderMainCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988DB11BC3F131001A1077 /* FinderMainCell.m */; };
 		16988DB71BC40965001A1077 /* HomepageHeaderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16988DB61BC40965001A1077 /* HomepageHeaderModel.m */; };
 		16B224D91BC67365004C125D /* CommonCells+SetModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B224D81BC67365004C125D /* CommonCells+SetModel.m */; };
+		16D13AC81BCA007F0022BC96 /* MealDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D13AC71BCA007F0022BC96 /* MealDetailCell.m */; };
+		16D13ACB1BCA60360022BC96 /* MealTicketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D13ACA1BCA60360022BC96 /* MealTicketCell.m */; };
 		16D8C5D61BC6C681001175AB /* BaiduMapAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D8C5D51BC6C681001175AB /* BaiduMapAPI.framework */; };
 		16D8C5DA1BC6C728001175AB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D8C5D91BC6C728001175AB /* CoreLocation.framework */; };
 		16D8C5DC1BC6C732001175AB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D8C5DB1BC6C732001175AB /* QuartzCore.framework */; };
@@ -67,6 +74,7 @@
 		16DBAC631BC7BE100082A143 /* tianqi.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DBAC621BC7BE100082A143 /* tianqi.png */; };
 		16DBAC661BC7C0A60082A143 /* CurrentPlaceSkyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DBAC651BC7C0A60082A143 /* CurrentPlaceSkyCell.m */; };
 		16DBAC691BC7E6650082A143 /* SpecificWeatherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DBAC681BC7E6650082A143 /* SpecificWeatherCell.m */; };
+		16DCCFB11BCB4CFA00A1420A /* ScenicDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DCCFB01BCB4CFA00A1420A /* ScenicDetailModel.m */; };
 		16DEF3911BC4BBEE00F64A66 /* FinderMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DEF3901BC4BBEE00F64A66 /* FinderMainView.m */; };
 		16EB2DCA1BC6AB7800F51A9F /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 16EB2DC71BC6AB7800F51A9F /* back.png */; };
 		16EB2DCB1BC6AB7800F51A9F /* place.png in Resources */ = {isa = PBXBuildFile; fileRef = 16EB2DC81BC6AB7800F51A9F /* place.png */; };
@@ -150,6 +158,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		161D35731BCBB55C00DB7F70 /* detailback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = detailback.png; sourceTree = "<group>"; };
+		161D35751BCBB60A00DB7F70 /* detailshare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = detailshare.png; sourceTree = "<group>"; };
+		16411AAA1BCB77AF00E7A54C /* shijian.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shijian.png; sourceTree = "<group>"; };
 		165D666C1BC5F8CB00BE6567 /* CommonCells.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonCells.h; sourceTree = "<group>"; };
 		165D666D1BC5F8CB00BE6567 /* CommonCells.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonCells.m; sourceTree = "<group>"; };
 		165D666E1BC5F8CB00BE6567 /* CommonCells.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommonCells.xib; sourceTree = "<group>"; };
@@ -157,6 +168,10 @@
 		16977EC71BC8B50700026522 /* PhotoBrowserVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoBrowserVC.m; sourceTree = "<group>"; };
 		16977EC91BC9254500026522 /* ScenicDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicDetailVC.h; sourceTree = "<group>"; };
 		16977ECA1BC9254500026522 /* ScenicDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicDetailVC.m; sourceTree = "<group>"; };
+		16977ECD1BC9478700026522 /* SDHeaderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDHeaderCell.h; sourceTree = "<group>"; };
+		16977ECE1BC9478700026522 /* SDHeaderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDHeaderCell.m; sourceTree = "<group>"; };
+		16977ED01BC949B800026522 /* PlaceTempTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlaceTempTimeCell.h; sourceTree = "<group>"; };
+		16977ED11BC949B800026522 /* PlaceTempTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlaceTempTimeCell.m; sourceTree = "<group>"; };
 		16988D581BC3A994001A1077 /* HappyTravelShow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyTravelShow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		16988D5C1BC3A994001A1077 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		16988D5D1BC3A994001A1077 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -187,6 +202,10 @@
 		16988DB61BC40965001A1077 /* HomepageHeaderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepageHeaderModel.m; sourceTree = "<group>"; };
 		16B224D71BC67365004C125D /* CommonCells+SetModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CommonCells+SetModel.h"; sourceTree = "<group>"; };
 		16B224D81BC67365004C125D /* CommonCells+SetModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CommonCells+SetModel.m"; sourceTree = "<group>"; };
+		16D13AC61BCA007F0022BC96 /* MealDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MealDetailCell.h; sourceTree = "<group>"; };
+		16D13AC71BCA007F0022BC96 /* MealDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealDetailCell.m; sourceTree = "<group>"; };
+		16D13AC91BCA60360022BC96 /* MealTicketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MealTicketCell.h; sourceTree = "<group>"; };
+		16D13ACA1BCA60360022BC96 /* MealTicketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MealTicketCell.m; sourceTree = "<group>"; };
 		16D8C5D41BC6C09F001175AB /* CommomURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommomURL.h; sourceTree = "<group>"; };
 		16D8C5D51BC6C681001175AB /* BaiduMapAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = BaiduMapAPI.framework; path = HappyTravelShow/Classes/Vendors/BaiduMapAPI.framework; sourceTree = "<group>"; };
 		16D8C5D91BC6C728001175AB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -258,6 +277,8 @@
 		16DBAC651BC7C0A60082A143 /* CurrentPlaceSkyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentPlaceSkyCell.m; sourceTree = "<group>"; };
 		16DBAC671BC7E6650082A143 /* SpecificWeatherCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecificWeatherCell.h; sourceTree = "<group>"; };
 		16DBAC681BC7E6650082A143 /* SpecificWeatherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecificWeatherCell.m; sourceTree = "<group>"; };
+		16DCCFAF1BCB4CFA00A1420A /* ScenicDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicDetailModel.h; sourceTree = "<group>"; };
+		16DCCFB01BCB4CFA00A1420A /* ScenicDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicDetailModel.m; sourceTree = "<group>"; };
 		16DEF38F1BC4BBEE00F64A66 /* FinderMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderMainView.h; sourceTree = "<group>"; };
 		16DEF3901BC4BBEE00F64A66 /* FinderMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderMainView.m; sourceTree = "<group>"; };
 		16EB2DC71BC6AB7800F51A9F /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
@@ -407,6 +428,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		16977ECC1BC9476800026522 /* ScenicDetailCells */ = {
+			isa = PBXGroup;
+			children = (
+				16977ECD1BC9478700026522 /* SDHeaderCell.h */,
+				16977ECE1BC9478700026522 /* SDHeaderCell.m */,
+				16977ED01BC949B800026522 /* PlaceTempTimeCell.h */,
+				16977ED11BC949B800026522 /* PlaceTempTimeCell.m */,
+				16D13AC61BCA007F0022BC96 /* MealDetailCell.h */,
+				16D13AC71BCA007F0022BC96 /* MealDetailCell.m */,
+				16D13AC91BCA60360022BC96 /* MealTicketCell.h */,
+				16D13ACA1BCA60360022BC96 /* MealTicketCell.m */,
+			);
+			path = ScenicDetailCells;
+			sourceTree = "<group>";
+		};
 		16988D4F1BC3A994001A1077 = {
 			isa = PBXGroup;
 			children = (
@@ -530,6 +566,7 @@
 		16988D881BC3C864001A1077 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				16977ECC1BC9476800026522 /* ScenicDetailCells */,
 				16DBAC231BC764920082A143 /* MyselfCells */,
 				16988DB81BC409D0001A1077 /* HomepageCell */,
 				16988DAE1BC3F0FB001A1077 /* CommonCells */,
@@ -931,8 +968,11 @@
 		16EB2DC61BC6AB7800F51A9F /* CommonRes */ = {
 			isa = PBXGroup;
 			children = (
+				161D35731BCBB55C00DB7F70 /* detailback.png */,
+				161D35751BCBB60A00DB7F70 /* detailshare.png */,
 				16EB2DC71BC6AB7800F51A9F /* back.png */,
 				16EB2DC81BC6AB7800F51A9F /* place.png */,
+				16411AAA1BCB77AF00E7A54C /* shijian.png */,
 				16DBAC621BC7BE100082A143 /* tianqi.png */,
 				16EB2DC91BC6AB7800F51A9F /* xiiangqing.png */,
 			);
@@ -946,6 +986,8 @@
 				16EB2DCF1BC6AC0D00F51A9F /* BookModel.m */,
 				16EB2DD01BC6AC0D00F51A9F /* DetailModel.h */,
 				16EB2DD11BC6AC0D00F51A9F /* DetailModel.m */,
+				16DCCFAF1BCB4CFA00A1420A /* ScenicDetailModel.h */,
+				16DCCFB01BCB4CFA00A1420A /* ScenicDetailModel.m */,
 			);
 			path = CommonModel;
 			sourceTree = "<group>";
@@ -1169,6 +1211,7 @@
 				C2F4861D1BC8A7D90017C434 /* zz.png in Resources */,
 				C2F486191BC8A5CA0017C434 /* y.png in Resources */,
 				C2F423C01BC6719500194989 /* location.png in Resources */,
+				161D35761BCBB60A00DB7F70 /* detailshare.png in Resources */,
 				C27358C41BC4F43900771457 /* option_arrow_down@2x.png in Resources */,
 				C209F53E1BC6187D00946675 /* RecommendationCell.xib in Resources */,
 				16988D671BC3A994001A1077 /* Main.storyboard in Resources */,
@@ -1181,6 +1224,7 @@
 				16DB11B41BC42653009D7C7D /* myself.png in Resources */,
 				C25074281BC79E1600F62844 /* 66.png in Resources */,
 				16DB11B61BC4265A009D7C7D /* finder.png in Resources */,
+				161D35741BCBB55C00DB7F70 /* detailback.png in Resources */,
 				16988D6C1BC3A994001A1077 /* LaunchScreen.xib in Resources */,
 				16DB11B01BC42505009D7C7D /* homepage.png in Resources */,
 				C2269A1A1BC5415B009BBAB0 /* hot.png in Resources */,
@@ -1190,6 +1234,7 @@
 				16EB2DCB1BC6AB7800F51A9F /* place.png in Resources */,
 				C25074241BC7631000F62844 /* 55.png in Resources */,
 				16D8C5E61BC6C7EF001175AB /* mapapi.bundle in Resources */,
+				16411AAB1BCB77AF00E7A54C /* shijian.png in Resources */,
 				C27D31A61BC7633D005B049D /* SCNavTabBar.bundle in Resources */,
 				16988D691BC3A994001A1077 /* Images.xcassets in Resources */,
 				C22699F71BC50AB5009BBAB0 /* carouseIFingureCell.xib in Resources */,
@@ -1248,6 +1293,7 @@
 				16DB11991BC4228D009D7C7D /* UIImage+MultiFormat.m in Sources */,
 				16DB119A1BC4228D009D7C7D /* UIImage+WebP.m in Sources */,
 				C27D31971BC7624A005B049D /* CategoryVC.m in Sources */,
+				16977ECF1BC9478700026522 /* SDHeaderCell.m in Sources */,
 				C27D31A71BC7633D005B049D /* SCNavTabBarController.m in Sources */,
 				C27D319A1BC7629B005B049D /* CategoryDetailsVC.m in Sources */,
 				C2269A121BC51911009BBAB0 /* IanScrollImageView.m in Sources */,
@@ -1256,6 +1302,7 @@
 				16DBAC5E1BC7ACE30082A143 /* FindPlaceVC.m in Sources */,
 				16DB11951BC4228D009D7C7D /* SDWebImageManager.m in Sources */,
 				16DB11A71BC4230F009D7C7D /* FinderVC.m in Sources */,
+				16D13ACB1BCA60360022BC96 /* MealTicketCell.m in Sources */,
 				16EB2DEC1BC6AD8300F51A9F /* DetailIntroduceController.m in Sources */,
 				C27359061BC5107C00771457 /* FXBlurView.m in Sources */,
 				16DBAC261BC764B40082A143 /* MyselfHeadCell.m in Sources */,
@@ -1280,6 +1327,7 @@
 				C2ADF1FE1BC66DCA00E39332 /* AroundKindModel.m in Sources */,
 				16EB2DE01BC6ACBB00F51A9F /* HeadCell.m in Sources */,
 				C27359021BC5107C00771457 /* XIGridBackgroundView.m in Sources */,
+				16977ED21BC949B800026522 /* PlaceTempTimeCell.m in Sources */,
 				16DB11931BC4228D009D7C7D /* SDWebImageDownloader.m in Sources */,
 				16988D9D1BC3CCF3001A1077 /* FinderKindModel.m in Sources */,
 				16DBAC691BC7E6650082A143 /* SpecificWeatherCell.m in Sources */,
@@ -1307,6 +1355,7 @@
 				16EB2DE21BC6ACBB00F51A9F /* WebViewCell.m in Sources */,
 				C2269A031BC51023009BBAB0 /* HomepageScenicModel.m in Sources */,
 				C27D31A81BC7633D005B049D /* SCNavTabBar.m in Sources */,
+				16D13AC81BCA007F0022BC96 /* MealDetailCell.m in Sources */,
 				16DB11901BC4228D009D7C7D /* SDImageCache.m in Sources */,
 				C22699F61BC50AB5009BBAB0 /* carouseIFingureCell.m in Sources */,
 				C27358FF1BC5107C00771457 /* XIArrowView.m in Sources */,
@@ -1320,6 +1369,7 @@
 				16B224D91BC67365004C125D /* CommonCells+SetModel.m in Sources */,
 				16EB2DEB1BC6AD8300F51A9F /* ComDetailVC.m in Sources */,
 				16DB11941BC4228D009D7C7D /* SDWebImageDownloaderOperation.m in Sources */,
+				16DCCFB11BCB4CFA00A1420A /* ScenicDetailModel.m in Sources */,
 				16988DB31BC3F131001A1077 /* FinderMainCell.m in Sources */,
 				16DB119C1BC4228D009D7C7D /* UIImageView+WebCache.m in Sources */,
 				16DB119B1BC4228D009D7C7D /* UIImageView+HighlightedWebCache.m in Sources */,
