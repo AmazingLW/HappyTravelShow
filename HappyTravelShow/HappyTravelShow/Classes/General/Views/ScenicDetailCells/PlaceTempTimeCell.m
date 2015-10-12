@@ -49,14 +49,17 @@
     if (index == 0) {
         _typeLabel.text = @"地址";
         _iconImgView.image = [UIImage imageNamed:@"location"];
-    }else if (index == 1){
-        _typeLabel.text = @"天气";
-        _iconImgView.image = [UIImage imageNamed:@"tianqi"];
-    }else{
+    }else if (index == 2){
         _typeLabel.text = @"开放时间";
         _iconImgView.image = [UIImage imageNamed:@"shijian"];
     }
     self.detailLabel.text = strDetail;
+}
+
+- (void)setViewWithObject:(SkyModel *)model{
+    _typeLabel.text = @"天气";
+    _iconImgView.image = [UIImage imageNamed:@"tianqi"];
+    self.detailLabel.text = [NSString stringWithFormat:@"今日%@%@",model.temperature,model.weather];
 }
 
 

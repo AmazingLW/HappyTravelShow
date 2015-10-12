@@ -36,5 +36,9 @@
 //门票URL
 #define URL_ticketData(ticketID) [NSString stringWithFormat:@"http://apiphp.yaochufa.com/portal/scenic/GetMoreProduct430?pageIndex=1&itemId=91&version=4.3.1&id=%ld&system=iOS&pageSize=10&channel=AppStore",ticketID]
 
+//天气url
+#define URL_sky(cityEncoding) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetWeatherInfoByCity?productId=0&version=4.3.1&system=iOS&cityName=%@&channel=AppStore",cityEncoding]
+
+
 
 #endif

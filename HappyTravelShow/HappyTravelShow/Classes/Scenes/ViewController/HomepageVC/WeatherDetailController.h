@@ -10,4 +10,6 @@
 
 @interface WeatherDetailController : UIViewController
 
+@property (nonatomic,strong) NSMutableArray * skyArr;
+
 @end

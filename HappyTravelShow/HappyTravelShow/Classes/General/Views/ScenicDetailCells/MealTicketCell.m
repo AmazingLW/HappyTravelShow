@@ -86,7 +86,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+//    NSLog(@"%ld----",self.ticketArr.count);
     static NSString * cellIdentifier = @"baoCell";
     MealDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     if (cell == nil) {

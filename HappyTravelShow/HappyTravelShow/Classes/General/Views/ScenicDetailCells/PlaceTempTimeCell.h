@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SkyModel.h"
 
 @interface PlaceTempTimeCell : UITableViewCell
 
 - (void)setViewWithIndex:(NSInteger)index strDetail:(NSString *)strDetail;
+
+- (void)setViewWithObject:(SkyModel *)model;
 
 @end

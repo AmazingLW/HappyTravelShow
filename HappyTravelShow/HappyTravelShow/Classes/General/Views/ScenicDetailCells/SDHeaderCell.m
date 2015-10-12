@@ -56,7 +56,9 @@
 }
 
 - (void)backToHomepage{
-    NSLog(@"返回");
+    if (self.delegate && [self.delegate respondsToSelector:@selector(backToHomepage)]) {
+        [self.delegate backToHomepage];
+    }
     
 }
 
