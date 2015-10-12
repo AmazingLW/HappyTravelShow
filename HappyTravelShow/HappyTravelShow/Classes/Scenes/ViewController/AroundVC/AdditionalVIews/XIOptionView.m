@@ -10,15 +10,11 @@
 
 #define kCellHeight 40
 
-
-
 @implementation XIOptionView
 @synthesize selectedIndex=_selectedIndex;
 @synthesize fetchDataSource=_fetchDataSource;
 @synthesize delegate=_delegate;
 @synthesize viewIndex;
-
-
 
 - (void)dealloc
 {
@@ -26,14 +22,11 @@
     self.fetchDataSource = nil;
 }
 
-
 - (instancetype)initWithFrame:(CGRect)frame
 {
     if(self=[super initWithFrame:frame]){
         
         _contentTable = [[UITableView alloc] initWithFrame:self.bounds style:UITableViewStylePlain];
-        
-       // _contentTable.backgroundColor = [UIColor redColor];
         _contentTable.dataSource = self;
         _contentTable.delegate = self;
         _contentTable.separatorColor = [XIColorHelper SeparatorLineColor];
@@ -46,9 +39,6 @@
         if([_contentTable respondsToSelector:@selector(setLayoutMargins:)]){
             _contentTable.layoutMargins = UIEdgeInsetsZero;
         }
-        
-        //添加的
-        [_contentTable reloadData];
     }
     return self;
 }
@@ -100,7 +90,6 @@
     cell.textLabel.highlightedTextColor = [XIColorHelper ThemeColor];
     cell.textLabel.text = _selectionItems[indexPath.row];
     if(_selectedIndex==indexPath.row){
-        //
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         cell.textLabel.highlighted = YES;
     }

@@ -114,17 +114,24 @@
 		C25074281BC79E1600F62844 /* 66.png in Resources */ = {isa = PBXBuildFile; fileRef = C25074271BC79E1600F62844 /* 66.png */; };
 		C250742B1BC7AAEC00F62844 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C250742A1BC7AAEC00F62844 /* LoginController.m */; };
 		C250742E1BC7AB0000F62844 /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = C250742D1BC7AB0000F62844 /* RegisterController.m */; };
+
+		C25F356D1BC7EA2B0064AA04 /* LoginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C25F356C1BC7EA2B0064AA04 /* LoginCell.m */; };
+		C25F35701BC7EED00064AA04 /* password.png in Resources */ = {isa = PBXBuildFile; fileRef = C25F356E1BC7EED00064AA04 /* password.png */; };
+		C25F35711BC7EED00064AA04 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = C25F356F1BC7EED00064AA04 /* user.png */; };
+		C268C9721BC90D230043B541 /* AroundVC2.m in Sources */ = {isa = PBXBuildFile; fileRef = C268C9711BC90D230043B541 /* AroundVC2.m */; };
+		C268C98B1BC90F500043B541 /* XIOptionSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C268C9761BC90F500043B541 /* XIOptionSelectorView.m */; };
+		C268C98C1BC90F500043B541 /* XIOptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C268C9781BC90F500043B541 /* XIOptionView.m */; };
+		C268C98D1BC90F500043B541 /* XIOtherOptionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C268C97A1BC90F500043B541 /* XIOtherOptionsView.m */; };
+		C268C98E1BC90F500043B541 /* XIArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = C268C97D1BC90F500043B541 /* XIArrowView.m */; };
+		C268C98F1BC90F500043B541 /* XIBorderSideView.m in Sources */ = {isa = PBXBuildFile; fileRef = C268C9801BC90F500043B541 /* XIBorderSideView.m */; };
+		C268C9901BC90F500043B541 /* XIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C268C9821BC90F500043B541 /* XIButton.m */; };
+		C268C9911BC90F500043B541 /* XIGridBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = C268C9841BC90F500043B541 /* XIGridBackgroundView.m */; };
+		C268C9921BC90F500043B541 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = C268C9871BC90F500043B541 /* FXBlurView.m */; };
+		C268C9931BC90F500043B541 /* XIColorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C268C98A1BC90F500043B541 /* XIColorHelper.m */; };
+
+
 		C27358C41BC4F43900771457 /* option_arrow_down@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C27358C21BC4F43900771457 /* option_arrow_down@2x.png */; };
 		C27358C51BC4F43900771457 /* option_arrow_up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C27358C31BC4F43900771457 /* option_arrow_up@2x.png */; };
-		C27358FF1BC5107C00771457 /* XIArrowView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358E91BC5107C00771457 /* XIArrowView.m */; };
-		C27359001BC5107C00771457 /* XIBorderSideView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358EC1BC5107C00771457 /* XIBorderSideView.m */; };
-		C27359011BC5107C00771457 /* XIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358EE1BC5107C00771457 /* XIButton.m */; };
-		C27359021BC5107C00771457 /* XIGridBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358F01BC5107C00771457 /* XIGridBackgroundView.m */; };
-		C27359031BC5107C00771457 /* XIOptionSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358F41BC5107C00771457 /* XIOptionSelectorView.m */; };
-		C27359041BC5107C00771457 /* XIOptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358F61BC5107C00771457 /* XIOptionView.m */; };
-		C27359051BC5107C00771457 /* XIOtherOptionsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358F81BC5107C00771457 /* XIOtherOptionsView.m */; };
-		C27359061BC5107C00771457 /* FXBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358FB1BC5107C00771457 /* FXBlurView.m */; };
-		C27359071BC5107C00771457 /* XIColorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C27358FE1BC5107C00771457 /* XIColorHelper.m */; };
 		C27D31971BC7624A005B049D /* CategoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C27D31961BC7624A005B049D /* CategoryVC.m */; };
 		C27D319A1BC7629B005B049D /* CategoryDetailsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C27D31991BC7629B005B049D /* CategoryDetailsVC.m */; };
 		C27D31A61BC7633D005B049D /* SCNavTabBar.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C27D319D1BC7633D005B049D /* SCNavTabBar.bundle */; };
@@ -341,28 +348,36 @@
 		C250742A1BC7AAEC00F62844 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
 		C250742C1BC7AB0000F62844 /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
 		C250742D1BC7AB0000F62844 /* RegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterController.m; sourceTree = "<group>"; };
+
+		C25F356B1BC7EA2B0064AA04 /* LoginCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginCell.h; sourceTree = "<group>"; };
+		C25F356C1BC7EA2B0064AA04 /* LoginCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginCell.m; sourceTree = "<group>"; };
+		C25F356E1BC7EED00064AA04 /* password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = password.png; sourceTree = "<group>"; };
+		C25F356F1BC7EED00064AA04 /* user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = user.png; sourceTree = "<group>"; };
+		C268C9701BC90D230043B541 /* AroundVC2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundVC2.h; sourceTree = "<group>"; };
+		C268C9711BC90D230043B541 /* AroundVC2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AroundVC2.m; sourceTree = "<group>"; };
+		C268C9741BC90F500043B541 /* XIDropdownlistViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIDropdownlistViewProtocol.h; sourceTree = "<group>"; };
+		C268C9751BC90F500043B541 /* XIOptionSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIOptionSelectorView.h; sourceTree = "<group>"; };
+		C268C9761BC90F500043B541 /* XIOptionSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIOptionSelectorView.m; sourceTree = "<group>"; };
+		C268C9771BC90F500043B541 /* XIOptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIOptionView.h; sourceTree = "<group>"; };
+		C268C9781BC90F500043B541 /* XIOptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIOptionView.m; sourceTree = "<group>"; };
+		C268C9791BC90F500043B541 /* XIOtherOptionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIOtherOptionsView.h; sourceTree = "<group>"; };
+		C268C97A1BC90F500043B541 /* XIOtherOptionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIOtherOptionsView.m; sourceTree = "<group>"; };
+		C268C97C1BC90F500043B541 /* XIArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIArrowView.h; sourceTree = "<group>"; };
+		C268C97D1BC90F500043B541 /* XIArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIArrowView.m; sourceTree = "<group>"; };
+		C268C97E1BC90F500043B541 /* XIBackgroundViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIBackgroundViewProtocol.h; sourceTree = "<group>"; };
+		C268C97F1BC90F500043B541 /* XIBorderSideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIBorderSideView.h; sourceTree = "<group>"; };
+		C268C9801BC90F500043B541 /* XIBorderSideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIBorderSideView.m; sourceTree = "<group>"; };
+		C268C9811BC90F500043B541 /* XIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIButton.h; sourceTree = "<group>"; };
+		C268C9821BC90F500043B541 /* XIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIButton.m; sourceTree = "<group>"; };
+		C268C9831BC90F500043B541 /* XIGridBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIGridBackgroundView.h; sourceTree = "<group>"; };
+		C268C9841BC90F500043B541 /* XIGridBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIGridBackgroundView.m; sourceTree = "<group>"; };
+		C268C9861BC90F500043B541 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
+		C268C9871BC90F500043B541 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
+		C268C9891BC90F500043B541 /* XIColorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIColorHelper.h; sourceTree = "<group>"; };
+		C268C98A1BC90F500043B541 /* XIColorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIColorHelper.m; sourceTree = "<group>"; };
+
 		C27358C21BC4F43900771457 /* option_arrow_down@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "option_arrow_down@2x.png"; sourceTree = "<group>"; };
 		C27358C31BC4F43900771457 /* option_arrow_up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "option_arrow_up@2x.png"; sourceTree = "<group>"; };
-		C27358E81BC5107C00771457 /* XIArrowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIArrowView.h; sourceTree = "<group>"; };
-		C27358E91BC5107C00771457 /* XIArrowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIArrowView.m; sourceTree = "<group>"; };
-		C27358EA1BC5107C00771457 /* XIBackgroundViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIBackgroundViewProtocol.h; sourceTree = "<group>"; };
-		C27358EB1BC5107C00771457 /* XIBorderSideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIBorderSideView.h; sourceTree = "<group>"; };
-		C27358EC1BC5107C00771457 /* XIBorderSideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIBorderSideView.m; sourceTree = "<group>"; };
-		C27358ED1BC5107C00771457 /* XIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIButton.h; sourceTree = "<group>"; };
-		C27358EE1BC5107C00771457 /* XIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIButton.m; sourceTree = "<group>"; };
-		C27358EF1BC5107C00771457 /* XIGridBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIGridBackgroundView.h; sourceTree = "<group>"; };
-		C27358F01BC5107C00771457 /* XIGridBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIGridBackgroundView.m; sourceTree = "<group>"; };
-		C27358F21BC5107C00771457 /* XIDropdownlistViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIDropdownlistViewProtocol.h; sourceTree = "<group>"; };
-		C27358F31BC5107C00771457 /* XIOptionSelectorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIOptionSelectorView.h; sourceTree = "<group>"; };
-		C27358F41BC5107C00771457 /* XIOptionSelectorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIOptionSelectorView.m; sourceTree = "<group>"; };
-		C27358F51BC5107C00771457 /* XIOptionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIOptionView.h; sourceTree = "<group>"; };
-		C27358F61BC5107C00771457 /* XIOptionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIOptionView.m; sourceTree = "<group>"; };
-		C27358F71BC5107C00771457 /* XIOtherOptionsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIOtherOptionsView.h; sourceTree = "<group>"; };
-		C27358F81BC5107C00771457 /* XIOtherOptionsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIOtherOptionsView.m; sourceTree = "<group>"; };
-		C27358FA1BC5107C00771457 /* FXBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXBlurView.h; sourceTree = "<group>"; };
-		C27358FB1BC5107C00771457 /* FXBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXBlurView.m; sourceTree = "<group>"; };
-		C27358FD1BC5107C00771457 /* XIColorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIColorHelper.h; sourceTree = "<group>"; };
-		C27358FE1BC5107C00771457 /* XIColorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XIColorHelper.m; sourceTree = "<group>"; };
 		C27359081BC5154E00771457 /* AroundURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundURL.h; sourceTree = "<group>"; };
 		C27D31951BC7624A005B049D /* CategoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryVC.h; sourceTree = "<group>"; };
 		C27D31961BC7624A005B049D /* CategoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoryVC.m; sourceTree = "<group>"; };
@@ -741,12 +756,14 @@
 		16988DBE1BC40AA4001A1077 /* AroundVC */ = {
 			isa = PBXGroup;
 			children = (
-				C27358E71BC5107C00771457 /* AdditionalVIews */,
-				C27358F11BC5107C00771457 /* DropdownListView */,
-				C27358F91BC5107C00771457 /* FXBlurView */,
-				C27358FC1BC5107C00771457 /* Utils */,
+				C268C9731BC90F500043B541 /* AdditionalVIews */,
+				C268C97B1BC90F500043B541 /* DropdownListView */,
+				C268C9851BC90F500043B541 /* FXBlurView */,
+				C268C9881BC90F500043B541 /* Utils */,
 				16DB11A21BC42303009D7C7D /* AroundVC.h */,
 				16DB11A31BC42303009D7C7D /* AroundVC.m */,
+				C268C9701BC90D230043B541 /* AroundVC2.h */,
+				C268C9711BC90D230043B541 /* AroundVC2.m */,
 			);
 			path = AroundVC;
 			sourceTree = "<group>";
@@ -1018,50 +1035,50 @@
 			path = IanScrollViewLib;
 			sourceTree = "<group>";
 		};
-		C27358E71BC5107C00771457 /* AdditionalVIews */ = {
+		C268C9731BC90F500043B541 /* AdditionalVIews */ = {
 			isa = PBXGroup;
 			children = (
-				C27358E81BC5107C00771457 /* XIArrowView.h */,
-				C27358E91BC5107C00771457 /* XIArrowView.m */,
-				C27358EA1BC5107C00771457 /* XIBackgroundViewProtocol.h */,
-				C27358EB1BC5107C00771457 /* XIBorderSideView.h */,
-				C27358EC1BC5107C00771457 /* XIBorderSideView.m */,
-				C27358ED1BC5107C00771457 /* XIButton.h */,
-				C27358EE1BC5107C00771457 /* XIButton.m */,
-				C27358EF1BC5107C00771457 /* XIGridBackgroundView.h */,
-				C27358F01BC5107C00771457 /* XIGridBackgroundView.m */,
+				C268C9741BC90F500043B541 /* XIDropdownlistViewProtocol.h */,
+				C268C9751BC90F500043B541 /* XIOptionSelectorView.h */,
+				C268C9761BC90F500043B541 /* XIOptionSelectorView.m */,
+				C268C9771BC90F500043B541 /* XIOptionView.h */,
+				C268C9781BC90F500043B541 /* XIOptionView.m */,
+				C268C9791BC90F500043B541 /* XIOtherOptionsView.h */,
+				C268C97A1BC90F500043B541 /* XIOtherOptionsView.m */,
 			);
 			path = AdditionalVIews;
 			sourceTree = "<group>";
 		};
-		C27358F11BC5107C00771457 /* DropdownListView */ = {
+		C268C97B1BC90F500043B541 /* DropdownListView */ = {
 			isa = PBXGroup;
 			children = (
-				C27358F21BC5107C00771457 /* XIDropdownlistViewProtocol.h */,
-				C27358F31BC5107C00771457 /* XIOptionSelectorView.h */,
-				C27358F41BC5107C00771457 /* XIOptionSelectorView.m */,
-				C27358F51BC5107C00771457 /* XIOptionView.h */,
-				C27358F61BC5107C00771457 /* XIOptionView.m */,
-				C27358F71BC5107C00771457 /* XIOtherOptionsView.h */,
-				C27358F81BC5107C00771457 /* XIOtherOptionsView.m */,
+				C268C97C1BC90F500043B541 /* XIArrowView.h */,
+				C268C97D1BC90F500043B541 /* XIArrowView.m */,
+				C268C97E1BC90F500043B541 /* XIBackgroundViewProtocol.h */,
+				C268C97F1BC90F500043B541 /* XIBorderSideView.h */,
+				C268C9801BC90F500043B541 /* XIBorderSideView.m */,
+				C268C9811BC90F500043B541 /* XIButton.h */,
+				C268C9821BC90F500043B541 /* XIButton.m */,
+				C268C9831BC90F500043B541 /* XIGridBackgroundView.h */,
+				C268C9841BC90F500043B541 /* XIGridBackgroundView.m */,
 			);
 			path = DropdownListView;
 			sourceTree = "<group>";
 		};
-		C27358F91BC5107C00771457 /* FXBlurView */ = {
+		C268C9851BC90F500043B541 /* FXBlurView */ = {
 			isa = PBXGroup;
 			children = (
-				C27358FA1BC5107C00771457 /* FXBlurView.h */,
-				C27358FB1BC5107C00771457 /* FXBlurView.m */,
+				C268C9861BC90F500043B541 /* FXBlurView.h */,
+				C268C9871BC90F500043B541 /* FXBlurView.m */,
 			);
 			path = FXBlurView;
 			sourceTree = "<group>";
 		};
-		C27358FC1BC5107C00771457 /* Utils */ = {
+		C268C9881BC90F500043B541 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				C27358FD1BC5107C00771457 /* XIColorHelper.h */,
-				C27358FE1BC5107C00771457 /* XIColorHelper.m */,
+				C268C9891BC90F500043B541 /* XIColorHelper.h */,
+				C268C98A1BC90F500043B541 /* XIColorHelper.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1269,29 +1286,36 @@
 			files = (
 				16EB2DD31BC6AC0D00F51A9F /* DetailModel.m in Sources */,
 				C2269A061BC51052009BBAB0 /* HomepagePackageModel.m in Sources */,
+				C268C9901BC90F500043B541 /* XIButton.m in Sources */,
 				16DB11991BC4228D009D7C7D /* UIImage+MultiFormat.m in Sources */,
 				16DB119A1BC4228D009D7C7D /* UIImage+WebP.m in Sources */,
 				C27D31971BC7624A005B049D /* CategoryVC.m in Sources */,
+
+				C268C98B1BC90F500043B541 /* XIOptionSelectorView.m in Sources */,
+
 				C228D7971BC9079B009E383A /* FavoriteController.m in Sources */,
+
 				C27D31A71BC7633D005B049D /* SCNavTabBarController.m in Sources */,
 				C27D319A1BC7629B005B049D /* CategoryDetailsVC.m in Sources */,
 				C2269A121BC51911009BBAB0 /* IanScrollImageView.m in Sources */,
 				C228D7A01BC93129009E383A /* WeatherDetailController.m in Sources */,
 				16988DAC1BC3D118001A1077 /* ComPackageModel.m in Sources */,
+				C268C98C1BC90F500043B541 /* XIOptionView.m in Sources */,
 				165D666F1BC5F8CB00BE6567 /* CommonCells.m in Sources */,
 				16DBAC5E1BC7ACE30082A143 /* FindPlaceVC.m in Sources */,
 				16DB11951BC4228D009D7C7D /* SDWebImageManager.m in Sources */,
 				16DB11A71BC4230F009D7C7D /* FinderVC.m in Sources */,
+				C268C98E1BC90F500043B541 /* XIArrowView.m in Sources */,
 				16EB2DEC1BC6AD8300F51A9F /* DetailIntroduceController.m in Sources */,
-				C27359061BC5107C00771457 /* FXBlurView.m in Sources */,
 				16DBAC261BC764B40082A143 /* MyselfHeadCell.m in Sources */,
-				C27359051BC5107C00771457 /* XIOtherOptionsView.m in Sources */,
-				C27359011BC5107C00771457 /* XIButton.m in Sources */,
-				C27359041BC5107C00771457 /* XIOptionView.m in Sources */,
 				C2ADF2011BC681F100E39332 /* LPLabel.m in Sources */,
 				16DBAC661BC7C0A60082A143 /* CurrentPlaceSkyCell.m in Sources */,
 				16DEF3911BC4BBEE00F64A66 /* FinderMainView.m in Sources */,
+
+				C268C9931BC90F500043B541 /* XIColorHelper.m in Sources */,
+
 				C2ECC67A1BC9141400115824 /* HomepageCityModel.m in Sources */,
+
 				C250742B1BC7AAEC00F62844 /* LoginController.m in Sources */,
 				16EB2DD21BC6AC0D00F51A9F /* BookModel.m in Sources */,
 				16977EC81BC8B50700026522 /* PhotoBrowserVC.m in Sources */,
@@ -1300,14 +1324,17 @@
 				16988D641BC3A994001A1077 /* ViewController.m in Sources */,
 				C228D79D1BC91003009E383A /* WeatherDetailCell.m in Sources */,
 				16DB11621BC41D45009D7C7D /* AroundHelper.m in Sources */,
+				C268C98F1BC90F500043B541 /* XIBorderSideView.m in Sources */,
 				16988DA91BC3D100001A1077 /* ComProductModel.m in Sources */,
 				16EB2DE61BC6AD0A00F51A9F /* ComDetailHelper.m in Sources */,
 				16DB11A41BC42303009D7C7D /* AroundVC.m in Sources */,
 				C209F53D1BC6187D00946675 /* RecommendationCell.m in Sources */,
 				C2ADF1FE1BC66DCA00E39332 /* AroundKindModel.m in Sources */,
 				16EB2DE01BC6ACBB00F51A9F /* HeadCell.m in Sources */,
+
 				C27359021BC5107C00771457 /* XIGridBackgroundView.m in Sources */,
 				C228D79A1BC90AB0009E383A /* browsedController.m in Sources */,
+
 				16DB11931BC4228D009D7C7D /* SDWebImageDownloader.m in Sources */,
 				16988D9D1BC3CCF3001A1077 /* FinderKindModel.m in Sources */,
 				16DBAC691BC7E6650082A143 /* SpecificWeatherCell.m in Sources */,
@@ -1315,17 +1342,24 @@
 				16DBAC291BC764DC0082A143 /* MyselfContentCell.m in Sources */,
 				C2269A171BC53FC9009BBAB0 /* HotScenicCell.m in Sources */,
 				C250742E1BC7AB0000F62844 /* RegisterController.m in Sources */,
+				C268C9911BC90F500043B541 /* XIGridBackgroundView.m in Sources */,
 				C2F423BE1BC64DE600194989 /* FindMainDetaiCell.m in Sources */,
+				C268C9921BC90F500043B541 /* FXBlurView.m in Sources */,
 				16988DA61BC3CED3001A1077 /* AroundMainModel.m in Sources */,
 				C22699FB1BC50AE0009BBAB0 /* CategoriesCell.m in Sources */,
-				C27359001BC5107C00771457 /* XIBorderSideView.m in Sources */,
 				16988D5E1BC3A994001A1077 /* main.m in Sources */,
 				16DB118E1BC4228D009D7C7D /* MKAnnotationView+WebCache.m in Sources */,
+				C268C9721BC90D230043B541 /* AroundVC2.m in Sources */,
 				C27D31A91BC7633D005B049D /* SCPopView.m in Sources */,
 				16988DB71BC40965001A1077 /* HomepageHeaderModel.m in Sources */,
 				16DB118F1BC4228D009D7C7D /* NSData+ImageContentType.m in Sources */,
+
+				C25F356D1BC7EA2B0064AA04 /* LoginCell.m in Sources */,
+
 				C27359031BC5107C00771457 /* XIOptionSelectorView.m in Sources */,
+
 				16DB11981BC4228D009D7C7D /* UIImage+GIF.m in Sources */,
+				C268C98D1BC90F500043B541 /* XIOtherOptionsView.m in Sources */,
 				16EB2DDF1BC6ACBB00F51A9F /* CommentCell.m in Sources */,
 				16DB11971BC4228D009D7C7D /* UIButton+WebCache.m in Sources */,
 				16988D9A1BC3CCAF001A1077 /* FinderMainModel.m in Sources */,
@@ -1337,8 +1371,6 @@
 				C27D31A81BC7633D005B049D /* SCNavTabBar.m in Sources */,
 				16DB11901BC4228D009D7C7D /* SDImageCache.m in Sources */,
 				C22699F61BC50AB5009BBAB0 /* carouseIFingureCell.m in Sources */,
-				C27358FF1BC5107C00771457 /* XIArrowView.m in Sources */,
-				C27359071BC5107C00771457 /* XIColorHelper.m in Sources */,
 				C2269A0A1BC512B1009BBAB0 /* PackageCell.m in Sources */,
 				C209F5411BC690AB00946675 /* CarouselWebViewVC.m in Sources */,
 				16DB11911BC4228D009D7C7D /* SDWebImageCompat.m in Sources */,
