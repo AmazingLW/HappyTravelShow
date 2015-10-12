@@ -11,7 +11,6 @@
 #import "AroundVC.h"
 #import "FinderVC.h"
 #import "MyselfVC.h"
-#import "ScenicDetailVC.h"
 
 
 @interface AppDelegate ()
@@ -56,7 +55,7 @@
     
     
 
-    self.window.rootViewController = [ScenicDetailVC new];
+    self.window.rootViewController = rootController;
 
     
 

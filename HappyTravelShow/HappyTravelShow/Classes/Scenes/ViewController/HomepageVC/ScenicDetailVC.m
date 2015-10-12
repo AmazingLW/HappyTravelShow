@@ -60,7 +60,7 @@
 }
 
 - (void)requestData{
-    self.scenicID = 1482;
+
     [[ComDetailHelper new] requestBookData:URL_ScenicDetail(self.scenicID) type:@"scenidDetailData" block:^(NSMutableArray *arr) {
         self.scenicArr = arr;
         [self.tableView reloadData];
