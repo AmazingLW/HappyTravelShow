@@ -21,7 +21,7 @@
 #import "CategoryVC.h"
 #import "ComDetailVC.h"
 #import "HomepageScenicModel.h"
-
+#define kWidth [UIScreen mainScreen].bounds.size.width
 
 @interface HomepageVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,CityDelegate>
 @property(nonatomic,strong)UICollectionView*collection;
@@ -158,7 +158,7 @@
         
         carouseIFingureCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"carousel" forIndexPath:indexPath];
 //        if (_CarouseArray.count != 0) {
-            IanScrollView *scrollView = [[IanScrollView alloc] initWithFrame:CGRectMake(0,0,375,120)];
+            IanScrollView *scrollView = [[IanScrollView alloc] initWithFrame:CGRectMake(0,0,kWidth,120)];
         
             scrollView.slideImagesArray = _ScrollArr;
             scrollView.ianEcrollViewSelectAction = ^(NSInteger i){
@@ -246,20 +246,20 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section ==0) {
-        return CGSizeMake(375, 120);
+        return CGSizeMake(kWidth, 120);
     }else if (indexPath.section ==1) {
-        return CGSizeMake(70, 60);
+        return CGSizeMake(kWidth/5, 60);
     }else if (indexPath.section ==2){
-        return CGSizeMake(187.5, 60);
+        return CGSizeMake(kWidth/2, 60);
         
     }else if (indexPath.section ==3){
-        return CGSizeMake(375, 100);
+        return CGSizeMake(kWidth, 100);
         
     }else if (indexPath.section ==4){
-        return CGSizeMake(365, 200);
+        return CGSizeMake(kWidth-10, 200);
         
     }else if (indexPath.section ==5){
-        return CGSizeMake(375, 30);
+        return CGSizeMake(kWidth, 30);
         
     }else{
         
