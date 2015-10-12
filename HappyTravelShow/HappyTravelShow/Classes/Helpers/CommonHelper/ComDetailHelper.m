@@ -11,6 +11,7 @@
 #import "BookModel.h"
 #import "DetailModel.h"
 #import "ScenicDetailModel.h"
+#import "SkyModel.h"
 
 
 @interface ComDetailHelper ()
@@ -23,6 +24,8 @@
 
 @property (nonatomic,strong) NSMutableArray * ticketDetailArr;
 
+@property (nonatomic,strong) NSMutableArray * skyDetailArr;
+
 @end
 
 @implementation ComDetailHelper
@@ -30,6 +33,7 @@
 
 
 - (void)requestBookData:(NSString *)strUrl type:(NSString *)strType block:(void (^)(NSMutableArray *arr))block{
+    NSLog(@"%@--",strUrl);
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
@@ -69,6 +73,14 @@
                 [model setValuesForKeysWithDictionary:dict];
                 [_ticketDetailArr addObject:model];
                 }
+            }else if ([strType isEqualToString:@"cityWeatherData"]){
+                _skyDetailArr = [NSMutableArray array];
+                NSDictionary *dict = responseObject[@"data"];
+                NSArray *arr = dict[@"results"];
+                NSDictionary *d = arr.firstObject;
+                SkyModel *model = [SkyModel new];
+                [model setValuesForKeysWithDictionary:d];
+                [_skyDetailArr addObject:model];
             }
             
             
@@ -81,6 +93,8 @@
                     block(self.scenicDetailArr);
                 }else if ([strType isEqualToString:@"ticketDetailData"]){
                     block(self.ticketDetailArr);
+                }else if ([strType isEqualToString:@"cityWeatherData"]){
+                    block(self.skyDetailArr);
                 }
                 
             });

@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol BackandShareProtocal <NSObject>
+
+- (void)backToHomepage;
+
+
+@end
+
+
 @interface SDHeaderCell : UITableViewCell
+
+@property (nonatomic,assign) id<BackandShareProtocal> delegate;
 
 - (void)setViewWithTitle:(NSString *)strTitle coverPic:(NSString *)coverPic;
 

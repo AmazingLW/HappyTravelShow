@@ -14,9 +14,12 @@
 #import "ComDetailHelper.h"
 #import "HomepageURL.h"
 #import "ScenicDetailModel.h"
+#import "DetailplaceMapVC.h"
+#import "WeatherDetailController.h"
+#import "SkyModel.h"
 
 
-@interface ScenicDetailVC ()<UITableViewDelegate,UITableViewDataSource,openScrollProtocal>
+@interface ScenicDetailVC ()<UITableViewDelegate,UITableViewDataSource,openScrollProtocal,BackandShareProtocal>
 {
     UIView *_backView;
 }
@@ -35,6 +38,9 @@
 
 //接收门票信息的数组
 @property (nonatomic,strong) NSMutableArray * ticketArr;
+
+//接收天气信息的数组
+@property (nonatomic,strong) NSMutableArray * skyArr;
 
 
 @end
@@ -66,8 +72,16 @@
         [self.tableView reloadData];
     }];
     
+#warning  ---- 需要传itemid
     [[ComDetailHelper new] requestBookData:URL_ticketData(self.scenicID) type:@"ticketDetailData" block:^(NSMutableArray *arr) {
         self.ticketArr = arr;
+        [self.tableView reloadData];
+    }];
+    
+    NSString *str = [@"北京" stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    [[ComDetailHelper new] requestBookData:URL_sky(str) type:@"cityWeatherData" block:^(NSMutableArray *arr) {
+        self.skyArr = arr;
         [self.tableView reloadData];
     }];
     
@@ -156,7 +170,8 @@
             ScenicDetailModel *model = self.scenicArr.firstObject;
             [cell setViewWithTitle:model.scenicName coverPic:model.coverPic];
         }
-        
+        cell.delegate = self;
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else if (indexPath.section == 1){
         static NSString * cellIdentifier = @"placeTempCell";
@@ -169,13 +184,17 @@
            ScenicDetailModel *model = self.scenicArr.firstObject;
             if (indexPath.row == 0) {
                 [cell setViewWithIndex:indexPath.row strDetail:model.address];
-            }else if (indexPath.row == 1){
-                //[cell setViewWithIndex:indexPath.row strDetail:<#(NSString *)#>]
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //显示最右边的箭头
+            }else if (indexPath.row == 1 && self.skyArr.count != 0){
+                SkyModel *model = self.skyArr[0];
+                SkyModel *skyModel = model.skyArr[0];
+                [cell setViewWithObject:skyModel];
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //显示最右边的箭头
             }else{
                 [cell setViewWithIndex:indexPath.row strDetail:model.openTime];
             }
         }
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
         
     }else if (indexPath.section == 2){
@@ -190,7 +209,7 @@
             ScenicDetailModel *baokuanModel = model.baokuanArr.firstObject;
             [cell setViewWithModel:baokuanModel];
         }
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
         
     }else if (indexPath.section == 3){
@@ -202,6 +221,8 @@
         
         cell.imageView.image = [UIImage imageNamed:@"aa"];
         cell.textLabel.text = @"景区介绍";
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator; //显示最右边的箭头
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
         
     }else{
@@ -230,6 +251,32 @@
     }
     
 }
+
+
+#pragma mark ----点击cell跳转-----
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            //地图页
+            DetailplaceMapVC * detailVC = [DetailplaceMapVC new];
+            ScenicDetailModel *model = self.scenicArr.firstObject;
+            detailVC.longitude = [model.longitude floatValue];
+            detailVC.latitude = [model.latitude floatValue];
+            detailVC.placeTitle = model.address;
+            detailVC.vcTitle = model.scenicName;
+            UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:detailVC];
+            
+            [self presentViewController:rootNC animated:YES completion:nil];
+        }else if (indexPath.row == 1){
+            WeatherDetailController *weatherVC = [WeatherDetailController new];
+            UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:weatherVC];
+            weatherVC.skyArr = self.skyArr;
+            [self presentViewController:rootNC animated:YES completion:nil];
+        }
+        
+    }
+}
+
 
 
 - (void)packageAction{
@@ -299,6 +346,17 @@
         _ticketArr = [NSMutableArray array];
     }
     return _ticketArr;
+}
+
+- (NSMutableArray *)skyArr{
+    if (_skyArr == nil) {
+        _skyArr = [NSMutableArray array];
+    }
+    return _skyArr;
+}
+
+- (void)backToHomepage{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning {

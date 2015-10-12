@@ -14,5 +14,7 @@
 //景区id
 @property (nonatomic,assign) NSInteger scenicID;
 
+//城市
+@property (nonatomic,strong) NSString * cityName;
 
 @end

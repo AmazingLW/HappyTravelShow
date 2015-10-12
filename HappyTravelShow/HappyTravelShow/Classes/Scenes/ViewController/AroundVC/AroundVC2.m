@@ -17,11 +17,11 @@
 #import "FinderKindModel.h"
 #import "CommonCells+SetModel.h"
 #import "ComDetailVC.h"
-
+#import "SearchVC.h"
 #import "AroundVC2.h"
 
 
-@interface AroundVC2 ()<XIDropdownlistViewProtocol,UITableViewDelegate,UITableViewDataSource>
+@interface AroundVC2 ()<XIDropdownlistViewProtocol,UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate>
 {
     XIOptionSelectorView *ddltView;
 }
@@ -78,9 +78,44 @@ static NSString *const reuse = @"cell";
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         UIImage *image = [UIImage imageNamed:@"around"];
         self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"周边" image:image tag:1002];
+       UITextField *textfield = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 20, 29)];
+         textfield.enabled = NO;
+        textfield.placeholder = @"搜索目的地/景点/酒店";
+        textfield.backgroundColor = [UIColor lightGrayColor];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
+        
+        label.text = @"🔍";
+        // label.backgroundColor = [UIColor redColor];
+        textfield.rightView = label;
+        textfield.rightViewMode = UITextFieldViewModeAlways;
+        self.navigationItem.titleView = textfield;
+        
+        
+        UIView *a = [[UIView alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width - 20, 29)];
+        a.backgroundColor = [UIColor redColor];
+        [a addSubview:textfield];
+        self.navigationItem.titleView = a;
+        
+        
+        
+        //textfield添加手势 跳转
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(skip:)];
+      //  tap.numberOfTapsRequired = 1;
+        
     
+        [a addGestureRecognizer:tap];
+        
     }
     return self;
+}
+
+
+- (void)skip:(UITapGestureRecognizer *)tap{
+    NSLog(@"---");
+    SearchVC *seVC = [SearchVC new];
+    [self.navigationController showViewController:seVC sender:nil];
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -113,7 +148,7 @@ static NSString *const reuse = @"cell";
     }
     
     //tableview 创建
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height - 40) style:UITableViewStylePlain];
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -367,10 +402,27 @@ static NSString *const reuse = @"cell";
     
     [[AroundHelper new] requestDataFromURLStringWithScenicName:scenicName sort:sort tagName:tagName cityName:cityName finish:^(NSArray *array) {
         
-        
         _allScenic = [array mutableCopy];
-        [self.tableView reloadData];
         
+//        UIView *aview = [[UIView alloc] initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height - 40)];
+//        
+//        aview.backgroundColor = [UIColor whiteColor];
+//        
+//        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2, 200, 30)];
+//        label.text = @"对不起我们正在努力开拓产品.....";
+//        [aview addSubview:label];
+//        
+//        
+//        if (_allScenic == nil){
+//            
+//            [self.view insertSubview:aview aboveSubview:self.tableView];
+//        
+//        }else{
+//            [aview removeFromSuperview];
+            
+        
+        [self.tableView reloadData];
+      
     }];
 }
 
