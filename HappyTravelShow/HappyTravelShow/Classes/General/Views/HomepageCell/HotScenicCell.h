@@ -20,11 +20,21 @@
 - (void)getDetailControllerB15;
 - (void)getDetailControllerB16;
 
+- (void)getDetailControllerB8;
+- (void)getDetailControllerB7;
+- (void)getDetailControllerB1;
+- (void)getDetailControllerB2;
+- (void)getDetailControllerB3;
+- (void)getDetailControllerB4;
+- (void)getDetailControllerB5;
+- (void)getDetailControllerB6;
+
 @end
 
 
 @interface HotScenicCell : UICollectionViewCell
-@property(nonatomic,strong)UIView*view;
+@property(nonatomic,strong)UIView*view,*OrangView;
+@property(nonatomic,strong)UIButton*Button,*buttonCity;
 
 
 @property(nonatomic,strong)UIButton*b1,*b2,*b3,*b4,*b5,*b6,*b7,*b8,*b9,*b10,*b11,*b12,*b13,*b14,*b15,*b16;

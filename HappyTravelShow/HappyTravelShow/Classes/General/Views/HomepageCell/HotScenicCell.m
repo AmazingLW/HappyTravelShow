@@ -24,36 +24,32 @@
 
 -(void)addAllViews
 {
-
-    UIButton*button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(0,0,kWidth/2, 40);
-    [button setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
-    button.titleLabel.font = [UIFont systemFontOfSize:15];
+    self.contentView.backgroundColor =[UIColor whiteColor];
+    self.backgroundColor =[UIColor whiteColor];
+    self.Button = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.Button.frame = CGRectMake(0,0,kWidth/2, 40);
+    [self.Button setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    [self.Button setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
+    self.Button.titleLabel.font = [UIFont systemFontOfSize:15];
     //普通状态下
-    [button setTitle:@"热门景区" forState:UIControlStateNormal];
+    [self.Button setTitle:@"热门景区" forState:UIControlStateNormal];
     //设置偏移量
     //[button setTitleShadowOffset:CGSizeMake(5, 5)];
     //高亮状态下
     //[button setTitle:@"热门景区" forState:UIControlStateHighlighted];
-    [button addTarget:self action:@selector(jumpWithhot) forControlEvents:UIControlEventTouchUpInside];
-    [button setImage:[UIImage imageNamed:@"hot"] forState:UIControlStateNormal];
+    [self.Button addTarget:self action:@selector(jumpWithhot) forControlEvents:UIControlEventTouchUpInside];
+    [self.Button setImage:[UIImage imageNamed:@"hot"] forState:UIControlStateNormal];
    
     
     
-    UIButton*buttonCity = [UIButton buttonWithType:UIButtonTypeCustom];
-    buttonCity.frame = CGRectMake(kWidth/2,0,kWidth/2, 40);
-    [buttonCity setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
-    [buttonCity setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
-    buttonCity.titleLabel.font = [UIFont systemFontOfSize:15];
-    //普通状态下
-    [buttonCity setTitle:@"周边城市" forState:UIControlStateNormal];
-    //设置偏移量
-    //[button setTitleShadowOffset:CGSizeMake(5, 5)];
-    //高亮状态下
-    //[buttonCity setTitle:@"周边城市" forState:UIControlStateHighlighted];
-    [buttonCity setImage:[UIImage imageNamed:@"city"] forState:UIControlStateNormal];
-    [buttonCity addTarget:self action:@selector(jumpWithCity) forControlEvents:UIControlEventTouchUpInside];
+    self.buttonCity = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.buttonCity.frame = CGRectMake(kWidth/2,0,kWidth/2, 40);
+    [self.buttonCity setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+    [self.buttonCity setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
+    self.buttonCity.titleLabel.font = [UIFont systemFontOfSize:15];
+    [self.buttonCity setTitle:@"周边城市" forState:UIControlStateNormal];
+    [self.buttonCity setImage:[UIImage imageNamed:@"city"] forState:UIControlStateNormal];
+    [self.buttonCity addTarget:self action:@selector(jumpWithCity) forControlEvents:UIControlEventTouchUpInside];
     
     _view =[[UIView alloc]initWithFrame:CGRectMake(0, 40, kWidth*2, 60)];
     self.view.userInteractionEnabled = YES;
@@ -165,6 +161,60 @@
     [_b15 addTarget:self action:@selector(jumpWithDetailsB15) forControlEvents:UIControlEventTouchUpInside];
     [_b16 addTarget:self action:@selector(jumpWithDetailsB16) forControlEvents:UIControlEventTouchUpInside];
     
+    
+    [_b1 addTarget:self action:@selector(jumpWithDetailsB1) forControlEvents:UIControlEventTouchUpInside];
+    [_b2 addTarget:self action:@selector(jumpWithDetailsB2) forControlEvents:UIControlEventTouchUpInside];
+    [_b3 addTarget:self action:@selector(jumpWithDetailsB3) forControlEvents:UIControlEventTouchUpInside];
+    [_b4 addTarget:self action:@selector(jumpWithDetailsB4) forControlEvents:UIControlEventTouchUpInside];
+    [_b5 addTarget:self action:@selector(jumpWithDetailsB5) forControlEvents:UIControlEventTouchUpInside];
+    [_b6 addTarget:self action:@selector(jumpWithDetailsB6) forControlEvents:UIControlEventTouchUpInside];
+    [_b8 addTarget:self action:@selector(jumpWithDetailsB7) forControlEvents:UIControlEventTouchUpInside];
+    [_b7 addTarget:self action:@selector(jumpWithDetailsB8) forControlEvents:UIControlEventTouchUpInside];
+    
+//    cell.layer.borderWidth = 0.3;
+//    cell.layer.borderColor = [UIColor lightGrayColor].CGColor;
+
+    [_b1.layer setBorderWidth:0.3f];
+    [_b1.layer setBorderColor:[[UIColor colorWithWhite:0.840 alpha:1.000] CGColor]];
+    [_b2.layer setBorderWidth:0.3f];
+    [_b2.layer setBorderColor:[[UIColor colorWithWhite:0.840 alpha:1.000] CGColor]];
+    [_b3.layer setBorderWidth:0.3f];
+    [_b3.layer setBorderColor:[[UIColor colorWithWhite:0.840 alpha:1.000] CGColor]];
+    [_b4.layer setBorderWidth:0.3f];
+    [_b4.layer setBorderColor:[[UIColor colorWithWhite:0.840 alpha:1.000] CGColor]];
+    [_b5.layer setBorderWidth:0.3f];
+    [_b5.layer setBorderColor:[[UIColor colorWithWhite:0.840 alpha:1.000] CGColor]];
+    [_b6.layer setBorderWidth:0.3f];
+    [_b6.layer setBorderColor:[[UIColor colorWithWhite:0.840 alpha:1.000] CGColor]];
+    [_b7.layer setBorderWidth:0.3f];
+    [_b7.layer setBorderColor:[[UIColor colorWithWhite:0.840 alpha:1.000] CGColor]];
+    [_b8.layer setBorderWidth:0.3f];
+    [_b8.layer setBorderColor:[[UIColor colorWithWhite:0.840 alpha:1.000] CGColor]];
+    [_b9.layer setBorderWidth:0.3f];
+    [_b9.layer setBorderColor:[[UIColor colorWithWhite:0.840 alpha:1.000] CGColor]];
+    [_b11.layer setBorderWidth:0.3f];
+    [_b11.layer setBorderColor:[[UIColor colorWithWhite:0.840 alpha:1.000] CGColor]];
+    [_b12.layer setBorderWidth:0.3f];
+    [_b12.layer setBorderColor:[[UIColor colorWithWhite:0.840 alpha:1.000] CGColor]];
+    [_b13.layer setBorderWidth:0.3f];
+    [_b13.layer setBorderColor:[[UIColor colorWithWhite:0.840 alpha:1.000] CGColor]];
+    [_b14.layer setBorderWidth:0.3f];
+    [_b14.layer setBorderColor:[[UIColor colorWithWhite:0.840 alpha:1.000] CGColor]];
+    [_b15.layer setBorderWidth:0.3f];
+    [_b15.layer setBorderColor:[[UIColor colorWithWhite:0.840 alpha:1.000] CGColor]];
+    [_b16.layer setBorderWidth:0.3f];
+    [_b16.layer setBorderColor:[[UIColor colorWithWhite:0.840 alpha:1.000] CGColor]];
+    [_b10.layer setBorderWidth:0.3f];
+    [_b10.layer setBorderColor:[[UIColor colorWithWhite:0.840 alpha:1.000] CGColor]];
+    
+    
+    self.OrangView = [[UIView alloc]initWithFrame:CGRectMake(kWidth/8, 39,kWidth/4, 2)];
+    self.OrangView.backgroundColor =[UIColor orangeColor];
+
+    [self.Button addSubview:_OrangView];
+    UIView*LView =[[UIView alloc]initWithFrame:CGRectMake( kWidth/2,10, 0.3, 20)];
+    LView.backgroundColor =[UIColor grayColor];
+    [self.contentView addSubview:LView];
     [_view addSubview:_b1];
     [_view addSubview:_b2];
     [_view addSubview:_b3];
@@ -181,10 +231,11 @@
     [_view addSubview:_b14];
     [_view addSubview:_b15];
     [_view addSubview:_b16];
+    
     [self.contentView addSubview:_view];
-    //_view.backgroundColor = [UIColor redColor];
-    [self.contentView  addSubview:buttonCity];
-    [self.contentView  addSubview:button];
+ 
+    [self.contentView  addSubview:self.buttonCity];
+    [self.contentView  addSubview:self.Button];
     self.contentView.userInteractionEnabled = YES;
 
 
@@ -192,19 +243,27 @@
 }
 
 -(void)jumpWithCity{
+    
     [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
     [UIView setAnimationDuration:0.3f];
     
+    _OrangView.frame = CGRectMake(kWidth/2+kWidth/8, 39,kWidth/4, 2);
     _view.frame = CGRectMake(-kWidth, 40, kWidth * 2, 60);
     self.view.userInteractionEnabled = YES;
+    
      [UIView commitAnimations];
+    [self.Button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.buttonCity setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
 }
 -(void)jumpWithhot{
     [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
     [UIView setAnimationDuration:0.3f];
        self.view.userInteractionEnabled = YES;
     _view.frame = CGRectMake(0, 40, kWidth * 2, 60);
+    _OrangView.frame = CGRectMake(kWidth/8, 39,kWidth/4, 2);
     [UIView commitAnimations];
+    [self.buttonCity setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.Button setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
 }
 
 
@@ -250,5 +309,48 @@
     if (self.delegate &&[self.delegate respondsToSelector:@selector(getDetailControllerB16)]) {
         [self.delegate getDetailControllerB16];
     }
+}
+
+-(void)jumpWithDetailsB1{
+    if (self.delegate &&[self.delegate respondsToSelector:@selector(getDetailControllerB1)]) {
+        [self.delegate getDetailControllerB1];
+    }
+    
+}
+-(void)jumpWithDetailsB2{
+    if (self.delegate &&[self.delegate respondsToSelector:@selector(getDetailControllerB2)]) {
+        [self.delegate getDetailControllerB2];
+    }
+    
+}-(void)jumpWithDetailsB3{
+    if (self.delegate &&[self.delegate respondsToSelector:@selector(getDetailControllerB3)]) {
+        [self.delegate getDetailControllerB3];
+    }
+    
+}-(void)jumpWithDetailsB4{
+    if (self.delegate &&[self.delegate respondsToSelector:@selector(getDetailControllerB4)]) {
+        [self.delegate getDetailControllerB4];
+    }
+    
+}-(void)jumpWithDetailsB5{
+    if (self.delegate &&[self.delegate respondsToSelector:@selector(getDetailControllerB5)]) {
+        [self.delegate getDetailControllerB5];
+    }
+    
+}-(void)jumpWithDetailsB6{
+    if (self.delegate &&[self.delegate respondsToSelector:@selector(getDetailControllerB6)]) {
+        [self.delegate getDetailControllerB6];
+    }
+    
+}-(void)jumpWithDetailsB7{
+    if (self.delegate &&[self.delegate respondsToSelector:@selector(getDetailControllerB7)]) {
+        [self.delegate getDetailControllerB7];
+    }
+    
+}-(void)jumpWithDetailsB8{
+    if (self.delegate &&[self.delegate respondsToSelector:@selector(getDetailControllerB8)]) {
+        [self.delegate getDetailControllerB8];
+    }
+    
 }
 @end

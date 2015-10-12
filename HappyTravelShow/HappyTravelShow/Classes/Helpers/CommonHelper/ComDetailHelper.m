@@ -10,6 +10,8 @@
 #import "AFNetworking.h"
 #import "BookModel.h"
 #import "DetailModel.h"
+#import "ScenicDetailModel.h"
+#import "SkyModel.h"
 
 
 @interface ComDetailHelper ()
@@ -18,6 +20,12 @@
 
 @property (nonatomic,strong) NSMutableArray *detailArr;
 
+@property (nonatomic,strong) NSMutableArray * scenicDetailArr;
+
+@property (nonatomic,strong) NSMutableArray * ticketDetailArr;
+
+@property (nonatomic,strong) NSMutableArray * skyDetailArr;
+
 @end
 
 @implementation ComDetailHelper
@@ -25,13 +33,12 @@
 
 
 - (void)requestBookData:(NSString *)strUrl type:(NSString *)strType block:(void (^)(NSMutableArray *arr))block{
+    NSLog(@"%@--",strUrl);
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
         
-        [manager GET:strUrl parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-           // NSLog(@"%@--",responseObject);
+        [manager GET:strUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
             if ([strType isEqualToString:@"bookData"]) {
                 NSArray *dataArr = responseObject[@"data"];
@@ -52,6 +59,28 @@
                 DetailModel *detailModel = [DetailModel new];
                 [detailModel setValuesForKeysWithDictionary:dict];
                 [_detailArr addObject:detailModel];
+            }else if ([strType isEqualToString:@"scenidDetailData"]){
+                _scenicDetailArr = [NSMutableArray array];
+                NSDictionary *dict = responseObject[@"content"];
+                ScenicDetailModel *model = [ScenicDetailModel new];
+                [model setValuesForKeysWithDictionary:dict];
+                [_scenicDetailArr addObject:model];
+            }else if ([strType isEqualToString:@"ticketDetailData"]){
+                _ticketDetailArr = [NSMutableArray array];
+                NSArray *arr = responseObject[@"content"];
+                for (NSDictionary *dict in arr) {
+                ScenicDetailModel *model = [ScenicDetailModel new];
+                [model setValuesForKeysWithDictionary:dict];
+                [_ticketDetailArr addObject:model];
+                }
+            }else if ([strType isEqualToString:@"cityWeatherData"]){
+                _skyDetailArr = [NSMutableArray array];
+                NSDictionary *dict = responseObject[@"data"];
+                NSArray *arr = dict[@"results"];
+                NSDictionary *d = arr.firstObject;
+                SkyModel *model = [SkyModel new];
+                [model setValuesForKeysWithDictionary:d];
+                [_skyDetailArr addObject:model];
             }
             
             
@@ -60,10 +89,16 @@
                     block(self.bookArr);
                 }else if ([strType isEqualToString:@"detailData"]){
                     block(self.detailArr);
+                }else if ([strType isEqualToString:@"scenidDetailData"]){
+                    block(self.scenicDetailArr);
+                }else if ([strType isEqualToString:@"ticketDetailData"]){
+                    block(self.ticketDetailArr);
+                }else if ([strType isEqualToString:@"cityWeatherData"]){
+                    block(self.skyDetailArr);
                 }
                 
             });
-        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"%@",error);
         }];
         

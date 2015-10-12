@@ -29,4 +29,16 @@
 
 #define k @"http://apiphp.yaochufa.com/portal/circum/searchlist?p=1&system=ios&channel=AppStore&version=4.3.0&minPrice=0&keyWord=%E5%A4%A9%E6%B4%A5&cityCode=120100&s=20&lat=40.036354004545&lng=116.35025721584&sort=2&maxPrice=999999"
 
+//热门景区点击URL
+
+#define URL_ScenicDetail(scenicid) [NSString stringWithFormat:@"http://apiphp.yaochufa.com/portal/scenic/scenicDetail430?version=4.3.1&id=%ld&system=iOS&channel=AppStore",scenicid]
+
+//门票URL
+#define URL_ticketData(ticketID) [NSString stringWithFormat:@"http://apiphp.yaochufa.com/portal/scenic/GetMoreProduct430?pageIndex=1&itemId=91&version=4.3.1&id=%ld&system=iOS&pageSize=10&channel=AppStore",ticketID]
+
+//天气url
+#define URL_sky(cityEncoding) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetWeatherInfoByCity?productId=0&version=4.3.1&system=iOS&cityName=%@&channel=AppStore",cityEncoding]
+
+
+
 #endif
