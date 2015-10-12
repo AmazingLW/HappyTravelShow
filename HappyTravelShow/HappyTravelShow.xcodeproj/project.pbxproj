@@ -154,6 +154,8 @@
 		C2F4861D1BC8A7D90017C434 /* zz.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F4861C1BC8A7D90017C434 /* zz.png */; };
 		C2F486211BC8E5F30017C434 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2F486201BC8E5F30017C434 /* background.jpg */; };
 		C2FE4D681BCBB0370012075C /* LocationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE4D671BCBB0370012075C /* LocationVC.m */; };
+		C2FE4D6B1BCBCA430012075C /* GPSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE4D6A1BCBCA430012075C /* GPSCell.m */; };
+		C2FE4D6E1BCBEE1E0012075C /* HotCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE4D6D1BCBEE1E0012075C /* HotCityCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -425,6 +427,10 @@
 		C2F486201BC8E5F30017C434 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		C2FE4D661BCBB0370012075C /* LocationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationVC.h; sourceTree = "<group>"; };
 		C2FE4D671BCBB0370012075C /* LocationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationVC.m; sourceTree = "<group>"; };
+		C2FE4D691BCBCA430012075C /* GPSCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSCell.h; sourceTree = "<group>"; };
+		C2FE4D6A1BCBCA430012075C /* GPSCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSCell.m; sourceTree = "<group>"; };
+		C2FE4D6C1BCBEE1E0012075C /* HotCityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotCityCell.h; sourceTree = "<group>"; };
+		C2FE4D6D1BCBEE1E0012075C /* HotCityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotCityCell.m; sourceTree = "<group>"; };
 		E74A25802C8BAEBB910EC920 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -785,6 +791,10 @@
 				C209F53A1BC6187D00946675 /* RecommendationCell.h */,
 				C209F53B1BC6187D00946675 /* RecommendationCell.m */,
 				C209F53C1BC6187D00946675 /* RecommendationCell.xib */,
+				C2FE4D691BCBCA430012075C /* GPSCell.h */,
+				C2FE4D6A1BCBCA430012075C /* GPSCell.m */,
+				C2FE4D6C1BCBEE1E0012075C /* HotCityCell.h */,
+				C2FE4D6D1BCBEE1E0012075C /* HotCityCell.m */,
 			);
 			path = HomepageCell;
 			sourceTree = "<group>";
@@ -1338,13 +1348,11 @@
 				16DB11991BC4228D009D7C7D /* UIImage+MultiFormat.m in Sources */,
 				16DB119A1BC4228D009D7C7D /* UIImage+WebP.m in Sources */,
 				C27D31971BC7624A005B049D /* CategoryVC.m in Sources */,
-
 				16977ECF1BC9478700026522 /* SDHeaderCell.m in Sources */,
-
 				C268C98B1BC90F500043B541 /* XIOptionSelectorView.m in Sources */,
 				C228D7971BC9079B009E383A /* FavoriteController.m in Sources */,
-
 				C27D31A71BC7633D005B049D /* SCNavTabBarController.m in Sources */,
+				C2FE4D6B1BCBCA430012075C /* GPSCell.m in Sources */,
 				C27D319A1BC7629B005B049D /* CategoryDetailsVC.m in Sources */,
 				C2269A121BC51911009BBAB0 /* IanScrollImageView.m in Sources */,
 				C228D7A01BC93129009E383A /* WeatherDetailController.m in Sources */,
@@ -1354,11 +1362,8 @@
 				16DBAC5E1BC7ACE30082A143 /* FindPlaceVC.m in Sources */,
 				16DB11951BC4228D009D7C7D /* SDWebImageManager.m in Sources */,
 				16DB11A71BC4230F009D7C7D /* FinderVC.m in Sources */,
-
 				16D13ACB1BCA60360022BC96 /* MealTicketCell.m in Sources */,
-
 				C268C98E1BC90F500043B541 /* XIArrowView.m in Sources */,
-
 				16EB2DEC1BC6AD8300F51A9F /* DetailIntroduceController.m in Sources */,
 				16DBAC261BC764B40082A143 /* MyselfHeadCell.m in Sources */,
 				C2ADF2011BC681F100E39332 /* LPLabel.m in Sources */,
@@ -1383,12 +1388,8 @@
 				C209F53D1BC6187D00946675 /* RecommendationCell.m in Sources */,
 				C2ADF1FE1BC66DCA00E39332 /* AroundKindModel.m in Sources */,
 				16EB2DE01BC6ACBB00F51A9F /* HeadCell.m in Sources */,
-
-				C27359021BC5107C00771457 /* XIGridBackgroundView.m in Sources */,
 				16977ED21BC949B800026522 /* PlaceTempTimeCell.m in Sources */,
-
 				C228D79A1BC90AB0009E383A /* browsedController.m in Sources */,
-
 				16DB11931BC4228D009D7C7D /* SDWebImageDownloader.m in Sources */,
 				16988D9D1BC3CCF3001A1077 /* FinderKindModel.m in Sources */,
 				16DBAC691BC7E6650082A143 /* SpecificWeatherCell.m in Sources */,
@@ -1434,6 +1435,7 @@
 				16DCCFB11BCB4CFA00A1420A /* ScenicDetailModel.m in Sources */,
 				16988DB31BC3F131001A1077 /* FinderMainCell.m in Sources */,
 				16DB119C1BC4228D009D7C7D /* UIImageView+WebCache.m in Sources */,
+				C2FE4D6E1BCBEE1E0012075C /* HotCityCell.m in Sources */,
 				16DB119B1BC4228D009D7C7D /* UIImageView+HighlightedWebCache.m in Sources */,
 				16DB11A11BC422F5009D7C7D /* MyselfVC.m in Sources */,
 				16DB11AA1BC4231E009D7C7D /* HomepageVC.m in Sources */,

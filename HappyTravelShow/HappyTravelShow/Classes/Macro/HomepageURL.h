@@ -35,6 +35,7 @@
 
 //门票URL
 #define URL_ticketData(ticketID) [NSString stringWithFormat:@"http://apiphp.yaochufa.com/portal/scenic/GetMoreProduct430?pageIndex=1&itemId=91&version=4.3.1&id=%ld&system=iOS&pageSize=10&channel=AppStore",ticketID]
-
+//所有城市列表
+#define kCityList @"http://appapi.yaochufa.com/v2/Position/GetCityList?machineCode=00000000-62a0-833f-ffff-ffffc33ba23b&version=4.3.1&system=android&channel=huaweimarket"
 
 #endif

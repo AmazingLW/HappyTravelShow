@@ -32,4 +32,7 @@
                     cityName:(NSString*)cityName
                     withSort:(NSInteger)sort
                   WithFinish:(void (^)(NSMutableArray *arr))result;
+//所有城市列表
+-(void)requestallCityList:(NSString*)kind
+               WithFinish:(void (^)(NSMutableArray *arr))result;
 @end
