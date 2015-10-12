@@ -57,6 +57,7 @@
     
     
     
+     
     self.tomorrowData=[[UILabel alloc]initWithFrame:CGRectMake(20, 13, 80, 30)];
     self.afterTomorrowData=[[UILabel alloc]initWithFrame:CGRectMake(20, 50,80, 30)];
     self.threeDaysData=[[UILabel alloc]initWithFrame:CGRectMake(20, 87, 80, 30)];

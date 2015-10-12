@@ -28,7 +28,7 @@
         
         self.weatherView.delegate=self;
         self.weatherView.dataSource=self;
-        
+        self.weatherView.scrollEnabled=NO;
         [self.view addSubview:self.weatherView];
         
         //天气label
@@ -71,7 +71,8 @@
     WeatherDetailCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     if (cell==nil) {
         cell=[[WeatherDetailCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
-        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+        
+
     }
     
     if (indexPath.row==0) {
@@ -102,7 +103,7 @@
     }
     
     
-    
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     return cell;
     
 }
