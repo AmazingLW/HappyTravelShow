@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "HomepageVC.h"
-#import "AroundVC.h"
+#import "AroundVC2.h"
 #import "FinderVC.h"
 #import "MyselfVC.h"
 
@@ -37,7 +37,7 @@
     UINavigationController *HomepageNV = [[UINavigationController alloc] initWithRootViewController:[HomepageVC new]];
     
     //周边页
-    UINavigationController *AroundNV = [[UINavigationController alloc] initWithRootViewController:[AroundVC new]];
+    UINavigationController *AroundNV = [[UINavigationController alloc] initWithRootViewController:[AroundVC2 new]];
     
     //发现页
     UINavigationController *FinderNV = [[UINavigationController alloc] initWithRootViewController:[FinderVC new]];

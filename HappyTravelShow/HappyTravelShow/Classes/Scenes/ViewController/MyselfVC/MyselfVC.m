@@ -12,6 +12,9 @@
 #import "MyselfContentCell.h"
 #import "LoginController.h"
 #import "RegisterController.h"
+#import "FavoriteController.h"
+#import "browsedController.h"
+#import "WeatherDetailController.h"
 
 
 @interface MyselfVC ()<UITableViewDataSource,UITableViewDelegate,LoginDelegate,RegisterDelegate>
@@ -111,7 +114,7 @@
     }else if (indexPath.section==2&&indexPath.row==0){
         cell.label.text=@"我的收藏";
         cell.titleView.image=[UIImage imageNamed:@"22.png"];
-    }else if (indexPath.section==2&&indexPath.row==1){
+           }else if (indexPath.section==2&&indexPath.row==1){
         cell.label.text=@"浏览历史";
         cell.titleView.image=[UIImage imageNamed:@"33.png"];
     }else if (indexPath.section==3&&indexPath.row==0){
@@ -156,6 +159,33 @@
     
     return 40;
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    if (indexPath.section==2&&indexPath.row==0) {
+        FavoriteController *fVC=[FavoriteController new];
+        [self.navigationController pushViewController:fVC animated:NO];
+        
+
+    }else if (indexPath.section==2&&indexPath.row==1)
+    {
+        
+        browsedController *bVC=[browsedController new];
+        [self.navigationController pushViewController:bVC animated:NO];
+     
+        
+
+    }else if (indexPath.section==3&&indexPath.row==1){
+        WeatherDetailController *wVC=[WeatherDetailController new];
+        [self.navigationController pushViewController:wVC animated:NO];
+        
+    }
+    
+}
+
+
+
+
 
 
 
