@@ -35,12 +35,17 @@
 @property (nonatomic, strong)NSMutableArray *allScenic;
 
 //请求数据需要的cityName
-
 @property (nonatomic, strong)NSString *cityName;
 
 //请求数据需要的scenicName
-
 @property (nonatomic, strong)NSString *scenicName;
+
+//请求数据需要的tagName
+@property (nonatomic, strong)NSString *tagName;
+
+
+//请求数据需要的sortName
+@property (nonatomic, strong)NSString *sortName;
 
 //组装景点用到的字典
 @property (nonatomic, strong)NSMutableDictionary *dic;
@@ -49,12 +54,12 @@
 
 @property (nonatomic, strong)NSMutableArray *tempArray;
 
+@property (nonatomic, strong)NSMutableDictionary *type;
+
+
 //字典 allkeys
-
 @property (nonatomic, strong)NSMutableArray *keyArray;
-
 //字典 allValues
-
 @property (nonatomic, strong)NSMutableArray *ValueArray;
 
 //价格升高
@@ -80,6 +85,25 @@ static NSString *const reuse = @"cell";
         UIImage *image = [UIImage imageNamed:@"around"];
         self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"周边" image:image tag:1002];
         isAll = YES;
+        
+         _sortName = @"默认排序";
+
+        _scenicName = @"全部";
+        _tagName = @"全部";
+        
+        _cityName = @"全部";
+        _type = [[NSMutableDictionary alloc] init];
+        
+        NSArray *array = @[@"默认排序", @"价格变高", @"价格变低",@"销量优先",@"新品优先",@"离我最近"];
+        
+        NSArray *typeArray = @[@"n",@"pa",@"pd",@"s",@"xp",@"d"];
+        
+        for (int i = 0 ; i < array.count; i ++) {
+            
+            [_type setObject:typeArray[i] forKey:array[i]];
+        }
+        
+        
     }
     
     return self;
@@ -88,7 +112,7 @@ static NSString *const reuse = @"cell";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-  
+    [self.tableView reloadData];
   
 }
 
@@ -223,9 +247,10 @@ static NSString *const reuse = @"cell";
         [_dic setObject:array forKey:_destinationCity[i]];
         
     }
+    
     ddltView = [[XIOptionSelectorView alloc] initWithFrame:CGRectMake(0, 64, self.view.frame.size.width, 40)];
     
-    NSLog(@"%@----",ddltView);
+   // NSLog(@"%@----",ddltView);
     ddltView.parentView = self.view;
     ddltView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self.view addSubview:ddltView];
@@ -345,10 +370,38 @@ static NSString *const reuse = @"cell";
   // pa 价格变高 pd 价格变低  s 销量优先  xp新品优先  d 离我最近
     NSArray *tmpArry;
     if(segment==0){
-        tmpArry = @[@"默认排序", @"价格变高", @"价格变低",@"销量优先",@"新品优先",@"离我最近"];
-        [ddltView setTitle:tmpArry[index] forItem:segment];
         
-        if (index == 1) {
+        tmpArry = @[@"默认排序", @"价格变高", @"价格变低",@"销量优先",@"新品优先",@"离我最近"];
+       
+        
+        
+        
+        [ddltView setTitle:tmpArry[index] forItem:segment];
+       
+        self.sortName = tmpArry[index];
+        if (index == 0) {
+            [[AroundHelper new]requsetAllScenicsWithCityName:@"景德镇" finish:^(NSArray *scenic) {
+                
+                NSMutableArray *array = [NSMutableArray arrayWithArray:scenic];
+                 _allScenic = array;
+                [self.tableView reloadData];
+            }];
+            
+            if (self.cityName) {
+                
+                
+            }
+            if (self.cityName && self.scenicName) {
+                
+                
+            }
+            
+            if (self.scenicName) {
+                
+            }
+            
+            
+        }else if (index == 1) {
             _allScenic = _sortDataUp;
             [self.tableView reloadData];
             NSString  *type = @"pa";
@@ -357,9 +410,9 @@ static NSString *const reuse = @"cell";
                 [self partSortWithType:type];
             }
             
-            if (self.cityName || self.scenicName) {
+            if (self.cityName && self.scenicName) {
                 
-                
+                [self littleSortWithType:type];
                 
             }
         }else if(index == 2){
@@ -367,21 +420,55 @@ static NSString *const reuse = @"cell";
             [self.tableView reloadData];
             NSString *type = @"pd";
             
-            
-            
-            
+            if (self.cityName) {
+                [self partSortWithType:type];
+            }
+            if (self.cityName && self.scenicName) {
+                
+                [self littleSortWithType:type];
+                
+            }
         }else if (index == 3){
             _allScenic = _sales;
             [self.tableView reloadData];
-            NSString *type = @"s";
+            NSString *type = @"xp";
             
-            
+            if (self.cityName) {
+                [self partSortWithType:type];
+            }
+            if (self.cityName && self.scenicName) {
+                
+                [self littleSortWithType:type];
+                
+            }
+
         }else if (index == 4){
             _allScenic = _news;
             [self.tableView reloadData];
+             NSString *type = @"s";
+            
+            if (self.cityName) {
+                [self partSortWithType:type];
+            }
+            if (self.cityName && self.scenicName) {
+                
+                [self littleSortWithType:type];
+                
+            }
+            
         }else{
             _allScenic = _distance;
             [self.tableView reloadData];
+             NSString *type = @"d";
+            
+            if (self.cityName) {
+                [self partSortWithType:type];
+            }
+            if (self.cityName && self.scenicName) {
+                
+                [self littleSortWithType:type];
+                
+            }
         }
         
     }
@@ -432,10 +519,26 @@ static NSString *const reuse = @"cell";
         [self litleRequest];
         
     }else{
-        tmpArry = @[@"全部",@"门票",@"仅酒店",@"酒店套餐"];
+        tmpArry = @[@"筛选",@"门票",@"仅酒店",@"酒店套餐"];
+        
+        [ddltView setTitle:tmpArry[index] forItem:segment];
+        
+        NSLog(@"%@",tmpArry[index]);
+        
+        
+
+        
+        if (([self.sortName isEqualToString:@"默认排序"] && [self.cityName isEqualToString:@"全部"] && [self.scenicName isEqualToString:@"全部"])) {
+
+             [self sortWithType:_type[@"默认排序"] tagName:tmpArry[index]];
+        }else{
+            
+        [self partSortWithType:_type[self.sortName] tagName:tmpArry[index]];
+        }
+        
+        
     }
-    
-    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -463,6 +566,7 @@ static NSString *const reuse = @"cell";
     //如果目的城市是全部 也就是没有点击目的城市  根据 dic 取得
     if (self.cityName == NULL) {
         
+        //根据景点的名字从字典中取出 目的城市名
         NSString *sc = self.scenicName;
         
         for (NSString * cityName in self.dic) {
@@ -477,9 +581,12 @@ static NSString *const reuse = @"cell";
             
         }
         
+        
+        
     [[AroundHelper new] requestLittleScenicWithScenicName:self.scenicName cityName:self.cityName finish:^(NSArray *array) {
     
         _allScenic = [array mutableCopy];
+        
         [self.tableView reloadData];
         
     }];
@@ -488,13 +595,10 @@ static NSString *const reuse = @"cell";
         [[AroundHelper new] requestLittleScenicWithScenicName:self.scenicName cityName:self.cityName finish:^(NSArray *array) {
             
             _allScenic = [array mutableCopy];
+            
             [self.tableView reloadData];
         }];
     }
-    
-    
-    
-    
     
 }
 
@@ -507,17 +611,47 @@ static NSString *const reuse = @"cell";
     [[AroundHelper new] partSortDataWithType:type cityName:@"上饶" finish:^(NSArray *array) {
        
         _allScenic = [array mutableCopy];
+        
         [self.tableView reloadData];
         
     }];
 }
 
-
+//排序 目的城市选定 景点选定
 - (void)littleSortWithType:(NSString *)type{
     
+    [[AroundHelper new] littleSortDataWithScenicName:self.scenicName type:type cityName:@"上饶" finish:^(NSArray *array) {
+        
+          _allScenic = [array mutableCopy];
+        
+         [self.tableView reloadData];
+    }];
+    
+}
+
+
+//筛选
+//当 目的城市为全部 景点全部  排序方式改变   筛选方式改变
+- (void)sortWithType:(NSString *)type tagName:(NSString *)tagName{
+    
+    [[AroundHelper new] chooseScenicWithSortType:type TagName:tagName cityName:@"景德镇" finish:^(NSArray *array) {
+       
+        _allScenic = [array mutableCopy];
+        
+        [self.tableView reloadData];
+
+    }];
     
     
+}
+
+- (void)partSortWithType:(NSString *)type tagName:(NSString *)tagName{
+
+    [[AroundHelper new] chooseScenicWithScenicName:self.scenicName SortType:type TagName:tagName cityName:self.cityName finish:^(NSArray *array) {
+        
+    }];
     
+
 }
 /*
 #pragma mark - Navigation

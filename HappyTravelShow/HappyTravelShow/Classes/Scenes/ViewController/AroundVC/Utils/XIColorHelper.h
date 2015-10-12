@@ -12,7 +12,6 @@
 @end
 
 @interface UIColor(OpaqueColorFromHex)
-
 + (UIColor*)opaqueColorWithRGBBytes:(NSUInteger)hexConstant;
 @end
 

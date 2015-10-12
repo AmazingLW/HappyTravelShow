@@ -28,17 +28,21 @@
 #define partScenic(scenicName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343642&latitude=40.030598&version=4.3.1&sort=n&province=0&system=iOS&pageSize=20&channel=AppStore&city=%@",scenicName]
 
 
-// 当目的城市是某一个特定城市 并且景点是全部是 筛选
 
-#define chooseAllScenic(tagName,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343648&latitude=40.030561&version=4.3.1&sort=n&province=0&tagName=%@&system=iOS&pageSize=20&channel=AppStore&city=%@",tagName,cityName]
+//当 目的城市为全部 景点全部  排序方式改变   筛选方式改变  city(景德镇)
 
-//当目的城市是特定城市 景点是特定的景点 是筛选  cityName 是特定的目的城市 scenicName是特定的景点 tagName 是筛选的类型
-#define chooseLittleScenic(scenicName,tagName,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343648&latitude=40.030561&scenicName=%@&version=4.3.1&sort=n&province=0&tagName=%@&system=iOS&pageSize=20&channel=AppStore&city=%@",scenicName,tagName,cityName]
+#define chooseAllScenic(sortType,tagName,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343594&latitude=40.030572&version=4.3.1&sort=%@&province=1&tagName=%@&system=iOS&pageSize=20&channel=AppStore&city=%@",sortType,tagName,cityName]
+
+// 当目的城市选定 景点全部 排序方式 sortType 任意  筛选方式改变  city(是目的城市 @"上饶")
+
+#define chooseLittleScenic(sortType,tagName,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343594&latitude=40.030572&version=4.3.1&sort=%@&province=0&tagName=%@&system=iOS&pageSize=20&channel=AppStore&city=%@",sortType,tagName,cityName]
+
+// 当目的城市选定 景点选定 排序方式 sortType 任意  筛选方式改变  景点(scenicName) 三清山  city(是目的城市 @"上饶")
+
+#define chooseAllCity(scenicName,sortType,tagName,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343594&latitude=40.030572&scenicName=%@&version=4.3.1&sort=%@&province=0&tagName=%@&system=iOS&pageSize=20&channel=AppStore&city=%@",scenicName,sortType,tagName,cityName]
 
 
-//当目的城市为全部使筛选  cityName 是定位时的城市
 
-#define chooseAllCity(tagName,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343648&latitude=40.030561&version=4.3.1&sort=n&province=1&tagName=%@&system=iOS&pageSize=20&channel=AppStore&city=%@",tagName,cityName]
 
 
 //n默认排序 不用管
@@ -50,19 +54,38 @@
 //当 目的城市选定 景点全部 默认排序 就是 partScenic(scenicName)
 
 
-//排序 目的城市全部 景点全部 价格变高  city传进来的城市 (景德镇的经纬度)
+//排序 目的城市全部 景点全部 价格变高  city传进来的城市 (景德镇的经纬度) 筛选为全部
 
 #define sortDataUp(type,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343673&latitude=40.030488&version=4.3.1&sort=%@&province=1&system=iOS&pageSize=20&channel=AppStore&city=%@",type,cityName]
 
 
-//排序 目的城市选定 景点全部 价格变高 cityName(选定的目的城市) (上饶)
+//排序 目的城市选定 景点全部 价格变高 cityName(选定的目的城市) (上饶) 筛选为全部
 
 #define sortPartDataUp(type,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343633&latitude=40.03057&version=4.3.1&sort=%@&province=0&system=iOS&pageSize=20&channel=AppStore&city=%@",type,cityName]
 
-//排序 目的城市选定 景点选定  价格变高   cityName  上饶   scenicName 江湾
+//排序 目的城市选定 景点选定  价格变高   cityName  上饶   scenicName 江湾  筛选为全部
 
-#define sortLittleDataUp (scenicName,type,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343633&latitude=40.03057&scenicName=%@&version=4.3.1&sort=%@&province=0&system=iOS&pageSize=20&channel=AppStore&city=%@",scenicName,type,cityName]
+#define sortLittleDataUp(scenicName,type,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343633&latitude=40.03057&scenicName=%@&version=4.3.1&sort=%@&province=0&system=iOS&pageSize=20&channel=AppStore&city=%@",scenicName,type,cityName]
 
+
+//排序 当目的城市为全部 景点选定时  灵岩洞 会自动找到上饶拼接字符串
+
+//http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343634&latitude=40.030569&scenicName=%E7%81%B5%E5%B2%A9%E6%B4%9E&machineCode=00000000-62a0-833f-ffff-ffffc33ba23b&version=4.3.1&sort=n&province=0&system=android&pageSize=20&channel=huaweimarket&city=%E4%B8%8A%E9%A5%B6
+
+
+
+//------------------------------------
+
+
+
+
+//点击景点名 取到景点列表 排序方式自定 筛选全部就是不拼接&tagName=%@
+// cityName 是 定位的城市名
+#define scenicList(scenicName,sort,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343635&latitude=40.030579&scenicName=%@&version=4.3.1&sort=%@&province=0&system=iOS&pageSize=20&channel=AppStore&city=%@",scenicName,sort,cityName]
+
+//当 排序存在时 筛选存在  点击景点名 也就是在上一个url上再拼接一个&tagName=%@
+
+#define partScenicList(scenicName,sort,tagName,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343635&latitude=40.030579&scenicName=%@&version=4.3.1&sort=%@&province=0&tagName=%@&system=iOS&pageSize=20&channel=AppStore&city=%@",scenicName,sort,tagName,cityName]
 
 
 
