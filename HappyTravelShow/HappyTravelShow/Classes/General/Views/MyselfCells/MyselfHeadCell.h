@@ -18,6 +18,8 @@
 
 - (void)getIntoRegisterController:(UIButton *)button;
 
+
+
 @end
 
 
@@ -31,6 +33,14 @@
 @property(nonatomic,strong) UIButton  *registerButton;
 @property(nonatomic,strong) id <LoginDelegate> delegate;
 @property(nonatomic,strong) id  <RegisterDelegate> regDelegate;
+
+
+- (void)drawView;
+
+//重新画cell页面
+- (void)drawAgainWithUsername:(NSString *)username phone:(NSString *)phone;
+
+
 
 
 @end

@@ -15,16 +15,25 @@
 #import "FavoriteController.h"
 #import "browsedController.h"
 #import "WeatherDetailController.h"
+#import "ChangePersonInfoVC.h"
 
 
-@interface MyselfVC ()<UITableViewDataSource,UITableViewDelegate,LoginDelegate,RegisterDelegate>
+@interface MyselfVC ()<UITableViewDataSource,UITableViewDelegate,LoginDelegate,RegisterDelegate,UIAlertViewDelegate>
 @property(nonatomic,strong)UITableView *tableView;
 
 @property (nonatomic,strong)BMKMapView * mapView;
 
+@property (nonatomic,assign) BOOL isLoginState;
+
 @end
 
 @implementation MyselfVC
+
+- (void)dealloc{
+    //注销----登陆成功的通知
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kLoginSucessNotification object:nil];
+}
+
 
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
@@ -38,6 +47,9 @@
         [self.view addSubview:self.tableView];
         
         
+        //注册----登陆成功的通知
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handleLoginSuccessNotification:) name:kLoginSucessNotification object:nil];
+        
         
     }
     
@@ -49,6 +61,32 @@
   
 
 }
+
+//当接收登陆成功消息 或者修改信息的消息后执行
+- (void)handleLoginSuccessNotification:(NSNotification *)notification{
+    NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+}
+
+
+
+//#pragma mark ------当从注册页面返回的时候进行一些操作-------
+//- (void)viewDidAppear:(BOOL)animated{
+//    [super viewDidAppear:animated];
+//    
+//    //当从注册页面完成注册返回登陆页面时,根据currentUser用户是否为nil,进行登陆成功回调,
+//    if ([AVUser currentUser] && _isRegState) {
+//        //注册页面返回的
+//        [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSucessNotification object:self];
+//        
+//        //退出登陆页面
+//        [self dismissViewControllerAnimated:YES completion:nil];
+//    }
+//    
+//}
+
+
+
 
 
 
@@ -78,6 +116,15 @@
 }
 
 
+-( void)viewWillAppear:(BOOL)animated
+{
+    if ([AVUser currentUser]) {
+        _isLoginState = YES;
+    }else{
+        _isLoginState = NO;
+    }
+}
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -95,6 +142,14 @@
             cell.delegate=self;
             cell.regDelegate=self;
         }
+        
+        
+        if (self.isLoginState) {
+            [cell drawAgainWithUsername:[AVUser currentUser].username phone:[AVUser currentUser].mobilePhoneNumber];
+        }else{
+            [cell drawView];
+        }
+        
         return cell;
     }
     
@@ -105,7 +160,7 @@
         if (cell==nil) {
             cell=[[MyselfContentCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellID];
             cell.selectionStyle=UITableViewCellSelectionStyleNone;
-
+            
         }
     
     if (indexPath.section == 1 &&indexPath.row==0) {
@@ -126,7 +181,7 @@
         
     }
         
-
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
   
     
@@ -136,6 +191,10 @@
 
 - (void)getIntoLoginController:(UIButton *)button{
     LoginController *lgVC=[LoginController new];
+    lgVC.successBlock = ^(BOOL state){
+        self.isLoginState = YES;
+    };
+    
     [self.navigationController pushViewController:lgVC animated:YES];
 
 }
@@ -144,11 +203,14 @@
     
     RegisterController *rgVC=[RegisterController new];
     
+    rgVC.block = ^(BOOL state){
+        self.isLoginState = state;
+        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+    };
+    
     [self.navigationController pushViewController:rgVC animated:YES];
 }
-
-
-
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -162,19 +224,48 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    if (indexPath.section==2&&indexPath.row==0) {
+    if (indexPath.section == 0) {
+        if (_isLoginState) {
+            ChangePersonInfoVC *changeVC = [ChangePersonInfoVC new];
+            
+            //请求个人信息
+            AVQuery *query = [AVUser query];
+            [query whereKey:@"username" equalTo:[AVUser currentUser].username];
+            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                if (error == nil) {
+                    NSDictionary *d = objects.firstObject;
+                    changeVC.tel = d[@"mobilePhoneNumber"];
+                    changeVC.name = d[@"username"];
+                    changeVC.email = d[@"email"];
+                    changeVC.gender = d[@"gender"];
+                    changeVC.birth = d[@"brithday"];
+                    changeVC.address = d[@"address"];
+                    changeVC.hidesBottomBarWhenPushed = YES;
+                    [self.navigationController pushViewController:changeVC animated:YES];
+                    changeVC.hidesBottomBarWhenPushed = YES;
+                } else {
+                    NSLog(@"查无此人");
+                }
+            }];
+        }else{
+            NSLog(@"nothing");
+        }
+    }else if (indexPath.section==2&&indexPath.row==0) {
         FavoriteController *fVC=[FavoriteController new];
         [self.navigationController pushViewController:fVC animated:NO];
         
 
     }else if (indexPath.section==2&&indexPath.row==1)
     {
-        
         browsedController *bVC=[browsedController new];
         [self.navigationController pushViewController:bVC animated:NO];
      
+    }else if (indexPath.section==3&&indexPath.row==0){
         
-
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否确认注销" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alertView show];
+        
+        [AVUser logOut];  //清除缓存用户对象
     }else if (indexPath.section==3&&indexPath.row==1){
         WeatherDetailController *wVC=[WeatherDetailController new];
         [self.navigationController pushViewController:wVC animated:NO];
@@ -184,6 +275,16 @@
 }
 
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        //用户注销，修改登陆状态
+        [AVUser logOut];  //清除缓存用户对象  现在的currentUser是nil了
+        _isLoginState = NO;
+        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
+        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+    }
+}
 
 
 
@@ -191,12 +292,6 @@
 
 
 
-
-//-( void)viewWillAppear:(BOOL)animated
-//{
-//    [_mapView viewWillAppear];
-//    _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
-//}
 //-(void)viewWillDisappear:(BOOL)animated
 //{
 //    [_mapView viewWillDisappear];

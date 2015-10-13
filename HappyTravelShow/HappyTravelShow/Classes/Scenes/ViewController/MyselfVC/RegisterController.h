@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^regBlOCK)(BOOL state);
+
 @interface RegisterController : UIViewController
+
+@property (nonatomic,copy) regBlOCK block;
+
+@property (nonatomic,assign) BOOL isComeLoginPage;
 
 @end

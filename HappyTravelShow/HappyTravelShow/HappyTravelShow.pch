@@ -15,5 +15,10 @@
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
+#define kLoginSucessNotification @"loginSucess"
+
+
+#import "UIDefine.h"
+#import <AVOSCloud/AVOSCloud.h>
 
 #endif
