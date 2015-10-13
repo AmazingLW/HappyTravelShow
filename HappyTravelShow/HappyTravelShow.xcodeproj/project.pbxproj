@@ -1373,6 +1373,7 @@
 				C27D31971BC7624A005B049D /* CategoryVC.m in Sources */,
 
 
+
 				161D357C1BCBD47E00DB7F70 /* DetailplaceMapVC.m in Sources */,
 
 				16977ECF1BC9478700026522 /* SDHeaderCell.m in Sources */,
@@ -1416,7 +1417,9 @@
 				C209F53D1BC6187D00946675 /* RecommendationCell.m in Sources */,
 				C2ADF1FE1BC66DCA00E39332 /* AroundKindModel.m in Sources */,
 				16EB2DE01BC6ACBB00F51A9F /* HeadCell.m in Sources */,
+
 				16977ED21BC949B800026522 /* PlaceTempTimeCell.m in Sources */,
+
 				C228D79A1BC90AB0009E383A /* browsedController.m in Sources */,
 				16DB11931BC4228D009D7C7D /* SDWebImageDownloader.m in Sources */,
 				16988D9D1BC3CCF3001A1077 /* FinderKindModel.m in Sources */,
