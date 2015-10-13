@@ -17,6 +17,7 @@
 #import "DetailplaceMapVC.h"
 #import "WeatherDetailController.h"
 #import "SkyModel.h"
+#import "ComDetailVC.h"
 
 
 @interface ScenicDetailVC ()<UITableViewDelegate,UITableViewDataSource,openScrollProtocal,BackandShareProtocal>
@@ -274,6 +275,21 @@
             [self presentViewController:rootNC animated:YES completion:nil];
         }
         
+    }else if (indexPath.section == 2){
+        ScenicDetailModel *model = self.scenicArr.firstObject;
+        ScenicDetailModel *baokuanModel = model.baokuanArr.firstObject;
+        
+#warning 少linkid-----
+        
+//        NSInteger productld=[self.RecommendationArr[indexPath.row] productId];
+//        NSInteger nlinkId=[self.RecommendationArr[indexPath.row] channelLinkId];
+        
+        ComDetailVC * detailVC = [ComDetailVC new];
+        detailVC.bookID = [baokuanModel.productId integerValue];
+        detailVC.detailID = [baokuanModel.productId integerValue];
+        UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:detailVC];
+        
+        [self presentViewController:rootNC animated:YES completion:nil];
     }
 }
 

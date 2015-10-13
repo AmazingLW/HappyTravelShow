@@ -343,9 +343,8 @@
         ComDetailVC*detailVC =[ComDetailVC new];
         detailVC.bookID = nlinkId;
         detailVC.detailID = productld;
-        //UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:detailVC];
-        [self.navigationController showViewController:detailVC sender:nil];
-        //[self presentViewController:rootNC animated:YES completion:nil];
+        UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:detailVC];
+        [self presentViewController:rootNC animated:YES completion:nil];
         
         
     }

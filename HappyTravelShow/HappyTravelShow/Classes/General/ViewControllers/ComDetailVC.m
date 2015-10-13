@@ -47,6 +47,10 @@ static BOOL  isOpen = NO;
     [super viewDidLoad];
     
     
+    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem = leftBtn;
+    self.navigationItem.hidesBackButton = YES;
+    
     [self.view addSubview:self.detailTableView];
     self.detailTableView.delegate = self;
     self.detailTableView.dataSource = self;
@@ -72,6 +76,9 @@ static BOOL  isOpen = NO;
     
 }
 
+- (void)backAction{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 
 //分区个数 ---7个
