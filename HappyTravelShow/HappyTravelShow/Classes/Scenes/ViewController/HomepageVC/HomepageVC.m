@@ -21,7 +21,10 @@
 #import "CategoryVC.h"
 #import "ComDetailVC.h"
 #import "HomepageScenicModel.h"
+#import "LocationVC.h"
+#import "ScenicDetailVC.h"
 
+#define kWidth [UIScreen mainScreen].bounds.size.width
 
 @interface HomepageVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,CityDelegate>
 @property(nonatomic,strong)UICollectionView*collection;
@@ -55,8 +58,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self drawview];
-    
-    
     [[HomepageHelper new] requestAllPackage:@"bannerScroll" WithFinish:^(NSMutableArray *arr) {
         self.CarouseArray=[NSMutableArray array];
         self.CarouseArray = [arr mutableCopy];
@@ -94,15 +95,37 @@
         [self.collection reloadData];
     }];
     
+ 
+    [self setupCollectionView];
+    self.view.backgroundColor = [UIColor orangeColor];
+    
+    [self creatNavBar];
+}
+
+- (void)creatNavBar {
+
+    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"北京∨" style:(UIBarButtonItemStylePlain) target:self action:@selector(locationBBIClicked)];
+    self.navigationItem.leftBarButtonItem.tintColor=[UIColor blackColor];
+
+}
+
+- (void)locationBBIClicked {
+    
+    LocationVC *locationVC = [LocationVC new];
+    locationVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:locationVC animated:YES];
+    
+}
+
+//注册cell
+-(void)setupCollectionView{
+    
     [_collection registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     [_collection registerNib:[UINib nibWithNibName:@"carouseIFingureCell" bundle:nil] forCellWithReuseIdentifier:@"carousel"];
     [_collection registerNib:[UINib nibWithNibName:@"CategoriesCell" bundle:nil] forCellWithReuseIdentifier:@"cate"];
     [_collection registerNib:[UINib nibWithNibName:@"PackageCell" bundle:nil] forCellWithReuseIdentifier:@"pack"];
     [_collection registerNib:[UINib nibWithNibName:@"RecommendationCell" bundle:nil] forCellWithReuseIdentifier:@"rec"];
     [_collection registerClass:[HotScenicCell class] forCellWithReuseIdentifier:@"hot"];
-    
-    self.view.backgroundColor = [UIColor orangeColor];
-    
     
 }
 
@@ -118,6 +141,7 @@
     _collection.backgroundColor =[UIColor whiteColor];
     _collection.dataSource =self;
     _collection.delegate =self;
+    _collection.backgroundColor =[UIColor lightGrayColor];
     [self.view addSubview:_collection];
     
 }
@@ -159,9 +183,8 @@
         
         carouseIFingureCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"carousel" forIndexPath:indexPath];
 //        if (_CarouseArray.count != 0) {
-            IanScrollView *scrollView = [[IanScrollView alloc] initWithFrame:CGRectMake(0,0,375,120)];
-            
-
+            IanScrollView *scrollView = [[IanScrollView alloc] initWithFrame:CGRectMake(0,0,kWidth,120)];
+        
             scrollView.slideImagesArray = _ScrollArr;
             scrollView.ianEcrollViewSelectAction = ^(NSInteger i){
                 HomepageHeaderModel*header = self.CarouseArray[i-0];
@@ -237,7 +260,8 @@
         cell.package = package;
         [cell.bigUrl4image sd_setImageWithURL:[NSURL URLWithString:package.bigImageUrl]placeholderImage:[UIImage imageNamed:@"picholder"]];
         }
-        cell.selected=NO;
+        cell.layer.borderWidth = 0.3;
+        cell.layer.borderColor = [UIColor lightGrayColor].CGColor;
         return cell;
     }else{
         UICollectionViewCell*cell  =[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
@@ -248,27 +272,37 @@
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section ==0) {
-        return CGSizeMake(375, 120);
+        return CGSizeMake(kWidth, 120);
     }else if (indexPath.section ==1) {
-        return CGSizeMake(70, 60);
+        return CGSizeMake(kWidth/5, 65);
     }else if (indexPath.section ==2){
-        return CGSizeMake(187.5, 60);
+        return CGSizeMake(kWidth/2, 60);
         
     }else if (indexPath.section ==3){
-        return CGSizeMake(375, 100);
+        return CGSizeMake(kWidth, 100);
         
     }else if (indexPath.section ==4){
-        return CGSizeMake(365, 200);
+        return CGSizeMake(kWidth, 200);
         
     }else if (indexPath.section ==5){
-        return CGSizeMake(375, 30);
+        return CGSizeMake(kWidth, 30);
         
     }else{
         
         return CGSizeMake(80, 80);
     }
 }
+//- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout minimumInteritemSpacingForSectionAtIndex:(NSInteger)section
+//{
+//    return 5.0;
+//}
 
+- (UIEdgeInsets)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section {
+    if (section==2||section==3||section==1) {
+        return UIEdgeInsetsMake(0, 0, 5, 0);
+    }
+    return UIEdgeInsetsMake(0, 0, 0, 0); // top, left, bottom, right
+}
 //点击cell
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
@@ -276,8 +310,9 @@
         if (indexPath.row<4) {
             CategoryVC*cateVC=[CategoryVC new];
             cateVC.urlNum = [self.ProductArr[indexPath.row] app_url];
-            [self.navigationController pushViewController:cateVC animated:YES];
-            
+         //   [self.navigationController pushViewController:cateVC animated:YES];
+            UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
+            [self presentViewController:rootNC animated:YES completion:nil];
         }else{
         
         CarouselWebViewVC*WebVC =[CarouselWebViewVC new];
@@ -308,7 +343,9 @@
         ComDetailVC*detailVC =[ComDetailVC new];
         detailVC.bookID = nlinkId;
         detailVC.detailID = productld;
-        [self.navigationController pushViewController:detailVC animated:YES];
+        UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:detailVC];
+        [self presentViewController:rootNC animated:YES completion:nil];
+        
         
     }
     
@@ -327,7 +364,9 @@
     HomepageScenicModel*a = self.cityArr[0];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
-    [self.navigationController pushViewController:cateVC animated:YES];
+    UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
+    [self presentViewController:rootNC animated:YES completion:nil];
+    
 }
 - (void)getDetailControllerB10{
     
@@ -335,7 +374,8 @@
     HomepageScenicModel*a = self.cityArr[1];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
-    [self.navigationController pushViewController:cateVC animated:YES];
+    UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
+    [self presentViewController:rootNC animated:YES completion:nil];
 }
 - (void)getDetailControllerB11{
     
@@ -343,7 +383,8 @@
     HomepageScenicModel*a = self.cityArr[2];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
-    [self.navigationController pushViewController:cateVC animated:YES];
+    UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
+    [self presentViewController:rootNC animated:YES completion:nil];
 }
 - (void)getDetailControllerB12{
     
@@ -351,22 +392,24 @@
     HomepageScenicModel*a = self.cityArr[3];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
-    [self.navigationController pushViewController:cateVC animated:YES];
+    UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
+    [self presentViewController:rootNC animated:YES completion:nil];
 }
 - (void)getDetailControllerB13{
     CategoryVC*cateVC =[CategoryVC new];
     HomepageScenicModel*a = self.cityArr[4];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
-    [self.navigationController pushViewController:cateVC animated:YES];
-}
+    UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
+    [self presentViewController:rootNC animated:YES completion:nil];}
 - (void)getDetailControllerB14{
     
     CategoryVC*cateVC =[CategoryVC new];
     HomepageScenicModel*a = self.cityArr[5];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
-    [self.navigationController pushViewController:cateVC animated:YES];
+    UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
+    [self presentViewController:rootNC animated:YES completion:nil];
 }
 - (void)getDetailControllerB15{
     
@@ -374,12 +417,77 @@
     HomepageScenicModel*a = self.cityArr[6];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
-    [self.navigationController pushViewController:cateVC animated:YES];
+    UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
+    [self presentViewController:rootNC animated:YES completion:nil];
 }
 - (void)getDetailControllerB16{
-  //更多为城市列表
-  
+    //更多为城市列表
+    
 }
+
+- (void)getDetailControllerB1{
+    
+    ScenicDetailVC*dateailVC =[ScenicDetailVC new];
+    HomepageScenicModel*scenic = self.ScenicArr[0];
+    dateailVC.scenicID =[scenic.cityId integerValue];
+   
+    [self presentViewController:dateailVC animated:YES completion:nil];
+}
+
+- (void)getDetailControllerB2{
+    
+    ScenicDetailVC*dateailVC =[ScenicDetailVC new];
+    HomepageScenicModel*scenic = self.ScenicArr[1];
+    dateailVC.scenicID =[scenic.cityId integerValue];
+    [self presentViewController:dateailVC animated:YES completion:nil];
+}
+- (void)getDetailControllerB3{
+    
+    ScenicDetailVC*dateailVC =[ScenicDetailVC new];
+    HomepageScenicModel*scenic = self.ScenicArr[2];
+    dateailVC.scenicID =[scenic.cityId integerValue];
+    [self presentViewController:dateailVC animated:YES completion:nil];
+}
+- (void)getDetailControllerB4{
+    
+    ScenicDetailVC*dateailVC =[ScenicDetailVC new];
+    HomepageScenicModel*scenic = self.ScenicArr[3];
+    dateailVC.scenicID =[scenic.cityId integerValue];
+    [self presentViewController:dateailVC animated:YES completion:nil];
+}
+- (void)getDetailControllerB5{
+    
+    ScenicDetailVC*dateailVC =[ScenicDetailVC new];
+    HomepageScenicModel*scenic = self.ScenicArr[4];
+    dateailVC.scenicID =[scenic.cityId integerValue];
+    [self presentViewController:dateailVC animated:YES completion:nil];
+}
+- (void)getDetailControllerB6{
+    
+    ScenicDetailVC*dateailVC =[ScenicDetailVC new];
+    HomepageScenicModel*scenic = self.ScenicArr[5];
+    dateailVC.scenicID =[scenic.cityId integerValue];
+    [self presentViewController:dateailVC animated:YES completion:nil];
+}
+- (void)getDetailControllerB7{
+    
+    ScenicDetailVC*dateailVC =[ScenicDetailVC new];
+    HomepageScenicModel*scenic = self.ScenicArr[6];
+    dateailVC.scenicID =[scenic.cityId integerValue];
+    [self presentViewController:dateailVC animated:YES completion:nil];
+}
+- (void)getDetailControllerB8{
+    
+    ScenicDetailVC*dateailVC =[ScenicDetailVC new];
+    HomepageScenicModel*scenic = self.ScenicArr[7];
+    dateailVC.scenicID =[scenic.cityId integerValue];
+    [self presentViewController:dateailVC animated:YES completion:nil];
+}
+
+
+
+
+
 
 -(NSMutableArray*)ScrollArr{
     

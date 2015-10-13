@@ -56,7 +56,7 @@
 
 //排序 目的城市全部 景点全部 价格变高  city传进来的城市 (景德镇的经纬度) 筛选为全部
 
-#define sortDataUp(type,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343673&latitude=40.030488&version=4.3.1&sort=%@&province=1&system=iOS&pageSize=20&channel=AppStore&city=%@",type,cityName]
+#define sortDataUp(type,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343715&latitude=40.030547&version=4.3.1&sort=%@&province=1&system=iOS&pageSize=20&channel=AppStore&city=%@",type,cityName]
 
 
 //排序 目的城市选定 景点全部 价格变高 cityName(选定的目的城市) (上饶) 筛选为全部
@@ -88,7 +88,11 @@
 #define partScenicList(scenicName,sort,tagName,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343635&latitude=40.030579&scenicName=%@&version=4.3.1&sort=%@&province=0&tagName=%@&system=iOS&pageSize=20&channel=AppStore&city=%@",scenicName,sort,tagName,cityName]
 
 
+//----------------------搜索
 
+// http://appapi.yaochufa.com/v2/Util/GetSearchHotKeys?machineCode=00000000-62a0-833f-ffff-ffffc33ba23b&version=4.3.1&keyCount=12&system=android&cityId=1&channel=huaweimarket
+
+#define hotCity(cityID) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Util/GetSearchHotKeys?version=4.3.1&keyCount=12&system=iOS&cityId=%ld&channel=AppStore",cityID]
 
 
 

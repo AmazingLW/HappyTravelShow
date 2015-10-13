@@ -99,10 +99,18 @@
     }else{
       HomepageCityModel*city  =self.CityArr[indexPath.row];
 
-    [cell.image4scenes sd_setImageWithURL:[NSURL URLWithString:city.homeImageUrl ]placeholderImage:[UIImage imageNamed:@"picholder"]];
+        if ([city.homeImageUrl length]<80 ) {
+            NSString*url = [NSString stringWithFormat:@"http://cdn5.jinxidao.com/%@",city.homeImageUrl];
+         [cell.image4scenes sd_setImageWithURL:[NSURL URLWithString:url ]placeholderImage:[UIImage imageNamed:@"picholder"]];
+        }else{
+        [cell.image4scenes sd_setImageWithURL:[NSURL URLWithString:city.homeImageUrl ]placeholderImage:[UIImage imageNamed:@"picholder"]];
+        }
+   
         cell.lab4productName.text = city.productName;
         cell.lab4productTitleContent.text =[NSString stringWithFormat:@"[%@]%@",city.city,city.productTitleContent];
+        cell.lab4productTitleContent.numberOfLines = 2;
         cell.lab4originalPrice.text = [NSString stringWithFormat:@"￥%ld",city.retailPrice];
+        cell.lab4originalPrice.frame = CGRectMake(236, 80, 50, 21);
         cell.lab4price.text = [NSString stringWithFormat:@"%ld",city.price];
         cell.lab4saledCount.text = [NSString stringWithFormat:@"已售%ld",city.saledCount];
 
@@ -146,6 +154,7 @@
         ComDetailVC *comDetail = [[ComDetailVC alloc] init];
         comDetail.bookID = packageID;
         comDetail.detailID = productId;
+
         [self.navigationController pushViewController:comDetail animated:YES];
     }
 

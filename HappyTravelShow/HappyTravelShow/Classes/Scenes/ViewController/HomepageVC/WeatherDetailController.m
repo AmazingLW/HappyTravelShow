@@ -8,12 +8,16 @@
 
 #import "WeatherDetailController.h"
 #import "WeatherDetailCell.h"
+#import "SkyModel.h"
+#import "UIImageView+WebCache.h"
+
 #define kWidth [UIScreen mainScreen].bounds.size.width
 
 
 
 @interface WeatherDetailController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *weatherView;
+
 
 
 @end
@@ -53,10 +57,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem = leftBtn;
+    
     //注册
     [self.weatherView registerClass:[WeatherDetailCell class] forCellReuseIdentifier:@"cell"];
     
     
+}
+
+- (void)backAction{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -76,30 +88,38 @@
     }
     
     if (indexPath.row==0) {
+        
+        SkyModel *skyModel = self.skyArr[0];
+        SkyModel *skySubModel = skyModel.skyArr[0];
         cell.locationView.image=[UIImage imageNamed:@"location.png"];
-        cell.lab4weatherPlace.text=@"北京";
-        cell.lab4todayData.text=@"今日10月10日";
-        cell.lab4todayTemperature.text=@"16/10℃";
-        cell.weatherView.image=[UIImage imageNamed:@"w.png"];
-        cell.lab4weather.text=@"多云";
+        cell.lab4weatherPlace.text= skyModel.currentCity;
+        
+        NSArray *dateArr = [skySubModel.date componentsSeparatedByString:@" "];
+        cell.lab4todayData.text= [NSString stringWithFormat:@"今日%@",dateArr[1]];
+        cell.lab4todayTemperature.text= skySubModel.temperature;
+        [cell.weatherView sd_setImageWithURL:[NSURL URLWithString:skySubModel.dayPictureUrl]];
+        cell.lab4weather.text= skySubModel.weather;
 
     }else{
-        cell.tomorrowData.text=@"10月11日";
-        cell.afterTomorrowData.text=@"10月12日";
-        cell.threeDaysData.text=@"10月13日";
         
-        cell.tomorrowWeather.text=@"晴";
-        cell.afterTomorrowWeather.text=@"晴";
-        cell.threeDaysWeather.text=@"晴转多云";
+        SkyModel *skyModel = self.skyArr[0];
+        SkyModel *skySubModel1 = skyModel.skyArr[1];
+        SkyModel *skySubModel2 = skyModel.skyArr[2];
+        SkyModel *skySubModel3 = skyModel.skyArr[3];
+        
+        cell.tomorrowData.text= skySubModel1.date;
+        cell.afterTomorrowData.text= skySubModel2.date;
+        cell.threeDaysData.text= skySubModel3.date;
+        
+        cell.tomorrowWeather.text= skySubModel1.weather;
+        cell.afterTomorrowWeather.text= skySubModel2.weather;
+        cell.threeDaysWeather.text= skySubModel3.weather;
         
         
-        cell.tomorrowTemperature.text=@"22/9℃";
-        cell.afterTomorrowTemperature.text=@"23/10℃";
-        cell.threeDaysTemperature.text=@"25/11℃";
+        cell.tomorrowTemperature.text= skySubModel1.temperature;
+        cell.afterTomorrowTemperature.text= skySubModel2.temperature;
+        cell.threeDaysTemperature.text= skySubModel3.temperature;
 
-        
-        
-        
     }
     
     

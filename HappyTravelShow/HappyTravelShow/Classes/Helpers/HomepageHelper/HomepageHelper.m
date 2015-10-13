@@ -14,6 +14,7 @@
 #import "HomepagePackageModel.h"
 #import "AroundKindModel.h"
 #import "HomepageCityModel.h"
+#import "HomepageCityListModel.h"
 
 @interface HomepageHelper()
 
@@ -238,6 +239,37 @@
     
 }
 
+-(void)requestallCityList:(NSString*)kind
+               WithFinish:(void (^)(NSMutableArray *arr))result
+{  dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    manager.responseSerializer.acceptableContentTypes  = [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
+    [manager GET:kCityList parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSDictionary *dict= (NSDictionary *)responseObject;
+        self.CityArr=[NSMutableArray array];
+        NSDictionary*dic=dict[@"data"];
+        NSArray*array = dic[kind];
+        for (NSDictionary*dict1 in array) {
+            HomepageCityListModel*city=[HomepageCityListModel new];
+            [city setValuesForKeysWithDictionary:dict1];
+            [_CityArr addObject:city];
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            result(self.CityArr);
+        });
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+    
+});
+    
+    
+    
+}
 -(NSArray*)CarouseArray{
     return [_CarouseArr mutableCopy];
 }

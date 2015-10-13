@@ -18,6 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self drawNavControllers];
+    
+    
+    self.navigationItem.hidesBackButton = YES;
+    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
+    self.navigationItem.leftBarButtonItem = leftBtn;
 }
 -(void)drawNavControllers{
 //    CategoryDetailsVC*RecommendVC =[[CategoryDetailsVC alloc]initWithStyle:UITableViewStylePlain AndWithSort:@"n"];
@@ -55,6 +60,10 @@
     
     [navTabBarController addParentController:self];
 
+}
+
+- (void)backAction{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -456,7 +456,35 @@
 }
 
 
+- (void)requestHotCityWithCityID:(NSInteger)cityID result:(void (^)(NSArray * array))result{
+    
+    NSString *url = hotCity(cityID);
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        [manager GET:url parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+            
+            NSDictionary *dic= responseObject[@"data"];
+            NSArray *array = dic[@"keys"];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+              
+                result(array);
+            });
+            
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
 
+    });
+    
+    
+    
+    
+    
+}
 
 
 

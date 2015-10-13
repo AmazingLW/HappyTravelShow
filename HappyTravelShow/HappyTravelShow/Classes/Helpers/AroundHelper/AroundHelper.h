@@ -70,8 +70,9 @@
 - (void) requestDataFromURLStringWithScenicName:(NSString *)scenicName sort:(NSString *)sort tagName:(NSString *)tagName cityName:(NSString *)cityName finish:(void(^)(NSArray * array))result;
 
 
+// 热门城市
 
-
+- (void)requestHotCityWithCityID:(NSInteger)cityID result:(void (^)(NSArray * array))result;
 
 
 
