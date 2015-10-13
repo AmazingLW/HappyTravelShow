@@ -18,10 +18,11 @@
 #import "CommonCells+SetModel.h"
 #import "ComDetailVC.h"
 #import "SearchVC.h"
+#import "AroundVC3.h"
 #import "AroundVC2.h"
+#import "SearchVC.h"
 
-
-@interface AroundVC2 ()<XIDropdownlistViewProtocol,UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate>
+@interface AroundVC3 ()<XIDropdownlistViewProtocol,UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate>
 {
     XIOptionSelectorView *ddltView;
 }
@@ -68,9 +69,17 @@
 @property (nonatomic, strong)NSString *tmptag;
 
 @property (nonatomic, strong)NSString *cityName;
+
+
+
+//传值
+
+@property (nonatomic, strong)NSString *textField;
+
+
 @end
 
-@implementation AroundVC2
+@implementation AroundVC3
 
 static NSString *const reuse = @"cell";
 
@@ -78,35 +87,43 @@ static NSString *const reuse = @"cell";
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         UIImage *image = [UIImage imageNamed:@"around"];
         self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"周边" image:image tag:1002];
-       UITextField *textfield = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 20, 29)];
-         textfield.enabled = NO;
-        textfield.placeholder = @"搜索目的地/景点/酒店";
+        
+        
+        
+        UITextField *textfield = [[UITextField alloc] initWithFrame:CGRectMake(30, 0, self.view.frame.size.width - 30, 29)];
+        textfield.enabled = NO;
+        textfield.text = _textField;
+        textfield.clearsOnBeginEditing = YES;
+        
+        textfield.returnKeyType = UIReturnKeySearch;
         textfield.backgroundColor = [UIColor lightGrayColor];
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        
-        label.text = @"🔍";
-        // label.backgroundColor = [UIColor redColor];
-        textfield.rightView = label;
-        textfield.rightViewMode = UITextFieldViewModeAlways;
-        self.navigationItem.titleView = textfield;
         
         
-        UIView *a = [[UIView alloc] initWithFrame:CGRectMake(10, 10, self.view.frame.size.width - 20, 29)];
-        a.backgroundColor = [UIColor redColor];
-        [a addSubview:textfield];
-        self.navigationItem.titleView = a;
+        UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = CGRectMake(0, 0, 30, 29);
+        [button setBackgroundImage:[UIImage imageNamed:@"arrows"] forState:UIControlStateNormal];
+        [button setBackgroundColor:[UIColor whiteColor]];
+        [button addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
         
         
+        UIView *aview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
         
-        //textfield添加手势 跳转
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(skip:)];
-      //  tap.numberOfTapsRequired = 1;
+        [aview addSubview:button];
+        [aview addSubview:textfield];
         
-    
-        [a addGestureRecognizer:tap];
+        self.navigationItem.titleView = aview;
         
+
     }
     return self;
+}
+
+//返回 aroundvc2 的界面 pop 出去两个界面
+- (void)back:(UIButton *)button{
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    
+    
 }
 
 
@@ -146,9 +163,13 @@ static NSString *const reuse = @"cell";
         
         [_type setObject:typeArray[i] forKey:array[i]];
     }
-    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 40)];
+    label.text = @"搜索结果";
+    label.backgroundColor = [UIColor whiteColor];
+    label.textAlignment = NSTextAlignmentCenter;
+    [self.view addSubview:label];
     //tableview 创建
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height - 40) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 140, self.view.frame.size.width, self.view.frame.size.height - 40) style:UITableViewStylePlain];
     
     _tableView.delegate = self;
     _tableView.dataSource = self;
@@ -158,12 +179,12 @@ static NSString *const reuse = @"cell";
     
     [self.tableView registerNib:[UINib nibWithNibName:@"CommonCells" bundle:nil] forCellReuseIdentifier:reuse];
     //取不到
-   // NSLog(@"%@",self.destinationCity);
+    // NSLog(@"%@",self.destinationCity);
     
     [self setupDropdownList];
     [self requestData];
     
-
+    
     
 }
 
@@ -205,13 +226,13 @@ static NSString *const reuse = @"cell";
             }else{
                 Hight = (weakSelf.scenicArray.count + 1) * 40;
             }
-
+            
             aView = [[XIOptionView alloc] initWithFrame:CGRectMake(0, py, dpW, Hight)];
             aView.backgroundColor = [UIColor whiteColor];
             aView.delegate = weakSelf;
             aView.viewIndex = index;
             
-           NSMutableArray *array = [NSMutableArray arrayWithObjects:@"全部", nil];
+            NSMutableArray *array = [NSMutableArray arrayWithObjects:@"全部", nil];
             
             [array addObjectsFromArray:weakSelf.scenicArray];
             [aView setFetchDataSource:^NSArray *{
@@ -245,19 +266,19 @@ static NSString *const reuse = @"cell";
     if(segment==0){
         tmpArry = @[@"默认排序", @"价格由低至高", @"价格由高至低",@"销量优先",@"新品优先",@"离我最近"];
         [ddltView setTitle:tmpArry[index] forItem:segment];
-      //  _sortName = tmpArry[index];
-//        if (!_sort) {
-//            
-//            _tmpsort = @"n";
-//            
-//            
-//        }else{
-//           
-//            _tmpsort = _type[tmpArry[index]];
-//            
-//            
-//        }
-      
+        //  _sortName = tmpArry[index];
+        //        if (!_sort) {
+        //
+        //            _tmpsort = @"n";
+        //
+        //
+        //        }else{
+        //
+        //            _tmpsort = _type[tmpArry[index]];
+        //
+        //
+        //        }
+        
         
         
         _tmpsort = _type[tmpArry[index]];
@@ -275,29 +296,29 @@ static NSString *const reuse = @"cell";
         
         //_tmpscenic = array[index];
         //如果景点是全部那么就是全部景点
-//        if (!_scenic) {
-//            
-//            [[AroundHelper new]requsetAllScenicsWithCityName:@"景德镇" finish:^(NSArray *scenic) {
-//                
-//                NSArray *array = [NSArray arrayWithArray:scenic];
-//                _allScenic = [array mutableCopy];
-//                [self.tableView reloadData];
-//            }];
-//  
-//        }else
+        //        if (!_scenic) {
+        //
+        //            [[AroundHelper new]requsetAllScenicsWithCityName:@"景德镇" finish:^(NSArray *scenic) {
+        //
+        //                NSArray *array = [NSArray arrayWithArray:scenic];
+        //                _allScenic = [array mutableCopy];
+        //                [self.tableView reloadData];
+        //            }];
+        //
+        //        }else
         
         
-             //{
-            //在次点击全部
-            if (index == 0) {
-                
-                [self request];
-                
-            }else{
+        //{
+        //在次点击全部
+        if (index == 0) {
+            
+            [self request];
+            
+        }else{
             
             _tmpscenic = _scenicArray[index - 1];
             
-           // NSString *sc = self.scenicName;
+            // NSString *sc = self.scenicName;
             
             for (NSString * cityName in self.dic) {
                 NSArray *array = self.dic[cityName];
@@ -308,11 +329,11 @@ static NSString *const reuse = @"cell";
                     }
                     
                 }
- 
+                
             }
+            
+        }
         
-            }
- 
         //}
         
         _scenic++;
@@ -323,15 +344,15 @@ static NSString *const reuse = @"cell";
         [ddltView setTitle:tmpArry[index] forItem:segment];
         _tagName = tmpArry[index];
         
-//        if (!_tag) {
-//            
-//            _tmptag = nil;
-//            
-//        }else{
-//            
-//         _tmptag = tmpArry[index];
-//            
-//        }
+        //        if (!_tag) {
+        //
+        //            _tmptag = nil;
+        //
+        //        }else{
+        //
+        //         _tmptag = tmpArry[index];
+        //
+        //        }
         
         _tmptag = tmpArry[index];
         
@@ -340,7 +361,7 @@ static NSString *const reuse = @"cell";
     
     
     [self fuck];
- 
+    
     
 }
 
@@ -363,19 +384,19 @@ static NSString *const reuse = @"cell";
         
         if ([_tmptag isEqualToString:@"全部"]) {
             
-             [self requestDataWithScenicName:_tmpscenic sort:_tmpsort tagName:nil cityName:self.cityName];
+            [self requestDataWithScenicName:_tmpscenic sort:_tmpsort tagName:nil cityName:self.cityName];
         }
         [self requestDataWithScenicName:_tmpscenic sort:@"n" tagName:_tmptag cityName:self.cityName];
         
-       //如果三个都点击了 并且都不是第一个
+        //如果三个都点击了 并且都不是第一个
     }else if ((_sort != 0 && _tag != 0 && _scenic != 0) && ((![_tmpsort isEqualToString:@"默认排序"]) && (![_tmptag isEqualToString:@"全部"])&& (![_tmpscenic isEqualToString:@"全部"]))){
         
-          [self requestDataWithScenicName:_tmpscenic sort:_tmpsort tagName:_tmptag cityName:self.cityName];
+        [self requestDataWithScenicName:_tmpscenic sort:_tmpsort tagName:_tmptag cityName:self.cityName];
         //如果只点击了 筛选  景点全部 排序是默认 sort = n
     }else if ((_sort == 0 && _tag != 0 && _scenic == 0) || ([_tmpsort isEqualToString:@"默认排序"] &&[_tmpscenic isEqualToString:@"全部"])){
         [self sortWithType:@"n" tagName:_tmptag];
         
-       //如果只点击了 排序  景点全部 筛选是默认
+        //如果只点击了 排序  景点全部 筛选是默认
     }else if ((_sort != 0 && _tag == 0 && _scenic == 0) ||([_tmptag isEqualToString:@"全部"] && [_tmpscenic isEqualToString:@"全部"])){
         
         [self onlySortWithType:_tmpsort];
@@ -390,7 +411,7 @@ static NSString *const reuse = @"cell";
         [self requestDataWithScenicName:_tmpscenic sort:_tmpsort tagName:nil cityName:self.cityName];
         
     }
-
+    
     
     
     
@@ -404,25 +425,25 @@ static NSString *const reuse = @"cell";
         
         _allScenic = [array mutableCopy];
         
-//        UIView *aview = [[UIView alloc] initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height - 40)];
-//        
-//        aview.backgroundColor = [UIColor whiteColor];
-//        
-//        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2, 200, 30)];
-//        label.text = @"对不起我们正在努力开拓产品.....";
-//        [aview addSubview:label];
-//        
-//        
-//        if (_allScenic == nil){
-//            
-//            [self.view insertSubview:aview aboveSubview:self.tableView];
-//        
-//        }else{
-//            [aview removeFromSuperview];
-            
+        //        UIView *aview = [[UIView alloc] initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height - 40)];
+        //
+        //        aview.backgroundColor = [UIColor whiteColor];
+        //
+        //        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2, 200, 30)];
+        //        label.text = @"对不起我们正在努力开拓产品.....";
+        //        [aview addSubview:label];
+        //
+        //
+        //        if (_allScenic == nil){
+        //
+        //            [self.view insertSubview:aview aboveSubview:self.tableView];
+        //
+        //        }else{
+        //            [aview removeFromSuperview];
+        
         
         [self.tableView reloadData];
-      
+        
     }];
 }
 
@@ -475,7 +496,7 @@ static NSString *const reuse = @"cell";
     
     CommonCells *cell = [tableView dequeueReusableCellWithIdentifier:reuse forIndexPath:indexPath];
     
-   
+    
     
     cell.Model = _allScenic[indexPath.row];
     
@@ -497,12 +518,12 @@ static NSString *const reuse = @"cell";
     
     comDetail.bookID = packageID;
     comDetail.detailID = productId;
-
+    
     UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:comDetail];
     [self presentViewController:rootNC animated:YES completion:nil];
     
     
-//    [self.navigationController pushViewController:comDetail animated:YES];
+    //    [self.navigationController pushViewController:comDetail animated:YES];
     
 }
 
@@ -562,7 +583,7 @@ static NSString *const reuse = @"cell";
         _allScenic = [NSMutableArray arrayWithArray:scenic];
         [self.tableView reloadData];
     }];
-
+    
     
 }
 
@@ -571,13 +592,13 @@ static NSString *const reuse = @"cell";
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

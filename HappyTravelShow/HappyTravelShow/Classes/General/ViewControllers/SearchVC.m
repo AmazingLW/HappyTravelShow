@@ -8,6 +8,8 @@
 
 #import "SearchVC.h"
 #import "AroundHelper.h"
+
+#import "AroundVC3.h"
 @interface SearchVC ()<UITextFieldDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong)UITextField *textfield;
 @property (nonatomic, strong)UIButton *button;
@@ -57,6 +59,7 @@ static NSString *const footer = @"footer";
         _textfield = [[UITextField alloc] initWithFrame:CGRectMake(30 , 0,_a.frame.size.width - 90 , 29)];
         _textfield.placeholder = @"搜索目的地/景点/酒店";
         _textfield.backgroundColor = [UIColor lightGrayColor];
+        _textfield.returnKeyType = UIReturnKeySearch;
         _textfield.delegate = self;
         
         [_a addSubview:_button];
@@ -129,7 +132,20 @@ static NSString *const footer = @"footer";
     
 }
 
+
+
+
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    //textField 的值和数据库比较 相等才搜索 并且跳转
+    if (_textfield.text) {
+        
+    }
+    
+    AroundVC3 *around = [[AroundVC3 alloc] init];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:around];
+    
+    [self.navigationController pushViewController:nav animated:YES];
     
     [textField resignFirstResponder];
     return YES;
@@ -159,10 +175,13 @@ static NSString *const footer = @"footer";
     [_collection registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:reuse];
     
     [_collection registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header"];
+    
+    [_collection registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"aaa"];
+    
 //    [collection registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footer];
 //    
     [self.view addSubview:_collection];
-    _collection.scrollEnabled = NO;
+    _collection.scrollEnabled = YES;
     
     [self request];
     // Do any additional setup after loading the view.
@@ -176,7 +195,7 @@ static NSString *const footer = @"footer";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    
+    NSLog(@"%ld---%ld", indexPath.section,indexPath.row);
 }
 
 
@@ -187,9 +206,14 @@ static NSString *const footer = @"footer";
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     if (section == 0) {
-        //如果没有历史 就返回0 header有两种
         
-        return 10;
+        
+        
+        //如果没有历史 就返回0 header有两种
+        return 0;
+        
+        //如果有几个就返回几个
+        
     }else {
         //根据请求的数据
         return _cityArray.count;
@@ -203,7 +227,8 @@ static NSString *const footer = @"footer";
     
     cell.backgroundColor = [UIColor lightGrayColor];
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(cell.frame.size.width / 2, cell.frame.size.height / 2, 80, 20)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 20)];
+    label.center = CGPointMake(cell.frame.size.width / 2, cell.frame.size.height / 2);
     label.text = _cityArray[indexPath.row];
     
     [cell addSubview:label];
@@ -214,17 +239,18 @@ static NSString *const footer = @"footer";
 
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
-//    
-    
-        if (indexPath.section == 0) {
-            
-          
+
            //如果有历史返回一中头 没有返回另一种
             
-            UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
-           
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, header.frame.size.height / 2, 200, 10)];
-            
+    
+    
+    
+    if (indexPath.section == 0) {
+        
+        UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
+        
+         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200,10)];
+        label.center = CGPointMake(header.frame.size.width / 2, header.frame.size.height / 2);
             label.text = @"暂无历史搜索记录";
             label.textColor = [UIColor grayColor];
             
@@ -232,28 +258,30 @@ static NSString *const footer = @"footer";
             
             
             return header;
+
+        
+        
+    }else if (indexPath.section == 1){
+        
+        UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"aaa" forIndexPath:indexPath];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,0 , 100, 10)];
+        label.center = CGPointMake(50, header.frame.size.height / 2);
+        label.text = @"热门搜索";
+        label.textColor = [UIColor grayColor];
+        
+        [header addSubview:label];
+        
+        
+        return header;
+
+        
+        
+    }
+    
+    
             
-            //如果有历史
-            
-            
-            
-            
-            
-            
-        }else{
-            
-            UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
-            
-            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, header.frame.size.height / 2, 200, 10)];
-            
-            label.text = @"热门搜索";
-            label.textColor = [UIColor grayColor];
-            
-            [header addSubview:label];
-            
-            
-            return header;
-        }
+    return nil;
     
   
 }
