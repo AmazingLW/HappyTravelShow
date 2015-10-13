@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef void(^BLOCK) (NSString*,NSString*,NSString*);
 @interface GPSCell : UITableViewCell
 @property(nonatomic,strong)UICollectionView*collection;
+@property(nonatomic,strong)BLOCK block;
+
 @end

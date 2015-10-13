@@ -17,7 +17,7 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"%ld",_cityId];
+    return [NSString stringWithFormat:@"%@,%@",_cityName,_pinYinName];
 }
 
 @end

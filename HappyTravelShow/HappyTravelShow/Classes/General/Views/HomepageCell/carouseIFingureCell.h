@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface carouseIFingureCell : UICollectionViewCell
-@property (weak, nonatomic) IBOutlet UIView *carousel4view;
+
 
 @end

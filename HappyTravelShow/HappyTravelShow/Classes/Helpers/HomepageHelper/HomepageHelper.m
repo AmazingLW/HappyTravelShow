@@ -29,11 +29,13 @@
 
 
 - (void)requestAllPackage:(NSString*)title
+             withCityCode:(NSString*)cityCode
                WithFinish:(void (^)(NSMutableArray *arr))result{
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer.acceptableContentTypes  = [NSSet setWithObject:@"text/html"];
-        [manager GET:kPackage parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString*url = kPackage(cityCode,@"%",@"%",@"%",@"%");
+              [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *dict= (NSDictionary *)responseObject;
             self.CarouseArr=[NSMutableArray array];
             NSArray*arr=dict[@"content"];
@@ -69,11 +71,13 @@
 
 
 - (void)requestAllCity:(NSString*)kind
+          withCityCode:(NSString*)cityCode
             WithFinish:(void (^)(NSMutableArray *arr))result{
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer.acceptableContentTypes  = [NSSet setWithObject:@"text/html"];
-        [manager GET:kCity parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString*url = kCity(cityCode);
+        [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *dict= (NSDictionary *)responseObject;
             self.CityArr=[NSMutableArray array];
             
@@ -98,14 +102,14 @@
 }
 
 
-- (void)requestAllRecommendation:(void (^)(NSMutableArray *arr))result{
-    
-    
+- (void)requestAllRecommendation:(NSString*)cityCode
+                      WithFinish:(void (^)(NSMutableArray *arr))result{
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer.acceptableContentTypes  = [NSSet setWithObject:@"text/html"];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-        [manager GET:kRecommendation parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSString*url = kRecommendation(cityCode);
+        [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *dict= (NSDictionary *)responseObject;
             self.RecommendationArr=[NSMutableArray array];
 
@@ -254,9 +258,22 @@
         for (NSDictionary*dict1 in array) {
             HomepageCityListModel*city=[HomepageCityListModel new];
             [city setValuesForKeysWithDictionary:dict1];
-            [_CityArr addObject:city];
+            [self.CityArr addObject:city];
         }
         
+        for (int i=0; i<self.CityArr.count; i++) {
+            if ([[self.CityArr[i] pinYinName]isEqualToString:@""] ) {
+                HomepageCityListModel*city=self.CityArr[i];
+                city.pinYinName= @"KenDing";
+            }
+
+        }
+        if ([kind isEqualToString:@"positionCity"]) {
+              [self.CityArr sortUsingComparator:^NSComparisonResult(id obj1, id obj2) {
+        return[[obj1 pinYinName]compare:[obj2 pinYinName]];
+    }];
+        }
+  
         dispatch_async(dispatch_get_main_queue(), ^{
             result(self.CityArr);
         });

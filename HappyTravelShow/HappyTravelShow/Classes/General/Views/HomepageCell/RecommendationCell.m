@@ -22,6 +22,7 @@
     self.price4lable.text = [NSString stringWithFormat:@"￥%ld",package.price];
     self.original4image.text =[NSString stringWithFormat:@"￥%ld",package.originalPrice];
     self.saled4lable.text =[NSString stringWithFormat:@"已售%ld",package.saledCount];
+    self.city4lable.text = package.cityName;
     
 }
 
