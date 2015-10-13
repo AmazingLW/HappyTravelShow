@@ -147,6 +147,9 @@
 		C2C2001F1BCB5D10000F2AC7 /* LocationNacItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C2001E1BCB5D10000F2AC7 /* LocationNacItem.m */; };
 		C2C200251BCB674C000F2AC7 /* HomepageCityListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C200241BCB674C000F2AC7 /* HomepageCityListModel.m */; };
 		C2ECC67A1BC9141400115824 /* HomepageCityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ECC6791BC9141400115824 /* HomepageCityModel.m */; };
+		C2F1A0A61BCB937F00060A9A /* SearchVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F1A0A51BCB937F00060A9A /* SearchVC.m */; };
+		C2F1A0A81BCB948000060A9A /* arrows.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F1A0A71BCB948000060A9A /* arrows.png */; };
+		C2F1A0AA1BCB993900060A9A /* search.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F1A0A91BCB993900060A9A /* search.png */; };
 		C2F423B91BC5FC6900194989 /* FindKindOfSceneController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F423B81BC5FC6900194989 /* FindKindOfSceneController.m */; };
 		C2F423BB1BC61F4A00194989 /* money.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F423BA1BC61F4A00194989 /* money.png */; };
 		C2F423BE1BC64DE600194989 /* FindMainDetaiCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F423BD1BC64DE600194989 /* FindMainDetaiCell.m */; };
@@ -156,6 +159,8 @@
 		C2F4861D1BC8A7D90017C434 /* zz.png in Resources */ = {isa = PBXBuildFile; fileRef = C2F4861C1BC8A7D90017C434 /* zz.png */; };
 		C2F486211BC8E5F30017C434 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C2F486201BC8E5F30017C434 /* background.jpg */; };
 		C2FE4D681BCBB0370012075C /* LocationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE4D671BCBB0370012075C /* LocationVC.m */; };
+		C2FE4D6B1BCBCA430012075C /* GPSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE4D6A1BCBCA430012075C /* GPSCell.m */; };
+		C2FE4D6E1BCBEE1E0012075C /* HotCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE4D6D1BCBEE1E0012075C /* HotCityCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -419,6 +424,10 @@
 		C2C200241BCB674C000F2AC7 /* HomepageCityListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepageCityListModel.m; sourceTree = "<group>"; };
 		C2ECC6781BC9141400115824 /* HomepageCityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepageCityModel.h; sourceTree = "<group>"; };
 		C2ECC6791BC9141400115824 /* HomepageCityModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepageCityModel.m; sourceTree = "<group>"; };
+		C2F1A0A41BCB937F00060A9A /* SearchVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchVC.h; sourceTree = "<group>"; };
+		C2F1A0A51BCB937F00060A9A /* SearchVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchVC.m; sourceTree = "<group>"; };
+		C2F1A0A71BCB948000060A9A /* arrows.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrows.png; sourceTree = "<group>"; };
+		C2F1A0A91BCB993900060A9A /* search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search.png; sourceTree = "<group>"; };
 		C2F423B71BC5FC6900194989 /* FindKindOfSceneController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FindKindOfSceneController.h; sourceTree = "<group>"; };
 		C2F423B81BC5FC6900194989 /* FindKindOfSceneController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FindKindOfSceneController.m; sourceTree = "<group>"; };
 		C2F423BA1BC61F4A00194989 /* money.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = money.png; sourceTree = "<group>"; };
@@ -431,6 +440,10 @@
 		C2F486201BC8E5F30017C434 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		C2FE4D661BCBB0370012075C /* LocationVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationVC.h; sourceTree = "<group>"; };
 		C2FE4D671BCBB0370012075C /* LocationVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationVC.m; sourceTree = "<group>"; };
+		C2FE4D691BCBCA430012075C /* GPSCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GPSCell.h; sourceTree = "<group>"; };
+		C2FE4D6A1BCBCA430012075C /* GPSCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GPSCell.m; sourceTree = "<group>"; };
+		C2FE4D6C1BCBEE1E0012075C /* HotCityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HotCityCell.h; sourceTree = "<group>"; };
+		C2FE4D6D1BCBEE1E0012075C /* HotCityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HotCityCell.m; sourceTree = "<group>"; };
 		E74A25802C8BAEBB910EC920 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -591,6 +604,8 @@
 				16DBAC5D1BC7ACE30082A143 /* FindPlaceVC.m */,
 				16977EC61BC8B50700026522 /* PhotoBrowserVC.h */,
 				16977EC71BC8B50700026522 /* PhotoBrowserVC.m */,
+				C2F1A0A41BCB937F00060A9A /* SearchVC.h */,
+				C2F1A0A51BCB937F00060A9A /* SearchVC.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -791,6 +806,10 @@
 				C209F53A1BC6187D00946675 /* RecommendationCell.h */,
 				C209F53B1BC6187D00946675 /* RecommendationCell.m */,
 				C209F53C1BC6187D00946675 /* RecommendationCell.xib */,
+				C2FE4D691BCBCA430012075C /* GPSCell.h */,
+				C2FE4D6A1BCBCA430012075C /* GPSCell.m */,
+				C2FE4D6C1BCBEE1E0012075C /* HotCityCell.h */,
+				C2FE4D6D1BCBEE1E0012075C /* HotCityCell.m */,
 			);
 			path = HomepageCell;
 			sourceTree = "<group>";
@@ -961,6 +980,8 @@
 				C27358C21BC4F43900771457 /* option_arrow_down@2x.png */,
 				C27358C31BC4F43900771457 /* option_arrow_up@2x.png */,
 				16DB11B11BC425B3009D7C7D /* around.png */,
+				C2F1A0A71BCB948000060A9A /* arrows.png */,
+				C2F1A0A91BCB993900060A9A /* search.png */,
 			);
 			path = AroundRes;
 			sourceTree = "<group>";
@@ -1286,10 +1307,12 @@
 				C228D7941BC9032A009E383A /* my.jpg in Resources */,
 				C25074231BC7631000F62844 /* aa.png in Resources */,
 				16EB2DCB1BC6AB7800F51A9F /* place.png in Resources */,
+				C2F1A0AA1BCB993900060A9A /* search.png in Resources */,
 				C25074241BC7631000F62844 /* 55.png in Resources */,
 				16D8C5E61BC6C7EF001175AB /* mapapi.bundle in Resources */,
 				16411AAB1BCB77AF00E7A54C /* shijian.png in Resources */,
 				C27D31A61BC7633D005B049D /* SCNavTabBar.bundle in Resources */,
+				C2F1A0A81BCB948000060A9A /* arrows.png in Resources */,
 				16988D691BC3A994001A1077 /* Images.xcassets in Resources */,
 				C22699F71BC50AB5009BBAB0 /* carouseIFingureCell.xib in Resources */,
 			);
@@ -1348,11 +1371,15 @@
 				16DB11991BC4228D009D7C7D /* UIImage+MultiFormat.m in Sources */,
 				16DB119A1BC4228D009D7C7D /* UIImage+WebP.m in Sources */,
 				C27D31971BC7624A005B049D /* CategoryVC.m in Sources */,
+
+
 				161D357C1BCBD47E00DB7F70 /* DetailplaceMapVC.m in Sources */,
+
 				16977ECF1BC9478700026522 /* SDHeaderCell.m in Sources */,
 				C268C98B1BC90F500043B541 /* XIOptionSelectorView.m in Sources */,
 				C228D7971BC9079B009E383A /* FavoriteController.m in Sources */,
 				C27D31A71BC7633D005B049D /* SCNavTabBarController.m in Sources */,
+				C2FE4D6B1BCBCA430012075C /* GPSCell.m in Sources */,
 				C27D319A1BC7629B005B049D /* CategoryDetailsVC.m in Sources */,
 				C2269A121BC51911009BBAB0 /* IanScrollImageView.m in Sources */,
 				C228D7A01BC93129009E383A /* WeatherDetailController.m in Sources */,
@@ -1407,6 +1434,7 @@
 				16DB118E1BC4228D009D7C7D /* MKAnnotationView+WebCache.m in Sources */,
 				C268C9721BC90D230043B541 /* AroundVC2.m in Sources */,
 				C27D31A91BC7633D005B049D /* SCPopView.m in Sources */,
+				C2F1A0A61BCB937F00060A9A /* SearchVC.m in Sources */,
 				16988DB71BC40965001A1077 /* HomepageHeaderModel.m in Sources */,
 				16DB118F1BC4228D009D7C7D /* NSData+ImageContentType.m in Sources */,
 				16DB11981BC4228D009D7C7D /* UIImage+GIF.m in Sources */,
@@ -1436,6 +1464,7 @@
 				16DCCFB11BCB4CFA00A1420A /* ScenicDetailModel.m in Sources */,
 				16988DB31BC3F131001A1077 /* FinderMainCell.m in Sources */,
 				16DB119C1BC4228D009D7C7D /* UIImageView+WebCache.m in Sources */,
+				C2FE4D6E1BCBEE1E0012075C /* HotCityCell.m in Sources */,
 				16DB119B1BC4228D009D7C7D /* UIImageView+HighlightedWebCache.m in Sources */,
 				16DB11A11BC422F5009D7C7D /* MyselfVC.m in Sources */,
 				16DB11AA1BC4231E009D7C7D /* HomepageVC.m in Sources */,

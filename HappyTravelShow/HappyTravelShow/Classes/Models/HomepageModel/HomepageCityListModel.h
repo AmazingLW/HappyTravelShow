@@ -9,10 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface HomepageCityListModel : NSObject
-@property (nonatomic, strong) NSString *cityId;
+@property (nonatomic, assign) NSInteger cityId;
 @property (nonatomic, strong) NSString *cityCode;
 @property (nonatomic, strong) NSString *pinYinName;
 @property (nonatomic, strong) NSString *cityName;
 @property (nonatomic, strong) NSString *cityNameAbbr;
-@property (nonatomic, strong) NSString *isHot;
+@property (nonatomic, assign) BOOL isHot;
 @end

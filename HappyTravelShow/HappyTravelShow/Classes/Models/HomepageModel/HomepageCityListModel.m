@@ -9,5 +9,15 @@
 #import "HomepageCityListModel.h"
 
 @implementation HomepageCityListModel
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key{
+    
+    // NSLog(@"kvc出错%@",key);
+    
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"%ld",_cityId];
+}
 
 @end
