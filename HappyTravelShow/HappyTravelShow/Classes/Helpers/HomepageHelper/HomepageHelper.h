@@ -13,12 +13,18 @@
 
 //轮播图
 - (void)requestAllPackage:(NSString*)title
+             withCityCode:(NSString*)cityCode
                WithFinish:(void (^)(NSMutableArray *arr))result;
 //城市
+//- (void)requestAllCity:(NSString*)kind
+//            WithFinish:(void (^)(NSMutableArray *arr))result;
 - (void)requestAllCity:(NSString*)kind
+          withCityCode:(NSString*)cityCode
             WithFinish:(void (^)(NSMutableArray *arr))result;
 //精品推荐
-- (void)requestAllRecommendation:(void (^)(NSMutableArray *arr))result;
+//- (void)requestAllRecommendation:(void (^)(NSMutableArray *arr))result;
+- (void)requestAllRecommendation:(NSString*)cityCode
+                      WithFinish:(void (^)(NSMutableArray *arr))result;
 //点击门票and温泉
 - (void)requestAllTicket:(NSString*)tagId
                 withSort:(NSString*)sort

@@ -70,23 +70,24 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
- 
      HotCityCell*cell  =[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     cell.layer.borderWidth = 0.3;
     cell.layer.borderColor = [UIColor lightGrayColor].CGColor;
     cell.backgroundColor =[UIColor whiteColor];
     if (_array.count>0) {
-     
       HomepageCityListModel*city  =_array[indexPath.row];
         cell.lable.text =city.cityNameAbbr;
     }
-   
-    
-    
     return cell;
-
 }
-
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+   
+//    HomepageCityListModel *h = _array[indexPath.row];
+//    self.block(h.cityNameAbbr,h.cityName,h.cityCode);
+//    [self.navigationController popViewControllerAnimated:YES];
+    
+}
 - (void)awakeFromNib {
    
 }

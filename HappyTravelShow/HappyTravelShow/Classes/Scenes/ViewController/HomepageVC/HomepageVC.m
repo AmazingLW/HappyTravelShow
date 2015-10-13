@@ -39,7 +39,8 @@
 @property(nonatomic,strong)NSMutableArray*ScrollArr;
 //热门推荐
 @property(nonatomic,strong)NSMutableArray*RecommendationArr;
-
+//城市标题
+@property(nonatomic,strong)NSString*string,*cityName,*cityCode;
 @end
 
 @implementation HomepageVC
@@ -49,52 +50,84 @@
     if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         UIImage *image = [UIImage imageNamed:@"homepage"];
         self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"首页" image:image tag:1001];
+        self.cityCode =@"110100";
+        self.string =@"北京";
     }
     
     return self;
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    if (self.string!=nil) {
+        self.navigationItem.leftBarButtonItem.title = [NSString stringWithFormat:@"%@∨",self.string];
 
+    }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    [self drawview];
-    [[HomepageHelper new] requestAllPackage:@"bannerScroll" WithFinish:^(NSMutableArray *arr) {
+    [[HomepageHelper new] requestAllPackage:@"bannerScroll" withCityCode:self.cityCode WithFinish:^(NSMutableArray *arr) {
         self.CarouseArray=[NSMutableArray array];
         self.CarouseArray = [arr mutableCopy];
-       // self.ScrollArr =[NSMutableArray new];
+        // self.ScrollArr =[NSMutableArray new];
+         self.ScrollArr =[NSMutableArray array];
         for (HomepageHeaderModel*header in _CarouseArray) {
             NSString*url = [header app_picpath];
             [self.ScrollArr addObject:url];
         }
         [self.collection reloadData];
     }];
-    [[HomepageHelper new] requestAllPackage:@"bannerRound" WithFinish:^(NSMutableArray *arr) {
+    [[HomepageHelper new] requestAllPackage:@"bannerRound"withCityCode:self.cityCode WithFinish:^(NSMutableArray *arr) {
         self.ProductArr=[NSMutableArray array];
         self.ProductArr = [arr mutableCopy];
         [self.collection reloadData];
     }];
-    [[HomepageHelper new] requestAllPackage:@"bannerSquare" WithFinish:^(NSMutableArray *arr) {
+    [[HomepageHelper new] requestAllPackage:@"bannerSquare"withCityCode:self.cityCode WithFinish:^(NSMutableArray *arr) {
         self.PackageArr=[NSMutableArray array];
         self.PackageArr = [arr mutableCopy];
         [self.collection reloadData];
     }];
-    [[HomepageHelper new] requestAllRecommendation:^(NSMutableArray *arr) {
+
+    
+    [[HomepageHelper new]requestAllRecommendation:self.cityCode WithFinish:^(NSMutableArray *arr) {
         self.RecommendationArr=[NSMutableArray array];
         self.RecommendationArr = [arr mutableCopy];
         [self.collection reloadData];
     }];
-    [[HomepageHelper new] requestAllCity:@"scenicData" WithFinish:^(NSMutableArray *arr) {
+    
+    [[HomepageHelper new] requestAllCity:@"scenicData" withCityCode:self.cityCode WithFinish:^(NSMutableArray *arr) {
         self.ScenicArr = [NSMutableArray new];
         self.ScenicArr = [arr mutableCopy];
         [self.collection reloadData];
-        
     }];
-    [[HomepageHelper new] requestAllCity:@"cityInfo" WithFinish:^(NSMutableArray *arr) {
+    
+    [[HomepageHelper new] requestAllCity:@"cityInfo" withCityCode:self.cityCode WithFinish:^(NSMutableArray *arr) {
         self.cityArr = [NSMutableArray new];
         self.cityArr = [arr mutableCopy];
         [self.collection reloadData];
     }];
+
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self drawview];
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     
+//    [[HomepageHelper new] requestAllRecommendation:^(NSMutableArray *arr) {
+//        self.RecommendationArr=[NSMutableArray array];
+//        self.RecommendationArr = [arr mutableCopy];
+//        [self.collection reloadData];
+//    }];
+//    [[HomepageHelper new] requestAllCity:@"scenicData" WithFinish:^(NSMutableArray *arr) {
+//        self.ScenicArr = [NSMutableArray new];
+//        self.ScenicArr = [arr mutableCopy];
+//        [self.collection reloadData];
+//        
+//    }];
+//    [[HomepageHelper new] requestAllCity:@"cityInfo" WithFinish:^(NSMutableArray *arr) {
+//        self.cityArr = [NSMutableArray new];
+//        self.cityArr = [arr mutableCopy];
+//        [self.collection reloadData];
+//    }];
+//    
  
     [self setupCollectionView];
     self.view.backgroundColor = [UIColor orangeColor];
@@ -104,7 +137,7 @@
 
 - (void)creatNavBar {
 
-    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"北京∨" style:(UIBarButtonItemStylePlain) target:self action:@selector(locationBBIClicked)];
+    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"北京∨"style:(UIBarButtonItemStylePlain) target:self action:@selector(locationBBIClicked)];
     self.navigationItem.leftBarButtonItem.tintColor=[UIColor blackColor];
 
 }
@@ -112,6 +145,14 @@
 - (void)locationBBIClicked {
     
     LocationVC *locationVC = [LocationVC new];
+    
+    locationVC.block =^(NSString *string,NSString*cityName,NSString*cityCode){
+        
+        self.string = string;
+        self.cityName = cityName;
+        self.cityCode =cityCode;
+    };
+    
     locationVC.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:locationVC animated:YES];
     
@@ -158,18 +199,32 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
    
     if (section ==0) {
-        return 1;
+        if (self.ScrollArr.count) {
+            return 1;
+        }
+        return 0;
     }else if (section ==1){
-        return self.ProductArr.count;
-        
+        if (self.ProductArr.count) {
+             return self.ProductArr.count;
+        }
+        return 0;
     }else if (section ==2){
-        return self.PackageArr.count;
+        if (self.ProductArr.count) {
+            return self.PackageArr.count;
+        }
+        return 0;
         
     }else if (section ==3){
-        return 1;
+        if (self.ScenicArr.count) {
+            return 1;
+        }
+        return 0;
         
     }else if (section ==4){
-        return self.RecommendationArr.count;
+        if (self.RecommendationArr.count) {
+             return self.RecommendationArr.count;
+        }
+        return 0;
     }else{
         return 1;
     }
@@ -182,8 +237,9 @@
     if (indexPath.section==0) {
         
         carouseIFingureCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"carousel" forIndexPath:indexPath];
-//        if (_CarouseArray.count != 0) {
+
             IanScrollView *scrollView = [[IanScrollView alloc] initWithFrame:CGRectMake(0,0,kWidth,120)];
+        
         
             scrollView.slideImagesArray = _ScrollArr;
             scrollView.ianEcrollViewSelectAction = ^(NSInteger i){
@@ -191,6 +247,8 @@
                 if ([header.app_url length] >11) {
                     CarouselWebViewVC*WebVC =[CarouselWebViewVC new];
                     WebVC.url = header.app_url;
+            
+                     WebVC.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:WebVC animated:YES];
                 }else{
                     NSString *url = [self.CarouseArray[i-0] app_url];
@@ -200,14 +258,17 @@
                     ComDetailVC*detali =[ComDetailVC new];
                     detali.bookID = [linkId integerValue];
                     detali.detailID =[productId integerValue];
-                    [self.navigationController pushViewController:detali animated:YES];
+                    //detali.hidesBottomBarWhenPushed =YES;
+                    UINavigationController*rootVC =[[UINavigationController alloc]initWithRootViewController:detali];
+                    [self presentViewController:rootVC animated:YES completion:nil];
                 }
             };
             scrollView.PageControlPageIndicatorTintColor = [UIColor whiteColor];
             scrollView.pageControlCurrentPageIndicatorTintColor = [UIColor orangeColor];
             [scrollView startLoading];
-            [cell.carousel4view addSubview:scrollView];
-//        }
+        
+            [cell addSubview:scrollView];
+
    
         return cell;
     }else if (indexPath.section==1){
@@ -489,14 +550,14 @@
 
 
 
--(NSMutableArray*)ScrollArr{
-    
-    if (_ScrollArr == nil) {
-        _ScrollArr = [NSMutableArray new];
-    }
-    return _ScrollArr;
-    
-}
+//-(NSMutableArray*)ScrollArr{
+//    
+//    if (_ScrollArr == nil) {
+//        _ScrollArr = [NSMutableArray new];
+//    }
+//    return _ScrollArr;
+//    
+//}
 
 
 @end
