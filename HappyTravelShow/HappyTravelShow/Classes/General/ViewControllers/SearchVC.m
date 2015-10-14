@@ -8,8 +8,10 @@
 
 #import "SearchVC.h"
 #import "AroundHelper.h"
-
+#import "AroundDataBase1.h"
 #import "AroundVC3.h"
+#import "HomepageHelper.h"
+#import "HomepageCityListModel.h"
 @interface SearchVC ()<UITextFieldDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong)UITextField *textfield;
 @property (nonatomic, strong)UIButton *button;
@@ -20,6 +22,9 @@
 
 @property (nonatomic, strong)NSMutableArray *cityArray;
 @property (nonatomic, strong) UICollectionView *collection;
+
+@property (nonatomic, strong)NSMutableArray *city;
+
 @end
 
 @implementation SearchVC
@@ -51,7 +56,7 @@ static NSString *const footer = @"footer";
        _button1 = [UIButton buttonWithType:UIButtonTypeCustom];
         _button1.frame = CGRectMake(_a.frame.size.width - 60, 0,40, 29);
         //[button1 setBackgroundColor:[UIColor redColor]];
-        [_button1 setTitle:@"取消" forState:UIControlStateNormal];
+        [_button1 setTitle:@"搜索" forState:UIControlStateNormal];
         [_button1 setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
         [_button1 addTarget:self action:@selector(cancel:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -77,9 +82,24 @@ static NSString *const footer = @"footer";
     
 }
 
+//- (void)cityData{
+//    _city = [NSMutableArray array];
+//    [[HomepageHelper new] requestallCityList:@"positionCity" WithFinish:^(NSMutableArray *arr) {
+//        
+//        for (HomepageCityListModel *model in arr) {
+//            NSString *cityName = model.cityNameAbbr;
+//            
+//            [_city addObject:cityName];
+//        }
+//    
+//
+//    }];
+//    
+//
+//}
+
 
 - (void)request{
-    
     
     [[AroundHelper new] requestHotCityWithCityID:1 result:^(NSArray *array) {
         
@@ -133,23 +153,49 @@ static NSString *const footer = @"footer";
 }
 
 
-
-
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    //textField 的值和数据库比较 相等才搜索 并且跳转
-    if (_textfield.text) {
+   
+   //[self cityData];
+
+        __weak typeof(self) temp = self;
+    [[HomepageHelper new] requestallCityList:@"positionCity" WithFinish:^(NSMutableArray *arr) {
         
-    }
+        
+        for (HomepageCityListModel *model in arr) {
+            if ([temp.textfield.text isEqualToString:model.cityNameAbbr]) {
+               
+                
+                AroundVC3 *around = [[AroundVC3 alloc] init];
+              //  around.NAME = [model.cityNameAbbr mutableCopy];
+//                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:around];
+                
+               // temp.block(model.cityNameAbbr);
+                
+               [temp.navigationController pushViewController:around animated:YES];
+               
+                [textField resignFirstResponder];
+            
+        
+            }else{
+              
+                
+                
+            }
+        }
+        
+       
+        
+    }];
     
-    AroundVC3 *around = [[AroundVC3 alloc] init];
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:around];
-    
-    [self.navigationController pushViewController:nav animated:YES];
-    
-    [textField resignFirstResponder];
-    return YES;
+  return YES;
+
 }
+     
+        
+
+
+    
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

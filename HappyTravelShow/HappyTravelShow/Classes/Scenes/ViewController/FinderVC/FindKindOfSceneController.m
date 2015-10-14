@@ -35,6 +35,10 @@
         self.uiTableView.delegate=self;
         self.uiTableView.dataSource=self;
         
+
+       /// self.navigationItem.hidesBackButton=YES;
+        //self.cityCode = self.model.themeId ;
+
        //自定义rightBarButtonItem
         UIButton *rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
         rightButton.frame=CGRectMake(0, 0, 30, 30);
@@ -61,6 +65,7 @@
         
         
         
+
     }
     return self;
     

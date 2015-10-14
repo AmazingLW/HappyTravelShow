@@ -46,6 +46,8 @@ static BOOL  isOpen = NO;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"详情";
+    
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     leftButton.frame=CGRectMake(0, 0, 30, 30);
     [leftButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
@@ -100,8 +102,7 @@ static BOOL  isOpen = NO;
 
 //收藏
 - (void)shoucangAction{
-    
-    
+    NSLog(@"收藏---");
     
     
     

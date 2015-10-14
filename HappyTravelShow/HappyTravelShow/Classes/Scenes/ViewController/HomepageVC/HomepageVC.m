@@ -111,6 +111,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self drawview];
+    
+    
+    //初始化数据库并创建表
+    
+    [[DataBase shareData] createDataBase];
+    [[DataBase shareData] createTable];
+    
+    
     //self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [self setupCollectionView];
@@ -245,7 +253,8 @@
                 }else if ([header.app_url length] ==3){
                     NSString *url = [self.CarouseArray[i-0] app_url];
                     FindKindOfSceneController*detali = [FindKindOfSceneController new];
-                    detali.model.themeId = url;
+//                    detali.model.themeId = url;
+                    detali.cityCode =url;
                     UINavigationController*rootVC =[[UINavigationController alloc]initWithRootViewController:detali];
                     [self presentViewController:rootVC animated:YES completion:nil];
                     
@@ -394,6 +403,7 @@
             [self.navigationController pushViewController:WebVC animated:YES];
         }else{
              NSLog(@"zhoubian");
+            
         }
         
     }else if (indexPath.section == 2){
@@ -431,14 +441,11 @@
         }
     }else if (indexPath.section==4){
         
-        
         HomepagePackageModel*package =self.RecommendationArr[indexPath.row];
         
         NSInteger productld=package.productId;
         NSInteger nlinkId=package.channelLinkId;
-        
 
-        
         ComDetailVC*detailVC =[ComDetailVC new];
         detailVC.bookID = nlinkId;
         detailVC.detailID = productld;

@@ -16,6 +16,6 @@
 //字符串用于传值(标题)
 @property(nonatomic,strong) NSString  *titleString;
 
-
+@property(nonatomic,strong) NSString  *cityCode;
 
 @end
