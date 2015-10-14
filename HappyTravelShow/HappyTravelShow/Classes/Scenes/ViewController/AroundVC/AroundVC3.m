@@ -71,8 +71,8 @@
 @property (nonatomic, strong)NSString *cityName;
 
 
-
-//传值
+@property (nonatomic, strong)NSString *CITYNAME;
+//传值 
 
 @property (nonatomic, strong)NSString *textField;
 
@@ -144,6 +144,19 @@ static NSString *const reuse = @"cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+     
+    self.navigationItem.hidesBackButton = YES;
+     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStyleDone target:self action:@selector(aback:)];
+    
+    
+    
+    if (self.NAME.length > 0) {
+        _CITYNAME = self.NAME;
+        
+    }else{
+        
+        _CITYNAME = @"北京";
+    }
     
     _sortName = @"默认排序";
     _scenicName = @"全部";
@@ -152,6 +165,9 @@ static NSString *const reuse = @"cell";
     _sort = 0;
     _scenic = 0;
     _tag = 0;
+    
+    
+    
     //将排序和 连接中 的 代替符号 组成数组
     _type = [[NSMutableDictionary alloc] init];
     
@@ -187,7 +203,12 @@ static NSString *const reuse = @"cell";
     
     
 }
-
+-(void)aback:(UIBarButtonItem *)item{
+    
+    
+    
+    
+}
 
 - (void)setupDropdownList
 {
@@ -262,6 +283,8 @@ static NSString *const reuse = @"cell";
 
 - (void)didSelectItemAtIndex:(NSInteger)index inSegment:(NSInteger)segment
 {
+    
+    
     NSArray *tmpArry;
     if(segment==0){
         tmpArry = @[@"默认排序", @"价格由低至高", @"价格由高至低",@"销量优先",@"新品优先",@"离我最近"];
@@ -360,12 +383,12 @@ static NSString *const reuse = @"cell";
     }
     
     
-    [self fuck];
+    [self aaa];
     
     
 }
 
-- (void)fuck{
+- (void)aaa{
     
     
     //如果第一次进入程序
@@ -452,7 +475,7 @@ static NSString *const reuse = @"cell";
 
 - (void)onlySortWithType:(NSString *) type{
     
-    [[AroundHelper new] sortDataWithType:type cityName:@"苏州" finish:^(NSArray *array) {
+    [[AroundHelper new] sortDataWithType:type cityName:_CITYNAME finish:^(NSArray *array) {
         
         _allScenic = [NSMutableArray arrayWithArray:array];
         [self.tableView reloadData];
@@ -465,7 +488,7 @@ static NSString *const reuse = @"cell";
 //当 目的城市为全部 景点全部  排序方式改变   筛选方式改变
 - (void)sortWithType:(NSString *)type tagName:(NSString *)tagName{
     
-    [[AroundHelper new] chooseScenicWithSortType:type TagName:tagName cityName:@"苏州" finish:^(NSArray *array) {
+    [[AroundHelper new] chooseScenicWithSortType:type TagName:tagName cityName:_CITYNAME finish:^(NSArray *array) {
         
         _allScenic = [array mutableCopy];
         
@@ -531,8 +554,10 @@ static NSString *const reuse = @"cell";
 #pragma mark ---请求数据
 
 - (void)requestData{
+    
+    
     _dic = [[NSMutableDictionary alloc] init];
-    [[AroundHelper new] requestWithCityName:@"苏州" finish:^(NSArray *array) {
+    [[AroundHelper new] requestWithCityName:_CITYNAME finish:^(NSArray *array) {
         NSMutableArray *arr = [NSMutableArray arrayWithArray:array];
         _tempArray = [[NSMutableArray alloc] init];
         _destinationCity = [NSMutableArray array];
@@ -569,7 +594,7 @@ static NSString *const reuse = @"cell";
     
     //CityName 是请求到的目的城市
     
-    [[AroundHelper new]requsetAllScenicsWithCityName:@"苏州" finish:^(NSArray *scenic) {
+    [[AroundHelper new]requsetAllScenicsWithCityName:_CITYNAME finish:^(NSArray *scenic) {
         
         _allScenic = [NSMutableArray arrayWithArray:scenic];
         [self.tableView reloadData];
@@ -578,7 +603,7 @@ static NSString *const reuse = @"cell";
 }
 
 - (void)request{
-    [[AroundHelper new]requsetAllScenicsWithCityName:@"苏州" finish:^(NSArray *scenic) {
+    [[AroundHelper new]requsetAllScenicsWithCityName:_CITYNAME finish:^(NSArray *scenic) {
         
         _allScenic = [NSMutableArray arrayWithArray:scenic];
         [self.tableView reloadData];

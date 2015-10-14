@@ -176,6 +176,7 @@
 		C27D31A71BC7633D005B049D /* SCNavTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27D31A01BC7633D005B049D /* SCNavTabBarController.m */; };
 		C27D31A81BC7633D005B049D /* SCNavTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = C27D31A31BC7633D005B049D /* SCNavTabBar.m */; };
 		C27D31A91BC7633D005B049D /* SCPopView.m in Sources */ = {isa = PBXBuildFile; fileRef = C27D31A51BC7633D005B049D /* SCPopView.m */; };
+		C2971A2E1BCE2B5E003CE08D /* AroundDataBase1.m in Sources */ = {isa = PBXBuildFile; fileRef = C2971A2D1BCE2B5E003CE08D /* AroundDataBase1.m */; };
 		C2ADF1FE1BC66DCA00E39332 /* AroundKindModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ADF1FD1BC66DCA00E39332 /* AroundKindModel.m */; };
 		C2ADF2011BC681F100E39332 /* LPLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = C2ADF2001BC681F100E39332 /* LPLabel.m */; };
 		C2C2001F1BCB5D10000F2AC7 /* LocationNacItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C2C2001E1BCB5D10000F2AC7 /* LocationNacItem.m */; };
@@ -517,6 +518,8 @@
 		C27D31A31BC7633D005B049D /* SCNavTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNavTabBar.m; sourceTree = "<group>"; };
 		C27D31A41BC7633D005B049D /* SCPopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCPopView.h; sourceTree = "<group>"; };
 		C27D31A51BC7633D005B049D /* SCPopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCPopView.m; sourceTree = "<group>"; };
+		C2971A2C1BCE2B5E003CE08D /* AroundDataBase1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundDataBase1.h; sourceTree = "<group>"; };
+		C2971A2D1BCE2B5E003CE08D /* AroundDataBase1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AroundDataBase1.m; sourceTree = "<group>"; };
 		C2ADF1FC1BC66DCA00E39332 /* AroundKindModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundKindModel.h; sourceTree = "<group>"; };
 		C2ADF1FD1BC66DCA00E39332 /* AroundKindModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AroundKindModel.m; sourceTree = "<group>"; };
 		C2ADF1FF1BC681F100E39332 /* LPLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPLabel.h; sourceTree = "<group>"; };
@@ -1015,6 +1018,8 @@
 				16DB11611BC41D45009D7C7D /* AroundHelper.m */,
 				C2F2E4DA1BCD093D00A6D17C /* AroundDataBase.h */,
 				C2F2E4DB1BCD093D00A6D17C /* AroundDataBase.m */,
+				C2971A2C1BCE2B5E003CE08D /* AroundDataBase1.h */,
+				C2971A2D1BCE2B5E003CE08D /* AroundDataBase1.m */,
 			);
 			path = AroundHelper;
 			sourceTree = "<group>";
@@ -1709,6 +1714,7 @@
 				16DB11621BC41D45009D7C7D /* AroundHelper.m in Sources */,
 				16E5D8E61BCDF78C00A96F70 /* HZLocation.m in Sources */,
 				C268C98F1BC90F500043B541 /* XIBorderSideView.m in Sources */,
+				C2971A2E1BCE2B5E003CE08D /* AroundDataBase1.m in Sources */,
 				C2FE4D681BCBB0370012075C /* LocationVC.m in Sources */,
 				16E5D8ED1BCDFCB700A96F70 /* AlterVC.m in Sources */,
 				16988DA91BC3D100001A1077 /* ComProductModel.m in Sources */,
