@@ -31,6 +31,7 @@
         self.logTableView.scrollEnabled=NO;
         [self.view addSubview:self.logTableView];
         
+              
         //登陆按钮
         UIButton *loginButton=[UIButton buttonWithType:UIButtonTypeCustom];
         loginButton.frame=CGRectMake(20, 290, kWidth-40, 45);
@@ -50,6 +51,7 @@
         //注册
         
         self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(registerAction)];
+        self.navigationItem.rightBarButtonItem.tintColor=[UIColor orangeColor];
         
     }
     return self;

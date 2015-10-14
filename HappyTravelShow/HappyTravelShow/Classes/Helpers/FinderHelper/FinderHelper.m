@@ -109,19 +109,19 @@
     
 }
 #pragma mark----------发现各种景点数据解析-------------
-- (void)requestDataWithThemeId:(NSString* )themeId cityCode:(NSString *)cityCode pageIndex:(NSInteger)pageIndex Finish:(void (^)())result{
+- (void)requestDataWithThemeId:(NSString* )themeId cityCode:(NSString *)cityCode pageIndex:(NSString *)pageIndex Finish:(void (^)())result{
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
        // NSString *ID=[NSString stringWithFormat:@"%@",themeId];
         NSString *url=mURL(themeId, cityCode, pageIndex);
         
-        NSLog(@"%@",url);
+//        NSLog(@"%@",url);
         AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
         manager.responseSerializer.acceptableContentTypes=[NSSet setWithObject:@"text/html"];
         
         [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSLog(@"%@",responseObject);
+//            NSLog(@"%@",responseObject);
             NSDictionary *tempDict=responseObject[@"content"];
             if (self.dataSource!=0) {
                 [self.dataSource removeAllObjects];

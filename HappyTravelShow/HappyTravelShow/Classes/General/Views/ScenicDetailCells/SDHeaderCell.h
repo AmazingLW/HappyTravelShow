@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^ShareBlock)();
+
 @protocol BackandShareProtocal <NSObject>
 
 - (void)backToHomepage;
@@ -17,6 +19,8 @@
 
 
 @interface SDHeaderCell : UITableViewCell
+
+@property(nonatomic,copy) ShareBlock  shareBlock;
 
 @property (nonatomic,assign) id<BackandShareProtocal> delegate;
 

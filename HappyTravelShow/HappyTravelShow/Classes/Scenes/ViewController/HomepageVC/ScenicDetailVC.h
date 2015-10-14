@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ScenicDetailModel.h"
 
 @interface ScenicDetailVC : UIViewController
 
 
 //景区id
 @property (nonatomic,assign) NSInteger scenicID;
+
 
 //城市
 @property (nonatomic,strong) NSString * cityName;

@@ -84,10 +84,12 @@
     }else if (indexPath.row==1){
         cell.imageView.image=[UIImage imageNamed:@"y.png"];
         self.passTextField.placeholder=@"请输入6-32位数字或字母";
+        self.passTextField.secureTextEntry=YES;
         [cell.contentView addSubview:self.passTextField];
     }else if (indexPath.row==2){
         cell.imageView.image=[UIImage imageNamed:@"y.png"];
         self.passConfirmTextField.placeholder=@"请再次输入密码";
+        self.passConfirmTextField.secureTextEntry=YES;
         [cell.contentView addSubview:self.passConfirmTextField];
     }else{
         cell.imageView.image=[UIImage imageNamed:@"regPhone.png"];

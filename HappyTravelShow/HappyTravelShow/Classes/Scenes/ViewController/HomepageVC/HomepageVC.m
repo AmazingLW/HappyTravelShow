@@ -398,8 +398,13 @@
         }
     }else if (indexPath.section==4){
         
-        NSInteger productld=[self.RecommendationArr[indexPath.row] productId];
-        NSInteger nlinkId=[self.RecommendationArr[indexPath.row] channelLinkId];
+        
+        HomepagePackageModel*package =self.RecommendationArr[indexPath.row];
+        
+        NSInteger productld=package.productId;
+        NSInteger nlinkId=package.channelLinkId;
+        
+
         
         ComDetailVC*detailVC =[ComDetailVC new];
         detailVC.bookID = nlinkId;
