@@ -32,8 +32,11 @@
         //隐藏cell之间的线条
         self.uiTableView.separatorStyle = UITableViewCellSelectionStyleNone;
         //城市按钮
-        self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"北京" style:UIBarButtonItemStylePlain target:self action:@selector(changeCity)];
         
+        self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"北京v"style:(UIBarButtonItemStylePlain) target:self action:@selector(changeCity)];
+        self.navigationItem.leftBarButtonItem.tintColor=[UIColor blackColor];
+        
+
         
     }
     

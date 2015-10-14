@@ -432,6 +432,7 @@
             
         }
     }else if (indexPath.section==4){
+<<<<<<< HEAD
         HomepagePackageModel*package = self.RecommendationArr[indexPath.row];
 //        NSInteger productld=[self.RecommendationArr[indexPath.row] productId];
 //        NSInteger nlinkId=[self.RecommendationArr[indexPath.row] channelLinkId];
@@ -439,6 +440,17 @@
         NSInteger productld=package.productId;
         NSInteger nlinkId=package.channelLinkId;
 
+=======
+        
+        
+        HomepagePackageModel*package =self.RecommendationArr[indexPath.row];
+        
+        NSInteger productld=package.productId;
+        NSInteger nlinkId=package.channelLinkId;
+        
+
+        
+>>>>>>> 88e425b479e1ae7596a28d79606d5e12854af036
         ComDetailVC*detailVC =[ComDetailVC new];
         detailVC.bookID = nlinkId;
         detailVC.detailID = productld;

@@ -16,62 +16,63 @@
 
 @implementation DataBase
 
-
-
-//创建数据库
-- (void)createDataBase{
++ (instancetype)shareData{
+    static DataBase *data = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        data = [[DataBase alloc] init];
+ 
+    });
     
-    NSString *dbPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"FMDB.sqlite"];
-    _dataBase = [FMDatabase databaseWithPath:dbPath];
-    
-    //    NSFileManager *manager = [NSFileManager defaultManager];
-    //   if ([manager isExecutableFileAtPath:dbPath]) {
-    //        NSLog(@"数据库已经创建了");
-    //        return;
-    //    }
-    //
-    //    if ([_dataBase open]) {
-    //
-    //        NSLog(@"数据库创建成功");
-    //    }
-    
+    return data;
 }
+
 //创建表
 - (void)creatTableWithSQLString:(NSString *)creatSql{
     
-    [_dataBase open];
+    NSString *dbPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"city.sqlite"];
+    _dataBase = [FMDatabase databaseWithPath:dbPath];
     
-    if ([_dataBase executeUpdate:creatSql]) {
+    if ([_dataBase open]) {
         
-        NSLog(@"创建表%@成功",creatSql);
+        BOOL result = [_dataBase executeUpdate:creatSql];
+        
+        if (result) {
+            NSLog(@"创建%@表成功",creatSql);
+        }else{
+            NSLog(@"创建%@表失败",creatSql);
+
+        }
+        
     }
-    [_dataBase close];
+
     
 }
 //插入数据
 
 - (void)insertDataToTableWithSQLString:(NSString *)insertSql{
     
-    [_dataBase open];
+    
     if ([_dataBase executeUpdate:insertSql]) {
         
         NSLog(@"插入%@成功",insertSql);
         
     }
-    [_dataBase close];
+    
+  
 }
 
 //删除数据
 
 - (void)deleteDataFromTableWithSQLString:(NSString *)deleteSql{
     
-    [_dataBase open];
+   
     
     if ([_dataBase executeUpdate:deleteSql]) {
         
         NSLog(@"删除%@成功",deleteSql);
     }
-    
+  
 }
 
 

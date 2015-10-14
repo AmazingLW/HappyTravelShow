@@ -8,12 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "FMDatabase.h"
+
 @interface DataBase : NSObject
 
 @property (nonatomic, strong)FMDatabase *dataBase;
 
-//创建数据库
-- (void)createDataBase;
++ (instancetype)shareData;
 
 //创建表
 - (void)creatTableWithSQLString:(NSString *)creatSql;

@@ -46,10 +46,30 @@ static BOOL  isOpen = NO;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.title = @"详情";
     
-    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
-    self.navigationItem.leftBarButtonItem = leftBtn;
-    self.navigationItem.hidesBackButton = YES;
+    UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    leftButton.frame=CGRectMake(0, 0, 30, 30);
+    [leftButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    [leftButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *leftButtonItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton];
+    self.navigationItem.leftBarButtonItem=leftButtonItem;
+    
+    
+    
+    UIButton *rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    rightButton.frame=CGRectMake(0, 0, 30, 30);
+    [rightButton setImage:[UIImage imageNamed:@"shoucang.png"] forState:UIControlStateNormal];
+    [rightButton addTarget:self action:@selector(shoucangAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *rightButtonItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    
+    self.navigationItem.rightBarButtonItem=rightButtonItem;
+
+    
+    
+    
     
     [self.view addSubview:self.detailTableView];
     self.detailTableView.delegate = self;
@@ -79,6 +99,16 @@ static BOOL  isOpen = NO;
 - (void)backAction{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+//收藏
+- (void)shoucangAction{
+    NSLog(@"收藏---");
+    
+    
+    
+}
+
+
 
 
 //分区个数 ---7个
@@ -112,6 +142,7 @@ static BOOL  isOpen = NO;
             [cell setHeadViewValue:model.imgArr title:model.appMainTitle strContent:model.appSubTitle];
             cell.delegate = self;
         }
+        
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;

@@ -11,10 +11,13 @@
 #include "FinderHelper.h"
 #import "CommonCells.h"
 #import "FindMainDetaiCell.h"
-#import "UIImageView+WebCache.h"
 #import "ComDetailVC.h"
+#import "UMSocial.h"
+#import "FinderURL.h"
+#import "UIImage+WebP.h"
+#import "UIImageView+WebCache.h"
 
-@interface FindKindOfSceneController ()<UITableViewDataSource,UITableViewDelegate>
+@interface FindKindOfSceneController ()<UITableViewDataSource,UITableViewDelegate,UMSocialUIDelegate>
 @property(nonatomic,strong)UITableView *uiTableView;
 
 
@@ -24,7 +27,6 @@
 @implementation FindKindOfSceneController
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
-    
     if (self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         
         self.uiTableView=[[UITableView alloc]initWithFrame:[UIScreen mainScreen].bounds];
@@ -33,18 +35,85 @@
         self.uiTableView.delegate=self;
         self.uiTableView.dataSource=self;
         
+
        /// self.navigationItem.hidesBackButton=YES;
         //self.cityCode = self.model.themeId ;
+
+       //自定义rightBarButtonItem
+        UIButton *rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
+        rightButton.frame=CGRectMake(0, 0, 30, 30);
+        [rightButton setImage:[UIImage imageNamed:@"share.png"] forState:UIControlStateNormal];
+        [rightButton addTarget:self action:@selector(shareAction:) forControlEvents:UIControlEventTouchUpInside];
+        
+        UIBarButtonItem *rightButtonItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton];
+        
+        self.navigationItem.rightBarButtonItem=rightButtonItem;
+        
+        
+          //自定义leftBarButtonItem
+        
+        UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
+       leftButton.frame=CGRectMake(0, 0, 30, 30);
+        [leftButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+        [leftButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+        
+        UIBarButtonItem *leftButtonItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton];
+
+        
+        self.navigationItem.leftBarButtonItem=leftButtonItem;
+        
+        
+        
+        
+
     }
     return self;
     
     
 }
+//分享
+- (void)shareAction:(UIButton *)sender{
+    
+ 
+    NSString *url=[NSString stringWithFormat:@"http://m.yaochufa.com/discovery/d_%@",self.model.themeId];
+    
+    [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:self.model.imageUrl];
+    
+    [UMSocialSnsService presentSnsIconSheetView:self
+                                         appKey:@"561dd14067e58e135400590f"
+                                      shareText:[NSString stringWithFormat:@"<%@>%@,     %@",self.model.title,self.model.subTitle,url]
+                                     shareImage:nil
+                                shareToSnsNames:[NSArray arrayWithObjects:  UMShareToSina,UMShareToWechatTimeline,UMShareToWechatSession,UMShareToQzone,UMShareToQQ,UMShareToTencent,UMShareToRenren,UMShareToSms,UMShareToDouban,UMShareToEmail, nil ]
+                                       delegate:self];
+ 
+    
+}
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    //根据`responseCode`得到发送结果,如果分享成功
+    if(response.responseCode == UMSResponseCodeSuccess)
+    {
+       
+        UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"分享成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        
+        [alertView show];
+    }else{
+    
+    UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"分享失败" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+    
+    [alertView show];
+    }
+    
+}
+
+
+
+
 
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [[FinderHelper sharedHelper]requestDataWithThemeId:self.model.themeId cityCode:@"110100" pageIndex:1 Finish:^{
+    [[FinderHelper sharedHelper]requestDataWithThemeId:self.model.themeId cityCode:@"110100" pageIndex:@"1" Finish:^{
         [self.uiTableView reloadData];
         
     }];
@@ -72,10 +141,6 @@
     [super viewDidLoad];
     //注册
     [self.uiTableView registerNib:[UINib nibWithNibName:@"CommonCells" bundle:nil] forCellReuseIdentifier:@"commonCell"];
- 
-    self.navigationItem.hidesBackButton = YES;
-    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
-    self.navigationItem.leftBarButtonItem = leftBtn;
  
 }
 

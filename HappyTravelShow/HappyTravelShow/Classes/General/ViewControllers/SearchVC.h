@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef void (^BLOCK)(NSString *string);
 @interface SearchVC : UIViewController
+
+//传值
+@property (nonatomic, copy)BLOCK block;
 
 @end
