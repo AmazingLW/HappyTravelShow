@@ -31,6 +31,7 @@
     RecommendVC.title =@"     推荐       ";
     //RecommendVC.view.backgroundColor =[UIColor greenColor];
     RecommendVC.URLNumber =self.urlNum;
+    RecommendVC.CName =self.CName;
     RecommendVC.CityArray = [self.CityArray mutableCopy];
     RecommendVC.CityCode = self.CityCode;
     RecommendVC.CityName =self.CityName;
@@ -39,6 +40,7 @@
     NewVC.title=@"     最新       ";
     //NewVC.view.backgroundColor =[UIColor cyanColor];
     NewVC.URLNumber =self.urlNum;
+    NewVC.CName =self.CName;
     NewVC.CityArray = [self.CityArray mutableCopy];
     NewVC.CityName =self.CityName;
     NewVC.CityCode =self.CityCode;
@@ -47,6 +49,7 @@
     DistanceVC.title=@"    距离       ";
     //DistanceVC.view.backgroundColor =[UIColor yellowColor];
     DistanceVC.URLNumber =self.urlNum;
+    DistanceVC.CName =self.CName;
     DistanceVC.CityArray = [self.CityArray mutableCopy];
     DistanceVC.CityCode =self.CityCode;
     DistanceVC.CityName =self.CityName;

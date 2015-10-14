@@ -26,12 +26,22 @@
 - (void)requestAllRecommendation:(NSString*)cityCode
                       WithFinish:(void (^)(NSMutableArray *arr))result;
 //点击门票and温泉
+//- (void)requestAllTicket:(NSString*)tagId
+//                withSort:(NSString*)sort
+//              WithFinish:(void (^)(NSMutableArray *arr))result;
 - (void)requestAllTicket:(NSString*)tagId
                 withSort:(NSString*)sort
+                cityName:(NSString*)cityName
               WithFinish:(void (^)(NSMutableArray *arr))result;
+
 //点击亲子游and市区
+//- (void)requestAllFamily:(NSString*)tagId
+//                withSort:(NSString*)sort
+//              WithFinish:(void (^)(NSMutableArray *arr))result;
+
 - (void)requestAllFamily:(NSString*)tagId
                 withSort:(NSString*)sort
+                cityName:(NSString*)cityName
               WithFinish:(void (^)(NSMutableArray *arr))result;
 //点击周边城市
 - (void)requestAllCityDetail:(NSString*)citycold
