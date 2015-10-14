@@ -13,14 +13,14 @@
 #define AROUNDCITY(cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Theme/GetSceniceAndTagsByCity?version=4.3.1&system=iOS&cityName=%@&channel=AppStore",cityName]
 
 //取到全部景点 和 productId(详情页) cityName 是定位的city
-#warning 需要经纬度 默认景德镇的经纬度(后期如果不加就删去)
+#warning 需要经纬度  定位的位置 金五星
 #define AllScenic(cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343648&latitude=40.030561&version=4.3.1&sort=n&province=1&system=iOS&pageSize=20&channel=AppStore&city=%@",cityName]
 
 //详情页
 #define detailURL(productID) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetProductInfoById?productId=%ld&version=4.3.1&system=iOS&channel=AppStore",productID]
 
 //点击景点列表弹出的小景点列表
-#warning 需要经纬度 默认景德镇的经纬度(后期如果不加就删去)
+#warning 需要经纬度 定位的位置 金五星
 #define littleScenicURL(scenicName,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343658&latitude=40.030583&scenicName=%@&version=4.3.1&sort=n&province=0&system=iOS&pageSize=20&channel=AppStore&city=%@",scenicName,cityName]
 
 //当目的城市选定 景点全部时 列表
@@ -91,10 +91,12 @@
 //----------------------搜索
 
 // http://appapi.yaochufa.com/v2/Util/GetSearchHotKeys?machineCode=00000000-62a0-833f-ffff-ffffc33ba23b&version=4.3.1&keyCount=12&system=android&cityId=1&channel=huaweimarket
-
+//热门城市
 #define hotCity(cityID) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Util/GetSearchHotKeys?version=4.3.1&keyCount=12&system=iOS&cityId=%ld&channel=AppStore",cityID]
 
+//搜索框输入
 
+#define textFieldInPut(inPutCity, dingweiCity)
 
 
 

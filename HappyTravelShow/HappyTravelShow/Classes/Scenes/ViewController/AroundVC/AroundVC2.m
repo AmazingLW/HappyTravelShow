@@ -431,7 +431,7 @@ static NSString *const reuse = @"cell";
 
 - (void)onlySortWithType:(NSString *) type{
     
-    [[AroundHelper new] sortDataWithType:type cityName:@"景德镇" finish:^(NSArray *array) {
+    [[AroundHelper new] sortDataWithType:type cityName:@"苏州" finish:^(NSArray *array) {
         
         _allScenic = [NSMutableArray arrayWithArray:array];
         [self.tableView reloadData];
@@ -444,7 +444,7 @@ static NSString *const reuse = @"cell";
 //当 目的城市为全部 景点全部  排序方式改变   筛选方式改变
 - (void)sortWithType:(NSString *)type tagName:(NSString *)tagName{
     
-    [[AroundHelper new] chooseScenicWithSortType:type TagName:tagName cityName:@"景德镇" finish:^(NSArray *array) {
+    [[AroundHelper new] chooseScenicWithSortType:type TagName:tagName cityName:@"苏州" finish:^(NSArray *array) {
         
         _allScenic = [array mutableCopy];
         
@@ -497,10 +497,12 @@ static NSString *const reuse = @"cell";
     
     comDetail.bookID = packageID;
     comDetail.detailID = productId;
+
+    UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:comDetail];
+    [self presentViewController:rootNC animated:YES completion:nil];
     
-   
     
-    [self.navigationController pushViewController:comDetail animated:YES];
+//    [self.navigationController pushViewController:comDetail animated:YES];
     
 }
 
@@ -509,7 +511,7 @@ static NSString *const reuse = @"cell";
 
 - (void)requestData{
     _dic = [[NSMutableDictionary alloc] init];
-    [[AroundHelper new] requestWithCityName:@"景德镇" finish:^(NSArray *array) {
+    [[AroundHelper new] requestWithCityName:@"苏州" finish:^(NSArray *array) {
         NSMutableArray *arr = [NSMutableArray arrayWithArray:array];
         _tempArray = [[NSMutableArray alloc] init];
         _destinationCity = [NSMutableArray array];
@@ -546,7 +548,7 @@ static NSString *const reuse = @"cell";
     
     //CityName 是请求到的目的城市
     
-    [[AroundHelper new]requsetAllScenicsWithCityName:@"景德镇" finish:^(NSArray *scenic) {
+    [[AroundHelper new]requsetAllScenicsWithCityName:@"苏州" finish:^(NSArray *scenic) {
         
         _allScenic = [NSMutableArray arrayWithArray:scenic];
         [self.tableView reloadData];
@@ -555,7 +557,7 @@ static NSString *const reuse = @"cell";
 }
 
 - (void)request{
-    [[AroundHelper new]requsetAllScenicsWithCityName:@"景德镇" finish:^(NSArray *scenic) {
+    [[AroundHelper new]requsetAllScenicsWithCityName:@"苏州" finish:^(NSArray *scenic) {
         
         _allScenic = [NSMutableArray arrayWithArray:scenic];
         [self.tableView reloadData];

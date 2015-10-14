@@ -1,1 +1,5 @@
 pod   'AFNetworking' , '~>2.5.4'
+use_frameworks!
+pod 'AVOSCloudDynamic'
+pod 'AVOSCloudIMDynamic'
+pod 'AVOSCloudCrashReportingDynamic'
