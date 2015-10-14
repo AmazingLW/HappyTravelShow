@@ -245,7 +245,8 @@
                 }else if ([header.app_url length] ==3){
                     NSString *url = [self.CarouseArray[i-0] app_url];
                     FindKindOfSceneController*detali = [FindKindOfSceneController new];
-                    detali.model.themeId = url;
+//                    detali.model.themeId = url;
+                    detali.cityCode =url;
                     UINavigationController*rootVC =[[UINavigationController alloc]initWithRootViewController:detali];
                     [self presentViewController:rootVC animated:YES completion:nil];
                     
@@ -394,6 +395,7 @@
             [self.navigationController pushViewController:WebVC animated:YES];
         }else{
              NSLog(@"zhoubian");
+            
         }
         
     }else if (indexPath.section == 2){
@@ -430,6 +432,15 @@
             
         }
     }else if (indexPath.section==4){
+<<<<<<< HEAD
+        HomepagePackageModel*package = self.RecommendationArr[indexPath.row];
+//        NSInteger productld=[self.RecommendationArr[indexPath.row] productId];
+//        NSInteger nlinkId=[self.RecommendationArr[indexPath.row] channelLinkId];
+    
+        NSInteger productld=package.productId;
+        NSInteger nlinkId=package.channelLinkId;
+
+=======
         
         
         HomepagePackageModel*package =self.RecommendationArr[indexPath.row];
@@ -439,6 +450,7 @@
         
 
         
+>>>>>>> 88e425b479e1ae7596a28d79606d5e12854af036
         ComDetailVC*detailVC =[ComDetailVC new];
         detailVC.bookID = nlinkId;
         detailVC.detailID = productld;
