@@ -11,7 +11,7 @@
 @interface CategoryDetailsVC : UITableViewController
 //重写初始化方法
 - (instancetype)initWithStyle:(UITableViewStyle)style AndWithSort:(NSString*)sort AndWithCitySort:(NSInteger)Citysort;
-@property(nonatomic,strong)NSString*URLNumber;
+@property(nonatomic,strong)NSString*URLNumber,*CName;
 @property(nonatomic,strong)NSString*sort;
 @property(nonatomic,assign)NSInteger CitySort;
 @property(nonatomic,strong)NSMutableArray*CityArray;

@@ -25,29 +25,46 @@
 
 @implementation CategoryDetailsVC
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+       self.CName =@"北京";
+    }
+    return self;
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
     
-    [self.tableView registerNib:[UINib nibWithNibName:@"CommonCells" bundle:nil] forCellReuseIdentifier:@"cell"];
-    
-    [[HomepageHelper new] requestAllTicket:self.URLNumber withSort:self.sort WithFinish:^(NSMutableArray *arr) {
+    [[HomepageHelper new] requestAllTicket:self.URLNumber withSort:self.sort cityName:self.CName WithFinish:^(NSMutableArray *arr) {
         self.array=[NSMutableArray array];
         self.array = [arr mutableCopy];
-        [self.tableView  reloadData];
+        [self.tableView  reloadData];       
     }];
-    [[HomepageHelper new] requestAllFamily:self.URLNumber withSort:self.sort WithFinish:^(NSMutableArray *arr) {
+//    [[HomepageHelper new] requestAllFamily:self.URLNumber withSort:self.sort WithFinish:^(NSMutableArray *arr) {
+//        self.FamilyArray =[NSMutableArray array];
+//        self.FamilyArray= [arr mutableCopy];
+//        [self.tableView reloadData];
+//    }];
+    [[HomepageHelper new] requestAllFamily:self.URLNumber withSort:self.sort cityName:self.CName WithFinish:^(NSMutableArray *arr) {
         self.FamilyArray =[NSMutableArray array];
         self.FamilyArray= [arr mutableCopy];
         [self.tableView reloadData];
     }];
     
-
     [[HomepageHelper new] requestAllCityDetail:self.CityName cityName:self.CityCode withSort:self.CitySort WithFinish:^(NSMutableArray *arr) {
         self.CityArr =[NSMutableArray array];
         self.CityArr = [arr mutableCopy];
         [self.tableView reloadData];
         
     }];
+}
+
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"CommonCells" bundle:nil] forCellReuseIdentifier:@"cell"];
+    
+  
 
   
 }

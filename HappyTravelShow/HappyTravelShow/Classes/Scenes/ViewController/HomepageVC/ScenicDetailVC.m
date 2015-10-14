@@ -288,7 +288,7 @@
         detailVC.bookID = [baokuanModel.productId integerValue];
         detailVC.detailID = [baokuanModel.productId integerValue];
         UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:detailVC];
-        
+     
         [self presentViewController:rootNC animated:YES completion:nil];
     }
 }
