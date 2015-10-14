@@ -7,11 +7,15 @@
 //
 
 #import "DataBase.h"
-#import "HomepageCityListModel.h"
+
 
 @interface AroundDataBase : DataBase
 
-- (HomepageCityListModel *)selectDataFromTableWithSQLString:(NSString *)selectSql;
++ (instancetype)shareData;
+
+
+
+- (NSString *)selectDataFromTableWithSQLString:(NSString *)selectSql;
 
 
 

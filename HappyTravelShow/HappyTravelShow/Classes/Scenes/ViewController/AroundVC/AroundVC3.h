@@ -10,4 +10,8 @@
 
 @interface AroundVC3 : UIViewController
 
+//属性传值
+@property (nonatomic, strong)NSMutableString *NAME;
+
+
 @end
