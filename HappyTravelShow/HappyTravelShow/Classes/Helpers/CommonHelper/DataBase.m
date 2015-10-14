@@ -75,20 +75,69 @@
   
 }
 
+#pragma mark -------------
 
 
+// 创建数据库
+- (void)createDataBase
+{
+    
+    NSString *dbPath = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"city.sqlite"];
+    _dataBase = [[FMDatabase alloc] initWithPath:dbPath];
+    if([_dataBase open])
+        NSLog(@"数据库创建成功");
+    else
+        NSLog(@"数据库创建失败");
+    
+}
 
-//- (id)selectDataFromTableWithSQLString:(NSString *)selectSql{
-//    [_dataBase open];
-//    FMResultSet *result = [_dataBase executeQuery:selectSql];
-//    while ([result next]) {
-//        
-//        
-//        
-//        
-//    }
-//    [_dataBase close];
-//    return nil;
-//}
+// 创建表
+- (void)createTable
+{
+    BOOL isSuc = NO;
+    // 打开数据库
+    [_dataBase open];
+    isSuc =  [_dataBase executeUpdate:@"create table Shoucang(id integer primary key autoincrement,title text,content text,curprice text,oldprice text,sellcount text,imgurl text,bookID text,detail text)"];
+    if (isSuc) {
+        NSLog(@"创建表成功");
+    }else{
+        NSLog(@"创建表失败");
+    }
+    // 关闭数据库
+    [_dataBase close];
+}
+
+// 插入数据
+- (BOOL)insertPeople:(NSString *)sql
+{
+    BOOL isSuc = NO;
+    [_dataBase open];
+    isSuc = [_dataBase executeUpdate:sql];
+    [_dataBase close];
+    
+    return isSuc;
+}
+
+// 修改数据
+- (BOOL)updatePeople:(NSString *)sql
+{
+    BOOL isSuc = NO;
+    [_dataBase open];
+    isSuc = [_dataBase executeUpdate:sql];
+    [_dataBase close];
+    return isSuc;
+}
+
+// 删除数据
+- (BOOL)deletePeople:(NSString *)sql
+{
+    BOOL isSuc = NO;
+    [_dataBase open];
+    isSuc = [_dataBase executeUpdate:sql];
+    [_dataBase close];
+    
+    return isSuc;
+}
+
 
 @end
