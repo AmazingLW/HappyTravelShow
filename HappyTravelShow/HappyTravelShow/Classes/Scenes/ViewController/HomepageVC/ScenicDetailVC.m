@@ -21,7 +21,7 @@
 #import "UMSocial.h"
 
 
-@interface ScenicDetailVC ()<UITableViewDelegate,UITableViewDataSource,openScrollProtocal,BackandShareProtocal>
+@interface ScenicDetailVC ()<UITableViewDelegate,UITableViewDataSource,openScrollProtocal,BackandShareProtocal,UMSocialUIDelegate>
 {
     UIView *_backView;
 }
@@ -171,30 +171,32 @@
         if(self.scenicArr.count != 0){
             ScenicDetailModel *model = self.scenicArr.firstObject;
             [cell setViewWithTitle:model.scenicName coverPic:model.coverPic];
+            cell.shareBlock = ^(){
+                //分享
+               // NSLog(@"分享====");
+                
+                
+                //图片
+                [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:model.coverPic];
+                
+                  //链接
+                NSString *url=[NSString stringWithFormat:@"http://http://www.yaochufa.com/scenic/info/%ld",self.scenicID];
+                
+                
+                    [UMSocialSnsService presentSnsIconSheetView:self
+                                                                 appKey:@"561dd14067e58e135400590f"
+                                                              shareText:[NSString stringWithFormat:@"这个地方不错哦,%@,%@",model.scenicName,url]
+                                                             shareImage:nil
+                                                        shareToSnsNames:[NSArray arrayWithObjects:  UMShareToSina,UMShareToWechatTimeline,UMShareToWechatSession,UMShareToQzone,UMShareToQQ,UMShareToTencent,UMShareToRenren,UMShareToSms,UMShareToDouban,UMShareToEmail, nil ]
+                                                               delegate:self];
+              
+                
+            };
+
+            
         }
         cell.delegate = self;
         
-        cell.shareBlock = ^(){
-                //分享
-            NSLog(@"分享====");
-            
-            //图片
-         // [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:self.model.imageUrl];
-            
-//            [UMSocialSnsService presentSnsIconSheetView:self
-//                                                 appKey:@"561dd14067e58e135400590f"
-//                                              shareText:[NSString stringWithFormat:@"<%@>%@,     %@",self.model.title,self.model.subTitle,url]
-//                                             shareImage:nil
-//                                        shareToSnsNames:[NSArray arrayWithObjects:  UMShareToSina,UMShareToWechatTimeline,UMShareToWechatSession,UMShareToQzone,UMShareToQQ,UMShareToTencent,UMShareToRenren,UMShareToSms,UMShareToDouban,UMShareToEmail, nil ]
-//                                               delegate:self];
-            
-
-            
-            
-            
-            
-            
-        };
         
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -277,6 +279,31 @@
     }
     
 }
+
+//点击分享后的代理方法
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    //根据`responseCode`得到发送结果,如果分享成功
+    if(response.responseCode == UMSResponseCodeSuccess)
+    {
+        
+        UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"分享成功" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        
+        [alertView show];
+    }else{
+        
+        UIAlertView *alertView=[[UIAlertView alloc]initWithTitle:@"分享失败" message:nil delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        
+        [alertView show];
+    }
+    
+}
+
+
+
+
+
+
 
 
 #pragma mark ----点击cell跳转-----
