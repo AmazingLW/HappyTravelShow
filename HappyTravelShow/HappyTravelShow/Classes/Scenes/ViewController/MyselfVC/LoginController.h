@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^LoginSuccessBlock)(BOOL state);
+
 @interface LoginController : UIViewController
+
+@property (nonatomic,copy) LoginSuccessBlock successBlock;//登陆成功后回调
 
 @end

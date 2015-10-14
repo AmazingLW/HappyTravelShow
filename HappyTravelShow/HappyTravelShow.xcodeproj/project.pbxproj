@@ -43,6 +43,11 @@
 		16D8C5E21BC6C751001175AB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D8C5E11BC6C751001175AB /* CoreGraphics.framework */; };
 		16D8C5E41BC6C75A001175AB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D8C5E31BC6C75A001175AB /* Security.framework */; };
 		16D8C5E61BC6C7EF001175AB /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 16D8C5E51BC6C7EF001175AB /* mapapi.bundle */; };
+		16D936981BCCB4C5005F5CC9 /* NSString+Check.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D936971BCCB4C5005F5CC9 /* NSString+Check.m */; };
+		16D9369A1BCCC88C005F5CC9 /* regPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = 16D936991BCCC88C005F5CC9 /* regPhone.png */; };
+		16D9369D1BCD0C0C005F5CC9 /* ChangePersonInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D9369C1BCD0C0C005F5CC9 /* ChangePersonInfoVC.m */; };
+		16D936A31BCD3C25005F5CC9 /* NameEmailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D936A21BCD3C25005F5CC9 /* NameEmailVC.m */; };
+		16D936A81BCD5AB6005F5CC9 /* UIDefine.m in Sources */ = {isa = PBXBuildFile; fileRef = 16D936A71BCD5AB6005F5CC9 /* UIDefine.m */; };
 		16DB11621BC41D45009D7C7D /* AroundHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB11611BC41D45009D7C7D /* AroundHelper.m */; };
 		16DB11651BC41D53009D7C7D /* FinderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB11641BC41D53009D7C7D /* FinderHelper.m */; };
 		16DB11681BC41D63009D7C7D /* HomepageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB11671BC41D63009D7C7D /* HomepageHelper.m */; };
@@ -91,7 +96,6 @@
 		16EB2DE61BC6AD0A00F51A9F /* ComDetailHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EB2DE51BC6AD0A00F51A9F /* ComDetailHelper.m */; };
 		16EB2DEB1BC6AD8300F51A9F /* ComDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EB2DE81BC6AD8300F51A9F /* ComDetailVC.m */; };
 		16EB2DEC1BC6AD8300F51A9F /* DetailIntroduceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 16EB2DEA1BC6AD8300F51A9F /* DetailIntroduceController.m */; };
-		4A957A2EF5660C98B1F9A33A /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6396AF70E7E22D763CB7E2 /* libPods.a */; };
 		C209F53D1BC6187D00946675 /* RecommendationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C209F53B1BC6187D00946675 /* RecommendationCell.m */; };
 		C209F53E1BC6187D00946675 /* RecommendationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C209F53C1BC6187D00946675 /* RecommendationCell.xib */; };
 		C209F5411BC690AB00946675 /* CarouselWebViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C209F5401BC690AB00946675 /* CarouselWebViewVC.m */; };
@@ -170,6 +174,7 @@
 		C2FE4D681BCBB0370012075C /* LocationVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE4D671BCBB0370012075C /* LocationVC.m */; };
 		C2FE4D6B1BCBCA430012075C /* GPSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE4D6A1BCBCA430012075C /* GPSCell.m */; };
 		C2FE4D6E1BCBEE1E0012075C /* HotCityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FE4D6D1BCBEE1E0012075C /* HotCityCell.m */; };
+		CF5AB635FFFC8029238A8A65 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 212F0F84EB3B7F36199D1634 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -244,6 +249,15 @@
 		16D8C5E11BC6C751001175AB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		16D8C5E31BC6C75A001175AB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		16D8C5E51BC6C7EF001175AB /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = mapapi.bundle; path = HappyTravelShow/Classes/Vendors/BaiduMapAPI.framework/Resources/mapapi.bundle; sourceTree = "<group>"; };
+		16D936961BCCB4C5005F5CC9 /* NSString+Check.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Check.h"; sourceTree = "<group>"; };
+		16D936971BCCB4C5005F5CC9 /* NSString+Check.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Check.m"; sourceTree = "<group>"; };
+		16D936991BCCC88C005F5CC9 /* regPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = regPhone.png; sourceTree = "<group>"; };
+		16D9369B1BCD0C0C005F5CC9 /* ChangePersonInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePersonInfoVC.h; sourceTree = "<group>"; };
+		16D9369C1BCD0C0C005F5CC9 /* ChangePersonInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePersonInfoVC.m; sourceTree = "<group>"; };
+		16D936A11BCD3C25005F5CC9 /* NameEmailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NameEmailVC.h; sourceTree = "<group>"; };
+		16D936A21BCD3C25005F5CC9 /* NameEmailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NameEmailVC.m; sourceTree = "<group>"; };
+		16D936A61BCD5AB6005F5CC9 /* UIDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIDefine.h; sourceTree = "<group>"; };
+		16D936A71BCD5AB6005F5CC9 /* UIDefine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIDefine.m; sourceTree = "<group>"; };
 		16DB11601BC41D45009D7C7D /* AroundHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundHelper.h; sourceTree = "<group>"; };
 		16DB11611BC41D45009D7C7D /* AroundHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AroundHelper.m; sourceTree = "<group>"; };
 		16DB11631BC41D53009D7C7D /* FinderHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderHelper.h; sourceTree = "<group>"; };
@@ -334,7 +348,7 @@
 		16EB2DE91BC6AD8300F51A9F /* DetailIntroduceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailIntroduceController.h; sourceTree = "<group>"; };
 		16EB2DEA1BC6AD8300F51A9F /* DetailIntroduceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailIntroduceController.m; sourceTree = "<group>"; };
 		16EB2DED1BC6AE1200F51A9F /* HappyTravelShow.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HappyTravelShow.pch; sourceTree = "<group>"; };
-		5A6396AF70E7E22D763CB7E2 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		212F0F84EB3B7F36199D1634 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E736BAB2AF440074C178494 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		C2065C1A1BC3EA41007571A8 /* FinderURL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderURL.h; sourceTree = "<group>"; };
 		C209F53A1BC6187D00946675 /* RecommendationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecommendationCell.h; sourceTree = "<group>"; };
@@ -487,7 +501,7 @@
 				16D8C5DC1BC6C732001175AB /* QuartzCore.framework in Frameworks */,
 				16D8C5DA1BC6C728001175AB /* CoreLocation.framework in Frameworks */,
 				16D8C5D61BC6C681001175AB /* BaiduMapAPI.framework in Frameworks */,
-				4A957A2EF5660C98B1F9A33A /* libPods.a in Frameworks */,
+				CF5AB635FFFC8029238A8A65 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,6 +631,10 @@
 			children = (
 				16B224D71BC67365004C125D /* CommonCells+SetModel.h */,
 				16B224D81BC67365004C125D /* CommonCells+SetModel.m */,
+				16D936961BCCB4C5005F5CC9 /* NSString+Check.h */,
+				16D936971BCCB4C5005F5CC9 /* NSString+Check.m */,
+				16D936A61BCD5AB6005F5CC9 /* UIDefine.h */,
+				16D936A71BCD5AB6005F5CC9 /* UIDefine.m */,
 			);
 			path = CateGories;
 			sourceTree = "<group>";
@@ -1003,6 +1021,10 @@
 				C228D7961BC9079B009E383A /* FavoriteController.m */,
 				C228D7981BC90AB0009E383A /* browsedController.h */,
 				C228D7991BC90AB0009E383A /* browsedController.m */,
+				16D9369B1BCD0C0C005F5CC9 /* ChangePersonInfoVC.h */,
+				16D9369C1BCD0C0C005F5CC9 /* ChangePersonInfoVC.m */,
+				16D936A11BCD3C25005F5CC9 /* NameEmailVC.h */,
+				16D936A21BCD3C25005F5CC9 /* NameEmailVC.m */,
 			);
 			path = MyselfVC;
 			sourceTree = "<group>";
@@ -1046,6 +1068,7 @@
 				16DB11B31BC42653009D7C7D /* myself.png */,
 				C250741B1BC7631000F62844 /* 33.png */,
 				C250741C1BC7631000F62844 /* 44.png */,
+				16D936991BCCC88C005F5CC9 /* regPhone.png */,
 				C250741D1BC7631000F62844 /* 22.png */,
 				C250741E1BC7631000F62844 /* aa.png */,
 				C250741F1BC7631000F62844 /* 55.png */,
@@ -1130,7 +1153,7 @@
 				16D8C5DB1BC6C732001175AB /* QuartzCore.framework */,
 				16D8C5D91BC6C728001175AB /* CoreLocation.framework */,
 				16D8C5D51BC6C681001175AB /* BaiduMapAPI.framework */,
-				5A6396AF70E7E22D763CB7E2 /* libPods.a */,
+				212F0F84EB3B7F36199D1634 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1256,6 +1279,7 @@
 				16988D551BC3A994001A1077 /* Frameworks */,
 				16988D561BC3A994001A1077 /* Resources */,
 				30B02E9B484F5FA53B8078E4 /* Copy Pods Resources */,
+				49EA9992B1530F0B289895B4 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1358,6 +1382,7 @@
 				16DB11B01BC42505009D7C7D /* homepage.png in Resources */,
 				C2269A1A1BC5415B009BBAB0 /* hot.png in Resources */,
 				16EB2DCC1BC6AB7800F51A9F /* xiiangqing.png in Resources */,
+				16D9369A1BCCC88C005F5CC9 /* regPhone.png in Resources */,
 				C228D7941BC9032A009E383A /* my.jpg in Resources */,
 				C25074231BC7631000F62844 /* aa.png in Resources */,
 				16EB2DCB1BC6AB7800F51A9F /* place.png in Resources */,
@@ -1412,6 +1437,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		49EA9992B1530F0B289895B4 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1425,7 +1465,6 @@
 				16DB11991BC4228D009D7C7D /* UIImage+MultiFormat.m in Sources */,
 				16DB119A1BC4228D009D7C7D /* UIImage+WebP.m in Sources */,
 				C27D31971BC7624A005B049D /* CategoryVC.m in Sources */,
-
 
 
 
@@ -1458,7 +1497,9 @@
 				C268C9931BC90F500043B541 /* XIColorHelper.m in Sources */,
 				C2ECC67A1BC9141400115824 /* HomepageCityModel.m in Sources */,
 				C250742B1BC7AAEC00F62844 /* LoginController.m in Sources */,
+				16D936A31BCD3C25005F5CC9 /* NameEmailVC.m in Sources */,
 				16EB2DD21BC6AC0D00F51A9F /* BookModel.m in Sources */,
+				16D9369D1BCD0C0C005F5CC9 /* ChangePersonInfoVC.m in Sources */,
 				16977EC81BC8B50700026522 /* PhotoBrowserVC.m in Sources */,
 				16EB2DDE1BC6ACBB00F51A9F /* BookCell.m in Sources */,
 				16977ECB1BC9254500026522 /* ScenicDetailVC.m in Sources */,
@@ -1489,6 +1530,7 @@
 				C250742E1BC7AB0000F62844 /* RegisterController.m in Sources */,
 				C268C9911BC90F500043B541 /* XIGridBackgroundView.m in Sources */,
 				C2F423BE1BC64DE600194989 /* FindMainDetaiCell.m in Sources */,
+				16D936981BCCB4C5005F5CC9 /* NSString+Check.m in Sources */,
 				C268C9921BC90F500043B541 /* FXBlurView.m in Sources */,
 				C2F2E4D61BCCF8EF00A6D17C /* DataBase.m in Sources */,
 				16988DA61BC3CED3001A1077 /* AroundMainModel.m in Sources */,
@@ -1513,6 +1555,7 @@
 				16EB2DE21BC6ACBB00F51A9F /* WebViewCell.m in Sources */,
 				C2269A031BC51023009BBAB0 /* HomepageScenicModel.m in Sources */,
 				C27D31A81BC7633D005B049D /* SCNavTabBar.m in Sources */,
+				16D936A81BCD5AB6005F5CC9 /* UIDefine.m in Sources */,
 				16D13AC81BCA007F0022BC96 /* MealDetailCell.m in Sources */,
 				16DB11901BC4228D009D7C7D /* SDImageCache.m in Sources */,
 				C22699F61BC50AB5009BBAB0 /* carouseIFingureCell.m in Sources */,

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+typedef void(^BLOCK) (NSString*,NSString*,NSString*);
 @interface LocationVC : UIViewController
-
+@property(nonatomic,strong)BLOCK block;
 @end

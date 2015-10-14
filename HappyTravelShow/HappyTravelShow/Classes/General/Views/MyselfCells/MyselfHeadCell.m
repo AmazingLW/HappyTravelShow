@@ -9,6 +9,16 @@
 #import "MyselfHeadCell.h"
 #define kWidth [UIScreen mainScreen].bounds.size.width
 
+@interface MyselfHeadCell ()
+
+@property (nonatomic,strong) UILabel *usernameLabel;
+@property (nonatomic,strong) UILabel *phoneLabel;
+
+
+
+@end
+
+
 
 @implementation MyselfHeadCell
 
@@ -19,7 +29,7 @@
     
     if (self=[super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        [self drawView];
+//        [self drawView];
     }
     return self;
     
@@ -67,13 +77,37 @@
     
 }
 
+
+//重新画cell页面
+- (void)drawAgainWithUsername:(NSString *)username phone:(NSString *)phone{
+    self.groundView=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kWidth, 150)];
+    self.groundView.image=[UIImage imageNamed:@"my.jpg"];
+    self.groundView.userInteractionEnabled=YES;
+    
+    
+    _usernameLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 50, 200, 30)];
+    _usernameLabel.text = username;
+    _usernameLabel.textColor = [UIColor whiteColor];
+
+    _phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 90, 200, 30)];
+    _phoneLabel.text = [NSString stringWithFormat:@"手机:%@",phone];
+    _phoneLabel.textColor = [UIColor whiteColor];
+    
+    
+    [self.groundView addSubview:_usernameLabel];
+    [self.groundView addSubview:_phoneLabel];
+    [self.contentView addSubview:self.groundView];
+    
+    
+}
+
+
+
 - (void)loginAction:(UIButton *)button{
 
     if (self.delegate &&[self.delegate respondsToSelector:@selector(getIntoLoginController:)]) {
         [self.delegate getIntoLoginController:button];
     }
-
-    
     
 }
 

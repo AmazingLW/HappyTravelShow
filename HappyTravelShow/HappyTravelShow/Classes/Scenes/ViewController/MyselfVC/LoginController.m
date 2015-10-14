@@ -20,6 +20,7 @@
 
 @implementation LoginController
 
+
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     
     if (self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
@@ -34,6 +35,7 @@
         UIButton *loginButton=[UIButton buttonWithType:UIButtonTypeCustom];
         loginButton.frame=CGRectMake(20, 290, kWidth-40, 45);
         loginButton.backgroundColor=[UIColor orangeColor];
+        [loginButton addTarget:self action:@selector(didClickLoginButtonAction) forControlEvents:UIControlEventTouchUpInside];
         
         [loginButton setTitle:@"登录" forState:UIControlStateNormal];
         [self.view addSubview:loginButton];
@@ -49,9 +51,6 @@
         
         self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(registerAction)];
         
-        
-
-        
     }
     return self;
     
@@ -63,11 +62,49 @@
     
     
     RegisterController *rgVC=[RegisterController new];
-    [self.navigationController pushViewController:rgVC animated:NO];
-    
+    rgVC.isComeLoginPage = YES;
+    [self.navigationController pushViewController:rgVC animated:YES];
     
 }
 
+
+//登录事件
+- (void)didClickLoginButtonAction{
+    //从 LeanCloud服务器查找用户
+    [AVUser logInWithUsernameInBackground:self.userTextField.text password:self.passwordTextField.text block:^(AVUser *user, NSError *error) {
+        if (user != nil) {
+            //用户存在 并 密码匹配
+            NSLog(@"用户登录成功了----%@",[AVUser currentUser]);
+            self.successBlock(YES);
+            //发出登陆成功通知
+            [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSucessNotification object:self];
+            //退出登陆页面
+            [self.navigationController popViewControllerAnimated:YES];
+            
+        } else {
+            //登陆失败
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"用户名或密码错误" delegate:nil cancelButtonTitle:nil otherButtonTitles:@"确认", nil];
+            [alertView show];
+        }
+    }];
+  
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    
+    //当从注册页面完成注册返回登陆页面时,根据currentUser用户是否为nil,进行登陆成功回调,
+    if ([AVUser currentUser]) {
+        //发出登陆成功通知
+        //登陆成功后回调,同时讲用户信息回传
+        self.successBlock(YES);
+        [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSucessNotification object:self];
+        
+        //退出登陆页面
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+}
 
 
 
