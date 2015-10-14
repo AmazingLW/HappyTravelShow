@@ -10,6 +10,7 @@
 #import "GPSCell.h"
 #import "HomepageHelper.h"
 #import "HomepageCityListModel.h"
+
 @class HomepageVC;
 #define kWidth [UIScreen mainScreen].bounds.size.width
 #define kHeight [UIScreen mainScreen].bounds.size.height
@@ -21,6 +22,9 @@
 @property(nonatomic,strong)NSMutableArray*CityArray;
 @property(nonatomic,strong)NSMutableArray*KeyArray;
 @property(nonatomic,strong)NSMutableDictionary *cityDict;
+//城市标题
+@property(nonatomic,strong)NSString*string,*cityName,*cityCode;
+
 @end
 
 @implementation LocationVC
@@ -72,6 +76,7 @@
 -(void)backAction{
     
     [self.navigationController popViewControllerAnimated:YES];
+
     
 }
 
@@ -101,8 +106,17 @@
     if (indexPath.section==0) {
        GPSCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellc" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.selected = NO;
+       // cell.selected = NO;
         cell.backgroundColor =[UIColor lightGrayColor];
+        cell.block =^(NSString *string,NSString *cityName,NSString *cityCode){
+
+            self.string = string;
+            self.cityName = cityName;
+            self.cityCode = cityCode;
+            self.block(self.string,self.cityName,self.cityCode);
+            [self.navigationController popViewControllerAnimated:YES];
+        };
+
         return cell;
         
     }else{
@@ -167,11 +181,13 @@
 //cell点击
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section!=0) {
+        
     NSString *str  = _KeyArray[indexPath.section];
     NSArray *a1 = self.cityDict[str];
     HomepageCityListModel *h = a1[indexPath.row];
     self.block(h.cityNameAbbr,h.cityName,h.cityCode);
     [self.navigationController popViewControllerAnimated:YES];
+       //[self dismissModalViewControllerAnimated:NO];
     }
 }
 

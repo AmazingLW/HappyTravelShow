@@ -18,6 +18,7 @@
 #import "WeatherDetailController.h"
 #import "SkyModel.h"
 #import "ComDetailVC.h"
+#import "UMSocial.h"
 
 
 @interface ScenicDetailVC ()<UITableViewDelegate,UITableViewDataSource,openScrollProtocal,BackandShareProtocal>
@@ -172,6 +173,30 @@
             [cell setViewWithTitle:model.scenicName coverPic:model.coverPic];
         }
         cell.delegate = self;
+        
+        cell.shareBlock = ^(){
+                //分享
+            NSLog(@"分享====");
+            
+            //图片
+         // [[UMSocialData defaultData].urlResource setResourceType:UMSocialUrlResourceTypeImage url:self.model.imageUrl];
+            
+//            [UMSocialSnsService presentSnsIconSheetView:self
+//                                                 appKey:@"561dd14067e58e135400590f"
+//                                              shareText:[NSString stringWithFormat:@"<%@>%@,     %@",self.model.title,self.model.subTitle,url]
+//                                             shareImage:nil
+//                                        shareToSnsNames:[NSArray arrayWithObjects:  UMShareToSina,UMShareToWechatTimeline,UMShareToWechatSession,UMShareToQzone,UMShareToQQ,UMShareToTencent,UMShareToRenren,UMShareToSms,UMShareToDouban,UMShareToEmail, nil ]
+//                                               delegate:self];
+            
+
+            
+            
+            
+            
+            
+        };
+        
+        
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         return cell;
     }else if (indexPath.section == 1){

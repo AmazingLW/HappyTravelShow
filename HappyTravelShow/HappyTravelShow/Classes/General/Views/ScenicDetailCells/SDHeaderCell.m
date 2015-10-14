@@ -8,7 +8,7 @@
 
 #import "SDHeaderCell.h"
 #import "UIImageView+WebCache.h"
-
+#import "UMSocial.h"
 
 @interface SDHeaderCell ()
 
@@ -38,7 +38,7 @@
         _shareBtn.frame = CGRectMake(kScreenWidth - 50, 13, 40, 40);
         [_shareBtn setImage:[UIImage imageNamed:@"detailshare"] forState:UIControlStateNormal];
         _shareBtn.alpha = 0.6;
-        [_shareBtn addTarget:self action:@selector(shareAction) forControlEvents:UIControlEventTouchUpInside];
+        [_shareBtn addTarget:self action:@selector(shareAction:) forControlEvents:UIControlEventTouchUpInside];
         
         _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 140, 100, 30)];
         _nameLabel.text = @"天安门";
@@ -62,8 +62,9 @@
     
 }
 
-- (void)shareAction{
-    NSLog(@"分享");
+- (void)shareAction:(UIButton *)sender{
+    self.shareBlock();
+   
 }
 
 - (void)setViewWithTitle:(NSString *)strTitle coverPic:(NSString *)coverPic{

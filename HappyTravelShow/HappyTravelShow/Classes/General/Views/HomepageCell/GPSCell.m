@@ -83,9 +83,14 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
    
-//    HomepageCityListModel *h = _array[indexPath.row];
-//    self.block(h.cityNameAbbr,h.cityName,h.cityCode);
-//    [self.navigationController popViewControllerAnimated:YES];
+    HomepageCityListModel *h = _array[indexPath.row];
+   self.block(h.cityNameAbbr,h.cityName,h.cityCode);
+    //[self.navigationController popViewControllerAnimated:YES];
+      // [self dismissModalViewControllerAnimated:NO];
+    
+   // UIWindow *window = [[UIApplication sharedApplication].delegate window];
+   // window.rootViewController = mainVC;
+    
     
 }
 - (void)awakeFromNib {

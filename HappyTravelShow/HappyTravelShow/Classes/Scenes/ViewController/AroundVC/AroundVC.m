@@ -16,6 +16,7 @@
 #import "FinderKindModel.h"
 #import "CommonCells+SetModel.h"
 #import "ComDetailVC.h"
+
 @interface AroundVC ()<XIDropdownlistViewProtocol,UITableViewDelegate,UITableViewDataSource>
 {
      XIOptionSelectorView *ddltView;

@@ -10,4 +10,5 @@
 typedef void(^BLOCK) (NSString*,NSString*,NSString*);
 @interface LocationVC : UIViewController
 @property(nonatomic,strong)BLOCK block;
+@property(nonatomic,strong)BLOCK block2;
 @end

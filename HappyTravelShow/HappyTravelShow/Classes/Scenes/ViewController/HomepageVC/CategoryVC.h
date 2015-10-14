@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CategoryVC : UIViewController
-@property(nonatomic,strong)NSString*urlNum;
+@property(nonatomic,strong)NSString*urlNum,*CName;
 @property(nonatomic,strong)NSMutableArray*CityArray;
 @property(nonatomic,strong)NSString*CityName,*CityCode;
 @end

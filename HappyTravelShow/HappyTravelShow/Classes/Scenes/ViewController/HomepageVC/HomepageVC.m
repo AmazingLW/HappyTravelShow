@@ -23,6 +23,7 @@
 #import "HomepageScenicModel.h"
 #import "LocationVC.h"
 #import "ScenicDetailVC.h"
+#import "FindKindOfSceneController.h"
 
 #define kWidth [UIScreen mainScreen].bounds.size.width
 
@@ -52,6 +53,7 @@
         self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"首页" image:image tag:1001];
         self.cityCode =@"110100";
         self.string =@"北京";
+        self.cityName =@"北京";
     }
     
     return self;
@@ -109,26 +111,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self drawview];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
+    //self.edgesForExtendedLayout = UIRectEdgeNone;
     
-//    [[HomepageHelper new] requestAllRecommendation:^(NSMutableArray *arr) {
-//        self.RecommendationArr=[NSMutableArray array];
-//        self.RecommendationArr = [arr mutableCopy];
-//        [self.collection reloadData];
-//    }];
-//    [[HomepageHelper new] requestAllCity:@"scenicData" WithFinish:^(NSMutableArray *arr) {
-//        self.ScenicArr = [NSMutableArray new];
-//        self.ScenicArr = [arr mutableCopy];
-//        [self.collection reloadData];
-//        
-//    }];
-//    [[HomepageHelper new] requestAllCity:@"cityInfo" WithFinish:^(NSMutableArray *arr) {
-//        self.cityArr = [NSMutableArray new];
-//        self.cityArr = [arr mutableCopy];
-//        [self.collection reloadData];
-//    }];
-//    
- 
     [self setupCollectionView];
     self.view.backgroundColor = [UIColor orangeColor];
     
@@ -153,9 +137,17 @@
         self.cityCode =cityCode;
     };
     
+    locationVC.block2=^(NSString *string,NSString*cityName,NSString*cityCode){
+        
+        self.string = string;
+        self.cityName = cityName;
+        self.cityCode =cityCode;
+    };
+
     locationVC.hidesBottomBarWhenPushed = YES;
+    // UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:locationVC];
     [self.navigationController pushViewController:locationVC animated:YES];
-    
+   // [self presentViewController:rootNC animated:NO completion:nil];
 }
 
 //注册cell
@@ -237,23 +229,37 @@
     if (indexPath.section==0) {
         
         carouseIFingureCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"carousel" forIndexPath:indexPath];
+        if ([self.CarouseArray isKindOfClass:[NSArray class]]) {
+            if (self.CarouseArray.count > 0) {
 
             IanScrollView *scrollView = [[IanScrollView alloc] initWithFrame:CGRectMake(0,0,kWidth,120)];
-        
-        
             scrollView.slideImagesArray = _ScrollArr;
             scrollView.ianEcrollViewSelectAction = ^(NSInteger i){
                 HomepageHeaderModel*header = self.CarouseArray[i-0];
-                if ([header.app_url length] >11) {
+                if ([header.app_url length] >12) {
                     CarouselWebViewVC*WebVC =[CarouselWebViewVC new];
                     WebVC.url = header.app_url;
             
                      WebVC.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:WebVC animated:YES];
-                }else{
+                }else if ([header.app_url length] ==3){
                     NSString *url = [self.CarouseArray[i-0] app_url];
-                    NSString *productId = [url substringWithRange:NSMakeRange(0, 5)];
-                    NSString *linkId = [url substringWithRange:NSMakeRange(6, 5)];
+                    FindKindOfSceneController*detali = [FindKindOfSceneController new];
+                    detali.model.themeId = url;
+                    UINavigationController*rootVC =[[UINavigationController alloc]initWithRootViewController:detali];
+                    [self presentViewController:rootVC animated:YES completion:nil];
+                    
+                }else if ([header.app_url length] <= 12 && [header.app_url length] >= 9){
+                    
+                    NSString *str1= [self.CarouseArray[i-0] app_url];
+                    //NSString * str1 = @"19431&111157";
+                    NSString * str2 = @"&";
+                    NSRange range = [str1 rangeOfString:str2];
+                    NSLog(@"%@",NSStringFromRange(range));
+                    NSLog(@"%ld",range.location);
+                    NSInteger length =  str1.length;
+                    NSString *productId = [str1 substringWithRange:NSMakeRange(0, range.location)];
+                    NSString *linkId = [str1 substringWithRange:NSMakeRange(range.location+1, length-range.location-1)];
                     
                     ComDetailVC*detali =[ComDetailVC new];
                     detali.bookID = [linkId integerValue];
@@ -266,30 +272,35 @@
             scrollView.PageControlPageIndicatorTintColor = [UIColor whiteColor];
             scrollView.pageControlCurrentPageIndicatorTintColor = [UIColor orangeColor];
             [scrollView startLoading];
-        
             [cell addSubview:scrollView];
+            }}
 
-   
         return cell;
     }else if (indexPath.section==1){
         CategoriesCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"cate" forIndexPath:indexPath];
+        if ([self.ProductArr isKindOfClass:[NSArray class]]) {
+            if (self.ProductArr.count>0) {
         HomepageHeaderModel*header =self.ProductArr[indexPath.row];
         cell.cate4lable.text=header.title;
         [cell.cate4image sd_setImageWithURL:[NSURL URLWithString:header.app_picpath]placeholderImage:[UIImage imageNamed:@"picholder"]];
-        
+            }}
         return cell;
     }else if (indexPath.section==2){
         PackageCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"pack" forIndexPath:indexPath];
+        if ([self.PackageArr isKindOfClass:[NSArray class]]) {
+            if (self.PackageArr.count > 0) {
         HomepageHeaderModel*header =self.PackageArr[indexPath.row];
         cell.adTitle4lable.text=header.adTitle;
         cell.asSub4lable.text=header.adSubTitle;
         [cell.path4image sd_setImageWithURL:[NSURL URLWithString:header.n_app_picpath]placeholderImage:[UIImage imageNamed:@"picholder"]];
+            }}
         cell.layer.borderWidth = 0.3;
         cell.layer.borderColor = [UIColor lightGrayColor].CGColor;
         return cell;
     }else if (indexPath.section==3){
         HotScenicCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"hot" forIndexPath:indexPath];
-        
+        if ([self.ScenicArr isKindOfClass:[NSArray class]]&&[self.cityArr isKindOfClass:[NSArray class]]) {
+            if (self.ScenicArr.count > 0 && self.cityArr.count > 0) {
         [cell.b1 setTitle:[self.ScenicArr[0] name] forState:UIControlStateNormal];
         [cell.b1 setTitle:@"" forState:UIControlStateHighlighted];
         [cell.b2 setTitle:[self.ScenicArr[1] name] forState:UIControlStateNormal];
@@ -308,19 +319,21 @@
         [cell.b14 setTitle:[self.cityArr[5] name] forState:UIControlStateNormal];
         [cell.b15 setTitle:[self.cityArr[6] name] forState:UIControlStateNormal];
         [cell.b16 setTitle:@"更多"forState:UIControlStateNormal];
+           
+            }}
         cell.userInteractionEnabled = YES;
-
         cell.delegate =self;
         cell.view.userInteractionEnabled =YES;
         return cell;
     }else if (indexPath.section==4){
         RecommendationCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"rec" forIndexPath:indexPath];
         
+        if ([self.RecommendationArr isKindOfClass:[NSArray class]]) {
         if (self.RecommendationArr.count > 0) {
-        HomepagePackageModel*package =self.RecommendationArr[indexPath.row];
+        HomepagePackageModel*package = self.RecommendationArr[indexPath.row];
         cell.package = package;
         [cell.bigUrl4image sd_setImageWithURL:[NSURL URLWithString:package.bigImageUrl]placeholderImage:[UIImage imageNamed:@"picholder"]];
-        }
+        }}
         cell.layer.borderWidth = 0.3;
         cell.layer.borderColor = [UIColor lightGrayColor].CGColor;
         return cell;
@@ -368,38 +381,63 @@
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section==1) {
-        if (indexPath.row<4) {
+        HomepageHeaderModel*header =self.ProductArr[indexPath.row];
+        if ([header.app_url length]==2||[header.app_url length]==3) {
+           CategoryVC*cateVC=[CategoryVC new];
+            cateVC.urlNum = [self.ProductArr[indexPath.row] app_url];
+            cateVC.CName = self.cityName;
+            UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
+            [self presentViewController:rootNC animated:YES completion:nil];
+        }else if ([header.app_url length]>5){
+        CarouselWebViewVC*WebVC =[CarouselWebViewVC new];
+        WebVC.url = [self.ProductArr[indexPath.row] app_url];
+            [self.navigationController pushViewController:WebVC animated:YES];
+        }else{
+             NSLog(@"zhoubian");
+        }
+        
+    }else if (indexPath.section == 2){
+        HomepageHeaderModel*header =self.PackageArr[indexPath.row];
+        if ([header.app_url length]>12) {
+        CarouselWebViewVC*WebVC =[CarouselWebViewVC new];
+        WebVC.url = [self.PackageArr[indexPath.row] app_url];
+        [self.navigationController pushViewController:WebVC animated:YES];
+        }else if ([header.app_url length]==2||[header.app_url length]==3) {
             CategoryVC*cateVC=[CategoryVC new];
             cateVC.urlNum = [self.ProductArr[indexPath.row] app_url];
-         //   [self.navigationController pushViewController:cateVC animated:YES];
+            cateVC.CName = self.cityName;
             UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
             [self presentViewController:rootNC animated:YES completion:nil];
         }else{
-        
-        CarouselWebViewVC*WebVC =[CarouselWebViewVC new];
-        WebVC.url = [self.ProductArr[4] app_url];
-            [self.navigationController pushViewController:WebVC animated:YES];}
-        
-    }else if (indexPath.section == 2){
-        if ([[self.PackageArr[indexPath.row] app_url] length]>12) {
-        CarouselWebViewVC*WebVC =[CarouselWebViewVC new];
-        WebVC.url = [self.PackageArr[0] app_url];
-        [self.navigationController pushViewController:WebVC animated:YES];
-        }else{
-            NSString *url = [self.PackageArr[indexPath.row] app_url];
-            NSString *productId = [url substringWithRange:NSMakeRange(0, 5)];
-            NSString *linkId = [url substringWithRange:NSMakeRange(6, 5)];
+            
+            NSString *str1 = [self.PackageArr[indexPath.row] app_url];
+//            NSString *productId = [url substringWithRange:NSMakeRange(0, 5)];
+//            NSString *linkId = [url substringWithRange:NSMakeRange(6, 5)];
+            NSString * str2 = @"&";
+            NSRange range = [str1 rangeOfString:str2];
+            NSLog(@"%@",NSStringFromRange(range));
+            NSLog(@"%ld",range.location);
+            NSInteger length =  str1.length;
+            NSString *productId = [str1 substringWithRange:NSMakeRange(0, range.location)];
+            NSString *linkId = [str1 substringWithRange:NSMakeRange(range.location+1, length-range.location-1)];
             
             ComDetailVC*detali =[ComDetailVC new];
             detali.bookID = [linkId integerValue];
             detali.detailID =[productId integerValue];
-            [self.navigationController pushViewController:detali animated:YES];
+            //[self.navigationController pushViewController:detali animated:YES];
+            UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:detali];
+            [self presentViewController:rootNC animated:NO completion:nil];
             
         }
     }else if (indexPath.section==4){
         
-        NSInteger productld=[self.RecommendationArr[indexPath.row] productId];
-        NSInteger nlinkId=[self.RecommendationArr[indexPath.row] channelLinkId];
+        
+        HomepagePackageModel*package =self.RecommendationArr[indexPath.row];
+        
+        NSInteger productld=package.productId;
+        NSInteger nlinkId=package.channelLinkId;
+        
+
         
         ComDetailVC*detailVC =[ComDetailVC new];
         detailVC.bookID = nlinkId;
@@ -483,6 +521,20 @@
 }
 - (void)getDetailControllerB16{
     //更多为城市列表
+    
+    LocationVC *locationVC = [LocationVC new];
+    
+    locationVC.block =^(NSString *string,NSString*cityName,NSString*cityCode){
+        
+        self.string = string;
+        self.cityName = cityName;
+        self.cityCode =cityCode;
+    };
+    
+    locationVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:locationVC animated:YES];
+    
+    
     
 }
 
