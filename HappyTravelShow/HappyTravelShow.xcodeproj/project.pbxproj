@@ -83,6 +83,13 @@
 		16DBAC691BC7E6650082A143 /* SpecificWeatherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DBAC681BC7E6650082A143 /* SpecificWeatherCell.m */; };
 		16DCCFB11BCB4CFA00A1420A /* ScenicDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DCCFB01BCB4CFA00A1420A /* ScenicDetailModel.m */; };
 		16DEF3911BC4BBEE00F64A66 /* FinderMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DEF3901BC4BBEE00F64A66 /* FinderMainView.m */; };
+		16E5D8E21BCDF6BC00A96F70 /* HZAreaPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5D8E01BCDF6BC00A96F70 /* HZAreaPickerView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		16E5D8E31BCDF6BC00A96F70 /* HZAreaPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16E5D8E11BCDF6BC00A96F70 /* HZAreaPickerView.xib */; };
+		16E5D8E61BCDF78C00A96F70 /* HZLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5D8E51BCDF78C00A96F70 /* HZLocation.m */; };
+		16E5D8E91BCDF7BB00A96F70 /* area.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16E5D8E71BCDF7BB00A96F70 /* area.plist */; };
+		16E5D8EA1BCDF7BB00A96F70 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16E5D8E81BCDF7BB00A96F70 /* city.plist */; };
+		16E5D8ED1BCDFCB700A96F70 /* AlterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5D8EC1BCDFCB700A96F70 /* AlterVC.m */; };
+		16E5D8F01BCE168200A96F70 /* GenderBirthVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5D8EF1BCE168200A96F70 /* GenderBirthVC.m */; };
 		16EB2DCA1BC6AB7800F51A9F /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 16EB2DC71BC6AB7800F51A9F /* back.png */; };
 		16EB2DCB1BC6AB7800F51A9F /* place.png in Resources */ = {isa = PBXBuildFile; fileRef = 16EB2DC81BC6AB7800F51A9F /* place.png */; };
 		16EB2DCC1BC6AB7800F51A9F /* xiiangqing.png in Resources */ = {isa = PBXBuildFile; fileRef = 16EB2DC91BC6AB7800F51A9F /* xiiangqing.png */; };
@@ -347,6 +354,17 @@
 		16DCCFB01BCB4CFA00A1420A /* ScenicDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicDetailModel.m; sourceTree = "<group>"; };
 		16DEF38F1BC4BBEE00F64A66 /* FinderMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderMainView.h; sourceTree = "<group>"; };
 		16DEF3901BC4BBEE00F64A66 /* FinderMainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderMainView.m; sourceTree = "<group>"; };
+		16E5D8DF1BCDF6BC00A96F70 /* HZAreaPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZAreaPickerView.h; sourceTree = "<group>"; };
+		16E5D8E01BCDF6BC00A96F70 /* HZAreaPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZAreaPickerView.m; sourceTree = "<group>"; };
+		16E5D8E11BCDF6BC00A96F70 /* HZAreaPickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HZAreaPickerView.xib; sourceTree = "<group>"; };
+		16E5D8E41BCDF78C00A96F70 /* HZLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZLocation.h; sourceTree = "<group>"; };
+		16E5D8E51BCDF78C00A96F70 /* HZLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZLocation.m; sourceTree = "<group>"; };
+		16E5D8E71BCDF7BB00A96F70 /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
+		16E5D8E81BCDF7BB00A96F70 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
+		16E5D8EB1BCDFCB700A96F70 /* AlterVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlterVC.h; sourceTree = "<group>"; };
+		16E5D8EC1BCDFCB700A96F70 /* AlterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlterVC.m; sourceTree = "<group>"; };
+		16E5D8EE1BCE168200A96F70 /* GenderBirthVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenderBirthVC.h; sourceTree = "<group>"; };
+		16E5D8EF1BCE168200A96F70 /* GenderBirthVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenderBirthVC.m; sourceTree = "<group>"; };
 		16EB2DC71BC6AB7800F51A9F /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		16EB2DC81BC6AB7800F51A9F /* place.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = place.png; sourceTree = "<group>"; };
 		16EB2DC91BC6AB7800F51A9F /* xiiangqing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiiangqing.png; sourceTree = "<group>"; };
@@ -639,6 +657,8 @@
 		16988D5B1BC3A994001A1077 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				16E5D8E71BCDF7BB00A96F70 /* area.plist */,
+				16E5D8E81BCDF7BB00A96F70 /* city.plist */,
 				16988D5C1BC3A994001A1077 /* Info.plist */,
 				16988D5D1BC3A994001A1077 /* main.m */,
 				16EB2DED1BC6AE1200F51A9F /* HappyTravelShow.pch */,
@@ -823,6 +843,8 @@
 			isa = PBXGroup;
 			children = (
 				C200B2DB1BCDE7750091CDA5 /* UMSocial_Sdk_4.2.5 */,
+
+				16E5D8DE1BCDF6BC00A96F70 /* HZAreaPickerView */,
 				C2F2E4791BCC9E7200A6D17C /* fmdb */,
 				C27D319B1BC7633D005B049D /* SCNavTabBar */,
 				C2269A0C1BC51911009BBAB0 /* IanScrollViewLib */,
@@ -1097,6 +1119,10 @@
 				16D9369C1BCD0C0C005F5CC9 /* ChangePersonInfoVC.m */,
 				16D936A11BCD3C25005F5CC9 /* NameEmailVC.h */,
 				16D936A21BCD3C25005F5CC9 /* NameEmailVC.m */,
+				16E5D8EB1BCDFCB700A96F70 /* AlterVC.h */,
+				16E5D8EC1BCDFCB700A96F70 /* AlterVC.m */,
+				16E5D8EE1BCE168200A96F70 /* GenderBirthVC.h */,
+				16E5D8EF1BCE168200A96F70 /* GenderBirthVC.m */,
 			);
 			path = MyselfVC;
 			sourceTree = "<group>";
@@ -1166,6 +1192,18 @@
 				16DBAC281BC764DC0082A143 /* MyselfContentCell.m */,
 			);
 			path = MyselfCells;
+			sourceTree = "<group>";
+		};
+		16E5D8DE1BCDF6BC00A96F70 /* HZAreaPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				16E5D8E41BCDF78C00A96F70 /* HZLocation.h */,
+				16E5D8E51BCDF78C00A96F70 /* HZLocation.m */,
+				16E5D8DF1BCDF6BC00A96F70 /* HZAreaPickerView.h */,
+				16E5D8E01BCDF6BC00A96F70 /* HZAreaPickerView.m */,
+				16E5D8E11BCDF6BC00A96F70 /* HZAreaPickerView.xib */,
+			);
+			path = HZAreaPickerView;
 			sourceTree = "<group>";
 		};
 		16EB2DC61BC6AB7800F51A9F /* CommonRes */ = {
@@ -1524,6 +1562,7 @@
 				C200B2FB1BCDE7760091CDA5 /* UMShareEditViewController.xib in Resources */,
 				161D35761BCBB60A00DB7F70 /* detailshare.png in Resources */,
 				C27358C41BC4F43900771457 /* option_arrow_down@2x.png in Resources */,
+				16E5D8E91BCDF7BB00A96F70 /* area.plist in Resources */,
 				C209F53E1BC6187D00946675 /* RecommendationCell.xib in Resources */,
 				16988D671BC3A994001A1077 /* Main.storyboard in Resources */,
 				16EB2DCA1BC6AB7800F51A9F /* back.png in Resources */,
@@ -1549,6 +1588,7 @@
 				C228D7941BC9032A009E383A /* my.jpg in Resources */,
 				C25074231BC7631000F62844 /* aa.png in Resources */,
 				16EB2DCB1BC6AB7800F51A9F /* place.png in Resources */,
+				16E5D8E31BCDF6BC00A96F70 /* HZAreaPickerView.xib in Resources */,
 				C2F1A0AA1BCB993900060A9A /* search.png in Resources */,
 				C25074241BC7631000F62844 /* 55.png in Resources */,
 				C200B3211BCE2EBA0091CDA5 /* shoucang.png in Resources */,
@@ -1556,6 +1596,7 @@
 				16411AAB1BCB77AF00E7A54C /* shijian.png in Resources */,
 				C27D31A61BC7633D005B049D /* SCNavTabBar.bundle in Resources */,
 				C2F1A0A81BCB948000060A9A /* arrows.png in Resources */,
+				16E5D8EA1BCDF7BB00A96F70 /* city.plist in Resources */,
 				16988D691BC3A994001A1077 /* Images.xcassets in Resources */,
 				C22699F71BC50AB5009BBAB0 /* carouseIFingureCell.xib in Resources */,
 			);
@@ -1640,6 +1681,7 @@
 				C228D7A01BC93129009E383A /* WeatherDetailController.m in Sources */,
 				161D357F1BCBE57900DB7F70 /* SkyModel.m in Sources */,
 				16988DAC1BC3D118001A1077 /* ComPackageModel.m in Sources */,
+				16E5D8F01BCE168200A96F70 /* GenderBirthVC.m in Sources */,
 				C268C98C1BC90F500043B541 /* XIOptionView.m in Sources */,
 				165D666F1BC5F8CB00BE6567 /* CommonCells.m in Sources */,
 				C2F2E4DC1BCD093D00A6D17C /* AroundDataBase.m in Sources */,
@@ -1665,10 +1707,13 @@
 				16988D641BC3A994001A1077 /* ViewController.m in Sources */,
 				C228D79D1BC91003009E383A /* WeatherDetailCell.m in Sources */,
 				16DB11621BC41D45009D7C7D /* AroundHelper.m in Sources */,
+				16E5D8E61BCDF78C00A96F70 /* HZLocation.m in Sources */,
 				C268C98F1BC90F500043B541 /* XIBorderSideView.m in Sources */,
 				C2FE4D681BCBB0370012075C /* LocationVC.m in Sources */,
+				16E5D8ED1BCDFCB700A96F70 /* AlterVC.m in Sources */,
 				16988DA91BC3D100001A1077 /* ComProductModel.m in Sources */,
 				16EB2DE61BC6AD0A00F51A9F /* ComDetailHelper.m in Sources */,
+				16E5D8E21BCDF6BC00A96F70 /* HZAreaPickerView.m in Sources */,
 				16DB11A41BC42303009D7C7D /* AroundVC.m in Sources */,
 				C2C200251BCB674C000F2AC7 /* HomepageCityListModel.m in Sources */,
 				C209F53D1BC6187D00946675 /* RecommendationCell.m in Sources */,

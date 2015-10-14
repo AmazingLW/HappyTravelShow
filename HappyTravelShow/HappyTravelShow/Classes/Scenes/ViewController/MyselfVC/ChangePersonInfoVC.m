@@ -8,9 +8,12 @@
 
 #import "ChangePersonInfoVC.h"
 #import "NameEmailVC.h"
+#import "HZAreaPickerView.h"
+#import "AlterVC.h"
+#import "GenderBirthVC.h"
 
 
-@interface ChangePersonInfoVC ()
+@interface ChangePersonInfoVC ()<HZAreaPickerDelegate>
 
 @property (nonatomic,strong) UILabel * phoneLabel;
 @property (nonatomic,strong) UILabel * nameLabel;
@@ -19,6 +22,7 @@
 @property (nonatomic,strong) UILabel * genderLabel;
 @property (nonatomic,strong) UILabel * birthLabel;
 @property (nonatomic,strong) UILabel * addressLabel;
+@property (strong, nonatomic) HZAreaPickerView *locatePicker;
 
 @end
 
@@ -110,7 +114,7 @@
         cell.textLabel.text = @"生    日:";
         
         if (self.birth == nil) {
-            self.birthLabel.text = @"请输入您的性别";
+            self.birthLabel.text = @"请输入您的出生日期";
             self.birthLabel.textColor = [UIColor grayColor];
         }else{
             self.birthLabel.text = self.birth;
@@ -126,7 +130,7 @@
             self.addressLabel.text = @"请输入您的常住地";
             self.addressLabel.textColor = [UIColor grayColor];
         }else{
-            self.addressLabel.text = self.birth;
+            self.addressLabel.text = self.address;
             self.addressLabel.textColor = [UIColor blackColor];
         }
 
@@ -181,9 +185,103 @@
         nameVC.hidesBottomBarWhenPushed = YES;
     }else if (indexPath.section == 1 && indexPath.row == 0){
         //修改性别
+        GenderBirthVC *genderVC = [[GenderBirthVC alloc] init];
+        
+        if ([self.genderLabel.text isEqualToString:@"女"]) {
+            genderVC.isFemale = YES;
+        }else{
+            genderVC.isFemale = NO;
+        }
+        genderVC.strGender = self.genderLabel.text;
+        genderVC.view.center = self.view.center;
+        
+        
+        [self addChildViewController:genderVC];
+        [self.view addSubview:genderVC.view];
+        [genderVC drawGenderView];
+        
+        genderVC.birthandGenderBlock = ^(NSString *strDate){
+            if (![self.genderLabel.text isEqualToString:strDate]) {
+                // 知道 objectId，创建 AVObject
+                AVObject *post = [AVObject objectWithoutDataWithClassName:@"_User" objectId:[AVUser currentUser].objectId];
+                //更新属性
+                [post setObject:strDate forKey:@"gender"];
+                //保存
+                [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        self.genderLabel.text = strDate;
+                    }else{
+                        [self p_showAlertView:@"提示" message:[self errorCode:error.code]];
+                    }
+                }];
+            }
+        };
+        
+        
+    }else if (indexPath.section == 1 && indexPath.row == 1){
+        //修改生日
+        GenderBirthVC *birthVC = [[GenderBirthVC alloc] init];
+        birthVC.view.center = self.view.center;
+        
+        [self addChildViewController:birthVC];
+        [self.view addSubview:birthVC.view];
+        [birthVC drawBirthView];
+        
+        birthVC.birthandGenderBlock = ^(NSString *strDate){
+            if (![self.birthLabel.text isEqualToString:strDate]) {
+                // 知道 objectId，创建 AVObject
+                AVObject *post = [AVObject objectWithoutDataWithClassName:@"_User" objectId:[AVUser currentUser].objectId];
+                //更新属性
+                [post setObject:strDate forKey:@"brithday"];
+                //保存
+                [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        self.birthLabel.text = strDate;
+                    }else{
+                        [self p_showAlertView:@"提示" message:[self errorCode:error.code]];
+                    }
+                }];
+            }
+        };
+        
+    }else if (indexPath.section == 1 && indexPath.row == 2){
+        //修改常居地
+        
+        //模态出一个视图
+        AlterVC *alterVC = [[AlterVC alloc] init];
+        alterVC.view.center = self.view.center;
+        
+        [self addChildViewController:alterVC];
+        [self.view addSubview:alterVC.view];
+        [alterVC touchCell];
+        
+        alterVC.areaBlock = ^(NSString *strArea){
+            if (![self.addressLabel.text isEqualToString:strArea]) {
+                // 知道 objectId，创建 AVObject
+                AVObject *post = [AVObject objectWithoutDataWithClassName:@"_User" objectId:[AVUser currentUser].objectId];
+                //更新属性
+                [post setObject:strArea forKey:@"address"];
+                //保存
+                [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        self.addressLabel.text = strArea;
+                    }else{
+                        [self p_showAlertView:@"提示" message:[self errorCode:error.code]];
+                    }
+                }];
+            }
+        };
         
     }
 }
+
+//-(void)cancelLocatePicker
+//{
+//    [self.locatePicker cancelPicker];
+//    self.locatePicker.delegate = nil;
+//    self.locatePicker = nil;
+//}
+
 
 
 

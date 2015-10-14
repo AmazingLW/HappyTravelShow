@@ -25,6 +25,8 @@
 
 @property (nonatomic,assign) BOOL isLoginState;
 
+@property (nonatomic,assign) BOOL isgetUserInfoState;
+
 @end
 
 @implementation MyselfVC
@@ -70,20 +72,11 @@
 
 
 
-//#pragma mark ------当从注册页面返回的时候进行一些操作-------
-//- (void)viewDidAppear:(BOOL)animated{
-//    [super viewDidAppear:animated];
-//    
-//    //当从注册页面完成注册返回登陆页面时,根据currentUser用户是否为nil,进行登陆成功回调,
-//    if ([AVUser currentUser] && _isRegState) {
-//        //注册页面返回的
-//        [[NSNotificationCenter defaultCenter] postNotificationName:kLoginSucessNotification object:self];
-//        
-//        //退出登陆页面
-//        [self dismissViewControllerAnimated:YES completion:nil];
-//    }
-//    
-//}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    _isgetUserInfoState = NO;
+}
 
 
 
@@ -225,7 +218,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     if (indexPath.section == 0) {
-        if (_isLoginState) {
+        if (_isLoginState && _isgetUserInfoState == NO) {
+            _isgetUserInfoState = YES;
             ChangePersonInfoVC *changeVC = [ChangePersonInfoVC new];
             
             //请求个人信息
