@@ -34,7 +34,7 @@
         self.uiTableView.dataSource=self;
         
        /// self.navigationItem.hidesBackButton=YES;
-        
+        //self.cityCode = self.model.themeId ;
     }
     return self;
     
