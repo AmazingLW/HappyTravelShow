@@ -33,7 +33,6 @@
 
 
 - (void)requestBookData:(NSString *)strUrl type:(NSString *)strType block:(void (^)(NSMutableArray *arr))block{
-    NSLog(@"%@-----",strUrl);
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];

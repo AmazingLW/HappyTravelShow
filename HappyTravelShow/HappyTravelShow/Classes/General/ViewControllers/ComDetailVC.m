@@ -38,6 +38,12 @@ static BOOL  isOpen = NO;
 //保存cell变高的高度
 @property (nonatomic,assign) CGFloat cellBigHeight;
 
+//收藏按钮
+@property (nonatomic,strong) UIButton *rightButton;
+
+//收藏状态
+@property (nonatomic,assign) BOOL isShoucang;
+
 
 @end
 
@@ -57,20 +63,34 @@ static BOOL  isOpen = NO;
     self.navigationItem.leftBarButtonItem=leftButtonItem;
     
     
+    _rightButton =[UIButton buttonWithType:UIButtonTypeCustom];
+    _rightButton.frame=CGRectMake(0, 0, 30, 30);
     
-    UIButton *rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    rightButton.frame=CGRectMake(0, 0, 30, 30);
-    [rightButton setImage:[UIImage imageNamed:@"shoucang.png"] forState:UIControlStateNormal];
-    [rightButton addTarget:self action:@selector(shoucangAction) forControlEvents:UIControlEventTouchUpInside];
+    if ([AVUser currentUser] != nil) {
+        //先判断数据库表里面有没有
+        NSString *sqlQuery = [NSString stringWithFormat:@"select *from Shoucang where detail = '%@' and userID = '%@'",[NSString stringWithFormat:@"%ld",self.detailID],[AVUser currentUser].objectId];
+        BOOL isSuc = [[DataBase shareData] selectDataFromShoucang:sqlQuery];
+        if (isSuc) {
+            //已收藏
+            [_rightButton setImage:[UIImage imageNamed:@"shoucanged.png"] forState:UIControlStateNormal];
+            _isShoucang = YES;
+        }else{
+            //未收藏
+            [_rightButton setImage:[UIImage imageNamed:@"shoucang.png"] forState:UIControlStateNormal];
+            _isShoucang = NO;
+        }
     
-    UIBarButtonItem *rightButtonItem=[[UIBarButtonItem alloc]initWithCustomView:rightButton];
+    }else{
+        [_rightButton setImage:[UIImage imageNamed:@"shoucang.png"] forState:UIControlStateNormal];
+        _isShoucang = NO;
+    }
+    
+    [_rightButton addTarget:self action:@selector(shoucangAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *rightButtonItem=[[UIBarButtonItem alloc]initWithCustomView:_rightButton];
     
     self.navigationItem.rightBarButtonItem=rightButtonItem;
 
-    
-    
-    
-    
     [self.view addSubview:self.detailTableView];
     self.detailTableView.delegate = self;
     self.detailTableView.dataSource = self;
@@ -102,9 +122,48 @@ static BOOL  isOpen = NO;
 
 //收藏
 - (void)shoucangAction{
-    NSLog(@"收藏---");
+    //先判断用户是否登录
+    if ([AVUser currentUser] == nil) {
+        [self p_showAlertView:@"提示" message:@"请先登录"];
+        return;
+    }
     
-    
+    if (_isShoucang) {
+        //已收藏了，现在取消了
+        [_rightButton setImage:[UIImage imageNamed:@"shoucang.png"] forState:UIControlStateNormal];
+        
+        //从数据库表中删除
+        NSString *sqldelete = [NSString stringWithFormat:@"delete from Shoucang where detail = '%@' and userID = '%@'",[NSString stringWithFormat:@"%ld",self.detailID],[AVUser currentUser].objectId];
+        BOOL isSuc = [[DataBase shareData] deleteDataFromShoucang:sqldelete];
+        if (isSuc) {
+            [self p_showAlertView:@"提示" message:@"取消收藏~"];
+            _isShoucang = NO;
+        }else{
+            [self p_showAlertView:@"提示" message:@"取消收藏失败~"];
+        }
+        
+    }else{
+        //未收藏，现在收藏了
+        [_rightButton setImage:[UIImage imageNamed:@"shoucanged.png"] forState:UIControlStateNormal];
+        
+        //插入数据库
+        //插入数据库表
+        if(_detailArr.count != 0){
+            DetailModel *model = (DetailModel *)_detailArr.firstObject;
+            //获取图片的url
+            DetailModel *imgModel = model.imgArr[0];
+            NSString *insertSql = [NSString stringWithFormat:@"insert into Shoucang(title,content,curprice,oldprice,sellcount,imgurl,bookID,detail,userID)values('%@','%@','%@','%@','%@','%@','%@','%@','%@')",model.mainTitle,model.subTitle,model.sellPrice,model.retailPrice,model.saledCount,[NSString stringWithFormat:@"http://cdn1.jinxidao.com/%@",imgModel.url],model.channelLinkId,model.productId,[AVUser currentUser].objectId];
+            
+            BOOL isSuc =[[DataBase shareData] insertDataIntoShoucang:insertSql];
+            if (isSuc) {
+                [self p_showAlertView:@"提示" message:@"收藏成功~"];
+                _isShoucang = YES;
+            }else{
+                [self p_showAlertView:@"提示" message:@"收藏失败~"];
+            }
+
+        }
+    }
     
 }
 
