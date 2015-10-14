@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 350, kScreenWidth, 270) style:UITableViewStyleGrouped];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 350, kScreenWidth, kScreenHeight - 280 - 64) style:UITableViewStyleGrouped];
     self.title = @"查看地址";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
