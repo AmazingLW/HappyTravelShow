@@ -843,7 +843,6 @@
 			isa = PBXGroup;
 			children = (
 				C200B2DB1BCDE7750091CDA5 /* UMSocial_Sdk_4.2.5 */,
-
 				16E5D8DE1BCDF6BC00A96F70 /* HZAreaPickerView */,
 				C2F2E4791BCC9E7200A6D17C /* fmdb */,
 				C27D319B1BC7633D005B049D /* SCNavTabBar */,
