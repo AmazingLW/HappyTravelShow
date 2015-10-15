@@ -34,6 +34,9 @@
 //增加数据库表字段
 - (BOOL)insertFieldIntoTable:(NSString *)tableName fieldName:(NSString *)fieldName;
 
+// 删除表-彻底删除表
+- (BOOL) deleteTable:(NSString *)tableName;
+
 // 判断是否存在表
 - (BOOL) isTableOK:(NSString *)tableName;
 

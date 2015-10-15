@@ -66,6 +66,22 @@
 }
 
 
+// 删除表
+- (BOOL) deleteTable:(NSString *)tableName
+{
+    [_dataBase open];
+    NSString *sqlstr = [NSString stringWithFormat:@"DROP TABLE %@", tableName];
+    if (![_dataBase executeUpdate:sqlstr])
+    {
+        NSLog(@"Delete table error!");
+        [_dataBase close];
+        return NO;
+    }
+    [_dataBase close];
+    return YES;
+}
+
+
 
 // 判断是否存在表
 - (BOOL) isTableOK:(NSString *)tableName
