@@ -68,6 +68,7 @@
 @property (nonatomic, strong)NSString *tmptag;
 
 @property (nonatomic, strong)NSString *cityName;
+@property (nonatomic, strong)NSString *notiName;
 @end
 
 @implementation AroundVC2
@@ -118,15 +119,27 @@ static NSString *const reuse = @"cell";
     
 }
 
+
+
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+  [self requestData];
+   
+       
+}
+
+- (void)cityNameChanger:(NSNotification *)notification{
+    
+    self.notiName = notification.userInfo[@"cityName"];
     
 }
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+ [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cityNameChanger:) name:@"change" object:nil];
+//   _notiName = @"苏州";
     
     _sortName = @"默认排序";
     _scenicName = @"全部";
@@ -161,11 +174,12 @@ static NSString *const reuse = @"cell";
    // NSLog(@"%@",self.destinationCity);
     
     [self setupDropdownList];
-    [self requestData];
+    //[self requestData];
     
-
+    
     
 }
+//通知中心方法
 
 
 - (void)setupDropdownList
@@ -339,12 +353,12 @@ static NSString *const reuse = @"cell";
     }
     
     
-    [self fuck];
+    [self logic];
  
     
 }
 
-- (void)fuck{
+- (void)logic{
     
     
     //如果第一次进入程序
@@ -431,7 +445,7 @@ static NSString *const reuse = @"cell";
 
 - (void)onlySortWithType:(NSString *) type{
     
-    [[AroundHelper new] sortDataWithType:type cityName:@"苏州" finish:^(NSArray *array) {
+    [[AroundHelper new] sortDataWithType:type cityName:_notiName finish:^(NSArray *array) {
         
         _allScenic = [NSMutableArray arrayWithArray:array];
         [self.tableView reloadData];
@@ -444,7 +458,7 @@ static NSString *const reuse = @"cell";
 //当 目的城市为全部 景点全部  排序方式改变   筛选方式改变
 - (void)sortWithType:(NSString *)type tagName:(NSString *)tagName{
     
-    [[AroundHelper new] chooseScenicWithSortType:type TagName:tagName cityName:@"苏州" finish:^(NSArray *array) {
+    [[AroundHelper new] chooseScenicWithSortType:type TagName:tagName cityName:_notiName finish:^(NSArray *array) {
         
         _allScenic = [array mutableCopy];
         
@@ -498,12 +512,9 @@ static NSString *const reuse = @"cell";
     comDetail.bookID = packageID;
     comDetail.detailID = productId;
 
-    UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:comDetail];
-    [self presentViewController:rootNC animated:YES completion:nil];
-    
-    
-//    [self.navigationController pushViewController:comDetail animated:YES];
-    
+    comDetail.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:comDetail animated:YES];
+    comDetail.hidesBottomBarWhenPushed = YES;
 }
 
 
@@ -511,7 +522,7 @@ static NSString *const reuse = @"cell";
 
 - (void)requestData{
     _dic = [[NSMutableDictionary alloc] init];
-    [[AroundHelper new] requestWithCityName:@"苏州" finish:^(NSArray *array) {
+    [[AroundHelper new] requestWithCityName:_notiName finish:^(NSArray *array) {
         NSMutableArray *arr = [NSMutableArray arrayWithArray:array];
         _tempArray = [[NSMutableArray alloc] init];
         _destinationCity = [NSMutableArray array];
@@ -548,7 +559,7 @@ static NSString *const reuse = @"cell";
     
     //CityName 是请求到的目的城市
     
-    [[AroundHelper new]requsetAllScenicsWithCityName:@"苏州" finish:^(NSArray *scenic) {
+    [[AroundHelper new]requsetAllScenicsWithCityName:_notiName finish:^(NSArray *scenic) {
         
         _allScenic = [NSMutableArray arrayWithArray:scenic];
         [self.tableView reloadData];
@@ -557,7 +568,7 @@ static NSString *const reuse = @"cell";
 }
 
 - (void)request{
-    [[AroundHelper new]requsetAllScenicsWithCityName:@"苏州" finish:^(NSArray *scenic) {
+    [[AroundHelper new]requsetAllScenicsWithCityName:_notiName finish:^(NSArray *scenic) {
         
         _allScenic = [NSMutableArray arrayWithArray:scenic];
         [self.tableView reloadData];
