@@ -39,11 +39,7 @@
         self.array = [arr mutableCopy];
         [self.tableView  reloadData];       
     }];
-//    [[HomepageHelper new] requestAllFamily:self.URLNumber withSort:self.sort WithFinish:^(NSMutableArray *arr) {
-//        self.FamilyArray =[NSMutableArray array];
-//        self.FamilyArray= [arr mutableCopy];
-//        [self.tableView reloadData];
-//    }];
+
     [[HomepageHelper new] requestAllFamily:self.URLNumber withSort:self.sort cityName:self.CName WithFinish:^(NSMutableArray *arr) {
         self.FamilyArray =[NSMutableArray array];
         self.FamilyArray= [arr mutableCopy];

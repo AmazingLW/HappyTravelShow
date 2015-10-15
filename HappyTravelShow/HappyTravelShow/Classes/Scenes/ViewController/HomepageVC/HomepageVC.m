@@ -24,7 +24,7 @@
 #import "LocationVC.h"
 #import "ScenicDetailVC.h"
 #import "FindKindOfSceneController.h"
-
+#import "MJRefresh.h"
 #define kWidth [UIScreen mainScreen].bounds.size.width
 
 @interface HomepageVC ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,CityDelegate>
@@ -117,18 +117,37 @@
     
     
     //初始化数据库并创建表
-    
     [[DataBase shareData] createDataBase];
     [[DataBase shareData] createTable];
     
     
     //self.edgesForExtendedLayout = UIRectEdgeNone;
-    
     [self setupCollectionView];
     self.view.backgroundColor = [UIColor orangeColor];
     [self creatNavBar];
     
-  
+  __weak typeof(self) weakself = self;
+    
+  self.collection.header =[MJRefreshNormalHeader headerWithRefreshingBlock:^{
+      
+      [[HomepageHelper new] requestAllPackage:@"bannerScroll" withCityCode:self.cityCode WithFinish:^(NSMutableArray *arr) {
+          self.CarouseArray=[NSMutableArray array];
+          self.CarouseArray = [arr mutableCopy];
+       
+          [weakself.collection reloadData];
+          [[weakself.collection header] endRefreshing];
+      }];
+      
+      [[HomepageHelper new]requestAllRecommendation:self.cityCode WithFinish:^(NSMutableArray *arr) {
+          self.RecommendationArr=[NSMutableArray array];
+          self.RecommendationArr = [arr mutableCopy];
+          [self.collection reloadData];
+          [[self.collection header] endRefreshing];
+      }];
+      
+      
+      
+  }];
     
     
 }
