@@ -14,7 +14,6 @@
 #import "RegisterController.h"
 #import "FavoriteController.h"
 #import "browsedController.h"
-#import "WeatherDetailController.h"
 #import "ChangePersonInfoVC.h"
 #import "FinderKindModel.h"
 
@@ -29,6 +28,8 @@
 @property (nonatomic,assign) BOOL isgetUserInfoState;
 
 @property(nonatomic,strong) FinderKindModel  *kindModel;
+
+@property (nonatomic,strong) NSString *path;
 
 @end
 
@@ -63,7 +64,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  
+    self.title = @"我的";
 
 }
 
@@ -160,7 +161,13 @@
         }
     
     if (indexPath.section == 1 &&indexPath.row==0) {
-        cell.label.text=@"我的订单";
+        //获取缓存数据
+        cell.label.text = @"清除缓存";
+        _path = [self CachesDirectory];
+        double cacheSize = [self sizeWithFilePath:_path];
+        cell.cacheLabel.text = [NSString stringWithFormat:@"%0.2lfKB",cacheSize];
+        cell.cacheLabel.textAlignment = NSTextAlignmentRight;
+        cell.cacheLabel.textColor = [UIColor orangeColor];
         cell.titleView.image=[UIImage imageNamed:@"aa.png"];
     }else if (indexPath.section==2&&indexPath.row==0){
         cell.label.text=@"我的收藏";
@@ -172,7 +179,7 @@
         cell.label.text=@"分享要出发给朋友";
         cell.titleView.image=[UIImage imageNamed:@"66.png"];
     }else{
-        cell.label.text=@"常用设置";
+        cell.label.text=@"退出登录";
         cell.titleView.image=[UIImage imageNamed:@"55.png"];
         
     }
@@ -248,12 +255,10 @@
             NSLog(@"nothing");
         }
     }else if (indexPath.section == 1 &&indexPath.row==0){
-        
-//        BOOL isSuc = [[DataBase shareData] deleteTable:@"Shoucang"];
-//        if (isSuc) {
-//            [self p_showAlertView:@"提示" message:@"已清空"];
-//        }
-        
+        //清除缓存
+        UIAlertView *altertView = [[UIAlertView alloc] initWithTitle:@"提示信息" message:@"清除缓存将会降低页面加载速度,你确定继续么?" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"清理",nil];
+        altertView.tag = 1001;
+        [altertView show];
     }else if (indexPath.section==2&&indexPath.row==0) {
         
         //收藏页
@@ -279,12 +284,11 @@
         bVC.hidesBottomBarWhenPushed = YES;
         
     }else if (indexPath.section==3&&indexPath.row==0){
-        
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否确认注销" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        [alertView show];
+        NSLog(@"分享我们的App");
     }else if (indexPath.section==3&&indexPath.row==1){
-        WeatherDetailController *wVC=[WeatherDetailController new];
-        [self.navigationController pushViewController:wVC animated:NO];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"确认退出此账号么" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        alertView.tag = 1002;
+        [alertView show];
         
     }
     
@@ -294,19 +298,84 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
-        //用户注销，修改登陆状态
-        [AVUser logOut];  //清除缓存用户对象  现在的currentUser是nil了
-        _isLoginState = NO;
-        NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
-        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+        if (alertView.tag == 1002) {
+            //用户注销，修改登陆状态
+            [AVUser logOut];  //清除缓存用户对象  现在的currentUser是nil了
+            _isLoginState = NO;
+            NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:0];
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+        }else{
+            [self clearCachesWithFilePath:_path];
+            NSIndexPath *indexPath=[NSIndexPath indexPathForRow:0 inSection:1];
+            [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath,nil] withRowAnimation:UITableViewRowAnimationNone];
+        }
     }
 }
+
+
+
+#pragma mark ---清除缓存---
+// 按路径清除文件
+- (void)clearCachesWithFilePath:(NSString *)path
+{
+    NSFileManager *mgr = [NSFileManager defaultManager];
+    [mgr removeItemAtPath:path error:nil];
+    
+}
+
+
+- (double)sizeWithFilePath:(NSString *)path
+{
+    // 1.获得文件夹管理者
+    NSFileManager *mgr = [NSFileManager defaultManager];
+    
+    // 2.检测路径的合理性
+    BOOL dir = NO;
+    BOOL exits = [mgr fileExistsAtPath:path isDirectory:&dir];
+    if (!exits) return 0;
+    
+    // 3.判断是否为文件夹
+    if (dir) { // 文件夹, 遍历文件夹里面的所有文件
+        // 这个方法能获得这个文件夹下面的所有子路径(直接\间接子路径)
+        NSArray *subpaths = [mgr subpathsAtPath:path];
+        int totalSize = 0;
+        for (NSString *subpath in subpaths) {
+            NSString *fullsubpath = [path stringByAppendingPathComponent:subpath];
+            
+            BOOL dir = NO;
+            [mgr fileExistsAtPath:fullsubpath isDirectory:&dir];
+            if (!dir) { // 子路径是个文件
+                NSDictionary *attrs = [mgr attributesOfItemAtPath:fullsubpath error:nil];
+                totalSize += [attrs[NSFileSize] intValue];
+            }
+        }
+        return totalSize / (1000 * 1000.0);
+    } else { // 文件
+        NSDictionary *attrs = [mgr attributesOfItemAtPath:path error:nil];
+        return [attrs[NSFileSize] intValue] / (1000 * 1000.0);
+    }
+}
+
+- (NSString *)CachesDirectory
+{
+    return [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) lastObject];
+}
+
+
+
+
+
+
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+
 
 /*
 #pragma mark - Navigation

@@ -23,6 +23,7 @@
 //block回来的数据
 @property(nonatomic,strong) NSMutableArray  *kindArray;
 @property(nonatomic,assign) NSInteger  currentPage;
+@property(nonatomic,assign) NSInteger pageSize;
 
 @end
 
@@ -63,7 +64,7 @@
         
         
         self.currentPage=1;
-        
+        self.pageSize=10;
 
     }
     return self;
@@ -120,16 +121,17 @@
     customLab.text=self.model.title;
     customLab.font = [UIFont boldSystemFontOfSize:20];
     self.navigationItem.titleView = customLab;
-    [[FinderHelper sharedHelper]requestDataWithThemeId:self.model.themeId cityCode:@"110100" pageIndex:@"1" Finish:^(NSMutableArray *arr){
-        
-        self.kindArray=[NSMutableArray array];
+    
+    [[FinderHelper sharedHelper]requestDataWithPageSize:self.pageSize ThemeId:self.model.themeId cityCode:self.cityCode pageIndex:1 Finish:^(NSMutableArray *arr) {
+            self.kindArray=[NSMutableArray array];
         self.kindArray=[arr mutableCopy];
         
         [self.uiTableView reloadData];
         
+
     }];
 
-    
+     
 }
 
 
@@ -139,29 +141,42 @@
     //注册
     [self.uiTableView registerNib:[UINib nibWithNibName:@"CommonCells" bundle:nil] forCellReuseIdentifier:@"commonCell"];
     //下拉刷新
-//    self.uiTableView.header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
-//       
-//        
-//        [[FinderHelper sharedHelper]requestDataWithThemeId:self.model.themeId cityCode:self.cityCode pageIndex:@"1" Finish:^(NSMutableArray *arr){
-//            
-//            self.kindArray=[NSMutableArray array];
-//            self.kindArray=[arr mutableCopy];
-//            
-//            [self.uiTableView reloadData];
-//            
-//        }];
-//
-    
-        
-        
-     
-//        }];
 
+
+      self.uiTableView.header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
+          
+                   [[FinderHelper sharedHelper]requestDataWithPageSize:self.pageSize*self.pageSize ThemeId:self.model.themeId cityCode:self.cityCode pageIndex:1 Finish:^(NSMutableArray *arr) {
+              
+              self.kindArray=[arr mutableCopy];
+              
+              [self.uiTableView reloadData];
+              
+              [self.uiTableView.header endRefreshing];
+              
+          }];
+          
+       
+          
+      }];
     
+    //上拉加载
+    self.uiTableView.footer =[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        
+        self.currentPage++;
+        [[FinderHelper sharedHelper]requestDataWithPageSize:self.pageSize*self.currentPage ThemeId:self.model.themeId cityCode:self.cityCode pageIndex:self.currentPage Finish:^(NSMutableArray *arr) {
+            [self.kindArray addObjectsFromArray:arr];
+            [self.uiTableView reloadData];
+            [self.uiTableView.footer endRefreshingWithNoMoreData];
+            
+        }];
+        
+        
+        
+        
+        
+    }];
     
    
-    
-    
     
 }
 
@@ -253,7 +268,7 @@
 
 
 - (void)backAction{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 
