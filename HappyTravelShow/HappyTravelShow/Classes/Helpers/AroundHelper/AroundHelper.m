@@ -491,18 +491,18 @@
 //热门城市列表
 - (void)requestHotCityListWithKeyWord:(NSString *)keyWord city:(NSString *)city result:(void(^)(NSArray * array)) result{
     
-    NSString *url = hotCityList(keyWord, city);
+  //  NSString *url = hotCityList(keyWord,p,city);
     
-    NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    NSLog(@"%@",codeUrl);
-    
+//    NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//    
+//    NSLog(@"%@",codeUrl);
+//    
     NSMutableArray *arr = [NSMutableArray array];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
        
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         
-        [manager GET:codeUrl parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        [manager GET:@"2" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
             
         
             NSDictionary *dic = responseObject[@"data"];
