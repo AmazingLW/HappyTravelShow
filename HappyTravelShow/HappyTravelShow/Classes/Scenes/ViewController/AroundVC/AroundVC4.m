@@ -13,9 +13,11 @@
 #import "AroundHelper.h"
 #import "ComDetailVC.h"
 #import "HotSearchModel.h"
+#import "MJRefresh.h"
 @interface AroundVC4 ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong)UITableView *tableView;
 @property (nonatomic, strong)NSMutableArray *array;
+@property (nonatomic, assign)NSInteger currentPage;
 
 @end
 
@@ -26,6 +28,8 @@ static NSString * reuse = @"dsgsdghe";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _array = [NSMutableArray array];
+    _currentPage = 1;
     
     self.navigationItem.hidesBackButton = YES;
     
@@ -73,18 +77,48 @@ static NSString * reuse = @"dsgsdghe";
     
     [self.tableView registerNib:[UINib nibWithNibName:@"CommonCells" bundle:nil] forCellReuseIdentifier:reuse];
     [self request];
+    
+    
+    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [[AroundHelper new] requestHotCityListWithKeyWord:self.NAME p:_currentPage city:@"北京" result:^(NSArray *array) {
+            
+            [_array addObjectsFromArray:array];
+            [self.tableView reloadData];
+        }];
+        [[self.tableView header] endRefreshing];
+        
+    }];
+    
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        _currentPage ++;
+        [[AroundHelper new] requestHotCityListWithKeyWord:self.NAME p:_currentPage city:@"北京" result:^(NSArray *array) {
+            
+            [_array addObjectsFromArray:array];
+            [self.tableView reloadData];
+        }];
+        [[self.tableView footer] endRefreshing];
+        
+    }];
+
+    
     // Do any additional setup after loading the view.
 }
 
 //前面传过来的热门城市   以及 首页定位城市(通知中心)
 - (void)request{
-    [[AroundHelper new]requestHotCityListWithKeyWord:self.NAME city:@"北京" result:^(NSArray *array) {
+//    [[AroundHelper new]requestHotCityListWithKeyWord:self.NAME city:@"北京" result:^(NSArray *array) {
+//        
+//        _array = [NSMutableArray arrayWithArray:array];
+//        
+//        [self.tableView reloadData];
+//    }];
+    
+    [[AroundHelper new] requestHotCityListWithKeyWord:self.NAME p:_currentPage city:@"北京" result:^(NSArray *array) {
         
-        _array = [NSMutableArray arrayWithArray:array];
-        
+        [_array addObjectsFromArray:array];
         [self.tableView reloadData];
     }];
-    
     
 }
 
@@ -119,8 +153,8 @@ static NSString * reuse = @"dsgsdghe";
     comDetail.bookID = hot.channelLinkId;
     comDetail.detailID = hot.productId;
     
-    UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:comDetail];
-    [self presentViewController:rootNC animated:YES completion:nil];
+//    UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:comDetail];
+    [self presentViewController:comDetail animated:YES completion:nil];
 }
 
 - (void)back:(UIButton *)button{

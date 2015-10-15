@@ -17,6 +17,8 @@
 @property(nonatomic,strong)UITableView *uiTableView;
 //当前页数
 @property (nonatomic,assign) NSInteger currentPage;
+@property (nonatomic,assign) NSInteger   pageSize;
+
 //block回来的数据
 @property(nonatomic,strong) NSMutableArray  *dataArray;
 
@@ -51,7 +53,7 @@
         self.navigationItem.leftBarButtonItem.tintColor=[UIColor blackColor];
         
         _currentPage=1;
-        
+        _pageSize=10;
     }
     
     return self;
@@ -68,7 +70,23 @@
         self.string = string;
         self.cityName = cityName;
         self.cityCode =cityCode;
+        
+        
+        [[FinderHelper sharedHelper]getDataWithPageSize:self.pageSize CityCode:self.cityCode pageIndex:1 Finish:^(NSMutableArray *arr) {
+           
+            self.dataArray=[NSMutableArray array];
+            self.dataArray=[arr mutableCopy];
+            
+            [self.uiTableView reloadData];
+            
+            
+        }];
+        
+        
     };
+    
+
+    
     
     locationVC.hidesBottomBarWhenPushed = YES;
 
@@ -84,29 +102,12 @@
         
     }
     
-    
-    [[FinderHelper sharedHelper]getDataWithCityCode:self.cityCode pageIndex:self.currentPage Finish:^(NSMutableArray *arr){
-        self.dataArray=[NSMutableArray array];
-        self.dataArray=[arr mutableCopy];
-        
-        [self.uiTableView reloadData];
-    }];
 
-    
-    
     
 }
 
 
-- (void)viewDidAppear:(BOOL)animated{
-    
-    [super viewDidAppear:animated];
-    
-    
-    
-    
-    
-}
+
 
 
 
@@ -117,35 +118,53 @@
     //注册
     [self.uiTableView registerNib:[UINib nibWithNibName:@"FinderMainCell" bundle:nil] forCellReuseIdentifier:@"mainCell"];
     
+    
+    
+    [[FinderHelper sharedHelper]getDataWithPageSize:self.pageSize CityCode:self.cityCode pageIndex:1 Finish:^(NSMutableArray *arr) {
+       
+       self.dataArray=[NSMutableArray array];
+        self.dataArray=[arr mutableCopy];
+        
+        [self.uiTableView reloadData];
+
+        
+    }];
+    
     //下拉刷新
     
-//     self.uiTableView.header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
-//        
-//         [[FinderHelper sharedHelper]getDataWithCityCode:self.cityCode pageIndex:self.currentPage Finish:^(NSMutableArray *arr){
-//            // self.dataArray=arr;
-//             [self.uiTableView.header endRefreshing];
-//             [self.uiTableView reloadData];
-//
-//         }];
-//
-//     }];
+     self.uiTableView.header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+         [[FinderHelper sharedHelper]getDataWithPageSize:self.pageSize*self.currentPage CityCode:self.cityCode pageIndex:1 Finish:^(NSMutableArray *arr) {
+             self.dataArray=[NSMutableArray array];
+             self.dataArray=[arr mutableCopy];
+             [self.uiTableView reloadData];
+
+              [self.uiTableView.header endRefreshing];
+
+             
+         }];
+         
+     }];
     
-    //上拉加载
-//    self.uiTableView.footer=[MJRefreshAutoFooter footerWithRefreshingBlock:^{
-//       
-//        self.currentPage++;
-//
-//        
-//        [[FinderHelper sharedHelper]getDataWithCityCode:self.cityCode pageIndex:self.currentPage Finish:^(NSMutableArray *arr){
-//            [self.dataArray addObjectsFromArray:arr];
-//         
-//            [self.uiTableView reloadData];
-//            [self.uiTableView.footer endRefreshing];
-//            
-//        }];
-//
-//        
-//    }];
+         
+
+   // 上拉加载
+    self.uiTableView.footer=[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+       
+        self.currentPage++;
+
+        
+        [[FinderHelper sharedHelper]getDataWithPageSize:self.pageSize CityCode:self.cityCode pageIndex:self.currentPage Finish:^(NSMutableArray *arr) {
+            
+            [self.dataArray addObjectsFromArray:arr];
+            [self.uiTableView reloadData];
+            [self.uiTableView.footer endRefreshingWithNoMoreData];
+            
+
+        }];
+
+        
+    }];
     
     
     
@@ -199,10 +218,10 @@
     FinderMainModel *mainModel=self.dataArray[indexPath.row];
     findVC.model=mainModel;
     findVC.titleString=mainModel.title;
-    
-    UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:findVC];
-    [self presentViewController:rootNC animated:YES completion:nil];
-   
+    findVC.cityCode=self.cityCode;
+    findVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:findVC animated:YES];
+   findVC.hidesBottomBarWhenPushed = YES;
     
     
 }
