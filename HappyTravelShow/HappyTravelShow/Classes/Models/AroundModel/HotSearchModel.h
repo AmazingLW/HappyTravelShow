@@ -23,6 +23,7 @@
 //已售数量
 @property(nonatomic,assign) NSInteger   saledCount;
 //图片链接  拼接http://cdn1.jinxidao.com/
+
 @property(nonatomic,strong) NSString  *appImageUrl;
 
 //所属城市

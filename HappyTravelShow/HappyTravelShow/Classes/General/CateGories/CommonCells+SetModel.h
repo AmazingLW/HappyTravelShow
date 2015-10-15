@@ -8,8 +8,9 @@
 
 #import "CommonCells.h"
 #import "AroundKindModel.h"
+#import "HotSearchModel.h"
 @interface CommonCells (SetModel)
 
 @property (nonatomic, strong)AroundKindModel *Model;
-
+@property (nonatomic, strong)HotSearchModel *aamodel;
 @end

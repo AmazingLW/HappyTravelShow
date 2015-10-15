@@ -21,7 +21,7 @@
     [self.FinderMain4imageView sd_setImageWithURL:[NSURL URLWithString:mainModel.imageUrl]];
     self.FinderMain4imageView.layer.cornerRadius=5;
     self.FinderMain4imageView.layer.masksToBounds=YES;
-    self.view.alpha=0.8;
+    self.view.alpha=0.95;
     
 }
 

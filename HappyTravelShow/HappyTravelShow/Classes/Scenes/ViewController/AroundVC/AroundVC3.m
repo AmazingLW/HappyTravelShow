@@ -98,13 +98,9 @@ static NSString *const reuse = @"cell";
 
 //返回 aroundvc2 的界面 pop 出去两个界面
 - (void)back:(UIButton *)button{
-    
 
-    
     [self.navigationController popViewControllerAnimated:NO];
-    
-    
-    
+
 }
 
 

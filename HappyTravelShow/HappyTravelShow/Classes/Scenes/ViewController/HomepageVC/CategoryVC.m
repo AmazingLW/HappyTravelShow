@@ -19,10 +19,15 @@
     [super viewDidLoad];
     [self drawNavControllers];
     
+    UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    leftButton.frame=CGRectMake(0, 0, 30, 30);
+    [leftButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+    [leftButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
     
-    self.navigationItem.hidesBackButton = YES;
-    UIBarButtonItem *leftBtn = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(backAction)];
-    self.navigationItem.leftBarButtonItem = leftBtn;
+    UIBarButtonItem *leftButtonItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton];
+    
+    
+    self.navigationItem.leftBarButtonItem=leftButtonItem;
 }
 -(void)drawNavControllers{
 //    CategoryDetailsVC*RecommendVC =[[CategoryDetailsVC alloc]initWithStyle:UITableViewStylePlain AndWithSort:@"n"];

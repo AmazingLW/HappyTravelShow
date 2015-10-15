@@ -57,7 +57,7 @@ static BOOL  isOpen = NO;
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     leftButton.frame=CGRectMake(0, 0, 30, 30);
     [leftButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
-    [leftButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+    [leftButton addTarget:self action:@selector(detailBackAction) forControlEvents:UIControlEventTouchUpInside];
     
     UIBarButtonItem *leftButtonItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem=leftButtonItem;
@@ -69,7 +69,7 @@ static BOOL  isOpen = NO;
     if ([AVUser currentUser] != nil) {
         //先判断数据库表里面有没有
         NSString *sqlQuery = [NSString stringWithFormat:@"select *from Shoucang where detail = '%@' and userID = '%@'",[NSString stringWithFormat:@"%ld",self.detailID],[AVUser currentUser].objectId];
-        BOOL isSuc = [[DataBase shareData] selectDataFromShoucang:sqlQuery];
+        BOOL isSuc = [[DataBase shareData] selectExistDataFromTable:sqlQuery];
         if (isSuc) {
             //已收藏
             [_rightButton setImage:[UIImage imageNamed:@"shoucanged.png"] forState:UIControlStateNormal];
@@ -116,8 +116,8 @@ static BOOL  isOpen = NO;
     
 }
 
-- (void)backAction{
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (void)detailBackAction{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 //收藏
@@ -150,9 +150,14 @@ static BOOL  isOpen = NO;
         //插入数据库表
         if(_detailArr.count != 0){
             DetailModel *model = (DetailModel *)_detailArr.firstObject;
+            
+            
+//            NSString *price =  [self numberToString:model.sellPrice];
+            
+//            NSLog(@"%@",price);
             //获取图片的url
             DetailModel *imgModel = model.imgArr[0];
-            NSString *insertSql = [NSString stringWithFormat:@"insert into Shoucang(title,content,curprice,oldprice,sellcount,imgurl,bookID,detail,userID)values('%@','%@','%@','%@','%@','%@','%@','%@','%@')",model.mainTitle,model.subTitle,model.sellPrice,model.retailPrice,model.saledCount,[NSString stringWithFormat:@"http://cdn1.jinxidao.com/%@",imgModel.url],model.channelLinkId,model.productId,[AVUser currentUser].objectId];
+            NSString *insertSql = [NSString stringWithFormat:@"insert into Shoucang(title,content,curprice,oldprice,sellcount,imgurl,bookID,detail,userID,cictyName)values('%@','%@','%@','%@','%@','%@','%@','%@','%@','%@')",model.mainTitle,model.appSubTitle,[self numberToString:model.sellPrice],[self numberToString:model.retailPrice],[self numberToString:model.saledCount],[NSString stringWithFormat:@"http://cdn1.jinxidao.com/%@",imgModel.url],model.channelLinkId,model.productId,[AVUser currentUser].objectId,model.cityName];
             
             BOOL isSuc =[[DataBase shareData] insertDataIntoShoucang:insertSql];
             if (isSuc) {
@@ -167,7 +172,13 @@ static BOOL  isOpen = NO;
     
 }
 
-
+#pragma mark ------
+- (NSString *)numberToString:(NSNumber *)number{
+    NSNumberFormatter * numberFormatter = [[NSNumberFormatter alloc] init];
+    
+    NSString * s = [numberFormatter stringFromNumber:number];
+    return s;
+}
 
 
 //分区个数 ---7个

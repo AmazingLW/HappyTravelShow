@@ -108,7 +108,7 @@
     
     
     [[NSNotificationCenter defaultCenter]postNotificationName:@"change"object:nil userInfo:@{@"cityName":self.string,@"citycode":self.cityCode}];
-
+    
 }
 
 - (void)viewDidLoad {
@@ -476,10 +476,11 @@
         ComDetailVC*detailVC =[ComDetailVC new];
         detailVC.bookID = nlinkId;
         detailVC.detailID = productld;
-        UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:detailVC];
-        [self presentViewController:rootNC animated:YES completion:nil];
-        
-        
+//        UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:detailVC];
+//        [self presentViewController:rootNC animated:YES completion:nil];
+        detailVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:detailVC animated:YES];
+        detailVC.hidesBottomBarWhenPushed = YES;
     }
     
     

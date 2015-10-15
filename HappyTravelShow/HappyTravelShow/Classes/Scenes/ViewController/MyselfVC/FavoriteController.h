@@ -10,4 +10,7 @@
 
 @interface FavoriteController : UIViewController
 
+//收藏信息的数组
+@property (nonatomic,strong) NSMutableArray * shouCangArr;
+
 @end

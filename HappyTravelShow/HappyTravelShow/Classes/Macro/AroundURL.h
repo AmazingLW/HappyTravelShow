@@ -98,7 +98,7 @@
 //热门搜索
 
 //全部景点
-#define textFieldInPut(inPutCity, dingweiCity) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Util/GetSearchHotKeys?version=4.3.1&keyCount=12&system=iOS&cityId=%ld&channel=AppStore",cityID]
+#define hotCityList(inPutCity, dingweiCity) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Search/Search?version=4.3.1&sort=1&keyWord=%@&minPrice=0&system=iOS&p=1&channel=AppStore&maxPrice=999999&city=%@&s=20",inPutCity,dingweiCity]
 
 
 
