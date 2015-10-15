@@ -16,6 +16,7 @@
 #import "browsedController.h"
 #import "WeatherDetailController.h"
 #import "ChangePersonInfoVC.h"
+#import "FinderKindModel.h"
 
 
 @interface MyselfVC ()<UITableViewDataSource,UITableViewDelegate,LoginDelegate,RegisterDelegate,UIAlertViewDelegate>
@@ -26,6 +27,8 @@
 @property (nonatomic,assign) BOOL isLoginState;
 
 @property (nonatomic,assign) BOOL isgetUserInfoState;
+
+@property(nonatomic,strong) FinderKindModel  *kindModel;
 
 @end
 
@@ -244,6 +247,13 @@
         }else{
             NSLog(@"nothing");
         }
+    }else if (indexPath.section == 1 &&indexPath.row==0){
+        
+        BOOL isSuc =[[DataBase shareData] deleteAll:@"Shoucang"];
+        if (isSuc) {
+            [self p_showAlertView:@"提示" message:@"已清空"];
+        }
+        
     }else if (indexPath.section==2&&indexPath.row==0) {
         
         //收藏页
@@ -255,12 +265,48 @@
         }
         
         //先从数据库查询所有的数据
+        NSString *selectSql = [NSString stringWithFormat:@"select *from Shoucang where userID = '%@'",[AVUser currentUser].objectId];
+        FMResultSet *res = [[DataBase shareData] selectAllDataFromTable:selectSql];
+
+        NSMutableArray *shoucangArr = [NSMutableArray array];
+        //遍历结果集
+        while ([res next])
+        {
+            FinderKindModel *model = [FinderKindModel new];
+            //标题
+            model.productName = [res stringForColumn:@"title"];
+            //内容
+            model.productTitleContent = [res stringForColumn:@"content"];
+            //价格
+            float flostPrice = [[res stringForColumn:@"curprice"] floatValue];
+            model.price = [NSNumber numberWithFloat:flostPrice];
+            NSLog(@"%@--%@",model.price,[res stringForColumn:@"curprice"]);
+            //旧价格
+            float oldPrice = [[res stringForColumn:@"oldprice"] floatValue];
+            model.originalPrice = [NSNumber numberWithFloat:oldPrice];
+            //销售
+            float floatSellCount = [[res stringForColumn:@"sellcount"] floatValue];
+            model.saledCount = [NSNumber numberWithFloat:floatSellCount];
+            
+            //预定 id
+            model.channelLinkId = [res stringForColumn:@"bookID"];
+            //详情id
+            model.productId = [res stringForColumn:@"detail"];
+            //图片url
+            model.URL = [res stringForColumn:@"imgurl"];
+            //城市name
+            model.cityName = [res stringForColumn:@"cictyName"];
+            
+            [shoucangArr addObject:model];
+        }
+        [[DataBase shareData].dataBase close];
         
         
         FavoriteController *fVC=[FavoriteController new];
-        
+        fVC.shouCangArr = [shoucangArr mutableCopy];
+        fVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:fVC animated:YES];
-        
+        fVC.hidesBottomBarWhenPushed = YES;
 
     }else if (indexPath.section==2&&indexPath.row==1)
     {

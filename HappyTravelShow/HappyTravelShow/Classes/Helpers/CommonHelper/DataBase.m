@@ -52,7 +52,7 @@
     [_dataBase open];
     
     if (![self isTableOK:@"Shoucang"]) {
-        isSuc =  [_dataBase executeUpdate:@"create table Shoucang(id integer primary key autoincrement,title text,content text,curprice text,oldprice text,sellcount text,imgurl text,bookID text,detail text,userID text)"];
+        isSuc =  [_dataBase executeUpdate:@"create table Shoucang(id integer primary key autoincrement,title text,content text,curprice text,oldprice text,sellcount text,imgurl text,bookID text,detail text,userID text,cictyName text)"];
         if (isSuc) {
             NSLog(@"创建表成功");
         }else{
@@ -123,7 +123,7 @@
     return isSuc;
 }
 
-- (BOOL)selectDataFromShoucang:(NSString *)sql{
+- (BOOL)selectExistDataFromTable:(NSString *)sql{
     
     [_dataBase open];
     // 结果集接收查询结果
@@ -138,6 +138,15 @@
     }
     [_dataBase close];
     return NO;
+}
+
+//查询所有数据
+- (FMResultSet *)selectAllDataFromTable:(NSString *)sql{
+    [_dataBase open];
+    // 结果集接收查询结果
+    FMResultSet *res = [_dataBase executeQuery:sql];
+    // 无论有多少个结果都需要循环才可以遍历打印出来
+    return res;
 }
 
 //增加数据库表字段
