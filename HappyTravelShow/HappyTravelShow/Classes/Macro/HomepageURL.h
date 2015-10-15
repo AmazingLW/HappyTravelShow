@@ -30,14 +30,13 @@
 //点击亲子游and市区
 #define  KFamily(p,propertyId,city,sort)[NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetProductList?system=ios&version=4.3.0&channel=AppStore&pageIndex=%ld&longitude=116.35027617524&latitude=40.036361935048&type=property&propertyId=%@&city=%@&sort=%@&pageSize=20",p,propertyId,city,sort]
 
+//点击周边城市
+#define  KCityDetails(p,CityName,cityCode,sort) [NSString stringWithFormat:@"http://apiphp.yaochufa.com/portal/circum/searchlist?p=%ld&system=ios&channel=AppStore&version=4.3.0&minPrice=0&keyWord=%@&cityCode=%@&s=20&lat=40.036354004545&lng=116.35025721584&sort=%ld&maxPrice=999999",p,CityName,cityCode,sort]
 
-#define  KCityDetails(CityName,cityCode,sort) [NSString stringWithFormat:@"http://apiphp.yaochufa.com/portal/circum/searchlist?p=1&system=ios&channel=AppStore&version=4.3.0&minPrice=0&keyWord=%@&cityCode=%@&s=20&lat=40.036354004545&lng=116.35025721584&sort=%ld&maxPrice=999999",CityName,cityCode,sort]
 
-
-#define k @"http://apiphp.yaochufa.com/portal/circum/searchlist?p=1&system=ios&channel=AppStore&version=4.3.0&minPrice=0&keyWord=%E5%A4%A9%E6%B4%A5&cityCode=120100&s=20&lat=40.036354004545&lng=116.35025721584&sort=2&maxPrice=999999"
+//#define k @"http://apiphp.yaochufa.com/portal/circum/searchlist?p=1&system=ios&channel=AppStore&version=4.3.0&minPrice=0&keyWord=%E5%A4%A9%E6%B4%A5&cityCode=120100&s=20&lat=40.036354004545&lng=116.35025721584&sort=2&maxPrice=999999"
 
 //热门景区点击URL
-
 #define URL_ScenicDetail(scenicid) [NSString stringWithFormat:@"http://apiphp.yaochufa.com/portal/scenic/scenicDetail430?version=4.3.1&id=%ld&system=iOS&channel=AppStore",scenicid]
 
 //门票URL

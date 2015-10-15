@@ -28,34 +28,32 @@
 //点击门票and温泉
 //- (void)requestAllTicket:(NSString*)tagId
 //                withSort:(NSString*)sort
+//                cityName:(NSString*)cityName
 //              WithFinish:(void (^)(NSMutableArray *arr))result;
 - (void)requestAllTicket:(NSString*)tagId
+                    page:(NSInteger)page
                 withSort:(NSString*)sort
                 cityName:(NSString*)cityName
               WithFinish:(void (^)(NSMutableArray *arr))result;
-//- (void)requestAllTicket:(NSString*)tagId
-//                    page:(NSInteger)page
-//                withSort:(NSString*)sort
-//                cityName:(NSString*)cityName
-//              WithFinish:(void (^)(NSMutableArray *arr))result;
 
 //点击亲子游and市区
 //- (void)requestAllFamily:(NSString*)tagId
 //                withSort:(NSString*)sort
+//                cityName:(NSString*)cityName
 //              WithFinish:(void (^)(NSMutableArray *arr))result;
 
-- (void)requestAllFamily:(NSString*)tagId
+- (void)requestAllFamily:(NSInteger)page
+                   tagld:(NSString*)tagId
                 withSort:(NSString*)sort
                 cityName:(NSString*)cityName
               WithFinish:(void (^)(NSMutableArray *arr))result;
-
-//- (void)requestAllFamily:(NSInteger)page
-//                   tagld:(NSString*)tagId
-//                withSort:(NSString*)sort
-//                cityName:(NSString*)cityName
-//              WithFinish:(void (^)(NSMutableArray *arr))result;
 //点击周边城市
-- (void)requestAllCityDetail:(NSString*)citycold
+//- (void)requestAllCityDetail:(NSString*)citycold
+//                    cityName:(NSString*)cityName
+//                    withSort:(NSInteger)sort
+//                  WithFinish:(void (^)(NSMutableArray *arr))result;
+- (void)requestAllCityDetail:(NSInteger)p
+                    citycold:(NSString*)citycold
                     cityName:(NSString*)cityName
                     withSort:(NSInteger)sort
                   WithFinish:(void (^)(NSMutableArray *arr))result;

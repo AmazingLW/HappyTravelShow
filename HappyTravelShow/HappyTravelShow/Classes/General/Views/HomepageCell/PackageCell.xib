@@ -12,25 +12,45 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="180" height="60"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="国庆大促!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R76-IM-Wit">
-                        <rect key="frame" x="8" y="8" width="96" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                        <color key="textColor" red="1" green="0.65360650980000001" blue="0.24849545109999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="千元红包限时抢购" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9WM-23-OGb">
-                        <rect key="frame" x="12" y="26" width="168" height="26"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="千元红包限时抢购" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9WM-23-OGb">
+                        <rect key="frame" x="8" y="38" width="96" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="2Kh-Ug-Fa6"/>
+                            <constraint firstAttribute="width" constant="96" id="B0l-6A-ak1"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oEx-FM-yzN">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oEx-FM-yzN">
                         <rect key="frame" x="112" y="0.0" width="60" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="K6q-UG-CAH"/>
+                            <constraint firstAttribute="width" constant="60" id="YAo-Cv-j4u"/>
+                        </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="国庆大促!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R76-IM-Wit">
+                        <rect key="frame" x="8" y="8" width="96" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="96" id="OEP-HD-sUI"/>
+                            <constraint firstAttribute="height" constant="20" id="RnN-D0-AJe"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <color key="textColor" red="1" green="0.65360650980000001" blue="0.24849545109999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="9WM-23-OGb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Acw-0g-gKX"/>
+                <constraint firstItem="R76-IM-Wit" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="EKc-hN-uH9"/>
+                <constraint firstAttribute="trailing" secondItem="oEx-FM-yzN" secondAttribute="trailing" constant="8" id="Lhl-NK-ovq"/>
+                <constraint firstItem="oEx-FM-yzN" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Lzg-1l-FyI"/>
+                <constraint firstItem="R76-IM-Wit" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="ZvC-uw-JnB"/>
+                <constraint firstAttribute="bottom" secondItem="9WM-23-OGb" secondAttribute="bottom" constant="8" id="c0b-OS-yhW"/>
+            </constraints>
             <connections>
                 <outlet property="adTitle4lable" destination="R76-IM-Wit" id="zp0-5C-jyd"/>
                 <outlet property="asSub4lable" destination="9WM-23-OGb" id="K2K-JN-F6C"/>
