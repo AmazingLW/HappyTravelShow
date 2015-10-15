@@ -16,11 +16,13 @@
 #import "HomepageScenicModel.h"
 #import "HomepageCityModel.h"
 #import "UIImageView+WebCache.h"
+#import "MJRefresh.h"
 @interface CategoryDetailsVC ()
 
 @property(nonatomic,strong)NSMutableArray*array;
 @property(nonatomic,strong)NSMutableArray*FamilyArray;
 @property(nonatomic,strong)NSMutableArray*CityArr;
+@property(nonatomic,assign)NSInteger page;
 @end
 
 @implementation CategoryDetailsVC
@@ -33,21 +35,21 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
-    [[HomepageHelper new] requestAllTicket:self.URLNumber withSort:self.sort cityName:self.CName WithFinish:^(NSMutableArray *arr) {
-        self.array=[NSMutableArray array];
+    self.page = 1;
+    [[HomepageHelper new] requestAllTicket:self.URLNumber page:self.page withSort:self.sort cityName:self.CName WithFinish:^(NSMutableArray *arr) {
+         //self.array=[NSMutableArray array];
         self.array = [arr mutableCopy];
-        [self.tableView  reloadData];       
+        [self.tableView  reloadData]; 
     }];
 
-    [[HomepageHelper new] requestAllFamily:self.URLNumber withSort:self.sort cityName:self.CName WithFinish:^(NSMutableArray *arr) {
-        self.FamilyArray =[NSMutableArray array];
+    [[HomepageHelper new] requestAllFamily:self.page tagld:self.URLNumber withSort:self.sort cityName:self.CName WithFinish:^(NSMutableArray *arr) {
+          //self.FamilyArray =[NSMutableArray array];
         self.FamilyArray= [arr mutableCopy];
         [self.tableView reloadData];
     }];
     
-    [[HomepageHelper new] requestAllCityDetail:self.CityName cityName:self.CityCode withSort:self.CitySort WithFinish:^(NSMutableArray *arr) {
-        self.CityArr =[NSMutableArray array];
+    [[HomepageHelper new] requestAllCityDetail:self.page citycold:self.CityName cityName:self.CityCode withSort:self.CitySort WithFinish:^(NSMutableArray *arr) {
+        //self.CityArr =[NSMutableArray array];
         self.CityArr = [arr mutableCopy];
         [self.tableView reloadData];
         
@@ -60,7 +62,63 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"CommonCells" bundle:nil] forCellReuseIdentifier:@"cell"];
     
+    
+    self.tableView.header =[MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [[HomepageHelper new] requestAllTicket:self.URLNumber page:self.page withSort:self.sort cityName:self.CName WithFinish:^(NSMutableArray *arr) {
+            //self.array=[NSMutableArray array];
+            self.array = [arr mutableCopy];
+            [self.tableView  reloadData];
+            
+        }];
+        
+        [[HomepageHelper new] requestAllFamily:self.page tagld:self.URLNumber withSort:self.sort cityName:self.CName WithFinish:^(NSMutableArray *arr) {
+            //self.FamilyArray =[NSMutableArray array];
+            self.FamilyArray= [arr mutableCopy];
+            [self.tableView reloadData];
+            
+        }];
+        
+        [[HomepageHelper new] requestAllCityDetail:self.page citycold:self.CityName cityName:self.CityCode withSort:self.CitySort WithFinish:^(NSMutableArray *arr) {
+            //self.CityArr =[NSMutableArray array];
+            self.CityArr = [arr mutableCopy];
+            [self.tableView reloadData];
+        }];
+        [[self.tableView header]endRefreshing];
+        
+    }];
   
+    self.tableView.footer =[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        
+        self.page++;
+        [[HomepageHelper new] requestAllTicket:self.URLNumber page:self.page withSort:self.sort cityName:self.CName WithFinish:^(NSMutableArray *arr) {
+            //self.array=[NSMutableArray array];
+            //self.array = [arr mutableCopy];
+            [self.array addObjectsFromArray:arr];
+            [[self.tableView footer]endRefreshing];
+            [self.tableView  reloadData];
+
+        }];
+        
+        [[HomepageHelper new] requestAllFamily:self.page tagld:self.URLNumber withSort:self.sort cityName:self.CName WithFinish:^(NSMutableArray *arr) {
+            //self.FamilyArray =[NSMutableArray array];
+            //self.FamilyArray= [arr mutableCopy];
+            [self.FamilyArray addObjectsFromArray:arr];
+            [[self.tableView footer]endRefreshing];
+            [self.tableView reloadData];
+
+        }];
+        [[HomepageHelper new] requestAllCityDetail:self.page citycold:self.CityName cityName:self.CityCode withSort:self.CitySort WithFinish:^(NSMutableArray *arr) {
+            //self.CityArr =[NSMutableArray array];
+            //self.CityArr = [arr mutableCopy];
+           [self.CityArr addObjectsFromArray:arr];
+            [[self.tableView footer]endRefreshing];
+            [self.tableView reloadData];
+            
+        }];
+        
+        
+    }];
 
   
 }
@@ -173,6 +231,19 @@
 
     
 }
+
+//-(NSMutableArray*)array{
+//    if (self.array==nil) {
+//        self.array =[NSMutableArray new];
+//    }
+//    return _array;
+//}
+//-(NSMutableArray*)FamilyArray{
+//    if (self.FamilyArray ==nil) {
+//        self.FamilyArray =[NSMutableArray new];
+//    }
+//    return self.FamilyArray;
+//}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

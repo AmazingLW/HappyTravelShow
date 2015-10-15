@@ -37,7 +37,7 @@
         NSString*url = kPackage(cityCode,@"%",@"%",@"%",@"%");
               [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *dict= (NSDictionary *)responseObject;
-            self.CarouseArr=[NSMutableArray array];
+            //self.CarouseArr=[NSMutableArray array];
             NSArray*arr=dict[@"content"];
             for (NSDictionary*dic1 in arr) {
                 if ([dic1[@"titleAlias"] isEqualToString:title]) {
@@ -46,7 +46,7 @@
                         NSDictionary*dict1=dic[@"ct"];
                         HomepageHeaderModel*product=[HomepageHeaderModel new];
                         [product setValuesForKeysWithDictionary:dict1];
-                        [self.CarouseArr addObject:product];
+                        [self.CityArr addObject:product];
                     }
                 }
             }
@@ -55,7 +55,7 @@
 //            }
           
             dispatch_async(dispatch_get_main_queue(), ^{
-                result(self.CarouseArr);
+                result(self.CityArr);
             });
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -79,14 +79,14 @@
         NSString*url = kCity(cityCode);
         [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *dict= (NSDictionary *)responseObject;
-            self.CityArr=[NSMutableArray array];
+            //self.CityArr=[NSMutableArray array];
             
             NSDictionary*dic=dict[@"content"];
             NSArray*cityArray=dic[kind];
             for (NSDictionary*dict1 in cityArray) {
                 HomepageScenicModel*scenic=[HomepageScenicModel new];
                 [scenic setValuesForKeysWithDictionary:dict1];
-                [_CityArr addObject:scenic];
+                [self.CityArr addObject:scenic];
             }
             dispatch_async(dispatch_get_main_queue(), ^{
                 result(self.CityArr);
@@ -111,16 +111,16 @@
         NSString*url = kRecommendation(cityCode);
         [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *dict= (NSDictionary *)responseObject;
-            self.RecommendationArr=[NSMutableArray array];
+            //self.RecommendationArr=[NSMutableArray array];
 
             NSArray*Array=dict[@"content"];
             for (NSDictionary*dict in Array) {
                 HomepagePackageModel*package =[HomepagePackageModel new];
                 [package setValuesForKeysWithDictionary:dict];
-                [_RecommendationArr addObject:package];
+                [self.CityArr addObject:package];
             }
             dispatch_async(dispatch_get_main_queue(), ^{
-                result(self.RecommendationArr);
+                result(self.CityArr);
             });
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -134,6 +134,7 @@
 
 
 - (void)requestAllTicket:(NSString*)tagId
+                    page:(NSInteger)page
                 withSort:(NSString*)sort
                cityName:(NSString*)cityName
             WithFinish:(void (^)(NSMutableArray *arr))result{
@@ -142,19 +143,19 @@
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer.acceptableContentTypes  = [NSSet setWithObject:@"text/html"];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-        NSString*url = KTicket(tagId, cityName, sort);
+        NSString*url = KTicket(tagId,page, cityName, sort);
         NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         [manager GET:codeUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *dict= (NSDictionary *)responseObject;
             
-            self.CityArr=[NSMutableArray array];
+            //self.CityArr=[NSMutableArray array];
         
             NSDictionary*dic=dict[@"data"];
             NSArray*cityArray=dic[@"items"];
             for (NSDictionary*dict1 in cityArray) {
                AroundKindModel *scenic=[AroundKindModel new];
                 [scenic setValuesForKeysWithDictionary:dict1];
-                [_CityArr addObject:scenic];
+                [self.CityArr addObject:scenic];
             }
         
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -170,7 +171,8 @@
     
 }
 
-- (void)requestAllFamily:(NSString*)tagId
+- (void)requestAllFamily:(NSInteger)page
+                   tagld:(NSString*)tagId
                 withSort:(NSString*)sort
                 cityName:(NSString*)cityName
               WithFinish:(void (^)(NSMutableArray *arr))result
@@ -178,19 +180,19 @@
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer.acceptableContentTypes  = [NSSet setWithObject:@"text/html"];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-        NSString*url = KFamily(tagId,cityName, sort);
+        NSString*url = KFamily(page,tagId,cityName, sort);
        NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         [manager GET:codeUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *dict= (NSDictionary *)responseObject;
             
-            self.CityArr=[NSMutableArray array];
+            //self.CityArr=[NSMutableArray array];
             
             NSDictionary*dic=dict[@"data"];
             NSArray*cityArray=dic[@"items"];
             for (NSDictionary*dict1 in cityArray) {
                 AroundKindModel *scenic=[AroundKindModel new];
                 [scenic setValuesForKeysWithDictionary:dict1];
-                [_CityArr addObject:scenic];
+                [self.CityArr addObject:scenic];
             }
             
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -207,7 +209,8 @@
     
 }
 
-- (void)requestAllCityDetail:(NSString*)citycold
+- (void)requestAllCityDetail:(NSInteger)p
+                    citycold:(NSString*)citycold
                     cityName:(NSString*)cityName
                 withSort:(NSInteger)sort
               WithFinish:(void (^)(NSMutableArray *arr))result
@@ -215,22 +218,19 @@
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     manager.responseSerializer.acceptableContentTypes  = [NSSet setWithObject:@"text/html"];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-    NSString*url = KCityDetails(citycold, cityName, sort);
+    NSString*url = KCityDetails(p,citycold, cityName, sort);
     NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-   // NSLog(@"=-=-=-=-=-=-=-=-=-=-=-=-=-=%@",codeUrl);
     [manager GET:codeUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        //NSLog(@"=============%@",responseObject);
         NSDictionary *dict= (NSDictionary *)responseObject;
         
-        self.CityArr=[NSMutableArray array];
+        //self.CityArr=[NSMutableArray array];
         
        
         NSArray*cityArray=dict[@"content"];
         for (NSDictionary*dict1 in cityArray) {
-//            AroundKindModel *scenic=[AroundKindModel new];
             HomepageCityModel*scenic =[HomepageCityModel new];
             [scenic setValuesForKeysWithDictionary:dict1];
-            [_CityArr addObject:scenic];
+            [self.CityArr addObject:scenic];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -256,7 +256,7 @@
     [manager GET:kCityList parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSDictionary *dict= (NSDictionary *)responseObject;
-        self.CityArr=[NSMutableArray array];
+        //self.CityArr=[NSMutableArray array];
         NSDictionary*dic=dict[@"data"];
         NSArray*array = dic[kind];
         for (NSDictionary*dict1 in array) {
@@ -295,5 +295,12 @@
     return [_CarouseArr mutableCopy];
 }
 
+-(NSMutableArray*)CityArr{
+    
+    if (_CityArr==nil) {
+        _CityArr =[NSMutableArray new];
+    }
+    return _CityArr;
+}
 @end
 

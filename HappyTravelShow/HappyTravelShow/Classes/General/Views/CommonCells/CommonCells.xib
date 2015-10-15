@@ -42,9 +42,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="景点名称" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drb-v8-oZG">
-                        <rect key="frame" x="155" y="11" width="197" height="29"/>
+                        <rect key="frame" x="152" y="11" width="188" height="29"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="197" id="eqK-wJ-28h"/>
+                            <constraint firstAttribute="width" constant="188" id="eqK-wJ-28h"/>
                             <constraint firstAttribute="height" constant="29" id="rq0-aJ-5vb"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -52,9 +52,9 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="简介" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWj-Bf-Q1i">
-                        <rect key="frame" x="155" y="25" width="197" height="67"/>
+                        <rect key="frame" x="155" y="25" width="192" height="67"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="197" id="eLQ-hh-qZk"/>
+                            <constraint firstAttribute="width" constant="192" id="eLQ-hh-qZk"/>
                             <constraint firstAttribute="height" constant="67" id="pY6-bh-l0a"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -99,7 +99,7 @@
                     <constraint firstItem="D8q-2y-Pm3" firstAttribute="leading" secondItem="D45-qW-cwF" secondAttribute="trailing" constant="155" id="J6k-kc-XIj"/>
                     <constraint firstAttribute="bottomMargin" secondItem="NR0-eM-ScH" secondAttribute="bottom" id="MDQ-QM-9r5"/>
                     <constraint firstItem="D45-qW-cwF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="OGI-Gs-wAG"/>
-                    <constraint firstItem="drb-v8-oZG" firstAttribute="leading" secondItem="D45-qW-cwF" secondAttribute="trailing" constant="13" id="T9z-2q-Jbx"/>
+                    <constraint firstItem="drb-v8-oZG" firstAttribute="leading" secondItem="D45-qW-cwF" secondAttribute="trailing" constant="10" id="T9z-2q-Jbx"/>
                     <constraint firstItem="9g5-0h-AoY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="139" id="Wxo-34-Faq"/>
                     <constraint firstAttribute="bottomMargin" secondItem="drb-v8-oZG" secondAttribute="bottom" constant="62" id="YMp-63-3v5"/>
                     <constraint firstAttribute="bottomMargin" secondItem="fWj-Bf-Q1i" secondAttribute="bottom" constant="10" id="aax-5u-ypo"/>

@@ -263,47 +263,9 @@
             [self p_showAlertView:@"提示" message:@"请先登录"];
             return;
         }
-        
-        //先从数据库查询所有的数据
-        NSString *selectSql = [NSString stringWithFormat:@"select *from Shoucang where userID = '%@'",[AVUser currentUser].objectId];
-        FMResultSet *res = [[DataBase shareData] selectAllDataFromTable:selectSql];
 
-        NSMutableArray *shoucangArr = [NSMutableArray array];
-        //遍历结果集
-        while ([res next])
-        {
-            FinderKindModel *model = [FinderKindModel new];
-            //标题
-            model.productName = [res stringForColumn:@"title"];
-            //内容
-            model.productTitleContent = [res stringForColumn:@"content"];
-            //价格
-            float flostPrice = [[res stringForColumn:@"curprice"] floatValue];
-            model.price = [NSNumber numberWithFloat:flostPrice];
-            NSLog(@"%@--%@",model.price,[res stringForColumn:@"curprice"]);
-            //旧价格
-            float oldPrice = [[res stringForColumn:@"oldprice"] floatValue];
-            model.originalPrice = [NSNumber numberWithFloat:oldPrice];
-            //销售
-            float floatSellCount = [[res stringForColumn:@"sellcount"] floatValue];
-            model.saledCount = [NSNumber numberWithFloat:floatSellCount];
-            
-            //预定 id
-            model.channelLinkId = [res stringForColumn:@"bookID"];
-            //详情id
-            model.productId = [res stringForColumn:@"detail"];
-            //图片url
-            model.URL = [res stringForColumn:@"imgurl"];
-            //城市name
-            model.cityName = [res stringForColumn:@"cictyName"];
-            
-            [shoucangArr addObject:model];
-        }
-        [[DataBase shareData].dataBase close];
-        
-        
         FavoriteController *fVC=[FavoriteController new];
-        fVC.shouCangArr = [shoucangArr mutableCopy];
+//        fVC.shouCangArr = [shoucangArr mutableCopy];
         fVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:fVC animated:YES];
         fVC.hidesBottomBarWhenPushed = YES;
@@ -311,8 +273,10 @@
     }else if (indexPath.section==2&&indexPath.row==1)
     {
         browsedController *bVC=[browsedController new];
-        [self.navigationController pushViewController:bVC animated:NO];
-     
+        bVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:bVC animated:YES];
+        bVC.hidesBottomBarWhenPushed = YES;
+        
     }else if (indexPath.section==3&&indexPath.row==0){
         
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否确认注销" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];

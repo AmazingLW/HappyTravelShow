@@ -229,7 +229,7 @@
         }
         return 0;
     }else if (section ==1){
-        if (self.ProductArr.count) {
+        if (self.ProductArr.count>1) {
              return self.ProductArr.count;
         }
         return 0;
@@ -298,9 +298,10 @@
                     ComDetailVC*detali =[ComDetailVC new];
                     detali.bookID = [linkId integerValue];
                     detali.detailID =[productId integerValue];
-                    //detali.hidesBottomBarWhenPushed =YES;
-                    UINavigationController*rootVC =[[UINavigationController alloc]initWithRootViewController:detali];
-                    [self presentViewController:rootVC animated:YES completion:nil];
+                    detali.hidesBottomBarWhenPushed =YES;
+                    [self.navigationController pushViewController:detali animated:YES];
+//                    UINavigationController*rootVC =[[UINavigationController alloc]initWithRootViewController:detali];
+//                    [self presentViewController:rootVC animated:YES completion:nil];
                 }
             };
             scrollView.PageControlPageIndicatorTintColor = [UIColor whiteColor];
@@ -441,8 +442,10 @@
             CategoryVC*cateVC=[CategoryVC new];
             cateVC.urlNum = [self.ProductArr[indexPath.row] app_url];
             cateVC.CName = self.cityName;
-            UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
-            [self presentViewController:rootNC animated:YES completion:nil];
+            cateVC.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:cateVC animated:YES];
+//            UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
+//            [self presentViewController:rootNC animated:YES completion:nil];
         }else{
             
             NSString *str1 = [self.PackageArr[indexPath.row] app_url];
@@ -459,10 +462,11 @@
             ComDetailVC*detali =[ComDetailVC new];
             detali.bookID = [linkId integerValue];
             detali.detailID =[productId integerValue];
-            //[self.navigationController pushViewController:detali animated:YES];
-            UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:detali];
-            [self presentViewController:rootNC animated:NO completion:nil];
-            
+             detali.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:detali animated:YES];
+//            UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:detali];
+//            [self presentViewController:rootNC animated:NO completion:nil];
+//            
         }
     }else if (indexPath.section==4){
 
