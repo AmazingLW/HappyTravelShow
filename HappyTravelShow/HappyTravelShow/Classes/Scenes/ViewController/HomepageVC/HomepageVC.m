@@ -441,17 +441,11 @@
             
         }
     }else if (indexPath.section==4){
-<<<<<<< HEAD
 
-        HomepagePackageModel*package = self.RecommendationArr[indexPath.row];
-//        NSInteger productld=[self.RecommendationArr[indexPath.row] productId];
-//        NSInteger nlinkId=[self.RecommendationArr[indexPath.row] channelLinkId];
-    
-=======
         
         HomepagePackageModel*package =self.RecommendationArr[indexPath.row];
         
->>>>>>> c7888a93bdb1f829a3326a37bf876746959af49a
+
         NSInteger productld=package.productId;
         NSInteger nlinkId=package.channelLinkId;
 
