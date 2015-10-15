@@ -14,7 +14,7 @@
 @class HomepageVC;
 #define kWidth [UIScreen mainScreen].bounds.size.width
 #define kHeight [UIScreen mainScreen].bounds.size.height
-@interface LocationVC ()<UITableViewDelegate,UITableViewDataSource>
+@interface LocationVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 
 @property(nonatomic,strong)UITableView*tableView;
 @property(nonatomic,strong)UICollectionView*collection;
@@ -54,6 +54,7 @@
     UITextField*textFiled =[[UITextField alloc]initWithFrame:CGRectMake(10, 5, kWidth-20, 30)];
     textFiled.placeholder= @"🔍广州/guangzhou/gz";
     textFiled.backgroundColor =[UIColor whiteColor];
+    textFiled.delegate =self;
     
     self.tableView =[[UITableView alloc]initWithFrame:CGRectMake(0, 40, kWidth, kHeight-40)];
     _tableView.dataSource =self;
@@ -62,6 +63,14 @@
     
     [self.view addSubview:_tableView];
     [self.view addSubview:textFiled];
+}
+
+//键盘回收
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+    
 }
 - (void)creatNavBar {
     

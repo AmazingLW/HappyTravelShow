@@ -61,7 +61,7 @@
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     if (self.string!=nil) {
-        self.navigationItem.leftBarButtonItem.title = [NSString stringWithFormat:@"%@∨",self.string];
+        self.navigationItem.leftBarButtonItem.title = [NSString stringWithFormat:@"%@v",self.string];
 
     }
 
@@ -105,6 +105,9 @@
         self.cityArr = [arr mutableCopy];
         [self.collection reloadData];
     }];
+    
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"change"object:nil userInfo:@{@"cityName":self.string,@"citycode":self.cityCode}];
 
 }
 
@@ -123,13 +126,16 @@
     
     [self setupCollectionView];
     self.view.backgroundColor = [UIColor orangeColor];
-    
     [self creatNavBar];
+    
+  
+    
+    
 }
 
 - (void)creatNavBar {
 
-    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"北京∨"style:(UIBarButtonItemStylePlain) target:self action:@selector(locationBBIClicked)];
+    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"北京v"style:(UIBarButtonItemStylePlain) target:self action:@selector(locationBBIClicked)];
     self.navigationItem.leftBarButtonItem.tintColor=[UIColor blackColor];
 
 }
@@ -440,9 +446,11 @@
             
         }
     }else if (indexPath.section==4){
+
         
         HomepagePackageModel*package =self.RecommendationArr[indexPath.row];
         
+
         NSInteger productld=package.productId;
         NSInteger nlinkId=package.channelLinkId;
 
