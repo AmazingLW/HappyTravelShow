@@ -30,29 +30,27 @@
     self.navigationItem.leftBarButtonItem=leftButtonItem;
 }
 -(void)drawNavControllers{
-//    CategoryDetailsVC*RecommendVC =[[CategoryDetailsVC alloc]initWithStyle:UITableViewStylePlain AndWithSort:@"n"];
+
+    
     CategoryDetailsVC*RecommendVC =[[CategoryDetailsVC alloc]initWithStyle:UITableViewStylePlain AndWithSort:@"n" AndWithCitySort:2];
     
     RecommendVC.title =@"     推荐       ";
-    //RecommendVC.view.backgroundColor =[UIColor greenColor];
     RecommendVC.URLNumber =self.urlNum;
     RecommendVC.CName =self.CName;
     RecommendVC.CityArray = [self.CityArray mutableCopy];
     RecommendVC.CityCode = self.CityCode;
     RecommendVC.CityName =self.CityName;
-//    CategoryDetailsVC*NewVC =[[CategoryDetailsVC alloc]initWithStyle:UITableViewStylePlain AndWithSort:@"xp"];
+
     CategoryDetailsVC*NewVC  =[[CategoryDetailsVC alloc]initWithStyle:UITableViewStylePlain AndWithSort:@"xp" AndWithCitySort:5];
     NewVC.title=@"     最新       ";
-    //NewVC.view.backgroundColor =[UIColor cyanColor];
     NewVC.URLNumber =self.urlNum;
     NewVC.CName =self.CName;
     NewVC.CityArray = [self.CityArray mutableCopy];
     NewVC.CityName =self.CityName;
     NewVC.CityCode =self.CityCode;
-//    CategoryDetailsVC*DistanceVC =[[CategoryDetailsVC alloc]initWithStyle:UITableViewStylePlain AndWithSort:@"d"];
+
     CategoryDetailsVC*DistanceVC =[[CategoryDetailsVC alloc]initWithStyle:UITableViewStylePlain AndWithSort:@"d" AndWithCitySort:6];
     DistanceVC.title=@"    距离       ";
-    //DistanceVC.view.backgroundColor =[UIColor yellowColor];
     DistanceVC.URLNumber =self.urlNum;
     DistanceVC.CName =self.CName;
     DistanceVC.CityArray = [self.CityArray mutableCopy];
@@ -72,6 +70,7 @@
 
 - (void)backAction{
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

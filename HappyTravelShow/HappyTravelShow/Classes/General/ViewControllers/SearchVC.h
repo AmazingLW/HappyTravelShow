@@ -10,7 +10,7 @@
 
 
 
-typedef void (^BLOCK)(NSString *);
+//typedef void (^BLOCK)(NSString *);
 
 @protocol PassWordDelegate <NSObject>
 
@@ -23,6 +23,6 @@ typedef void (^BLOCK)(NSString *);
 @property (nonatomic, assign)id<PassWordDelegate>delegate;
 
 //传值
-@property (nonatomic, copy)BLOCK block;
+//@property (nonatomic, copy)BLOCK block;
 
 @end

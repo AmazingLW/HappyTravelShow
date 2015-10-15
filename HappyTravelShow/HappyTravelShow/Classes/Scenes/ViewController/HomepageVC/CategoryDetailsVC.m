@@ -37,19 +37,19 @@
     [super viewWillAppear:animated];
     self.page = 1;
     [[HomepageHelper new] requestAllTicket:self.URLNumber page:self.page withSort:self.sort cityName:self.CName WithFinish:^(NSMutableArray *arr) {
-         //self.array=[NSMutableArray array];
+        
         self.array = [arr mutableCopy];
         [self.tableView  reloadData]; 
     }];
 
     [[HomepageHelper new] requestAllFamily:self.page tagld:self.URLNumber withSort:self.sort cityName:self.CName WithFinish:^(NSMutableArray *arr) {
-          //self.FamilyArray =[NSMutableArray array];
+        
         self.FamilyArray= [arr mutableCopy];
         [self.tableView reloadData];
     }];
     
     [[HomepageHelper new] requestAllCityDetail:self.page citycold:self.CityName cityName:self.CityCode withSort:self.CitySort WithFinish:^(NSMutableArray *arr) {
-        //self.CityArr =[NSMutableArray array];
+        
         self.CityArr = [arr mutableCopy];
         [self.tableView reloadData];
         
@@ -59,66 +59,75 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self.tableView registerNib:[UINib nibWithNibName:@"CommonCells" bundle:nil] forCellReuseIdentifier:@"cell"];
     
-    
+
     self.tableView.header =[MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        
+        self.page =1;
         [[HomepageHelper new] requestAllTicket:self.URLNumber page:self.page withSort:self.sort cityName:self.CName WithFinish:^(NSMutableArray *arr) {
-            //self.array=[NSMutableArray array];
-            self.array = [arr mutableCopy];
-            [self.tableView  reloadData];
             
+            self.array = [NSMutableArray array];
+            self.array =[arr mutableCopy];
+            [[self.tableView header]endRefreshing];
+            [self.tableView  reloadData];
         }];
         
         [[HomepageHelper new] requestAllFamily:self.page tagld:self.URLNumber withSort:self.sort cityName:self.CName WithFinish:^(NSMutableArray *arr) {
-            //self.FamilyArray =[NSMutableArray array];
-            self.FamilyArray= [arr mutableCopy];
+            self.FamilyArray = [NSMutableArray array];
+            [self.FamilyArray addObjectsFromArray:arr];
+            [[self.tableView header]endRefreshing];
             [self.tableView reloadData];
             
         }];
         
         [[HomepageHelper new] requestAllCityDetail:self.page citycold:self.CityName cityName:self.CityCode withSort:self.CitySort WithFinish:^(NSMutableArray *arr) {
-            //self.CityArr =[NSMutableArray array];
+            
+            self.CityArr =[NSMutableArray array];
+            //[self.CityArr addObjectsFromArray:arr];
             self.CityArr = [arr mutableCopy];
             [self.tableView reloadData];
+            [[self.tableView header]endRefreshing];
+            
+            
         }];
-        [[self.tableView header]endRefreshing];
+        
         
     }];
-  
+    
+    
     self.tableView.footer =[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         
         self.page++;
         [[HomepageHelper new] requestAllTicket:self.URLNumber page:self.page withSort:self.sort cityName:self.CName WithFinish:^(NSMutableArray *arr) {
-            //self.array=[NSMutableArray array];
-            //self.array = [arr mutableCopy];
+            
             [self.array addObjectsFromArray:arr];
-            [[self.tableView footer]endRefreshing];
+            [[self.tableView footer]endRefreshingWithNoMoreData];
             [self.tableView  reloadData];
-
+            
         }];
         
         [[HomepageHelper new] requestAllFamily:self.page tagld:self.URLNumber withSort:self.sort cityName:self.CName WithFinish:^(NSMutableArray *arr) {
-            //self.FamilyArray =[NSMutableArray array];
-            //self.FamilyArray= [arr mutableCopy];
             [self.FamilyArray addObjectsFromArray:arr];
-            [[self.tableView footer]endRefreshing];
+            [[self.tableView footer]endRefreshingWithNoMoreData];
             [self.tableView reloadData];
-
+            
         }];
         [[HomepageHelper new] requestAllCityDetail:self.page citycold:self.CityName cityName:self.CityCode withSort:self.CitySort WithFinish:^(NSMutableArray *arr) {
-            //self.CityArr =[NSMutableArray array];
-            //self.CityArr = [arr mutableCopy];
-           [self.CityArr addObjectsFromArray:arr];
-            [[self.tableView footer]endRefreshing];
+            [self.CityArr addObjectsFromArray:arr];
+            [[self.tableView footer]endRefreshingWithNoMoreData];
             [self.tableView reloadData];
             
         }];
         
         
     }];
+    
+    
+    
+    
+
+  
+
 
   
 }
