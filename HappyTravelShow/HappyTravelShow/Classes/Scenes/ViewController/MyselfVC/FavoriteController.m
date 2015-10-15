@@ -25,10 +25,6 @@
     
     if (self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         
-        self.favoriteTableView=[[UITableView alloc]initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
-        self.favoriteTableView.delegate=self;
-        self.favoriteTableView.dataSource=self;
-        
         [self.view addSubview:self.favoriteTableView];
         
         //自定义leftBarButtonItem
@@ -53,14 +49,26 @@
         
     }
     
-    
-    
     return self;
     
 }
 
+- (UITableView *)favoriteTableView{
+    if (_favoriteTableView == nil) {
+        _favoriteTableView=[[UITableView alloc]initWithFrame:[UIScreen mainScreen].bounds style:UITableViewStyleGrouped];
+        _favoriteTableView.delegate=self;
+        _favoriteTableView.dataSource=self;
+    }
+    return _favoriteTableView;
+}
+
 - (void)editShoucangAction{
     NSLog(@"编辑");
+    
+    if (_shouCangArr.count == 0) {
+        return;
+    }
+    
     if (_isEditState) {
         [self.favoriteTableView setEditing:NO animated:NO];
         _isEditState = NO;
@@ -70,8 +78,27 @@
     }
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{ return @"--";
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{ return @"删除";
 }
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    FinderKindModel *model =  _shouCangArr[indexPath.row];
+    //从数据库删除数据
+    NSString *sqlDelete = [NSString stringWithFormat:@"delete from Shoucang where userID = '%@' and detail = '%@'",[AVUser currentUser].objectId,model.productId];
+    BOOL isSuc = [[DataBase shareData] deleteDataFromShoucang:sqlDelete];
+    if (isSuc) {
+        NSLog(@"suce");
+    }else{
+        NSLog(@"``");
+    }
+    
+    [_shouCangArr removeObjectAtIndex:indexPath.row];
+    //删除UI indexPath有section和row属性，能确定删除具体的cell
+    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+
+}
+
 
 - (void)backAction{
     
@@ -79,10 +106,6 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
     
 }
-
-
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -105,6 +128,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    
     CommonCells *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
     cell.kindModel = _shouCangArr[indexPath.row];
@@ -119,7 +143,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 20;
+    return 10;
 }
 
 
@@ -135,6 +159,52 @@
     [self.navigationController pushViewController:comVC animated:YES];
     
 }
+
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    //先从数据库查询所有的数据
+    NSString *selectSql = [NSString stringWithFormat:@"select *from Shoucang where userID = '%@'",[AVUser currentUser].objectId];
+    FMResultSet *res = [[DataBase shareData] selectAllDataFromTable:selectSql];
+    
+    NSMutableArray *shoucangArr = [NSMutableArray array];
+    //遍历结果集
+    while ([res next])
+    {
+        FinderKindModel *model = [FinderKindModel new];
+        //标题
+        model.productName = [res stringForColumn:@"title"];
+        //内容
+        model.productTitleContent = [res stringForColumn:@"content"];
+        //价格
+        float flostPrice = [[res stringForColumn:@"curprice"] floatValue];
+        model.price = [NSNumber numberWithFloat:flostPrice];
+        NSLog(@"%@--%@",model.price,[res stringForColumn:@"curprice"]);
+        //旧价格
+        float oldPrice = [[res stringForColumn:@"oldprice"] floatValue];
+        model.originalPrice = [NSNumber numberWithFloat:oldPrice];
+        //销售
+        float floatSellCount = [[res stringForColumn:@"sellcount"] floatValue];
+        model.saledCount = [NSNumber numberWithFloat:floatSellCount];
+        
+        //预定 id
+        model.channelLinkId = [res stringForColumn:@"bookID"];
+        //详情id
+        model.productId = [res stringForColumn:@"detail"];
+        //图片url
+        model.URL = [res stringForColumn:@"imgurl"];
+        //城市name
+        model.cityName = [res stringForColumn:@"cictyName"];
+        
+        [shoucangArr addObject:model];
+    }
+    [[DataBase shareData].dataBase close];
+    
+    
+    _shouCangArr = [shoucangArr mutableCopy];
+    [self.favoriteTableView reloadData];
+}
+
 
 
 - (void)didReceiveMemoryWarning {
