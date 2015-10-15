@@ -14,6 +14,9 @@
 
 @interface FinderVC ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *uiTableView;
+//当前页数
+@property (nonatomic,assign) NSInteger currentPage;
+
 //搜索框
 @property(nonatomic,strong)UITextField *searchTextField;
 //城市标题
