@@ -134,6 +134,7 @@
 
 
 - (void)requestAllTicket:(NSString*)tagId
+                    page:(NSInteger)page
                 withSort:(NSString*)sort
                cityName:(NSString*)cityName
             WithFinish:(void (^)(NSMutableArray *arr))result{
@@ -142,7 +143,7 @@
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer.acceptableContentTypes  = [NSSet setWithObject:@"text/html"];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-        NSString*url = KTicket(tagId, cityName, sort);
+        NSString*url = KTicket(tagId,page, cityName, sort);
         NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         [manager GET:codeUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *dict= (NSDictionary *)responseObject;
@@ -170,7 +171,8 @@
     
 }
 
-- (void)requestAllFamily:(NSString*)tagId
+- (void)requestAllFamily:(NSInteger)page
+                   tagld:(NSString*)tagId
                 withSort:(NSString*)sort
                 cityName:(NSString*)cityName
               WithFinish:(void (^)(NSMutableArray *arr))result
@@ -178,7 +180,7 @@
         AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
         manager.responseSerializer.acceptableContentTypes  = [NSSet setWithObject:@"text/html"];
         manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/json"];
-        NSString*url = KFamily(tagId,cityName, sort);
+        NSString*url = KFamily(page,tagId,cityName, sort);
        NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         [manager GET:codeUrl parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
             NSDictionary *dict= (NSDictionary *)responseObject;
