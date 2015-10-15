@@ -75,7 +75,8 @@
 - (void)requestHotCityWithCityID:(NSInteger)cityID result:(void (^)(NSArray * array))result;
 
 
-
+//热门城市
+- (void)requestHotCityListWithKeyWord:(NSString *)keyWord city:(NSString *)city result:(void(^)(NSArray * array)) result;
 
 
 

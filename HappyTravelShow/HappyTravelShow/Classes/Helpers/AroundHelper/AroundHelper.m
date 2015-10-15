@@ -11,6 +11,8 @@
 #import "AroundURL.h"
 #import "AroundMainModel.h"
 #import "AroundKindModel.h"
+#import "HotSearchModel.h"
+
 @interface AroundHelper ()
 //AroundMainModel.h数组
 @property (nonatomic, strong)NSMutableArray *mutableArray;
@@ -485,6 +487,49 @@
     
     
 }
+
+//热门城市列表
+- (void)requestHotCityListWithKeyWord:(NSString *)keyWord city:(NSString *)city result:(void(^)(NSArray * array)) result{
+    
+    NSString *url = hotCityList(keyWord, city);
+    
+    NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSLog(@"%@",codeUrl);
+    
+    NSMutableArray *arr = [NSMutableArray array];
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+       
+        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+        
+        [manager GET:codeUrl parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+            
+        
+            NSDictionary *dic = responseObject[@"data"];
+            NSArray *array = dic[@"rows"];
+            for (NSDictionary *dict in array) {
+                HotSearchModel *model = [[HotSearchModel alloc] init];
+                [model setValuesForKeysWithDictionary:dict];
+                [arr addObject:model];
+            }
+            
+            
+     dispatch_async(dispatch_get_main_queue(), ^{
+        
+         result(arr);
+         
+     });
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            
+        }];
+        
+    });
+    
+    
+    
+    
+}
+
 
 
 
