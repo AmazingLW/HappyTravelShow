@@ -15,9 +15,9 @@
 - (void)requestWithCityName:(NSString *)name finish:(void (^)(NSArray * array))result;
 
 
-
+#warning 修改过
 //所有景点数据
-- (void)requsetAllScenicsWithCityName:(NSString *)name finish:(void(^)(NSArray *scenic))result;
+- (void)requsetAllScenicsWithPage:(NSInteger)page CityName:(NSString *)name finish:(void(^)(NSArray *scenic))result;
 
 //当目的城市选定 景点全部时 列表
 - (void)requsetAllScenicsWithScenicName:(NSString *)scenicName finish:(void(^)(NSArray *scenic))result;
@@ -27,10 +27,11 @@
 //列表小景点
 - (void)requestLittleScenicWithScenicName:(NSString *)scenicName cityName:(NSString *)cityName finish:(void (^)(NSArray * array))result;
 
+#warning 修改
 //筛选
 //当 目的城市为全部 景点全部  排序方式改变   筛选方式改变  city(景德镇)
 //#define chooseAllScenic(sortType,tagName,cityName)
-- (void)chooseScenicWithSortType:(NSString *)sortType TagName:(NSString *)tagName cityName:(NSString *)cityName finish:(void(^)(NSArray * array))result;
+- (void)chooseScenicWithPage:(NSInteger)page SortType:(NSString *)sortType TagName:(NSString *)tagName cityName:(NSString *)cityName finish:(void(^)(NSArray * array))result;
 
 
 // 当目的城市选定 景点选定 排序方式 sortType 任意  筛选方式改变  景点(scenicName) 三清山  city(是目的城市 @"上饶")
@@ -74,9 +75,9 @@
 
 - (void)requestHotCityWithCityID:(NSInteger)cityID result:(void (^)(NSArray * array))result;
 
-
+#warning 修改
 //热门城市
-- (void)requestHotCityListWithKeyWord:(NSString *)keyWord city:(NSString *)city result:(void(^)(NSArray * array)) result;
+- (void)requestHotCityListWithKeyWord:(NSString *)keyWord p:(NSInteger)p city:(NSString *)city result:(void(^)(NSArray * array)) result;
 
 
 

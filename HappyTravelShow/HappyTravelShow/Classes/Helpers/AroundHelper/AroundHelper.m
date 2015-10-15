@@ -82,11 +82,11 @@
 }
 
 
-
+#warning 修改过
 //所有景点数据
-- (void)requsetAllScenicsWithCityName:(NSString *)name finish:(void(^)(NSArray *scenic))result{
+- (void)requsetAllScenicsWithPage:(NSInteger)page CityName:(NSString *)name finish:(void(^)(NSArray *scenic))result{
     
-    NSString *url = AllScenic(name);
+    NSString *url = AllScenic(page,name);
     
     NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
    //NSLog(@"all%@",codeUrl);
@@ -148,12 +148,13 @@
  
 }
 
+#warning 修改
 //筛选
 //当目的城市为全部使筛选  cityName 是定位时的城市
 
-- (void)chooseScenicWithSortType:(NSString *)sortType TagName:(NSString *)tagName cityName:(NSString *)cityName finish:(void(^)(NSArray * array))result{
+- (void)chooseScenicWithPage:(NSInteger)page SortType:(NSString *)sortType TagName:(NSString *)tagName cityName:(NSString *)cityName finish:(void(^)(NSArray * array))result{
     
-    NSString *url = chooseAllScenic(sortType, tagName, cityName);
+    NSString *url = chooseAllScenic(page,sortType, tagName, cityName);
     
     NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"%@",codeUrl);
@@ -487,22 +488,22 @@
     
     
 }
-
+#warning 修改
 //热门城市列表
-- (void)requestHotCityListWithKeyWord:(NSString *)keyWord city:(NSString *)city result:(void(^)(NSArray * array)) result{
+- (void)requestHotCityListWithKeyWord:(NSString *)keyWord p:(NSInteger)p city:(NSString *)city result:(void(^)(NSArray * array)) result{
     
-  //  NSString *url = hotCityList(keyWord,p,city);
+    NSString *url = hotCityList(keyWord,p,city);
     
-//    NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//    
-//    NSLog(@"%@",codeUrl);
-//    
+    NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
+    NSLog(@"%@",codeUrl);
+    
     NSMutableArray *arr = [NSMutableArray array];
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
        
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         
-        [manager GET:@"2" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        [manager GET:codeUrl parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
             
         
             NSDictionary *dic = responseObject[@"data"];
