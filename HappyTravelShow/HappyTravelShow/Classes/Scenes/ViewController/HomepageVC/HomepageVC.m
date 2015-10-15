@@ -108,7 +108,7 @@
     
     
     [[NSNotificationCenter defaultCenter]postNotificationName:@"change"object:nil userInfo:@{@"cityName":self.string,@"citycode":self.cityCode}];
-
+    
 }
 
 - (void)viewDidLoad {

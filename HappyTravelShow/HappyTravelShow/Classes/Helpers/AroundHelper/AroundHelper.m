@@ -35,7 +35,7 @@
    
     NSString *urlString = AROUNDCITY(name);
     NSString *codeUrl = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-   // NSLog(@"======================%@",codeUrl);//有值
+    NSLog(@"======================%@",codeUrl);//有值
     // 异步 async
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
     

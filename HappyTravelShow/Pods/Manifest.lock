@@ -20,10 +20,10 @@ PODS:
   - AFNetworking/UIKit (2.5.4):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - AVOSCloudCrashReportingDynamic (3.1.4):
+  - AVOSCloudCrashReportingDynamic (3.1.5.1):
     - AVOSCloudDynamic
-  - AVOSCloudDynamic (3.1.4)
-  - AVOSCloudIMDynamic (3.1.4):
+  - AVOSCloudDynamic (3.1.5.1)
+  - AVOSCloudIMDynamic (3.1.5.1):
     - AVOSCloudDynamic
 
 DEPENDENCIES:
@@ -34,8 +34,8 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
-  AVOSCloudCrashReportingDynamic: 76a45b78a8d7db7b6b581e5bf08127b97704a4c5
-  AVOSCloudDynamic: b09073546d04ebec29a84845f2373fa131279bd0
-  AVOSCloudIMDynamic: 2a7e75fa191b0c8ae8f914e92a22c995579d5315
+  AVOSCloudCrashReportingDynamic: 5e6a02f9015073e5d26af8b56200167ba76043e2
+  AVOSCloudDynamic: 838b94a200f333f199c48a8ef8dd42ff18cd6587
+  AVOSCloudIMDynamic: 01ebea047a1a0731ba38a65d5b656e3fb10172f5
 
 COCOAPODS: 0.38.2
