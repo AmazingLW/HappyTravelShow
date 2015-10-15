@@ -25,4 +25,6 @@ typedef void (^BLOCK)(NSString *);
 //传值
 @property (nonatomic, copy)BLOCK block;
 
+@property (nonatomic,strong)NSString *string;
+
 @end

@@ -23,10 +23,10 @@
 
 typedef NS_ENUM(NSInteger, type){
     
-    screen = 1,
-    sort = 2,
-    part = 3,
-}typeEnum;
+    aaa = 1,
+   bbb = 2,
+    ccc = 3,
+};
 
 @interface AroundVC2 ()<XIDropdownlistViewProtocol,UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate>
 {
@@ -130,6 +130,9 @@ static NSString *const reuse = @"cell";
 - (void)skip:(UITapGestureRecognizer *)tap{
    // NSLog(@"---");
     SearchVC *seVC = [SearchVC new];
+    
+    seVC.string = self.notiName;
+    
     [self.navigationController showViewController:seVC sender:nil];
     
     
@@ -209,10 +212,10 @@ static NSString *const reuse = @"cell";
 #warning 修改
     //刷新
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        
+         _currentPage = 1;
         [[AroundHelper new] requsetAllScenicsWithPage:_currentPage CityName:_notiName finish:^(NSArray *scenic) {
             
-            [_allScenic  addObjectsFromArray:scenic];
+            _allScenic = [scenic mutableCopy];
             [self.tableView reloadData];
         }];
         
@@ -229,7 +232,7 @@ static NSString *const reuse = @"cell";
 
         
         
-         [[self.tableView footer]endRefreshingWithNoMoreData];
+         [[self.tableView footer]endRefreshing];
     }];
     
     
@@ -586,9 +589,6 @@ static NSString *const reuse = @"cell";
 
     [[AroundHelper new] requsetAllScenicsWithPage:_currentPage CityName:_notiName finish:^(NSArray *scenic) {
         
-        //typeEnum e.scenic = 1;
-        
-        //type = scenic;
         
         [_allScenic  addObjectsFromArray:scenic];
         [self.tableView reloadData];

@@ -225,10 +225,11 @@ static NSString *const reuse = @"cell";
     
     //刷新
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        
+         _currentPage = 1;
         [[AroundHelper new] requsetAllScenicsWithPage:_currentPage CityName:_CITYNAME finish:^(NSArray *scenic) {
             
-            [_allScenic  addObjectsFromArray:scenic];
+            _allScenic = [scenic mutableCopy];
+            
             [self.tableView reloadData];
         }];
         

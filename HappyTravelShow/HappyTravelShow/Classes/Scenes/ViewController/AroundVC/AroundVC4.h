@@ -12,5 +12,7 @@
 
 //属性传值
 @property (nonatomic, strong)NSMutableString *NAME;
+//属性传值
+@property (nonatomic, strong)NSString *Name;
 
 @end

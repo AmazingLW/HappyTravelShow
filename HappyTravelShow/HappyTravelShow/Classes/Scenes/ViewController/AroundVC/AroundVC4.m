@@ -80,8 +80,9 @@ static NSString * reuse = @"dsgsdghe";
     
     
     self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        _currentPage = 1;
         
-        [[AroundHelper new] requestHotCityListWithKeyWord:self.NAME p:_currentPage city:@"北京" result:^(NSArray *array) {
+        [[AroundHelper new] requestHotCityListWithKeyWord:self.NAME p:_currentPage city:_Name result:^(NSArray *array) {
             
             [_array addObjectsFromArray:array];
             [self.tableView reloadData];
@@ -92,7 +93,7 @@ static NSString * reuse = @"dsgsdghe";
     
     self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         _currentPage ++;
-        [[AroundHelper new] requestHotCityListWithKeyWord:self.NAME p:_currentPage city:@"北京" result:^(NSArray *array) {
+        [[AroundHelper new] requestHotCityListWithKeyWord:self.NAME p:_currentPage city:_Name result:^(NSArray *array) {
             
             [_array addObjectsFromArray:array];
             [self.tableView reloadData];
@@ -114,7 +115,7 @@ static NSString * reuse = @"dsgsdghe";
 //        [self.tableView reloadData];
 //    }];
     
-    [[AroundHelper new] requestHotCityListWithKeyWord:self.NAME p:_currentPage city:@"北京" result:^(NSArray *array) {
+    [[AroundHelper new] requestHotCityListWithKeyWord:self.NAME p:_currentPage city:_Name result:^(NSArray *array) {
         
         [_array addObjectsFromArray:array];
         [self.tableView reloadData];
@@ -153,8 +154,10 @@ static NSString * reuse = @"dsgsdghe";
     comDetail.bookID = hot.channelLinkId;
     comDetail.detailID = hot.productId;
     
-//    UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:comDetail];
-    [self presentViewController:comDetail animated:YES completion:nil];
+    comDetail.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:comDetail animated:YES];
+    comDetail.hidesBottomBarWhenPushed = YES;
+
 }
 
 - (void)back:(UIButton *)button{

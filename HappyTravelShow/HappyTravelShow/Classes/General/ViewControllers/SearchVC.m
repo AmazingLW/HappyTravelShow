@@ -188,6 +188,7 @@ static NSString *const footer = @"footer";
                 
                 AroundVC3 *around = [[AroundVC3 alloc] init];
                 around.NAME = [model.cityNameAbbr mutableCopy];
+            
 //                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:around];
                 
                 //temp.block(model.cityNameAbbr);
@@ -270,6 +271,7 @@ static NSString *const footer = @"footer";
     AroundVC4 *vc4 = [[AroundVC4 alloc] init];
     
     vc4.NAME = _cityArray[indexPath.row];
+    vc4.Name = self.string;
     
     [self.navigationController pushViewController:vc4 animated:YES];
     
