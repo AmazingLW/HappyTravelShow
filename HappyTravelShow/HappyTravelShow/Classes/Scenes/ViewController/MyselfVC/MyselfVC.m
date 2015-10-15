@@ -245,8 +245,21 @@
             NSLog(@"nothing");
         }
     }else if (indexPath.section==2&&indexPath.row==0) {
+        
+        //收藏页
+        
+        //判断用户是否登录
+        if ([AVUser currentUser] == nil) {
+            [self p_showAlertView:@"提示" message:@"请先登录"];
+            return;
+        }
+        
+        //先从数据库查询所有的数据
+        
+        
         FavoriteController *fVC=[FavoriteController new];
-        [self.navigationController pushViewController:fVC animated:NO];
+        
+        [self.navigationController pushViewController:fVC animated:YES];
         
 
     }else if (indexPath.section==2&&indexPath.row==1)

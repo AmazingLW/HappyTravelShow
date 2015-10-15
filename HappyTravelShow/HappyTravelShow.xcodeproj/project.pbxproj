@@ -90,6 +90,8 @@
 		16E5D8EA1BCDF7BB00A96F70 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = 16E5D8E81BCDF7BB00A96F70 /* city.plist */; };
 		16E5D8ED1BCDFCB700A96F70 /* AlterVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5D8EC1BCDFCB700A96F70 /* AlterVC.m */; };
 		16E5D8F01BCE168200A96F70 /* GenderBirthVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E5D8EF1BCE168200A96F70 /* GenderBirthVC.m */; };
+		16E5D8F21BCEB4CC00A96F70 /* 22.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E5D8F11BCEB4CC00A96F70 /* 22.png */; };
+		16E5D8F41BCEB4E500A96F70 /* shoucanged.png in Resources */ = {isa = PBXBuildFile; fileRef = 16E5D8F31BCEB4E500A96F70 /* shoucanged.png */; };
 		16EB2DCA1BC6AB7800F51A9F /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 16EB2DC71BC6AB7800F51A9F /* back.png */; };
 		16EB2DCB1BC6AB7800F51A9F /* place.png in Resources */ = {isa = PBXBuildFile; fileRef = 16EB2DC81BC6AB7800F51A9F /* place.png */; };
 		16EB2DCC1BC6AB7800F51A9F /* xiiangqing.png in Resources */ = {isa = PBXBuildFile; fileRef = 16EB2DC91BC6AB7800F51A9F /* xiiangqing.png */; };
@@ -152,7 +154,6 @@
 		C2429DD71BC5454C00151E6E /* FinderMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2429DD61BC5454C00151E6E /* FinderMainCell.xib */; };
 		C25074201BC7631000F62844 /* 33.png in Resources */ = {isa = PBXBuildFile; fileRef = C250741B1BC7631000F62844 /* 33.png */; };
 		C25074211BC7631000F62844 /* 44.png in Resources */ = {isa = PBXBuildFile; fileRef = C250741C1BC7631000F62844 /* 44.png */; };
-		C25074221BC7631000F62844 /* 22.png in Resources */ = {isa = PBXBuildFile; fileRef = C250741D1BC7631000F62844 /* 22.png */; };
 		C25074231BC7631000F62844 /* aa.png in Resources */ = {isa = PBXBuildFile; fileRef = C250741E1BC7631000F62844 /* aa.png */; };
 		C25074241BC7631000F62844 /* 55.png in Resources */ = {isa = PBXBuildFile; fileRef = C250741F1BC7631000F62844 /* 55.png */; };
 		C25074281BC79E1600F62844 /* 66.png in Resources */ = {isa = PBXBuildFile; fileRef = C25074271BC79E1600F62844 /* 66.png */; };
@@ -367,6 +368,8 @@
 		16E5D8EC1BCDFCB700A96F70 /* AlterVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlterVC.m; sourceTree = "<group>"; };
 		16E5D8EE1BCE168200A96F70 /* GenderBirthVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenderBirthVC.h; sourceTree = "<group>"; };
 		16E5D8EF1BCE168200A96F70 /* GenderBirthVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenderBirthVC.m; sourceTree = "<group>"; };
+		16E5D8F11BCEB4CC00A96F70 /* 22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 22.png; sourceTree = "<group>"; };
+		16E5D8F31BCEB4E500A96F70 /* shoucanged.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shoucanged.png; sourceTree = "<group>"; };
 		16EB2DC71BC6AB7800F51A9F /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		16EB2DC81BC6AB7800F51A9F /* place.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = place.png; sourceTree = "<group>"; };
 		16EB2DC91BC6AB7800F51A9F /* xiiangqing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xiiangqing.png; sourceTree = "<group>"; };
@@ -474,7 +477,6 @@
 		C2429DD61BC5454C00151E6E /* FinderMainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinderMainCell.xib; sourceTree = "<group>"; };
 		C250741B1BC7631000F62844 /* 33.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 33.png; sourceTree = "<group>"; };
 		C250741C1BC7631000F62844 /* 44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 44.png; sourceTree = "<group>"; };
-		C250741D1BC7631000F62844 /* 22.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 22.png; sourceTree = "<group>"; };
 		C250741E1BC7631000F62844 /* aa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aa.png; sourceTree = "<group>"; };
 		C250741F1BC7631000F62844 /* 55.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 55.png; sourceTree = "<group>"; };
 		C25074271BC79E1600F62844 /* 66.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 66.png; sourceTree = "<group>"; };
@@ -1179,7 +1181,8 @@
 				C250741B1BC7631000F62844 /* 33.png */,
 				C250741C1BC7631000F62844 /* 44.png */,
 				16D936991BCCC88C005F5CC9 /* regPhone.png */,
-				C250741D1BC7631000F62844 /* 22.png */,
+				16E5D8F11BCEB4CC00A96F70 /* 22.png */,
+				16E5D8F31BCEB4E500A96F70 /* shoucanged.png */,
 				C250741E1BC7631000F62844 /* aa.png */,
 				C250741F1BC7631000F62844 /* 55.png */,
 				C2F486161BC8A5CA0017C434 /* y.png */,
@@ -1580,7 +1583,6 @@
 				C25074211BC7631000F62844 /* 44.png in Resources */,
 				C22699FC1BC50AE0009BBAB0 /* CategoriesCell.xib in Resources */,
 				C2429DD71BC5454C00151E6E /* FinderMainCell.xib in Resources */,
-				C25074221BC7631000F62844 /* 22.png in Resources */,
 				C200B2F91BCDE7760091CDA5 /* UMSCommentInputController.xib in Resources */,
 				16DB11B41BC42653009D7C7D /* myself.png in Resources */,
 				C25074281BC79E1600F62844 /* 66.png in Resources */,
@@ -1588,6 +1590,7 @@
 				161D35741BCBB55C00DB7F70 /* detailback.png in Resources */,
 				C200B2FE1BCDE7760091CDA5 /* UMSnsAccountViewController.xib in Resources */,
 				16988D6C1BC3A994001A1077 /* LaunchScreen.xib in Resources */,
+				16E5D8F41BCEB4E500A96F70 /* shoucanged.png in Resources */,
 				16DB11B01BC42505009D7C7D /* homepage.png in Resources */,
 				C2269A1A1BC5415B009BBAB0 /* hot.png in Resources */,
 				16EB2DCC1BC6AB7800F51A9F /* xiiangqing.png in Resources */,
@@ -1600,6 +1603,7 @@
 				16E5D8E31BCDF6BC00A96F70 /* HZAreaPickerView.xib in Resources */,
 				C2F1A0AA1BCB993900060A9A /* search.png in Resources */,
 				C25074241BC7631000F62844 /* 55.png in Resources */,
+				16E5D8F21BCEB4CC00A96F70 /* 22.png in Resources */,
 				C200B3211BCE2EBA0091CDA5 /* shoucang.png in Resources */,
 				16D8C5E61BC6C7EF001175AB /* mapapi.bundle in Resources */,
 				16411AAB1BCB77AF00E7A54C /* shijian.png in Resources */,
