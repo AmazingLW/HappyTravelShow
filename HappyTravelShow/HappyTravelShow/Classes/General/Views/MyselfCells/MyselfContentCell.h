@@ -15,6 +15,7 @@
 @interface MyselfContentCell : UITableViewCell
 
 @property(nonatomic,strong) UILabel  *label;
+@property (nonatomic,strong) UILabel * cacheLabel;
 @property(nonatomic,strong) UIImageView  *titleView;
 
 
