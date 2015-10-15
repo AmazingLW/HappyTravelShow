@@ -13,6 +13,9 @@
 @interface FavoriteController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *favoriteTableView;
 
+
+@property (nonatomic,assign) BOOL isEditState;
+
 @end
 
 @implementation FavoriteController
@@ -36,9 +39,17 @@
         [leftButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
         
         UIBarButtonItem *leftButtonItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton];
-        
-        
         self.navigationItem.leftBarButtonItem=leftButtonItem;
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 35, 20)];
+        label.text = @"编辑";
+        //编辑手势
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(editShoucangAction)];
+        [label addGestureRecognizer:tap];
+        label.userInteractionEnabled = YES;
+        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:label];
+        
+        self.navigationItem.rightBarButtonItem = rightItem;
         
     }
     
@@ -46,6 +57,20 @@
     
     return self;
     
+}
+
+- (void)editShoucangAction{
+    NSLog(@"编辑");
+    if (_isEditState) {
+        [self.favoriteTableView setEditing:NO animated:NO];
+        _isEditState = NO;
+    }else{
+        [self.favoriteTableView setEditing:YES animated:NO];
+        _isEditState = YES;
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath{ return @"--";
 }
 
 - (void)backAction{
@@ -84,6 +109,7 @@
     
     cell.kindModel = _shouCangArr[indexPath.row];
     
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
     
 }

@@ -249,7 +249,7 @@
         }
     }else if (indexPath.section == 1 &&indexPath.row==0){
         
-        BOOL isSuc =[[DataBase shareData] deleteAll:@"Shoucang"];
+        BOOL isSuc = [[DataBase shareData] deleteTable:@"Shoucang"];
         if (isSuc) {
             [self p_showAlertView:@"提示" message:@"已清空"];
         }

@@ -512,12 +512,9 @@ static NSString *const reuse = @"cell";
     comDetail.bookID = packageID;
     comDetail.detailID = productId;
 
-    UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:comDetail];
-    [self presentViewController:rootNC animated:YES completion:nil];
-    
-    
-//    [self.navigationController pushViewController:comDetail animated:YES];
-    
+    comDetail.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:comDetail animated:YES];
+    comDetail.hidesBottomBarWhenPushed = YES;
 }
 
 

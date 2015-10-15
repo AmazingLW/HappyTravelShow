@@ -14,8 +14,9 @@
 #import "ComDetailVC.h"
 #import "UMSocial.h"
 #import "FinderURL.h"
-#import "UIImage+WebP.h"
 #import "UIImageView+WebCache.h"
+#import "MJRefresh.h"
+
 
 @interface FindKindOfSceneController ()<UITableViewDataSource,UITableViewDelegate,UMSocialUIDelegate>
 @property(nonatomic,strong)UITableView *uiTableView;
