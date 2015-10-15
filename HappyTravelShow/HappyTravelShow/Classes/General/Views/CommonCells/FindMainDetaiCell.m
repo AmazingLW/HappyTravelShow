@@ -45,10 +45,10 @@
     self.lab4numdescription.numberOfLines=0;
     self.lab4numdescription.textColor=[UIColor darkGrayColor];
     
-    self.locationView=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-60, 324.5, 20, 15)];
+    self.locationView=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth-80, 324.5, 20, 15)];
     
-    self.lab4cityName=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-38, 320, 30, 25)];
-    self.lab4cityName.font=[UIFont systemFontOfSize:14];
+    self.lab4cityName=[[UILabel alloc]initWithFrame:CGRectMake(kWidth-55, 320, 50, 25)];
+    self.lab4cityName.font=[UIFont systemFontOfSize:12];
     self.lab4cityName.textColor=[UIColor darkGrayColor];
     //self.contentView.backgroundColor=[UIColor lightGrayColor];
 

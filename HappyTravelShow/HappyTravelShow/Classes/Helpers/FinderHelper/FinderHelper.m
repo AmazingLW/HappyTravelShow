@@ -62,7 +62,7 @@
     
 }
 //主页面数据请求
-- (void)getDataWithCityCode:(NSString *)cityCode pageIndex:(NSInteger )pageIndex Finish:(void(^)())result{
+- (void)getDataWithCityCode:(NSString *)cityCode pageIndex:(NSInteger )pageIndex Finish:(void(^)(NSMutableArray *arr))result{
     
     //子线程请求数据
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
@@ -95,7 +95,7 @@
             }
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                result();
+                result(self.muArray);
                 
             });
             
@@ -109,7 +109,7 @@
     
 }
 #pragma mark----------发现各种景点数据解析-------------
-- (void)requestDataWithThemeId:(NSString* )themeId cityCode:(NSString *)cityCode pageIndex:(NSString *)pageIndex Finish:(void (^)())result{
+- (void)requestDataWithThemeId:(NSString* )themeId cityCode:(NSString *)cityCode pageIndex:(NSString *)pageIndex Finish:(void (^)(NSMutableArray *arr))result{
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
@@ -140,7 +140,7 @@
                 
             }
             dispatch_async(dispatch_get_main_queue(), ^{
-                result();
+                result(self.dataSource);
             });
             
             

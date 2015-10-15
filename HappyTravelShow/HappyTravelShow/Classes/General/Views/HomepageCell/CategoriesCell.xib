@@ -2,21 +2,25 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cate" id="gTV-IL-0wX" customClass="CategoriesCell">
-            <rect key="frame" x="0.0" y="0.0" width="71" height="65"/>
+            <rect key="frame" x="0.0" y="0.0" width="75" height="65"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="71" height="65"/>
+                <rect key="frame" x="0.0" y="0.0" width="75" height="65"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OMY-xH-XR6">
-                        <rect key="frame" x="15" y="4" width="40" height="40"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OMY-xH-XR6">
+                        <rect key="frame" x="17" y="3" width="40" height="40"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="门票" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yg7-G5-hf1">
-                        <rect key="frame" x="10" y="46" width="50" height="14"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="门票" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yg7-G5-hf1">
+                        <rect key="frame" x="12" y="43" width="50" height="14"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="14" id="naf-tu-QVk"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -25,6 +29,15 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="OMY-xH-XR6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="3" id="0YB-wm-5C5"/>
+                <constraint firstItem="OMY-xH-XR6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="17" id="BYb-Tj-tsF"/>
+                <constraint firstItem="Yg7-G5-hf1" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="12" id="G4f-0I-8Gn"/>
+                <constraint firstItem="Yg7-G5-hf1" firstAttribute="bottom" secondItem="gTV-IL-0wX" secondAttribute="bottomMargin" id="ZOo-a2-BDj"/>
+                <constraint firstItem="Yg7-G5-hf1" firstAttribute="top" secondItem="OMY-xH-XR6" secondAttribute="bottom" id="elL-FM-vtA"/>
+                <constraint firstAttribute="trailing" secondItem="Yg7-G5-hf1" secondAttribute="trailing" constant="13" id="wsO-a7-6ka"/>
+                <constraint firstItem="Yg7-G5-hf1" firstAttribute="centerX" secondItem="OMY-xH-XR6" secondAttribute="centerX" id="yN6-eP-9eb"/>
+            </constraints>
             <connections>
                 <outlet property="cate4image" destination="OMY-xH-XR6" id="rKe-gK-mmG"/>
                 <outlet property="cate4lable" destination="Yg7-G5-hf1" id="9Ky-ZL-CZU"/>
