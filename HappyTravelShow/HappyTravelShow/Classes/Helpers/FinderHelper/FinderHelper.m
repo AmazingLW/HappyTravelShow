@@ -62,12 +62,12 @@
     
 }
 //主页面数据请求
-- (void)getDataWithCityCode:(NSString *)cityCode pageIndex:(NSInteger )pageIndex Finish:(void(^)(NSMutableArray *arr))result{
+- (void)getDataWithPageSize:(NSInteger )pageSize CityCode:(NSString *)cityCode pageIndex:(NSInteger )pageIndex Finish:(void(^)(NSMutableArray *arr))result{
     
     //子线程请求数据
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-        NSString *url=fURL(cityCode, pageIndex);
-        // NSLog(@"%@",url);
+        NSString *url=fURL(pageSize,cityCode, pageIndex);
+        NSLog(@"%@",url);
         //        //接口编码
         //        NSString *codeURL=[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
@@ -109,12 +109,12 @@
     
 }
 #pragma mark----------发现各种景点数据解析-------------
-- (void)requestDataWithThemeId:(NSString* )themeId cityCode:(NSString *)cityCode pageIndex:(NSString *)pageIndex Finish:(void (^)(NSMutableArray *arr))result{
+- (void)requestDataWithPageSize:(NSInteger )pageSize  ThemeId:(NSString *)themeId cityCode:(NSString *)cityCode pageIndex:(NSInteger )pageIndex Finish:(void (^)(NSMutableArray *arr))result{
     
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
        // NSString *ID=[NSString stringWithFormat:@"%@",themeId];
-        NSString *url=mURL(themeId, cityCode, pageIndex);
+        NSString *url=mURL(pageSize,themeId, cityCode, pageIndex);
         
 //        NSLog(@"%@",url);
         AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];

@@ -14,13 +14,13 @@
 + (FinderHelper *)sharedHelper;
 
 //发现主页面请求数据
-- (void)getDataWithCityCode:(NSString *)cityCode pageIndex:(NSInteger )pageIndex Finish:(void(^)(NSMutableArray *arr))result;
+- (void)getDataWithPageSize:(NSInteger )pageSize CityCode:(NSString *)cityCode pageIndex:(NSInteger )pageIndex Finish:(void(^)(NSMutableArray *arr))result;
 
 ////外界可用到的发现主页面数据的数组
 //@property(nonatomic,strong) NSArray  *dataArray;
 ////外界可用到的发现各种景点的数组
 //@property(nonatomic,strong) NSArray  *kindArray;
 
-- (void)requestDataWithThemeId:(NSString *)themeId cityCode:(NSString *)cityCode pageIndex:(NSString *)pageIndex Finish:(void (^)(NSMutableArray *arr))result;
+- (void)requestDataWithPageSize:(NSInteger )pageSize  ThemeId:(NSString *)themeId cityCode:(NSString *)cityCode pageIndex:(NSInteger )pageIndex Finish:(void (^)(NSMutableArray *arr))result;
 
 @end
