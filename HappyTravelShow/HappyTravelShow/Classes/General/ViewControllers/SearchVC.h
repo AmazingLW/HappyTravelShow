@@ -7,8 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-typedef void (^BLOCK)(NSString *string);
+
+
+
+typedef void (^BLOCK)(NSString *);
+
+@protocol PassWordDelegate <NSObject>
+
+- (void)passwordWithString:(NSString *)string;
+
+@end
+
 @interface SearchVC : UIViewController
+
+@property (nonatomic, assign)id<PassWordDelegate>delegate;
 
 //传值
 @property (nonatomic, copy)BLOCK block;

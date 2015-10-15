@@ -22,7 +22,7 @@
 #import "AroundVC2.h"
 #import "SearchVC.h"
 
-@interface AroundVC3 ()<XIDropdownlistViewProtocol,UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate>
+@interface AroundVC3 ()<XIDropdownlistViewProtocol,UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate, PassWordDelegate>
 {
     XIOptionSelectorView *ddltView;
 }
@@ -61,6 +61,8 @@
 //计数tagName 点击了几次
 @property (nonatomic, assign)NSUInteger tag;
 
+@property (nonatomic, strong)SearchVC * sear;
+
 
 @property (nonatomic, strong)NSString *tmpsort;
 
@@ -72,9 +74,7 @@
 
 
 @property (nonatomic, strong)NSString *CITYNAME;
-//传值 
 
-@property (nonatomic, strong)NSString *textField;
 
 
 @end
@@ -90,28 +90,6 @@ static NSString *const reuse = @"cell";
         
         
         
-        UITextField *textfield = [[UITextField alloc] initWithFrame:CGRectMake(30, 0, self.view.frame.size.width - 30, 29)];
-        textfield.enabled = NO;
-        textfield.text = _textField;
-        textfield.clearsOnBeginEditing = YES;
-        
-        textfield.returnKeyType = UIReturnKeySearch;
-        textfield.backgroundColor = [UIColor lightGrayColor];
-        
-        
-        UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-        button.frame = CGRectMake(0, 0, 30, 29);
-        [button setBackgroundImage:[UIImage imageNamed:@"arrows"] forState:UIControlStateNormal];
-        [button setBackgroundColor:[UIColor whiteColor]];
-        [button addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
-        
-        
-        UIView *aview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-        
-        [aview addSubview:button];
-        [aview addSubview:textfield];
-        
-        self.navigationItem.titleView = aview;
         
 
     }
@@ -120,6 +98,9 @@ static NSString *const reuse = @"cell";
 
 //返回 aroundvc2 的界面 pop 出去两个界面
 - (void)back:(UIButton *)button{
+    
+
+    
     [self.navigationController popViewControllerAnimated:NO];
     
     
@@ -127,13 +108,6 @@ static NSString *const reuse = @"cell";
 }
 
 
-- (void)skip:(UITapGestureRecognizer *)tap{
-    NSLog(@"---");
-    SearchVC *seVC = [SearchVC new];
-    [self.navigationController showViewController:seVC sender:nil];
-    
-    
-}
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -144,12 +118,13 @@ static NSString *const reuse = @"cell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-     
-    self.navigationItem.hidesBackButton = YES;
-     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStyleDone target:self action:@selector(aback:)];
-    
-    
-    
+//    _sear = [SearchVC new];
+//    _sear.block = ^(NSString * str){
+//        
+//        _CITYNAME = str;
+//        
+//    };
+ 
     if (self.NAME.length > 0) {
         _CITYNAME = self.NAME;
         
@@ -157,6 +132,46 @@ static NSString *const reuse = @"cell";
         
         _CITYNAME = @"北京";
     }
+    
+    _sear = [SearchVC new];
+    
+    _sear.delegate = self;
+    
+    self.navigationItem.hidesBackButton = YES;
+    
+    UITextField *textfield = [[UITextField alloc] initWithFrame:CGRectMake(30, 0, self.view.frame.size.width - 50, 29)];
+    textfield.enabled = NO;
+    textfield.text = _CITYNAME;
+    textfield.textAlignment =  NSTextAlignmentCenter;
+    
+    textfield.textColor = [UIColor redColor];
+    textfield.clearsOnBeginEditing = YES;
+    
+    textfield.returnKeyType = UIReturnKeySearch;
+    textfield.backgroundColor = [UIColor lightGrayColor];
+    
+    
+    UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 30, 29);
+    [button setBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [button setBackgroundColor:[UIColor whiteColor]];
+    [button addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    UIView *aview = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 29)];
+    
+    [aview addSubview:button];
+    [aview addSubview:textfield];
+    
+    self.navigationItem.titleView = aview;
+
+    
+   
+//     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStyleDone target:self action:@selector(aback:)];
+
+    
+    
+  
     
     _sortName = @"默认排序";
     _scenicName = @"全部";
@@ -203,11 +218,19 @@ static NSString *const reuse = @"cell";
     
     
 }
--(void)aback:(UIBarButtonItem *)item{
+//-(void)aback:(UIBarButtonItem *)item{
+//    AroundVC2 *vc2 = [AroundVC2 new];
+//    
+//  
+//    [self.navigationController popToViewController:vc2 animated:YES];
+//  
+//    
+//    
+//}
+
+- (void)passwordWithString:(NSString *)string{
     
-    
-    
-    
+    _CITYNAME = string;
 }
 
 - (void)setupDropdownList
@@ -528,7 +551,7 @@ static NSString *const reuse = @"cell";
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    return 135;
+    return 111;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

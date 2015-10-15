@@ -32,18 +32,10 @@
 }
 
 
-
-
-
-
-
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
    //注册
     [self.favoriteTableView registerNib:[UINib nibWithNibName:@"CommonCells" bundle:nil] forCellReuseIdentifier:@"cell"];
-    
     
 
 }

@@ -94,9 +94,11 @@
 //热门城市
 #define hotCity(cityID) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Util/GetSearchHotKeys?version=4.3.1&keyCount=12&system=iOS&cityId=%ld&channel=AppStore",cityID]
 
-//搜索框输入
 
-#define textFieldInPut(inPutCity, dingweiCity)
+//热门搜索
+
+//全部景点
+#define textFieldInPut(inPutCity, dingweiCity) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Util/GetSearchHotKeys?version=4.3.1&keyCount=12&system=iOS&cityId=%ld&channel=AppStore",cityID]
 
 
 

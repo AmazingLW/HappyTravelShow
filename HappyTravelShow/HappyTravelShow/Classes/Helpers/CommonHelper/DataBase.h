@@ -15,17 +15,30 @@
 
 + (instancetype)shareData;
 
-//创建表
-- (void)creatTableWithSQLString:(NSString *)creatSql;
+#pragma mark ============
 
-//插入数据
-#warning 插入的数据的表要与创建的表的名字相同
-- (void)insertDataToTableWithSQLString:(NSString *)insertSql;
-//删除数据
-- (void)deleteDataFromTableWithSQLString:(NSString *)deleteSql;
+// 创建数据库
+- (void)createDataBase;
+// 创建表
+- (void)createTable;
+// 插入数据
+- (BOOL)insertDataIntoShoucang:(NSString *)sql;
+// 修改数据
+- (BOOL)updateDataInShoucang:(NSString *)sql;
+// 删除数据
+- (BOOL)deleteDataFromShoucang:(NSString *)sql;
+// 查询
+- (BOOL)selectDataFromShoucang:(NSString *)sql;
+//增加数据库表字段
+- (BOOL)insertFieldIntoTable:(NSString *)tableName fieldName:(NSString *)fieldName;
 
-#pragma mark -- 本工具不支持搜索请自行解决
-//- (id)selectDataFromTableWithSQLString:(NSString *)selectSql;
+// 判断是否存在表
+- (BOOL) isTableOK:(NSString *)tableName;
+
+// 删除表信息
+- (BOOL) deleteAll:(NSString *)tableName;
+
+
 
 
 @end

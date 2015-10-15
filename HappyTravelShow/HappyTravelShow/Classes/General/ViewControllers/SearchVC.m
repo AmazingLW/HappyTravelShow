@@ -152,6 +152,26 @@ static NSString *const footer = @"footer";
     
 }
 
+- (void)viewWillDisappear:(BOOL)animated{
+    
+    [super viewWillDisappear:animated];
+    
+    __weak typeof(self) temp = self;
+    [[HomepageHelper new] requestallCityList:@"positionCity" WithFinish:^(NSMutableArray *arr) {
+        
+        
+        for (HomepageCityListModel *model in arr) {
+            if ([temp.textfield.text isEqualToString:model.cityNameAbbr]) {
+
+//                if (_delegate && [_delegate respondsToSelector:@selector(passwordWithString:)]) {
+                    [_delegate passwordWithString:model.cityNameAbbr];
+            //    }
+
+            }
+        }
+    }];
+     
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
    
@@ -166,10 +186,15 @@ static NSString *const footer = @"footer";
                
                 
                 AroundVC3 *around = [[AroundVC3 alloc] init];
-              //  around.NAME = [model.cityNameAbbr mutableCopy];
+                around.NAME = [model.cityNameAbbr mutableCopy];
 //                UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:around];
                 
-               // temp.block(model.cityNameAbbr);
+                //temp.block(model.cityNameAbbr);
+                
+//                if (_delegate && [_delegate respondsToSelector:@selector(passwordWithString:)]) {
+//                    [_delegate passwordWithString:model.cityNameAbbr];
+//                }
+//                
                 
                [temp.navigationController pushViewController:around animated:YES];
                

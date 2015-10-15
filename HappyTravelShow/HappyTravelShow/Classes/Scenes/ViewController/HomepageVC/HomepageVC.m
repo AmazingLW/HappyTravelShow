@@ -111,6 +111,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self drawview];
+    
+    
+    //初始化数据库并创建表
+    
+    [[DataBase shareData] createDataBase];
+    [[DataBase shareData] createTable];
+    
+    
     //self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [self setupCollectionView];
@@ -433,11 +441,17 @@
             
         }
     }else if (indexPath.section==4){
+<<<<<<< HEAD
 
         HomepagePackageModel*package = self.RecommendationArr[indexPath.row];
 //        NSInteger productld=[self.RecommendationArr[indexPath.row] productId];
 //        NSInteger nlinkId=[self.RecommendationArr[indexPath.row] channelLinkId];
     
+=======
+        
+        HomepagePackageModel*package =self.RecommendationArr[indexPath.row];
+        
+>>>>>>> c7888a93bdb1f829a3326a37bf876746959af49a
         NSInteger productld=package.productId;
         NSInteger nlinkId=package.channelLinkId;
 

@@ -20,5 +20,6 @@
 
 #import "UIDefine.h"
 #import <AVOSCloud/AVOSCloud.h>
+#import "DataBase.h"
 
 #endif

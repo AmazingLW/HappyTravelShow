@@ -13,5 +13,7 @@
 //属性传值
 @property (nonatomic, strong)NSMutableString *NAME;
 
+//传值
 
+@property (nonatomic, strong)NSString *textField;
 @end
