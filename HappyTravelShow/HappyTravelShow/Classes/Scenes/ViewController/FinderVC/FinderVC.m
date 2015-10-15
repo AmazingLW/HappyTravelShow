@@ -10,11 +10,14 @@
 #import "FinderHelper.h"
 #import "FinderMainCell.h"
 #import "FindKindOfSceneController.h"
+#import "LocationVC.h"
+
 @interface FinderVC ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *uiTableView;
 //搜索框
 @property(nonatomic,strong)UITextField *searchTextField;
-
+//城市标题
+@property(nonatomic,strong)NSString*string,*cityName,*cityCode;
 
 @end
 
@@ -33,6 +36,10 @@
         self.uiTableView.separatorStyle = UITableViewCellSelectionStyleNone;
         //城市按钮
         
+        self.cityCode =@"110100";
+        self.string =@"北京";
+        self.cityName =@"北京";
+        
         self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"北京v"style:(UIBarButtonItemStylePlain) target:self action:@selector(changeCity)];
         self.navigationItem.leftBarButtonItem.tintColor=[UIColor blackColor];
         
@@ -43,11 +50,46 @@
     return self;
 }
 
+//点击切换城市 /
+
 - (void)changeCity{
     
-    NSLog(@"===");
+  //  NSLog(@"===");
+    
+    LocationVC *locationVC=[LocationVC new];
+    locationVC.block =^(NSString *string,NSString*cityName,NSString*cityCode){
+        
+        self.string = string;
+        self.cityName = cityName;
+        self.cityCode =cityCode;
+    };
+    
+    locationVC.hidesBottomBarWhenPushed = YES;
+
+    [self.navigationController pushViewController:locationVC animated:YES];
+
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    
+    [super viewWillAppear:animated];
+    if (self.string!=nil) {
+        self.navigationItem.leftBarButtonItem.title = [NSString stringWithFormat:@"%@v",self.string];
+        
+    }
+    
+    
+    [[FinderHelper sharedHelper]getDataWithCityCode:self.cityCode pageIndex:1 Finish:^{
+        
+        [self.uiTableView reloadData];
+    }];
+
+    
+    
     
 }
+
+
 
 
 
@@ -56,12 +98,7 @@
     self.view.backgroundColor = [UIColor blueColor];
     //注册
     [self.uiTableView registerNib:[UINib nibWithNibName:@"FinderMainCell" bundle:nil] forCellReuseIdentifier:@"mainCell"];
-    
-    [[FinderHelper sharedHelper]getDataWithCityCode:@"110100" pageIndex:1 Finish:^{
-        
-        [self.uiTableView reloadData];
-    }];
- 
+   
 
     
 }
