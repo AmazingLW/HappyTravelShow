@@ -105,6 +105,9 @@
         self.cityArr = [arr mutableCopy];
         [self.collection reloadData];
     }];
+    
+    
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"change"object:nil userInfo:@{@"cityName":self.string,@"citycode":self.cityCode}];
 
 }
 
@@ -125,12 +128,14 @@
     self.view.backgroundColor = [UIColor orangeColor];
     [self creatNavBar];
     
-     [[NSNotificationCenter defaultCenter]postNotificationName:@"change"object:nil userInfo:@{@"color":[UIColor darkGrayColor]}];
+  
+    
+    
 }
 
 - (void)creatNavBar {
 
-    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"北京∨"style:(UIBarButtonItemStylePlain) target:self action:@selector(locationBBIClicked)];
+    self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"北京v"style:(UIBarButtonItemStylePlain) target:self action:@selector(locationBBIClicked)];
     self.navigationItem.leftBarButtonItem.tintColor=[UIColor blackColor];
 
 }
