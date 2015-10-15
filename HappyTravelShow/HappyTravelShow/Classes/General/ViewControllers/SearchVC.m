@@ -12,6 +12,7 @@
 #import "AroundVC3.h"
 #import "HomepageHelper.h"
 #import "HomepageCityListModel.h"
+#import "AroundVC4.h"
 @interface SearchVC ()<UITextFieldDelegate,UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic, strong)UITextField *textfield;
 @property (nonatomic, strong)UIButton *button;
@@ -266,7 +267,13 @@ static NSString *const footer = @"footer";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSLog(@"%ld---%ld", indexPath.section,indexPath.row);
+    AroundVC4 *vc4 = [[AroundVC4 alloc] init];
+    
+    vc4.NAME = _cityArray[indexPath.row];
+    
+    [self.navigationController pushViewController:vc4 animated:YES];
+    
+    //NSLog(@"%ld---%ld", indexPath.section,indexPath.row);
 }
 
 

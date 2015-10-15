@@ -159,6 +159,7 @@
 		C25074281BC79E1600F62844 /* 66.png in Resources */ = {isa = PBXBuildFile; fileRef = C25074271BC79E1600F62844 /* 66.png */; };
 		C250742B1BC7AAEC00F62844 /* LoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = C250742A1BC7AAEC00F62844 /* LoginController.m */; };
 		C250742E1BC7AB0000F62844 /* RegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = C250742D1BC7AB0000F62844 /* RegisterController.m */; };
+		C266E3611BCF39AB002C1068 /* AroundVC4.m in Sources */ = {isa = PBXBuildFile; fileRef = C266E3601BCF39AB002C1068 /* AroundVC4.m */; };
 		C268C9721BC90D230043B541 /* AroundVC2.m in Sources */ = {isa = PBXBuildFile; fileRef = C268C9711BC90D230043B541 /* AroundVC2.m */; };
 		C268C98B1BC90F500043B541 /* XIOptionSelectorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C268C9761BC90F500043B541 /* XIOptionSelectorView.m */; };
 		C268C98C1BC90F500043B541 /* XIOptionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C268C9781BC90F500043B541 /* XIOptionView.m */; };
@@ -484,6 +485,8 @@
 		C250742A1BC7AAEC00F62844 /* LoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginController.m; sourceTree = "<group>"; };
 		C250742C1BC7AB0000F62844 /* RegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterController.h; sourceTree = "<group>"; };
 		C250742D1BC7AB0000F62844 /* RegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterController.m; sourceTree = "<group>"; };
+		C266E35F1BCF39AB002C1068 /* AroundVC4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundVC4.h; sourceTree = "<group>"; };
+		C266E3601BCF39AB002C1068 /* AroundVC4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AroundVC4.m; sourceTree = "<group>"; };
 		C268C9701BC90D230043B541 /* AroundVC2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundVC2.h; sourceTree = "<group>"; };
 		C268C9711BC90D230043B541 /* AroundVC2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AroundVC2.m; sourceTree = "<group>"; };
 		C268C9741BC90F500043B541 /* XIDropdownlistViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XIDropdownlistViewProtocol.h; sourceTree = "<group>"; };
@@ -977,6 +980,8 @@
 				C268C9711BC90D230043B541 /* AroundVC2.m */,
 				C2F2E4D71BCCFC9D00A6D17C /* AroundVC3.h */,
 				C2F2E4D81BCCFC9D00A6D17C /* AroundVC3.m */,
+				C266E35F1BCF39AB002C1068 /* AroundVC4.h */,
+				C266E3601BCF39AB002C1068 /* AroundVC4.m */,
 			);
 			path = AroundVC;
 			sourceTree = "<group>";
@@ -1794,6 +1799,7 @@
 				16DB119B1BC4228D009D7C7D /* UIImageView+HighlightedWebCache.m in Sources */,
 				16DB11A11BC422F5009D7C7D /* MyselfVC.m in Sources */,
 				16DB11AA1BC4231E009D7C7D /* HomepageVC.m in Sources */,
+				C266E3611BCF39AB002C1068 /* AroundVC4.m in Sources */,
 				C2F423B91BC5FC6900194989 /* FindKindOfSceneController.m in Sources */,
 				C2F2E4891BCC9E7200A6D17C /* FMResultSet.m in Sources */,
 				16DB11681BC41D63009D7C7D /* HomepageHelper.m in Sources */,

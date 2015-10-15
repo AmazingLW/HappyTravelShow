@@ -14,6 +14,41 @@
 
 @implementation CarouselWebViewVC
 
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
+    
+    if (self=[super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
+        
+        
+        UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
+        leftButton.frame=CGRectMake(0, 0, 30, 30);
+        [leftButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+        [leftButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
+        
+        UIBarButtonItem *leftButtonItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton];
+        
+        
+        self.navigationItem.leftBarButtonItem=leftButtonItem;
+
+        
+        
+    }
+    return self;
+    
+    
+}
+
+- (void)backAction{
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    
+}
+
+
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     

@@ -111,15 +111,15 @@
 
 
 
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    [[FinderHelper sharedHelper]requestDataWithThemeId:self.model.themeId cityCode:@"110100" pageIndex:@"1" Finish:^{
-        [self.uiTableView reloadData];
-        
-    }];
-    
-    
-}
+//- (void)viewDidAppear:(BOOL)animated{
+//    [super viewWillAppear:animated];
+//    [[FinderHelper sharedHelper]requestDataWithThemeId:self.model.themeId cityCode:@"110100" pageIndex:@"1" Finish:^{
+//        [self.uiTableView reloadData];
+//        
+//    }];
+//    
+//    
+//}
 
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -131,7 +131,11 @@
     customLab.text=self.model.title;
     customLab.font = [UIFont boldSystemFontOfSize:20];
     self.navigationItem.titleView = customLab;
-  
+    [[FinderHelper sharedHelper]requestDataWithThemeId:self.model.themeId cityCode:@"110100" pageIndex:@"1" Finish:^{
+        [self.uiTableView reloadData];
+        
+    }];
+
     
 }
 
