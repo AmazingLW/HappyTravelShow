@@ -14,11 +14,11 @@
 //标题内容
 @property(nonatomic,strong) NSString  *productTitleContent;
 //价格
-@property(nonatomic,assign) NSNumber  *price;
+@property(nonatomic,strong) NSNumber  *price;
 //原价
-@property(nonatomic,assign) NSNumber  *originalPrice;
+@property(nonatomic,strong) NSNumber  *originalPrice;
 //已售数量
-@property(nonatomic,assign) NSNumber   *saledCount;
+@property(nonatomic,strong) NSNumber   *saledCount;
 //所属城市
 @property(nonatomic,strong) NSString  *cityName;
 //图片链接

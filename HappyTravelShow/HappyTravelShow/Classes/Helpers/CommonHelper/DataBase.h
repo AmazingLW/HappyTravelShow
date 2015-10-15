@@ -27,8 +27,10 @@
 - (BOOL)updateDataInShoucang:(NSString *)sql;
 // 删除数据
 - (BOOL)deleteDataFromShoucang:(NSString *)sql;
-// 查询
-- (BOOL)selectDataFromShoucang:(NSString *)sql;
+// 查询 数据表是否有该数据
+- (BOOL)selectExistDataFromTable:(NSString *)sql;
+// 查询 所有数据
+- (FMResultSet *)selectAllDataFromTable:(NSString *)sql;
 //增加数据库表字段
 - (BOOL)insertFieldIntoTable:(NSString *)tableName fieldName:(NSString *)fieldName;
 

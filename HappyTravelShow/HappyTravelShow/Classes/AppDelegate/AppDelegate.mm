@@ -42,12 +42,14 @@
     [AVOSCloud setApplicationId:@"QwqfqtxhKuQRaoqxSPig3cu8"
                       clientKey:@"3aCIY3mApCj2T4of6JJTJkGy"];
     
+    //周边页
+    UINavigationController *AroundNV = [[UINavigationController alloc] initWithRootViewController:[AroundVC2 new]];
+    
     
     //首页
     UINavigationController *HomepageNV = [[UINavigationController alloc] initWithRootViewController:[HomepageVC new]];
     
-    //周边页
-    UINavigationController *AroundNV = [[UINavigationController alloc] initWithRootViewController:[AroundVC2 new]];
+    
     
     //发现页
     UINavigationController *FinderNV = [[UINavigationController alloc] initWithRootViewController:[FinderVC new]];
