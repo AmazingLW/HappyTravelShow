@@ -279,23 +279,23 @@ static NSString *const footer = @"footer";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     
-    return 2;
+    return 1;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    if (section == 0) {
-        
-        
-        
-        //如果没有历史 就返回0 header有两种
-        return 0;
-        
-        //如果有几个就返回几个
-        
-    }else {
+//    if (section == 0) {
+//        
+//        
+//        
+//        //如果没有历史 就返回0 header有两种
+//        return 0;
+//        
+//        //如果有几个就返回几个
+//        
+//    }else {
         //根据请求的数据
         return _cityArray.count;
-    }
+   // }
 
 }
 
@@ -323,28 +323,28 @@ static NSString *const footer = @"footer";
     
     
     
-    if (indexPath.section == 0) {
-        
-        UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
-        
-         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200,10)];
-        label.center = CGPointMake(header.frame.size.width / 2, header.frame.size.height / 2);
-            label.text = @"暂无历史搜索记录";
-            label.textColor = [UIColor grayColor];
-            
-            [header addSubview:label];
-            
-            
-            return header;
-
-        
-        
-    }else if (indexPath.section == 1){
-        
+//    if (indexPath.section == 0) {
+//        
+//        UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"header" forIndexPath:indexPath];
+//        
+//         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200,10)];
+//        label.center = CGPointMake(header.frame.size.width / 2, header.frame.size.height / 2);
+//            label.text = @"暂无历史搜索记录";
+//            label.textColor = [UIColor grayColor];
+//            
+//            [header addSubview:label];
+//            
+//            
+//            return header;
+//
+//        
+//        
+//    }else if (indexPath.section == 1){
+    
         UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"aaa" forIndexPath:indexPath];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,0 , 100, 10)];
-        label.center = CGPointMake(50, header.frame.size.height / 2);
+        label.center = CGPointMake(header.frame.size.width / 2, header.frame.size.height / 2);
         label.text = @"热门搜索";
         label.textColor = [UIColor grayColor];
         
@@ -354,12 +354,12 @@ static NSString *const footer = @"footer";
         return header;
 
         
-        
-    }
+   //
+   // }
     
     
             
-    return nil;
+  //  return nil;
     
   
 }

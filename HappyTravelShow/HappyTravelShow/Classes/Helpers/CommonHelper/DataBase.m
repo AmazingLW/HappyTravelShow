@@ -51,17 +51,29 @@
     // 打开数据库
     [_dataBase open];
     
+    
+    //创建收藏表
     if (![self isTableOK:@"Shoucang"]) {
         isSuc =  [_dataBase executeUpdate:@"create table Shoucang(id integer primary key autoincrement,title text,content text,curprice text,oldprice text,sellcount text,imgurl text,bookID text,detail text,userID text,cictyName text)"];
         if (isSuc) {
-            NSLog(@"创建表成功");
+            NSLog(@"创建收藏表成功");
         }else{
-            NSLog(@"创建表失败");
+            NSLog(@"创建收藏表失败");
         }
 
     }
     
-        // 关闭数据库
+    //创建历史表
+    if (![self isTableOK:@"History"]) {
+        isSuc =  [_dataBase executeUpdate:@"create table History(id integer primary key autoincrement,title text,content text,curprice text,oldprice text,sellcount text,imgurl text,bookID text,detail text,cictyName text)"];
+        if (isSuc) {
+            NSLog(@"创建历史表成功");
+        }else{
+            NSLog(@"创建历史表失败");
+        }
+    }
+    
+    // 关闭数据库
     [_dataBase close];
 }
 
@@ -108,10 +120,11 @@
 }
 
 // 插入数据
-- (BOOL)insertDataIntoShoucang:(NSString *)sql
+- (BOOL)insertDataIntoTable:(NSString *)sql
 {
     BOOL isSuc = NO;
     [_dataBase open];
+    
     isSuc = [_dataBase executeUpdate:sql];
     [_dataBase close];
     
@@ -183,6 +196,53 @@
     [_dataBase close];
     return isSuc;
 }
+
+
+//获取表中有多少数据
+- (NSInteger)selectDataCountWithTableName:(NSString *)tableName{
+    
+    NSInteger count = 0;
+    [_dataBase open];
+    // 结果集接收查询结果
+    NSString *sqlSelect = [NSString stringWithFormat:@"select *from %@",tableName];
+    FMResultSet *res = [_dataBase executeQuery:sqlSelect];
+    // 无论有多少个结果都需要循环才可以遍历打印出来
+    while ([res next])
+    {
+        count++;
+    }
+    [_dataBase close];
+    return count;
+ 
+}
+
+//删除id最小的
+- (void)deleteMinIDInHistory{
+    int minID = 999999;
+   [_dataBase open];
+    NSString *sql = @"select *from History";
+    
+    FMResultSet *res = [_dataBase executeQuery:sql];
+    // 无论有多少个结果都需要循环才可以遍历打印出来
+    while ([res next])
+    {
+        int choucngID = [res intForColumnIndex:0];
+        if (minID > choucngID) {
+            minID = choucngID;
+        }
+        
+    }
+    
+    //删除最小id的数据
+    NSString *deleteSql = [NSString stringWithFormat:@"delete from History where id = %d",minID];
+    
+    [_dataBase executeUpdate:deleteSql];
+
+    
+    [_dataBase close];
+
+}
+
 
 
 @end

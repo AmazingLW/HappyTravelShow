@@ -69,7 +69,6 @@
 		16DB119C1BC4228D009D7C7D /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB118B1BC4228D009D7C7D /* UIImageView+WebCache.m */; };
 		16DB119D1BC4228D009D7C7D /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB118D1BC4228D009D7C7D /* UIView+WebCacheOperation.m */; };
 		16DB11A11BC422F5009D7C7D /* MyselfVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB11A01BC422F5009D7C7D /* MyselfVC.m */; };
-		16DB11A41BC42303009D7C7D /* AroundVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB11A31BC42303009D7C7D /* AroundVC.m */; };
 		16DB11A71BC4230F009D7C7D /* FinderVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB11A61BC4230F009D7C7D /* FinderVC.m */; };
 		16DB11AA1BC4231E009D7C7D /* HomepageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 16DB11A91BC4231E009D7C7D /* HomepageVC.m */; };
 		16DB11B01BC42505009D7C7D /* homepage.png in Resources */ = {isa = PBXBuildFile; fileRef = 16DB11AF1BC42505009D7C7D /* homepage.png */; };
@@ -334,8 +333,6 @@
 		16DB118D1BC4228D009D7C7D /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		16DB119F1BC422F5009D7C7D /* MyselfVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyselfVC.h; sourceTree = "<group>"; };
 		16DB11A01BC422F5009D7C7D /* MyselfVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyselfVC.m; sourceTree = "<group>"; };
-		16DB11A21BC42303009D7C7D /* AroundVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AroundVC.h; sourceTree = "<group>"; };
-		16DB11A31BC42303009D7C7D /* AroundVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AroundVC.m; sourceTree = "<group>"; };
 		16DB11A51BC4230F009D7C7D /* FinderVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FinderVC.h; sourceTree = "<group>"; };
 		16DB11A61BC4230F009D7C7D /* FinderVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FinderVC.m; sourceTree = "<group>"; };
 		16DB11A81BC4231E009D7C7D /* HomepageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepageVC.h; sourceTree = "<group>"; };
@@ -977,8 +974,6 @@
 				C268C97B1BC90F500043B541 /* DropdownListView */,
 				C268C9851BC90F500043B541 /* FXBlurView */,
 				C268C9881BC90F500043B541 /* Utils */,
-				16DB11A21BC42303009D7C7D /* AroundVC.h */,
-				16DB11A31BC42303009D7C7D /* AroundVC.m */,
 				C268C9701BC90D230043B541 /* AroundVC2.h */,
 				C268C9711BC90D230043B541 /* AroundVC2.m */,
 				C2F2E4D71BCCFC9D00A6D17C /* AroundVC3.h */,
@@ -1739,7 +1734,6 @@
 				16988DA91BC3D100001A1077 /* ComProductModel.m in Sources */,
 				16EB2DE61BC6AD0A00F51A9F /* ComDetailHelper.m in Sources */,
 				16E5D8E21BCDF6BC00A96F70 /* HZAreaPickerView.m in Sources */,
-				16DB11A41BC42303009D7C7D /* AroundVC.m in Sources */,
 				C2C200251BCB674C000F2AC7 /* HomepageCityListModel.m in Sources */,
 				C209F53D1BC6187D00946675 /* RecommendationCell.m in Sources */,
 				C2F2E4851BCC9E7200A6D17C /* FMDatabase.m in Sources */,

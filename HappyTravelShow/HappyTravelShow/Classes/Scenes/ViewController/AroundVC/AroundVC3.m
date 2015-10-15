@@ -7,7 +7,7 @@
 //
 
 
-#import "AroundVC.h"
+
 #import "XIOptionSelectorView.h"
 #import "XIOptionView.h"
 #import "XIOtherOptionsView.h"
@@ -21,7 +21,7 @@
 #import "AroundVC3.h"
 #import "AroundVC2.h"
 #import "SearchVC.h"
-
+#import "MJRefresh.h"
 @interface AroundVC3 ()<XIDropdownlistViewProtocol,UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate, PassWordDelegate>
 {
     XIOptionSelectorView *ddltView;
@@ -75,6 +75,10 @@
 
 @property (nonatomic, strong)NSString *CITYNAME;
 
+//刷新修改用
+@property (nonatomic, assign)NSInteger currentPage;
+@property (nonatomic, assign)NSInteger current;
+@property (nonatomic, assign)NSInteger page;
 
 
 @end
@@ -90,7 +94,7 @@ static NSString *const reuse = @"cell";
         
         
         
-        
+       _allScenic = [NSMutableArray array];
 
     }
     return self;
@@ -107,6 +111,9 @@ static NSString *const reuse = @"cell";
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
+    [self setupDropdownList];
+    [self request];
+    
     [self.tableView reloadData];
     
 }
@@ -120,7 +127,13 @@ static NSString *const reuse = @"cell";
 //        _CITYNAME = str;
 //        
 //    };
- 
+    //刷新
+   
+    _currentPage = 1;
+    _current = 1;
+    _page = 1;
+    
+    
     if (self.NAME.length > 0) {
         _CITYNAME = self.NAME;
         
@@ -208,8 +221,36 @@ static NSString *const reuse = @"cell";
     //取不到
     // NSLog(@"%@",self.destinationCity);
     
-    [self setupDropdownList];
-    [self requestData];
+   
+    
+    //刷新
+    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+        [[AroundHelper new] requsetAllScenicsWithPage:_currentPage CityName:_CITYNAME finish:^(NSArray *scenic) {
+            
+            [_allScenic  addObjectsFromArray:scenic];
+            [self.tableView reloadData];
+        }];
+        
+        [[self.tableView header]endRefreshing];
+    }];
+    
+    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        _currentPage ++;
+        [[AroundHelper new] requsetAllScenicsWithPage:_currentPage CityName:_CITYNAME finish:^(NSArray *scenic) {
+            
+            [_allScenic  addObjectsFromArray:scenic];
+            [self.tableView reloadData];
+        }];
+        
+        
+        
+        [[self.tableView footer]endRefreshingWithNoMoreData];
+    }];
+    
+    
+    
+    
     
     
     
@@ -507,14 +548,23 @@ static NSString *const reuse = @"cell";
 //当 目的城市为全部 景点全部  排序方式改变   筛选方式改变
 - (void)sortWithType:(NSString *)type tagName:(NSString *)tagName{
     
-    [[AroundHelper new] chooseScenicWithSortType:type TagName:tagName cityName:_CITYNAME finish:^(NSArray *array) {
+//    [[AroundHelper new] chooseScenicWithSortType:type TagName:tagName cityName:_CITYNAME finish:^(NSArray *array) {
+//        
+//        _allScenic = [array mutableCopy];
+//        
+//        [self.tableView reloadData];
+//        
+//    }];
+    
+    
+    [[AroundHelper new] chooseScenicWithPage:_current SortType:type TagName:tagName cityName:_CITYNAME finish:^(NSArray *array) {
         
+        //[_allScenic addObjectsFromArray:array];
         _allScenic = [array mutableCopy];
-        
         [self.tableView reloadData];
         
     }];
-    
+
     
 }
 
@@ -611,24 +661,28 @@ static NSString *const reuse = @"cell";
         // [_tableView reloadData];
     }];
     
-    //CityName 是请求到的目的城市
-    
-    [[AroundHelper new]requsetAllScenicsWithCityName:_CITYNAME finish:^(NSArray *scenic) {
-        
-        _allScenic = [NSMutableArray arrayWithArray:scenic];
-        [self.tableView reloadData];
-    }];
+
+ 
+
     
 }
 
+#warning 修改过
+//CityName 是请求到的目的城市
 - (void)request{
-    [[AroundHelper new]requsetAllScenicsWithCityName:_CITYNAME finish:^(NSArray *scenic) {
+//    [[AroundHelper new]requsetAllScenicsWithCityName:_CITYNAME finish:^(NSArray *scenic) {
+//        
+//        _allScenic = [NSMutableArray arrayWithArray:scenic];
+//        [self.tableView reloadData];
+//    }];
+    
+    [[AroundHelper new] requsetAllScenicsWithPage:_currentPage CityName:_CITYNAME finish:^(NSArray *scenic) {
         
-        _allScenic = [NSMutableArray arrayWithArray:scenic];
+       [_allScenic  addObjectsFromArray:scenic];
+        
         [self.tableView reloadData];
     }];
-    
-    
+
 }
 
 

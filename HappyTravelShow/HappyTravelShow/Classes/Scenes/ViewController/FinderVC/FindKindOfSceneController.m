@@ -20,7 +20,10 @@
 
 @interface FindKindOfSceneController ()<UITableViewDataSource,UITableViewDelegate,UMSocialUIDelegate>
 @property(nonatomic,strong)UITableView *uiTableView;
-
+//block回来的数据
+@property(nonatomic,strong) NSMutableArray  *kindArray;
+@property(nonatomic,assign) NSInteger  currentPage;
+@property(nonatomic,assign) NSInteger pageSize;
 
 @end
 
@@ -36,10 +39,6 @@
         self.uiTableView.delegate=self;
         self.uiTableView.dataSource=self;
         
-
-       /// self.navigationItem.hidesBackButton=YES;
-        //self.cityCode = self.model.themeId ;
-
        //自定义rightBarButtonItem
         UIButton *rightButton=[UIButton buttonWithType:UIButtonTypeCustom];
         rightButton.frame=CGRectMake(0, 0, 30, 30);
@@ -59,13 +58,13 @@
         [leftButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
         
         UIBarButtonItem *leftButtonItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton];
-
+   
         
         self.navigationItem.leftBarButtonItem=leftButtonItem;
         
         
-        
-        
+        self.currentPage=1;
+        self.pageSize=10;
 
     }
     return self;
@@ -112,16 +111,6 @@
 
 
 
-//- (void)viewDidAppear:(BOOL)animated{
-//    [super viewWillAppear:animated];
-//    [[FinderHelper sharedHelper]requestDataWithThemeId:self.model.themeId cityCode:@"110100" pageIndex:@"1" Finish:^{
-//        [self.uiTableView reloadData];
-//        
-//    }];
-//    
-//    
-//}
-
 
 - (void)viewWillAppear:(BOOL)animated{
     
@@ -132,12 +121,17 @@
     customLab.text=self.model.title;
     customLab.font = [UIFont boldSystemFontOfSize:20];
     self.navigationItem.titleView = customLab;
-    [[FinderHelper sharedHelper]requestDataWithThemeId:self.model.themeId cityCode:@"110100" pageIndex:@"1" Finish:^{
+    
+    [[FinderHelper sharedHelper]requestDataWithPageSize:self.pageSize ThemeId:self.model.themeId cityCode:self.cityCode pageIndex:1 Finish:^(NSMutableArray *arr) {
+            self.kindArray=[NSMutableArray array];
+        self.kindArray=[arr mutableCopy];
+        
         [self.uiTableView reloadData];
         
+
     }];
 
-    
+     
 }
 
 
@@ -146,8 +140,46 @@
     [super viewDidLoad];
     //注册
     [self.uiTableView registerNib:[UINib nibWithNibName:@"CommonCells" bundle:nil] forCellReuseIdentifier:@"commonCell"];
- 
+    //下拉刷新
+
+
+      self.uiTableView.header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
+          
+                   [[FinderHelper sharedHelper]requestDataWithPageSize:self.pageSize*self.pageSize ThemeId:self.model.themeId cityCode:self.cityCode pageIndex:1 Finish:^(NSMutableArray *arr) {
+              
+              self.kindArray=[arr mutableCopy];
+              
+              [self.uiTableView reloadData];
+              
+              [self.uiTableView.header endRefreshing];
+              
+          }];
+          
+       
+          
+      }];
+    
+    //上拉加载
+    self.uiTableView.footer =[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        
+        self.currentPage++;
+        [[FinderHelper sharedHelper]requestDataWithPageSize:self.pageSize*self.currentPage ThemeId:self.model.themeId cityCode:self.cityCode pageIndex:self.currentPage Finish:^(NSMutableArray *arr) {
+            [self.kindArray addObjectsFromArray:arr];
+            [self.uiTableView reloadData];
+            [self.uiTableView.footer endRefreshingWithNoMoreData];
+            
+        }];
+        
+        
+        
+        
+        
+    }];
+    
+   
+    
 }
+
 
 
 
@@ -166,7 +198,7 @@
     if (section==0) {
         return 1;
     }
-    return [FinderHelper sharedHelper].kindArray.count;
+    return self.kindArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -194,7 +226,7 @@
     
     CommonCells *cell=[self.uiTableView dequeueReusableCellWithIdentifier:@"commonCell" forIndexPath:indexPath];
     
-   cell.kindModel=[FinderHelper sharedHelper].kindArray[indexPath.row];
+   cell.kindModel=self.kindArray[indexPath.row];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
 
     return cell;
@@ -224,7 +256,7 @@
     if (indexPath.section==1) {
         
     //获取model对象
-    FinderKindModel *model = [FinderHelper sharedHelper].kindArray[indexPath.row];
+    FinderKindModel *model = self. kindArray[indexPath.row];
     comVC.bookID = [model.channelLinkId intValue];
     comVC.detailID = [model.productId intValue];
     [self.navigationController pushViewController:comVC animated:YES];
@@ -236,7 +268,7 @@
 
 
 - (void)backAction{
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 

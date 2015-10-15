@@ -11,11 +11,17 @@
 #import "FinderMainCell.h"
 #import "FindKindOfSceneController.h"
 #import "LocationVC.h"
+#import "MJRefresh.h"
 
 @interface FinderVC ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)UITableView *uiTableView;
 //当前页数
 @property (nonatomic,assign) NSInteger currentPage;
+@property (nonatomic,assign) NSInteger   pageSize;
+
+//block回来的数据
+@property(nonatomic,strong) NSMutableArray  *dataArray;
+
 
 //搜索框
 @property(nonatomic,strong)UITextField *searchTextField;
@@ -46,8 +52,8 @@
         self.navigationItem.leftBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"北京v"style:(UIBarButtonItemStylePlain) target:self action:@selector(changeCity)];
         self.navigationItem.leftBarButtonItem.tintColor=[UIColor blackColor];
         
-
-        
+        _currentPage=1;
+        _pageSize=10;
     }
     
     return self;
@@ -57,7 +63,6 @@
 
 - (void)changeCity{
     
-  //  NSLog(@"===");
     
     LocationVC *locationVC=[LocationVC new];
     locationVC.block =^(NSString *string,NSString*cityName,NSString*cityCode){
@@ -65,7 +70,23 @@
         self.string = string;
         self.cityName = cityName;
         self.cityCode =cityCode;
+        
+        
+        [[FinderHelper sharedHelper]getDataWithPageSize:self.pageSize CityCode:self.cityCode pageIndex:1 Finish:^(NSMutableArray *arr) {
+           
+            self.dataArray=[NSMutableArray array];
+            self.dataArray=[arr mutableCopy];
+            
+            [self.uiTableView reloadData];
+            
+            
+        }];
+        
+        
     };
+    
+
+    
     
     locationVC.hidesBottomBarWhenPushed = YES;
 
@@ -81,16 +102,11 @@
         
     }
     
-    
-    [[FinderHelper sharedHelper]getDataWithCityCode:self.cityCode pageIndex:1 Finish:^{
-        
-        [self.uiTableView reloadData];
-    }];
 
     
-    
-    
 }
+
+
 
 
 
@@ -101,17 +117,78 @@
     self.view.backgroundColor = [UIColor blueColor];
     //注册
     [self.uiTableView registerNib:[UINib nibWithNibName:@"FinderMainCell" bundle:nil] forCellReuseIdentifier:@"mainCell"];
-   
-
     
+    
+    
+    [[FinderHelper sharedHelper]getDataWithPageSize:self.pageSize CityCode:self.cityCode pageIndex:1 Finish:^(NSMutableArray *arr) {
+       
+       self.dataArray=[NSMutableArray array];
+        self.dataArray=[arr mutableCopy];
+        
+        [self.uiTableView reloadData];
+
+        
+    }];
+    
+    //下拉刷新
+    
+     self.uiTableView.header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        
+         [[FinderHelper sharedHelper]getDataWithPageSize:self.pageSize*self.currentPage CityCode:self.cityCode pageIndex:1 Finish:^(NSMutableArray *arr) {
+             self.dataArray=[NSMutableArray array];
+             self.dataArray=[arr mutableCopy];
+             [self.uiTableView reloadData];
+
+              [self.uiTableView.header endRefreshing];
+
+             
+         }];
+         
+     }];
+    
+         
+
+   // 上拉加载
+    self.uiTableView.footer=[MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+       
+        self.currentPage++;
+
+        
+        [[FinderHelper sharedHelper]getDataWithPageSize:self.pageSize CityCode:self.cityCode pageIndex:self.currentPage Finish:^(NSMutableArray *arr) {
+            
+            [self.dataArray addObjectsFromArray:arr];
+            [self.uiTableView reloadData];
+            [self.uiTableView.footer endRefreshingWithNoMoreData];
+            
+
+        }];
+
+        
+    }];
+    
+    
+    
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
 
 
 #pragma mark---tableView代理方法-------
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    return [FinderHelper sharedHelper].dataArray.count;
+    return self.dataArray.count;
     
 }
 
@@ -122,7 +199,7 @@
     
     FinderMainCell *cell=[self.uiTableView dequeueReusableCellWithIdentifier:@"mainCell" forIndexPath:indexPath];
     
-    cell.mainModel=[FinderHelper sharedHelper].dataArray[indexPath.row];
+    cell.mainModel=self.dataArray[indexPath.row];
     
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     
@@ -138,14 +215,13 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     FindKindOfSceneController *findVC=[FindKindOfSceneController new];
-    FinderMainModel *mainModel=[FinderHelper sharedHelper].dataArray[indexPath.row];
+    FinderMainModel *mainModel=self.dataArray[indexPath.row];
     findVC.model=mainModel;
     findVC.titleString=mainModel.title;
-    
-    UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:findVC];
-//    self.navigationController 
-    [self presentViewController:rootNC animated:YES completion:nil];
-   
+    findVC.cityCode=self.cityCode;
+    findVC.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:findVC animated:YES];
+   findVC.hidesBottomBarWhenPushed = YES;
     
     
 }
