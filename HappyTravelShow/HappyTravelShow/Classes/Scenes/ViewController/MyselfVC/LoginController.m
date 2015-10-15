@@ -49,15 +49,37 @@
         label.attributedText = content;
         [self.view addSubview:label];
         //注册
-        
+       
         self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc]initWithTitle:@"注册" style:UIBarButtonItemStylePlain target:self action:@selector(registerAction)];
         self.navigationItem.rightBarButtonItem.tintColor=[UIColor orangeColor];
+        //自定义leftButtonItem
+        UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
+        leftButton.frame=CGRectMake(0, 0, 30, 30);
+        [leftButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
+        [leftButton addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
         
+        UIBarButtonItem *leftButtonItem=[[UIBarButtonItem alloc]initWithCustomView:leftButton];
+        
+        self.navigationItem.leftBarButtonItem=leftButtonItem;
+
+     
     }
     return self;
     
     
 }
+
+- (void)backAction{
+    
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    
+}
+
+
+
+
+
 //注册页面跳转
 
 - (void)registerAction{

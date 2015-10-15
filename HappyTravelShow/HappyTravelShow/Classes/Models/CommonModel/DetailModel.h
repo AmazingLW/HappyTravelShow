@@ -32,10 +32,10 @@
 @property (nonatomic,strong) NSString * appSubTitle;
 
 //sellPrice
-@property (nonatomic,strong) NSString * sellPrice;
+@property (nonatomic,strong) NSNumber * sellPrice;
 
 //retailPrice
-@property (nonatomic,strong) NSString * retailPrice;
+@property (nonatomic,strong) NSNumber * retailPrice;
 
 //startDate
 @property (nonatomic,strong) NSString * startDate;
@@ -74,7 +74,7 @@
 @property (nonatomic,strong) NSString * address;
 
 //saledCount
-@property (nonatomic,strong) NSString * saledCount;
+@property (nonatomic,strong) NSNumber * saledCount;
 
 //telphone
 @property (nonatomic,strong) NSString * telphone;

@@ -30,10 +30,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1T-tF-i7d">
-                        <rect key="frame" x="299" y="135" width="68" height="24"/>
+                        <rect key="frame" x="309" y="135" width="68" height="24"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="location.png" translatesAutoresizingMaskIntoConstraints="NO" id="lyh-Gq-Dys">
-                                <rect key="frame" x="8" y="2" width="22" height="20"/>
+                                <rect key="frame" x="9" y="3" width="22" height="18"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="北京" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="83p-03-Q7T">
                                 <rect key="frame" x="34" y="2" width="34" height="20"/>
@@ -42,20 +42,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.17999999999999999" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.55107717803030298" green="0.51913432446126018" blue="0.50450239072476577" alpha="0.67000000000000004" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="24" id="Dvq-nr-Dia"/>
-                            <constraint firstAttribute="width" constant="68" id="nTL-PD-jYI"/>
+                            <constraint firstAttribute="height" constant="24" id="ExH-Jf-x5s"/>
+                            <constraint firstAttribute="width" constant="68" id="r7p-e4-Tpj"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="RFL-my-G7A" secondAttribute="trailing" constant="5" id="1xo-g0-IKR"/>
-                    <constraint firstAttribute="bottom" secondItem="RFL-my-G7A" secondAttribute="bottom" constant="5" id="E7y-oY-WJm"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="T1T-tF-i7d" secondAttribute="trailing" id="OTe-BD-3PN"/>
-                    <constraint firstItem="RFL-my-G7A" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="WE4-OK-20E"/>
-                    <constraint firstItem="RFL-my-G7A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="WQm-Rr-E3N"/>
-                    <constraint firstItem="T1T-tF-i7d" firstAttribute="top" secondItem="RFL-my-G7A" secondAttribute="bottom" constant="-59" id="b2W-ro-hMU"/>
+                    <constraint firstItem="RFL-my-G7A" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="FUa-yR-ZLP"/>
+                    <constraint firstAttribute="trailing" secondItem="RFL-my-G7A" secondAttribute="trailing" constant="5" id="Ssn-Ke-XBg"/>
+                    <constraint firstItem="RFL-my-G7A" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="Vy3-0y-uoy"/>
+                    <constraint firstItem="T1T-tF-i7d" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="10" id="YgM-QK-xZm"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="T1T-tF-i7d" secondAttribute="bottom" constant="32" id="ani-pr-ghu"/>
+                    <constraint firstAttribute="bottom" secondItem="RFL-my-G7A" secondAttribute="bottom" constant="5" id="jN2-5x-lm2"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -65,7 +65,7 @@
                 <outlet property="lab4title" destination="pAu-eI-cDv" id="liY-n3-1BY"/>
                 <outlet property="view" destination="T1T-tF-i7d" id="amt-4G-aFr"/>
             </connections>
-            <point key="canvasLocation" x="573.5" y="343"/>
+            <point key="canvasLocation" x="436.5" y="332"/>
         </tableViewCell>
     </objects>
     <resources>

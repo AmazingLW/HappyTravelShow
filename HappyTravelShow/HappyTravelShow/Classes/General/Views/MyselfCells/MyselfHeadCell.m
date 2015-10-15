@@ -45,7 +45,7 @@
     self.groundView.userInteractionEnabled=YES;
     
     self.loginButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    self.loginButton.frame=CGRectMake(kWidth-300, 60, 100, 35);
+    self.loginButton.frame=CGRectMake(kWidth/2-110, 60, 80, 35);
     [self.loginButton setTitle:@"登录" forState:UIControlStateNormal];
     [self.loginButton addTarget:self action:@selector(loginAction:) forControlEvents:UIControlEventTouchUpInside];
 
@@ -57,7 +57,7 @@
     [buttonLayer setBorderColor:[[UIColor colorWithWhite:1.00 alpha:1.000] CGColor]];
     
     self.registerButton=[UIButton buttonWithType:UIButtonTypeCustom];
-    self.registerButton.frame=CGRectMake(kWidth-165, 60, 100, 35);
+    self.registerButton.frame=CGRectMake(kWidth/2+30, 60, 80, 35);
     [self.registerButton setTitle:@"注册" forState:UIControlStateNormal];
     //设置边框
     CALayer *buttonLayer1 = [self.registerButton layer];
