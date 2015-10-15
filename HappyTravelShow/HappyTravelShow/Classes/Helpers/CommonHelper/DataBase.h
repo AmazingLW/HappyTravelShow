@@ -22,7 +22,7 @@
 // 创建表
 - (void)createTable;
 // 插入数据
-- (BOOL)insertDataIntoShoucang:(NSString *)sql;
+- (BOOL)insertDataIntoTable:(NSString *)sql;
 // 修改数据
 - (BOOL)updateDataInShoucang:(NSString *)sql;
 // 删除数据
@@ -43,7 +43,11 @@
 // 删除表信息
 - (BOOL) deleteAll:(NSString *)tableName;
 
+//获取表中有多少数据
+- (NSInteger)selectDataCountWithTableName:(NSString *)tableName;
 
+//删除id最小的
+- (void)deleteMinIDInHistory;
 
 
 @end

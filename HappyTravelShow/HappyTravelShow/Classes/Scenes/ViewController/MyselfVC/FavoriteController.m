@@ -39,6 +39,7 @@
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 35, 20)];
         label.text = @"编辑";
+        label.textColor = [UIColor orangeColor];
         //编辑手势
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(editShoucangAction)];
         [label addGestureRecognizer:tap];
@@ -179,7 +180,6 @@
         //价格
         float flostPrice = [[res stringForColumn:@"curprice"] floatValue];
         model.price = [NSNumber numberWithFloat:flostPrice];
-        NSLog(@"%@--%@",model.price,[res stringForColumn:@"curprice"]);
         //旧价格
         float oldPrice = [[res stringForColumn:@"oldprice"] floatValue];
         model.originalPrice = [NSNumber numberWithFloat:oldPrice];

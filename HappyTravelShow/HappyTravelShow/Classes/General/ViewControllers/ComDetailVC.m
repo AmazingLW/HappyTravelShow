@@ -159,7 +159,7 @@ static BOOL  isOpen = NO;
             DetailModel *imgModel = model.imgArr[0];
             NSString *insertSql = [NSString stringWithFormat:@"insert into Shoucang(title,content,curprice,oldprice,sellcount,imgurl,bookID,detail,userID,cictyName)values('%@','%@','%@','%@','%@','%@','%@','%@','%@','%@')",model.mainTitle,model.appSubTitle,[self numberToString:model.sellPrice],[self numberToString:model.retailPrice],[self numberToString:model.saledCount],[NSString stringWithFormat:@"http://cdn1.jinxidao.com/%@",imgModel.url],model.channelLinkId,model.productId,[AVUser currentUser].objectId,model.cityName];
             
-            BOOL isSuc =[[DataBase shareData] insertDataIntoShoucang:insertSql];
+            BOOL isSuc =[[DataBase shareData] insertDataIntoTable:insertSql];
             if (isSuc) {
                 [self p_showAlertView:@"提示" message:@"收藏成功~"];
                 _isShoucang = YES;
@@ -435,18 +435,39 @@ static BOOL  isOpen = NO;
 }
 
 
+#pragma mark ----判断历史表里面是否有数据 默认15个数据-----
 
+//页面消失的时候
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    
+    //从历史表里面查询是否  History
+    NSString *sqlSelect = [NSString stringWithFormat:@"select *from History where detail = '%@'",[NSString stringWithFormat:@"%ld",_detailID]];
+    BOOL isSuc = [[DataBase shareData] selectExistDataFromTable:sqlSelect];
+    if (isSuc) {
+        //有的话就直接跳出
+        NSLog(@"have");
+        return;
+    }else{
+        //没有的话就插入到表里面，先判断是不是15个，把最前面的数据删了
+        NSInteger count = [[DataBase shareData] selectDataCountWithTableName:@"History"];
+        NSLog(@"%ld=========",count);
+        if (count >=  15){
+            //删除id最小的 然后插入
+            [[DataBase shareData] deleteMinIDInHistory];
+        }
+        
+        //插入
+        DetailModel *model = (DetailModel *)_detailArr.firstObject;
+        //获取图片的url
+        DetailModel *imgModel = model.imgArr[0];
+        NSString *insertSql = [NSString stringWithFormat:@"insert into History(title,content,curprice,oldprice,sellcount,imgurl,bookID,detail,cictyName)values('%@','%@','%@','%@','%@','%@','%@','%@','%@')",model.mainTitle,model.appSubTitle,[self numberToString:model.sellPrice],[self numberToString:model.retailPrice],[self numberToString:model.saledCount],[NSString stringWithFormat:@"http://cdn1.jinxidao.com/%@",imgModel.url],model.channelLinkId,model.productId,model.cityName];
+        
+        [[DataBase shareData] insertDataIntoTable:insertSql];
 
-
-
-
-
-
-
-
-
-
-
+        NSLog(@"suc");
+    }
+}
 
 
 

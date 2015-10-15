@@ -272,6 +272,7 @@
 
     }else if (indexPath.section==2&&indexPath.row==1)
     {
+        //浏览历史记录
         browsedController *bVC=[browsedController new];
         bVC.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:bVC animated:YES];
@@ -281,8 +282,6 @@
         
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"是否确认注销" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         [alertView show];
-        
-        [AVUser logOut];  //清除缓存用户对象
     }else if (indexPath.section==3&&indexPath.row==1){
         WeatherDetailController *wVC=[WeatherDetailController new];
         [self.navigationController pushViewController:wVC animated:NO];
@@ -303,17 +302,6 @@
     }
 }
 
-
-
-
-
-
-
-//-(void)viewWillDisappear:(BOOL)animated
-//{
-//    [_mapView viewWillDisappear];
-//    _mapView.delegate = nil; // 不用时，置nil
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
