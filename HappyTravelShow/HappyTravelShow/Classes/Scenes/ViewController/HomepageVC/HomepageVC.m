@@ -60,7 +60,8 @@
         UITextField *textfield = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 70, 29)];
         textfield.enabled = NO;
         textfield.placeholder = @"搜索目的地/景点/酒店";
-        textfield.backgroundColor = [UIColor lightGrayColor];
+        textfield.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
+
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         
         label.text = @"🔍";
@@ -243,7 +244,10 @@
     _collection.backgroundColor =[UIColor whiteColor];
     _collection.dataSource =self;
     _collection.delegate =self;
-    _collection.backgroundColor =[UIColor lightGrayColor];
+   // _collection.backgroundColor =[UIColor lightGrayColor];
+    
+    
+    _collection.backgroundColor =[UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1];
     [self.view addSubview:_collection];
     
 }
@@ -308,7 +312,7 @@
                 if ([header.app_url length] >12) {
                     CarouselWebViewVC*WebVC =[CarouselWebViewVC new];
                     WebVC.url = header.app_url;
-            
+                    WebVC.titleW = header.title;
                      WebVC.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:WebVC animated:YES];
                 }else if ([header.app_url length] ==3){
@@ -455,14 +459,16 @@
            CategoryVC*cateVC=[CategoryVC new];
             cateVC.urlNum = [self.ProductArr[indexPath.row] app_url];
             cateVC.CName = self.cityName;
-//            UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
-//            [self presentViewController:rootNC animated:YES completion:nil];
+            cateVC.titleW =header.title;
             cateVC.hidesBottomBarWhenPushed =YES;
             [self.navigationController pushViewController:cateVC animated:YES];
         }else if ([header.app_url length]>5){
         CarouselWebViewVC*WebVC =[CarouselWebViewVC new];
         WebVC.url = [self.ProductArr[indexPath.row] app_url];
+              WebVC.titleW = header.title;
             [self.navigationController pushViewController:WebVC animated:YES];
+        }else if ([header.app_url length]==4){
+            
         }else{
 //             NSLog(@"zhoubian");
             self.tabBarController.selectedIndex =1;
@@ -474,14 +480,18 @@
         if ([header.app_url length]>12) {
         CarouselWebViewVC*WebVC =[CarouselWebViewVC new];
         WebVC.url = [self.PackageArr[indexPath.row] app_url];
+        WebVC.titleW = header.title;
         [self.navigationController pushViewController:WebVC animated:YES];
         }else if ([header.app_url length]==2||[header.app_url length]==3) {
             CategoryVC*cateVC=[CategoryVC new];
             cateVC.urlNum = [self.ProductArr[indexPath.row] app_url];
             cateVC.CName = self.cityName;
+            cateVC.titleW =header.title;
             cateVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:cateVC animated:YES];
 
+        }else if ([header.app_url length]==4){
+            
         }else{
             
             NSString *str1 = [self.PackageArr[indexPath.row] app_url];
@@ -506,8 +516,6 @@
 
         
         HomepagePackageModel*package =self.RecommendationArr[indexPath.row];
-        
-
         NSInteger productld=package.productId;
         NSInteger nlinkId=package.channelLinkId;
 
@@ -535,6 +543,7 @@
     HomepageScenicModel*a = self.cityArr[0];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
+    cateVC.titleW=a.name;
     UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
     [self presentViewController:rootNC animated:YES completion:nil];
     
@@ -545,6 +554,7 @@
     HomepageScenicModel*a = self.cityArr[1];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
+    cateVC.titleW=a.name;
     UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
     [self presentViewController:rootNC animated:YES completion:nil];
 }
@@ -554,6 +564,7 @@
     HomepageScenicModel*a = self.cityArr[2];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
+    cateVC.titleW=a.name;
     UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
     [self presentViewController:rootNC animated:YES completion:nil];
 }
@@ -563,6 +574,7 @@
     HomepageScenicModel*a = self.cityArr[3];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
+    cateVC.titleW=a.name;
     UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
     [self presentViewController:rootNC animated:YES completion:nil];
 }
@@ -571,6 +583,7 @@
     HomepageScenicModel*a = self.cityArr[4];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
+    cateVC.titleW=a.name;
     UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
     [self presentViewController:rootNC animated:YES completion:nil];}
 - (void)getDetailControllerB14{
@@ -579,6 +592,7 @@
     HomepageScenicModel*a = self.cityArr[5];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
+    cateVC.titleW=a.name;
     UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
     [self presentViewController:rootNC animated:YES completion:nil];
 }
@@ -588,6 +602,7 @@
     HomepageScenicModel*a = self.cityArr[6];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
+    cateVC.titleW=a.name;
     UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
     [self presentViewController:rootNC animated:YES completion:nil];
 }
@@ -615,8 +630,9 @@
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[0];
     dateailVC.scenicID =[scenic.cityId integerValue];
-   
-    [self presentViewController:dateailVC animated:YES completion:nil];
+    dateailVC.hidesBottomBarWhenPushed =YES;
+    [self.navigationController pushViewController:dateailVC animated:YES];
+//    [self presentViewController:dateailVC animated:YES completion:nil];
 }
 
 - (void)getDetailControllerB2{
@@ -624,49 +640,63 @@
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[1];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    [self presentViewController:dateailVC animated:YES completion:nil];
+    //[self presentViewController:dateailVC animated:YES completion:nil];
+    dateailVC.hidesBottomBarWhenPushed =YES;
+    [self.navigationController pushViewController:dateailVC animated:YES];
 }
 - (void)getDetailControllerB3{
     
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[2];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    [self presentViewController:dateailVC animated:YES completion:nil];
+    //[self presentViewController:dateailVC animated:YES completion:nil];
+    dateailVC.hidesBottomBarWhenPushed =YES;
+    [self.navigationController pushViewController:dateailVC animated:YES];
 }
 - (void)getDetailControllerB4{
     
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[3];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    [self presentViewController:dateailVC animated:YES completion:nil];
+    //[self presentViewController:dateailVC animated:YES completion:nil];
+    dateailVC.hidesBottomBarWhenPushed =YES;
+    [self.navigationController pushViewController:dateailVC animated:YES];
 }
 - (void)getDetailControllerB5{
     
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[4];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    [self presentViewController:dateailVC animated:YES completion:nil];
+    //[self presentViewController:dateailVC animated:YES completion:nil];
+    dateailVC.hidesBottomBarWhenPushed =YES;
+    [self.navigationController pushViewController:dateailVC animated:YES];
 }
 - (void)getDetailControllerB6{
     
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[5];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    [self presentViewController:dateailVC animated:YES completion:nil];
+    //[self presentViewController:dateailVC animated:YES completion:nil];
+    dateailVC.hidesBottomBarWhenPushed =YES;
+    [self.navigationController pushViewController:dateailVC animated:YES];
 }
 - (void)getDetailControllerB7{
     
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[6];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    [self presentViewController:dateailVC animated:YES completion:nil];
+    //[self presentViewController:dateailVC animated:YES completion:nil];
+    dateailVC.hidesBottomBarWhenPushed =YES;
+    [self.navigationController pushViewController:dateailVC animated:YES];
 }
 - (void)getDetailControllerB8{
     
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[7];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    [self presentViewController:dateailVC animated:YES completion:nil];
+    //[self presentViewController:dateailVC animated:YES completion:nil];
+    dateailVC.hidesBottomBarWhenPushed =YES;
+    [self.navigationController pushViewController:dateailVC animated:YES];
 }
 
 

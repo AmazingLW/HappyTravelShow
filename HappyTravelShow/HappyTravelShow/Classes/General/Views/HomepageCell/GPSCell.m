@@ -39,12 +39,14 @@
 -(void)setupcell{
     
     UILabel*Lable =[[UILabel alloc]initWithFrame:CGRectMake(0, 0, kWidth, 40)];
-    Lable.text=@"GPS定位: 北京";
+    //Lable.text=@"GPS定位: 北京";
+    Lable.text =@"请选择城市";
     Lable.backgroundColor =[UIColor whiteColor];
     
     UILabel*HotCityLable =[[UILabel alloc]initWithFrame:CGRectMake(5, 45, 50, 20)];
     HotCityLable.text=@"热门城市";
-    HotCityLable.backgroundColor =[UIColor lightGrayColor];
+    HotCityLable.backgroundColor =[UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1];
+
     HotCityLable.font =[UIFont systemFontOfSize:12];
     
     
@@ -58,7 +60,7 @@
     _collection.backgroundColor =[UIColor whiteColor];
     self.collection.delegate = self;
     self.collection.dataSource = self;
-    self.contentView.backgroundColor =[UIColor lightGrayColor];
+    self.contentView.backgroundColor =[UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1];
     [self addSubview:Lable];
     [self.contentView addSubview:HotCityLable];
     [self.contentView addSubview:self.collection];
@@ -72,7 +74,7 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
      HotCityCell*cell  =[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     cell.layer.borderWidth = 0.3;
-    cell.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    cell.layer.borderColor = [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1].CGColor;
     cell.backgroundColor =[UIColor whiteColor];
     if (_array.count>0) {
       HomepageCityListModel*city  =_array[indexPath.row];

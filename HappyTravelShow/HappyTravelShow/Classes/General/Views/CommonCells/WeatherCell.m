@@ -37,7 +37,7 @@
         [self addSubview:self.tempLabel];
         
         //天气状态
-        self.typeLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 40, 30, 30)];
+        self.typeLabel = [[UILabel alloc] initWithFrame:CGRectMake(210, 40, 60, 30)];
         self.typeLabel.font = [UIFont systemFontOfSize:13];
         self.typeLabel.textColor = [UIColor grayColor];
         [self addSubview:self.typeLabel];

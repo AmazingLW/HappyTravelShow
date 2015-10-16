@@ -44,6 +44,8 @@ static BOOL  isOpen = NO;
 //收藏状态
 @property (nonatomic,assign) BOOL isShoucang;
 
+@property (nonatomic,strong) UIAlertView * alterView;
+
 
 @end
 
@@ -136,7 +138,9 @@ static BOOL  isOpen = NO;
         NSString *sqldelete = [NSString stringWithFormat:@"delete from Shoucang where detail = '%@' and userID = '%@'",[NSString stringWithFormat:@"%ld",self.detailID],[AVUser currentUser].objectId];
         BOOL isSuc = [[DataBase shareData] deleteDataFromShoucang:sqldelete];
         if (isSuc) {
-            [self p_showAlertView:@"提示" message:@"取消收藏~"];
+            _alterView = [[UIAlertView alloc] initWithTitle:@"取消收藏" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+            [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(dismissActionAlterView) userInfo:nil repeats:NO];
+            [_alterView show];
             _isShoucang = NO;
         }else{
             [self p_showAlertView:@"提示" message:@"取消收藏失败~"];
@@ -161,7 +165,9 @@ static BOOL  isOpen = NO;
             
             BOOL isSuc =[[DataBase shareData] insertDataIntoTable:insertSql];
             if (isSuc) {
-                [self p_showAlertView:@"提示" message:@"收藏成功~"];
+                _alterView = [[UIAlertView alloc] initWithTitle:@"收藏成功" message:nil delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+                [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(dismissActionAlterView) userInfo:nil repeats:NO];
+                [_alterView show];
                 _isShoucang = YES;
             }else{
                 [self p_showAlertView:@"提示" message:@"收藏失败~"];
@@ -309,6 +315,11 @@ static BOOL  isOpen = NO;
     
 }
 
+- (void)dismissActionAlterView{
+    [_alterView dismissWithClickedButtonIndex:0 animated:YES];
+}
+
+
 - (void)didClickCell:(NSInteger)index height:(CGFloat)height isopen:(bool)isopen{
     _cellBigHeight = height;
     if (index == 4) {
@@ -370,8 +381,9 @@ static BOOL  isOpen = NO;
             detailVC.htmlData = model.productIntroduction;
         }
         
-        UINavigationController *detailNV = [[UINavigationController alloc] initWithRootViewController:detailVC];
-        [self presentViewController:detailNV animated:YES completion:nil];
+        detailVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:detailVC animated:YES];
+        detailVC.hidesBottomBarWhenPushed = YES;
     }else if (indexPath.section == 2) {
         FindPlaceVC *findVC = [FindPlaceVC new];
         findVC.isHaveWeatherInfo = NO;
@@ -397,7 +409,7 @@ static BOOL  isOpen = NO;
 - (UITableView *)detailTableView{
     if (_detailTableView == nil) {
         _detailTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) style:UITableViewStyleGrouped];
-        _detailTableView.backgroundColor = [UIColor lightGrayColor];
+
         
     }
     return _detailTableView;
@@ -451,7 +463,6 @@ static BOOL  isOpen = NO;
     }else{
         //没有的话就插入到表里面，先判断是不是15个，把最前面的数据删了
         NSInteger count = [[DataBase shareData] selectDataCountWithTableName:@"History"];
-        NSLog(@"%ld=========",count);
         if (count >=  15){
             //删除id最小的 然后插入
             [[DataBase shareData] deleteMinIDInHistory];
@@ -465,7 +476,6 @@ static BOOL  isOpen = NO;
         
         [[DataBase shareData] insertDataIntoTable:insertSql];
 
-        NSLog(@"suc");
     }
 }
 

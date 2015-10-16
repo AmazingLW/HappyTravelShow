@@ -15,7 +15,7 @@
 - (void)requestWithCityName:(NSString *)name finish:(void (^)(NSArray * array))result;
 
 
-#warning 修改过
+
 //所有景点数据
 - (void)requsetAllScenicsWithPage:(NSInteger)page CityName:(NSString *)name finish:(void(^)(NSArray *scenic))result;
 
@@ -27,7 +27,7 @@
 //列表小景点
 - (void)requestLittleScenicWithScenicName:(NSString *)scenicName cityName:(NSString *)cityName finish:(void (^)(NSArray * array))result;
 
-#warning 修改
+
 //筛选
 //当 目的城市为全部 景点全部  排序方式改变   筛选方式改变  city(景德镇)
 //#define chooseAllScenic(sortType,tagName,cityName)
@@ -75,7 +75,7 @@
 
 - (void)requestHotCityWithCityID:(NSInteger)cityID result:(void (^)(NSArray * array))result;
 
-#warning 修改
+
 //热门城市
 - (void)requestHotCityListWithKeyWord:(NSString *)keyWord p:(NSInteger)p city:(NSString *)city result:(void(^)(NSArray * array)) result;
 

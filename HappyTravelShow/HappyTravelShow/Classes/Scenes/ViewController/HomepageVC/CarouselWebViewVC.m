@@ -55,7 +55,7 @@
     
     [self webView];
     
-    
+    self.title = self.titleW;
     
 }
 

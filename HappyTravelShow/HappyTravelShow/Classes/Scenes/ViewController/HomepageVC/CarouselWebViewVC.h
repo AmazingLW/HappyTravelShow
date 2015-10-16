@@ -10,5 +10,5 @@
 
 @interface CarouselWebViewVC : UIViewController
 @property(nonatomic,strong)NSString*url;
-
+@property(nonatomic ,strong)NSString *titleW;
 @end
