@@ -134,16 +134,17 @@
     
      self.uiTableView.header=[MJRefreshNormalHeader headerWithRefreshingBlock:^{
         
-         [[FinderHelper sharedHelper]getDataWithPageSize:self.pageSize*self.currentPage CityCode:self.cityCode pageIndex:1 Finish:^(NSMutableArray *arr) {
-             self.dataArray=[NSMutableArray array];
+         self.currentPage=1;
+         [[FinderHelper sharedHelper]getDataWithPageSize:self.pageSize CityCode:self.cityCode pageIndex:self.currentPage Finish:^(NSMutableArray *arr) {
+             //self.dataArray=[NSMutableArray array];
              self.dataArray=[arr mutableCopy];
              [self.uiTableView reloadData];
 
-              [self.uiTableView.header endRefreshing];
 
              
          }];
-         
+         [self.uiTableView.header endRefreshing];
+
      }];
     
          
@@ -158,10 +159,10 @@
             
             [self.dataArray addObjectsFromArray:arr];
             [self.uiTableView reloadData];
-            [self.uiTableView.footer endRefreshingWithNoMoreData];
             
 
         }];
+        [self.uiTableView.footer endRefreshing];
 
         
     }];
