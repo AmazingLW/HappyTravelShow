@@ -394,11 +394,13 @@ static NSString *const reuse = @"cell";
     }else if ((_sort == 0 && _tag != 0 && _scenic != 0)|| [_tmpsort isEqualToString:@"默认排序"]){
         
         if ([_tmptag isEqualToString:@"全部"]) {
-            
-             [self requestDataWithScenicName:_tmpscenic sort:_tmpsort tagName:nil cityName:self.cityName];
-        }
-        [self requestDataWithScenicName:_tmpscenic sort:@"n" tagName:_tmptag cityName:self.cityName];
+            _tmptag = nil;
+//             [self requestDataWithScenicName:_tmpscenic sort:_tmpsort tagName:nil cityName:self.cityName];
+           [self requestDataWithScenicName:_tmpscenic sort:@"n" tagName:nil cityName:self.cityName];
+        }{
         
+        [self requestDataWithScenicName:_tmpscenic sort:@"n" tagName:_tmptag cityName:self.cityName];
+        }
        //如果三个都点击了 并且都不是第一个
     }else if ((_sort != 0 && _tag != 0 && _scenic != 0) && ((![_tmpsort isEqualToString:@"默认排序"]) && (![_tmptag isEqualToString:@"全部"])&& (![_tmpscenic isEqualToString:@"全部"]))){
         
@@ -415,6 +417,7 @@ static NSString *const reuse = @"cell";
         }
        //如果只点击了 排序  景点全部 筛选是默认
     }else if ((_sort != 0 && _tag == 0 && _scenic == 0) ||([_tmptag isEqualToString:@"全部"] && [_tmpscenic isEqualToString:@"全部"])){
+        
         
         [self onlySortWithType:_tmpsort];
         // 当点击了 排序 和 筛选  景点全部时
