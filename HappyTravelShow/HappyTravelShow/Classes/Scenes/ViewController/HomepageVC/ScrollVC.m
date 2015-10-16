@@ -20,6 +20,7 @@
 #import "FinderURL.h"
 #import "UIImageView+WebCache.h"
 #import "MJRefresh.h"
+#import "FinderHelper.h"
 @interface ScrollVC ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *uiTableView;
 @end
