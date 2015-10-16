@@ -110,7 +110,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     
-    return 1;
+    return 2;
 }
 
 
@@ -294,6 +294,13 @@
 
         
     }else if (indexPath.section==3&&indexPath.row==1){
+        
+        //判断用户是否登录
+        if ([AVUser currentUser] == nil) {
+            [self p_showAlertView:@"提示" message:@"请先登录"];
+            return;
+        }
+        
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"确认退出此账号么" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         alertView.tag = 1002;
         [alertView show];
