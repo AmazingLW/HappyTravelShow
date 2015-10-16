@@ -82,14 +82,14 @@
 }
 
 
-#warning 修改过
+
 //所有景点数据
 - (void)requsetAllScenicsWithPage:(NSInteger)page CityName:(NSString *)name finish:(void(^)(NSArray *scenic))result{
     
     NSString *url = AllScenic(page,name);
     
     NSString *codeUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-   //NSLog(@"all%@",codeUrl);
+   NSLog(@"all%@",codeUrl);
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
         _allScien = [NSMutableArray array];
@@ -148,7 +148,7 @@
  
 }
 
-#warning 修改
+
 //筛选
 //当目的城市为全部使筛选  cityName 是定位时的城市
 
@@ -488,7 +488,7 @@
     
     
 }
-#warning 修改
+
 //热门城市列表
 - (void)requestHotCityListWithKeyWord:(NSString *)keyWord p:(NSInteger)p city:(NSString *)city result:(void(^)(NSArray * array)) result{
     
