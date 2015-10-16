@@ -28,6 +28,7 @@
         //标题
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 230, 80)];
         self.titleLabel.numberOfLines = 0;
+        self.titleLabel.font = [UIFont systemFontOfSize:15];
         [_backView addSubview:self.titleLabel];
         
         //价格

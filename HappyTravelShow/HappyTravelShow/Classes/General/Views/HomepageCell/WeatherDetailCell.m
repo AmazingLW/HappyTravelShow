@@ -43,7 +43,7 @@
     
     self.weatherView=[[UIImageView alloc]initWithFrame:CGRectMake(kWidth/2-34, 112, 20, 20)];
     
-    self.lab4weather=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-4, 109, 40, 30)];
+    self.lab4weather=[[UILabel alloc]initWithFrame:CGRectMake(kWidth/2-4, 109, 80, 30)];
     self.lab4weather.font=[UIFont systemFontOfSize:15];
   //========================================================
     

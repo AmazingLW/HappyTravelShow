@@ -30,13 +30,12 @@
         [self addSubview:_iconImgView];
         
         _typeLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 7, 80, 10)];
-        _typeLabel.text = @"地址";
         _typeLabel.font = [UIFont systemFontOfSize:15];
         _typeLabel.textColor = [UIColor grayColor];
         [self addSubview:_typeLabel];
         
-        _detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 28, 220, 20)];
-        _detailLabel.text = @"北京市谷水北镇司马台景区";
+        _detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(45, 28, 260, 20)];
+
         [self addSubview:_detailLabel];
         
         

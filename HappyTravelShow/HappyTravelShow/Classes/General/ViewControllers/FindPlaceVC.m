@@ -31,8 +31,6 @@
     self.title = @"查看地址";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.scrollEnabled = NO;
-    
     [self drawMapView];
     self.view.backgroundColor = [UIColor grayColor];
     [self.view addSubview:self.tableView];
@@ -77,7 +75,7 @@
     [backView addSubview:self.mapView];
     
     //标题
-    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 175, 200, 30)];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 175, 250, 30)];
     self.titleLabel.text = self.placeTitle;
     [backView addSubview:self.titleLabel];
     
@@ -132,7 +130,7 @@
     titleLabel.text = @"当地天气";
     [backView addSubview:titleLabel];
     
-    UILabel *fromLabel = [[UILabel alloc] initWithFrame:CGRectMake(175, 13, 180, 20)];
+    UILabel *fromLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 170, 13, 180, 20)];
     fromLabel.text = @"以下天气由中国天气网提供";
     fromLabel.font = [UIFont systemFontOfSize:14];
     fromLabel.textColor = [UIColor grayColor];
