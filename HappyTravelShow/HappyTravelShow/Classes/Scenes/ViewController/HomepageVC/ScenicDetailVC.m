@@ -356,9 +356,17 @@
         ComDetailVC * detailVC = [ComDetailVC new];
         detailVC.bookID = [baokuanModel.productId integerValue];
         detailVC.detailID = [baokuanModel.productId integerValue];
-        detailVC.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:detailVC animated:YES];
-        detailVC.hidesBottomBarWhenPushed = YES;
+//        detailVC.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:detailVC animated:YES];
+//        detailVC.hidesBottomBarWhenPushed = YES;
+        
+//        [self presentViewController:detailVC animated:YES completion:nil];
+        
+        UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:detailVC];
+        detailVC.isSciencePage = YES;
+        [self presentViewController:rootNC animated:YES completion:nil];
+        
+        
     }
 }
 

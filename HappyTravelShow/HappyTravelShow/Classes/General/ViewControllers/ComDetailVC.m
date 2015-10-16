@@ -119,7 +119,12 @@ static BOOL  isOpen = NO;
 }
 
 - (void)detailBackAction{
-    [self.navigationController popViewControllerAnimated:YES];
+    if(_isSciencePage){
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else{
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
 }
 
 //收藏

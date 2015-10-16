@@ -110,8 +110,7 @@
 
 
 - (void)backAction{
-    [self.navigationController popToRootViewControllerAnimated:YES];
-
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

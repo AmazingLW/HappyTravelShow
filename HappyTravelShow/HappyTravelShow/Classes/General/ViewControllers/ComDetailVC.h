@@ -12,7 +12,8 @@
 
 @property (nonatomic,strong) UITableView * detailTableView;
 
-
+//判断是不是热门景区跳转来的
+@property (nonatomic,assign) BOOL isSciencePage;
 //预定 id
 @property (nonatomic,assign) NSInteger bookID;
 
