@@ -94,7 +94,7 @@
      
      */
     
-    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(10, [UIScreen mainScreen].bounds.size.height -40, 300, 20)];
+    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake([UIScreen mainScreen].bounds.size.width/2.0 - 150, [UIScreen mainScreen].bounds.size.height -40, 300, 20)];
     
     pageControl.tag =100;
     
@@ -112,12 +112,11 @@
     
     //设置选中点的颜色
     
-    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor orangeColor];
     
     //添加响应事件
     
     [pageControl addTarget:self action:@selector(handlePageControl:)forControlEvents:UIControlEventValueChanged];
-    
     [self.view addSubview:pageControl];
 }
 
@@ -128,7 +127,7 @@
     if (scrollView.contentOffset.x == 0) {
         pagControl.currentPage = 0;
     }else{
-        pagControl.currentPage = scrollView.contentOffset.x / 375+1;
+        pagControl.currentPage = scrollView.contentOffset.x / ([UIScreen mainScreen].bounds.size.width) ;
     }
 }
 
