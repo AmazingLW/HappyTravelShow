@@ -97,7 +97,8 @@ static NSString *const reuse = @"cell";
        UITextField *textfield = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 20, 29)];
          textfield.enabled = NO;
         textfield.placeholder = @"搜索目的地/景点/酒店";
-        textfield.backgroundColor = [UIColor lightGrayColor];
+        textfield.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
+
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         
         label.text = @"🔍";

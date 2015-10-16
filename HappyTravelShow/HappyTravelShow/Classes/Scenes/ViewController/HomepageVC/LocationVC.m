@@ -34,7 +34,7 @@
     [self creatNavBar];
     [self steupView];
     self.KeyArray =[@[@"",@"A",@"B",@"C",@"D",@"E",@"F",@"G",@"H",@"J",@"K",@"L",@"M",@"N",@"P",@"Q",@"R",@"S",@"T",@"W",@"X",@"Y",@"Z"]mutableCopy];
-    self.view.backgroundColor =[UIColor lightGrayColor];
+    self.view.backgroundColor =[UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
      [self.tableView registerClass:[GPSCell class] forCellReuseIdentifier:@"cellc"];
     
@@ -116,7 +116,7 @@
        GPSCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellc" forIndexPath:indexPath];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
        // cell.selected = NO;
-        cell.backgroundColor =[UIColor lightGrayColor];
+        cell.backgroundColor =[UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1];
         cell.block =^(NSString *string,NSString *cityName,NSString *cityCode){
 
             self.string = string;

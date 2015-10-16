@@ -158,7 +158,8 @@ static NSString *const reuse = @"cell";
     textfield.clearsOnBeginEditing = YES;
     
     textfield.returnKeyType = UIReturnKeySearch;
-    textfield.backgroundColor = [UIColor lightGrayColor];
+    textfield.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
+
     
     
     UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
