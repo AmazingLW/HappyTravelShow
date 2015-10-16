@@ -27,11 +27,11 @@
         _headerImgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 180)];
         _headerImgView.userInteractionEnabled = YES;
         
-//        _backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        _backBtn.frame = CGRectMake(10, 13, 40, 40);
-//        [_backBtn setImage:[UIImage imageNamed:@"detailBack"] forState:UIControlStateNormal];
-//        _backBtn.alpha = 0.6;
-//        [_backBtn addTarget:self action:@selector(backToHomepage) forControlEvents:UIControlEventTouchUpInside];
+        _backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        _backBtn.frame = CGRectMake(10, 13, 40, 40);
+        [_backBtn setImage:[UIImage imageNamed:@"detailBack"] forState:UIControlStateNormal];
+        _backBtn.alpha = 0.6;
+        [_backBtn addTarget:self action:@selector(backToHomepage) forControlEvents:UIControlEventTouchUpInside];
         
         
         _shareBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -55,12 +55,12 @@
     return self;
 }
 
-//- (void)backToHomepage{
-//    if (self.delegate && [self.delegate respondsToSelector:@selector(backToHomepage)]) {
-//        [self.delegate backToHomepage];
-//    }
-//    
-//}
+- (void)backToHomepage{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(backToHomepage)]) {
+        [self.delegate backToHomepage];
+    }
+    
+}
 
 - (void)shareAction:(UIButton *)sender{
     self.shareBlock();
