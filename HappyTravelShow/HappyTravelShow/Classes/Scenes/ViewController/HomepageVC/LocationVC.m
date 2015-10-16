@@ -62,7 +62,7 @@
     
     
     [self.view addSubview:_tableView];
-    [self.view addSubview:textFiled];
+    //[self.view addSubview:textFiled];
 }
 
 //键盘回收

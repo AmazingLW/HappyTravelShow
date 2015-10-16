@@ -18,7 +18,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self drawNavControllers];
-    
+    self.title =self.titleW;
+    //self.title = @"门票";
     UIButton *leftButton=[UIButton buttonWithType:UIButtonTypeCustom];
     leftButton.frame=CGRectMake(0, 0, 30, 30);
     [leftButton setImage:[UIImage imageNamed:@"back.png"] forState:UIControlStateNormal];
@@ -40,6 +41,7 @@
     RecommendVC.CityArray = [self.CityArray mutableCopy];
     RecommendVC.CityCode = self.CityCode;
     RecommendVC.CityName =self.CityName;
+    RecommendVC.titleW =self.titleW;
 
     CategoryDetailsVC*NewVC  =[[CategoryDetailsVC alloc]initWithStyle:UITableViewStylePlain AndWithSort:@"xp" AndWithCitySort:5];
     NewVC.title=@"     最新       ";
@@ -48,6 +50,7 @@
     NewVC.CityArray = [self.CityArray mutableCopy];
     NewVC.CityName =self.CityName;
     NewVC.CityCode =self.CityCode;
+    NewVC.titleW =self.titleW;
 
     CategoryDetailsVC*DistanceVC =[[CategoryDetailsVC alloc]initWithStyle:UITableViewStylePlain AndWithSort:@"d" AndWithCitySort:6];
     DistanceVC.title=@"    距离       ";
@@ -56,6 +59,9 @@
     DistanceVC.CityArray = [self.CityArray mutableCopy];
     DistanceVC.CityCode =self.CityCode;
     DistanceVC.CityName =self.CityName;
+    DistanceVC.titleW =self.titleW;
+    
+
     SCNavTabBarController *navTabBarController = [[SCNavTabBarController alloc] initWithShowArrowButton:YES];
     navTabBarController.subViewControllers = @[RecommendVC,NewVC,DistanceVC];
     //    箭头
