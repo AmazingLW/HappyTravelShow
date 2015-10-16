@@ -443,6 +443,7 @@ static BOOL  isOpen = NO;
     
     UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:photoVC];
     
+    
     [self presentViewController:rootNC animated:YES completion:nil];
 }
 
