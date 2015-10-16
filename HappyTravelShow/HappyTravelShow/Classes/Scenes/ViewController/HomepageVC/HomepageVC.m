@@ -60,7 +60,8 @@
         UITextField *textfield = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width - 70, 29)];
         textfield.enabled = NO;
         textfield.placeholder = @"搜索目的地/景点/酒店";
-        textfield.backgroundColor = [UIColor lightGrayColor];
+        textfield.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
+
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
         
         label.text = @"🔍";
@@ -243,7 +244,10 @@
     _collection.backgroundColor =[UIColor whiteColor];
     _collection.dataSource =self;
     _collection.delegate =self;
-    _collection.backgroundColor =[UIColor lightGrayColor];
+   // _collection.backgroundColor =[UIColor lightGrayColor];
+    
+    
+    _collection.backgroundColor =[UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1];
     [self.view addSubview:_collection];
     
 }
@@ -626,8 +630,9 @@
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[0];
     dateailVC.scenicID =[scenic.cityId integerValue];
-   
-    [self presentViewController:dateailVC animated:YES completion:nil];
+    dateailVC.hidesBottomBarWhenPushed =YES;
+    [self.navigationController pushViewController:dateailVC animated:YES];
+//    [self presentViewController:dateailVC animated:YES completion:nil];
 }
 
 - (void)getDetailControllerB2{
@@ -635,49 +640,63 @@
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[1];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    [self presentViewController:dateailVC animated:YES completion:nil];
+    //[self presentViewController:dateailVC animated:YES completion:nil];
+    dateailVC.hidesBottomBarWhenPushed =YES;
+    [self.navigationController pushViewController:dateailVC animated:YES];
 }
 - (void)getDetailControllerB3{
     
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[2];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    [self presentViewController:dateailVC animated:YES completion:nil];
+    //[self presentViewController:dateailVC animated:YES completion:nil];
+    dateailVC.hidesBottomBarWhenPushed =YES;
+    [self.navigationController pushViewController:dateailVC animated:YES];
 }
 - (void)getDetailControllerB4{
     
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[3];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    [self presentViewController:dateailVC animated:YES completion:nil];
+    //[self presentViewController:dateailVC animated:YES completion:nil];
+    dateailVC.hidesBottomBarWhenPushed =YES;
+    [self.navigationController pushViewController:dateailVC animated:YES];
 }
 - (void)getDetailControllerB5{
     
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[4];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    [self presentViewController:dateailVC animated:YES completion:nil];
+    //[self presentViewController:dateailVC animated:YES completion:nil];
+    dateailVC.hidesBottomBarWhenPushed =YES;
+    [self.navigationController pushViewController:dateailVC animated:YES];
 }
 - (void)getDetailControllerB6{
     
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[5];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    [self presentViewController:dateailVC animated:YES completion:nil];
+    //[self presentViewController:dateailVC animated:YES completion:nil];
+    dateailVC.hidesBottomBarWhenPushed =YES;
+    [self.navigationController pushViewController:dateailVC animated:YES];
 }
 - (void)getDetailControllerB7{
     
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[6];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    [self presentViewController:dateailVC animated:YES completion:nil];
+    //[self presentViewController:dateailVC animated:YES completion:nil];
+    dateailVC.hidesBottomBarWhenPushed =YES;
+    [self.navigationController pushViewController:dateailVC animated:YES];
 }
 - (void)getDetailControllerB8{
     
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[7];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    [self presentViewController:dateailVC animated:YES completion:nil];
+    //[self presentViewController:dateailVC animated:YES completion:nil];
+    dateailVC.hidesBottomBarWhenPushed =YES;
+    [self.navigationController pushViewController:dateailVC animated:YES];
 }
 
 

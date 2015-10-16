@@ -64,7 +64,8 @@ static NSString *const footer = @"footer";
         
         _textfield = [[UITextField alloc] initWithFrame:CGRectMake(30 , 0,_a.frame.size.width - 90 , 29)];
         _textfield.placeholder = @"搜索目的地/景点/酒店";
-        _textfield.backgroundColor = [UIColor lightGrayColor];
+        _textfield.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
+
         _textfield.returnKeyType = UIReturnKeySearch;
         _textfield.delegate = self;
         
