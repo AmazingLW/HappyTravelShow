@@ -26,13 +26,15 @@
         
         
         //标题
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 250, 40)];
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(5, 5, 230, 80)];
+        self.titleLabel.numberOfLines = 0;
         [_backView addSubview:self.titleLabel];
         
         //价格
         
         self.priceLabel = [[UILabel alloc] initWithFrame:CGRectMake(kScreenWidth - 140, 23, 60, 30)];
         self.priceLabel.textColor = [UIColor orangeColor];
+        self.priceLabel.textAlignment = NSTextAlignmentRight;
         [_backView addSubview:self.priceLabel];
         
         

@@ -339,9 +339,9 @@
         ComDetailVC * detailVC = [ComDetailVC new];
         detailVC.bookID = [baokuanModel.productId integerValue];
         detailVC.detailID = [baokuanModel.productId integerValue];
-        UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:detailVC];
-        
-        [self presentViewController:rootNC animated:YES completion:nil];
+        detailVC.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:detailVC animated:YES];
+        detailVC.hidesBottomBarWhenPushed = YES;
     }
 }
 
