@@ -23,6 +23,7 @@
 #import "FinderHelper.h"
 @interface ScrollVC ()<UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong)UITableView *uiTableView;
+@property(nonatomic,strong) NSMutableArray  *kindArray;
 @end
 
 @implementation ScrollVC
@@ -65,12 +66,19 @@
     customLab.text=self.model.title;
     customLab.font = [UIFont boldSystemFontOfSize:20];
     self.navigationItem.titleView = customLab;
-    [[FinderHelper sharedHelper]requestDataWithThemeId:self.cityCode cityCode:self.cityNum pageIndex:@"1" Finish:^{
+//    [[FinderHelper sharedHelper]requestDataWithThemeId:self.cityCode cityCode:self.cityNum pageIndex:@"1" Finish:^{
+//        [self.uiTableView reloadData];
+//        
+//    }];
+    
+    [[FinderHelper sharedHelper]requestDataWithPageSize:10 ThemeId:self.cityCode cityCode:self.cityNum pageIndex:1 Finish:^(NSMutableArray *arr) {
+        self.kindArray=[NSMutableArray array];
+        self.kindArray=[arr mutableCopy];
+        
         [self.uiTableView reloadData];
         
+        
     }];
-    
-    
 }
 
 
@@ -97,20 +105,19 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
    
-    return [FinderHelper sharedHelper].kindArray.count;
+    return _kindArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
-    
+
     CommonCells *cell=[self.uiTableView dequeueReusableCellWithIdentifier:@"commonCell" forIndexPath:indexPath];
     
-    cell.kindModel=[FinderHelper sharedHelper].kindArray[indexPath.row];
+    cell.kindModel=self.kindArray[indexPath.row];
     cell.selectionStyle=UITableViewCellSelectionStyleNone;
     
     return cell;
-    
     
     
 }
@@ -133,12 +140,12 @@
     ComDetailVC *comVC = [ComDetailVC new];
   
         
-        //获取model对象
-        FinderKindModel *model = [FinderHelper sharedHelper].kindArray[indexPath.row];
-        comVC.bookID = [model.channelLinkId intValue];
-        comVC.detailID = [model.productId intValue];
-        [self.navigationController pushViewController:comVC animated:YES];
-        
+
+    //获取model对象
+    FinderKindModel *model = self. kindArray[indexPath.row];
+    comVC.bookID = [model.channelLinkId intValue];
+    comVC.detailID = [model.productId intValue];
+    [self.navigationController pushViewController:comVC animated:YES];
     
     
 }
