@@ -59,6 +59,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //self.title =self.titleW;
     [self.tableView registerNib:[UINib nibWithNibName:@"CommonCells" bundle:nil] forCellReuseIdentifier:@"cell"];
     
 
@@ -189,7 +191,7 @@
         cell.lab4productName.text = city.productName;
         cell.lab4productTitleContent.text =[NSString stringWithFormat:@"[%@]%@",city.city,city.productTitleContent];
         cell.lab4productTitleContent.numberOfLines = 2;
-        cell.lab4originalPrice.text = [NSString stringWithFormat:@"￥%ld",city.retailPrice];
+        cell.lab4originalPrice.text = [NSString stringWithFormat:@"%ld",city.retailPrice];
         cell.lab4originalPrice.frame = CGRectMake(236, 80, 50, 21);
         cell.lab4price.text = [NSString stringWithFormat:@"%ld",city.price];
         cell.lab4saledCount.text = [NSString stringWithFormat:@"已售%ld",city.saledCount];
