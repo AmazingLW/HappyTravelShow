@@ -244,7 +244,6 @@
     _collection.backgroundColor =[UIColor whiteColor];
     _collection.dataSource =self;
     _collection.delegate =self;
-   // _collection.backgroundColor =[UIColor lightGrayColor];
     
     
     _collection.backgroundColor =[UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1];
@@ -357,6 +356,7 @@
         cell.cate4lable.text=header.title;
         [cell.cate4image sd_setImageWithURL:[NSURL URLWithString:header.app_picpath]placeholderImage:[UIImage imageNamed:@"picholder"]];
             }}
+        self.collection.backgroundColor =[UIColor whiteColor];
         return cell;
     }else if (indexPath.section==2){
         PackageCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"pack" forIndexPath:indexPath];
@@ -368,7 +368,7 @@
         [cell.path4image sd_setImageWithURL:[NSURL URLWithString:header.n_app_picpath]placeholderImage:[UIImage imageNamed:@"picholder"]];
             }}
         cell.layer.borderWidth = 0.3;
-        cell.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        cell.layer.borderColor = [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1].CGColor;
         return cell;
     }else if (indexPath.section==3){
         HotScenicCell *cell =[collectionView dequeueReusableCellWithReuseIdentifier:@"hot" forIndexPath:indexPath];
@@ -408,7 +408,7 @@
         [cell.bigUrl4image sd_setImageWithURL:[NSURL URLWithString:package.bigImageUrl]placeholderImage:[UIImage imageNamed:@"picholder"]];
         }}
         cell.layer.borderWidth = 0.3;
-        cell.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        cell.layer.borderColor = [UIColor colorWithRed:245/255.0 green:245/255.0 blue:245/255.0 alpha:1].CGColor;
         return cell;
     }else{
         UICollectionViewCell*cell  =[collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
@@ -421,7 +421,7 @@
     if (indexPath.section ==0) {
         return CGSizeMake(kWidth, 120);
     }else if (indexPath.section ==1) {
-        return CGSizeMake(kWidth/5, 65);
+        return CGSizeMake(kWidth/5.00, 65);
     }else if (indexPath.section ==2){
         return CGSizeMake(kWidth/2, 60);
         
@@ -448,6 +448,7 @@
     if (section==2||section==3||section==1) {
         return UIEdgeInsetsMake(0, 0, 5, 0);
     }
+    
     return UIEdgeInsetsMake(0, 0, 0, 0); // top, left, bottom, right
 }
 //点击cell
@@ -630,9 +631,7 @@
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[0];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    dateailVC.hidesBottomBarWhenPushed =YES;
-    [self.navigationController pushViewController:dateailVC animated:YES];
-//    [self presentViewController:dateailVC animated:YES completion:nil];
+    [self presentViewController:dateailVC animated:YES completion:nil];
 }
 
 - (void)getDetailControllerB2{
@@ -640,63 +639,56 @@
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[1];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    //[self presentViewController:dateailVC animated:YES completion:nil];
-    dateailVC.hidesBottomBarWhenPushed =YES;
-    [self.navigationController pushViewController:dateailVC animated:YES];
+    [self presentViewController:dateailVC animated:YES completion:nil];
+
 }
 - (void)getDetailControllerB3{
     
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[2];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    //[self presentViewController:dateailVC animated:YES completion:nil];
-    dateailVC.hidesBottomBarWhenPushed =YES;
-    [self.navigationController pushViewController:dateailVC animated:YES];
+    [self presentViewController:dateailVC animated:YES completion:nil];
+  
 }
 - (void)getDetailControllerB4{
     
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[3];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    //[self presentViewController:dateailVC animated:YES completion:nil];
-    dateailVC.hidesBottomBarWhenPushed =YES;
-    [self.navigationController pushViewController:dateailVC animated:YES];
+    [self presentViewController:dateailVC animated:YES completion:nil];
+  
 }
 - (void)getDetailControllerB5{
     
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[4];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    //[self presentViewController:dateailVC animated:YES completion:nil];
-    dateailVC.hidesBottomBarWhenPushed =YES;
-    [self.navigationController pushViewController:dateailVC animated:YES];
+    [self presentViewController:dateailVC animated:YES completion:nil];
+   
 }
 - (void)getDetailControllerB6{
     
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[5];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    //[self presentViewController:dateailVC animated:YES completion:nil];
-    dateailVC.hidesBottomBarWhenPushed =YES;
-    [self.navigationController pushViewController:dateailVC animated:YES];
+    [self presentViewController:dateailVC animated:YES completion:nil];
+   
 }
 - (void)getDetailControllerB7{
     
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[6];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    //[self presentViewController:dateailVC animated:YES completion:nil];
-    dateailVC.hidesBottomBarWhenPushed =YES;
-    [self.navigationController pushViewController:dateailVC animated:YES];
+    [self presentViewController:dateailVC animated:YES completion:nil];
+    
 }
 - (void)getDetailControllerB8{
     
     ScenicDetailVC*dateailVC =[ScenicDetailVC new];
     HomepageScenicModel*scenic = self.ScenicArr[7];
     dateailVC.scenicID =[scenic.cityId integerValue];
-    //[self presentViewController:dateailVC animated:YES completion:nil];
-    dateailVC.hidesBottomBarWhenPushed =YES;
-    [self.navigationController pushViewController:dateailVC animated:YES];
+    [self presentViewController:dateailVC animated:YES completion:nil];
+   
 }
 
 

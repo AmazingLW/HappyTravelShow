@@ -309,9 +309,11 @@ static NSString *const footer = @"footer";
     cell.backgroundColor = [UIColor lightGrayColor];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 80, 20)];
+    label.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
     label.center = CGPointMake(cell.frame.size.width / 2, cell.frame.size.height / 2);
     label.text = _cityArray[indexPath.row];
     
+    cell.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
     [cell addSubview:label];
     
     return cell;
