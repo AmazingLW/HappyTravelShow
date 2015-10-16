@@ -67,7 +67,7 @@
     //子线程请求数据
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         NSString *url=fURL(pageSize,cityCode, pageIndex);
-        NSLog(@"%@",url);
+       // NSLog(@"%@",url);
         //        //接口编码
         //        NSString *codeURL=[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         AFHTTPRequestOperationManager *manager=[AFHTTPRequestOperationManager manager];
