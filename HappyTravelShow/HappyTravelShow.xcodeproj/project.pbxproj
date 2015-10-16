@@ -152,6 +152,12 @@
 		C228D79D1BC91003009E383A /* WeatherDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C228D79C1BC91003009E383A /* WeatherDetailCell.m */; };
 		C228D7A01BC93129009E383A /* WeatherDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = C228D79F1BC93129009E383A /* WeatherDetailController.m */; };
 		C228D7A21BC93AD8009E383A /* w.png in Resources */ = {isa = PBXBuildFile; fileRef = C228D7A11BC93AD8009E383A /* w.png */; };
+		C23EFCE11BD117DE0082EF2D /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = C23EFCDD1BD117DD0082EF2D /* 4.png */; };
+		C23EFCE21BD117DE0082EF2D /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = C23EFCDE1BD117DE0082EF2D /* 3.png */; };
+		C23EFCE31BD117DE0082EF2D /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = C23EFCDF1BD117DE0082EF2D /* 1.png */; };
+		C23EFCE41BD117DE0082EF2D /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = C23EFCE01BD117DE0082EF2D /* 2.png */; };
+		C23EFCE71BD1182D0082EF2D /* SController.m in Sources */ = {isa = PBXBuildFile; fileRef = C23EFCE61BD1182D0082EF2D /* SController.m */; };
+		C23EFCEA1BD119B80082EF2D /* TabBarVC.m in Sources */ = {isa = PBXBuildFile; fileRef = C23EFCE91BD119B80082EF2D /* TabBarVC.m */; };
 		C2429DD71BC5454C00151E6E /* FinderMainCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C2429DD61BC5454C00151E6E /* FinderMainCell.xib */; };
 		C25074201BC7631000F62844 /* 33.png in Resources */ = {isa = PBXBuildFile; fileRef = C250741B1BC7631000F62844 /* 33.png */; };
 		C25074211BC7631000F62844 /* 44.png in Resources */ = {isa = PBXBuildFile; fileRef = C250741C1BC7631000F62844 /* 44.png */; };
@@ -475,6 +481,14 @@
 		C228D79E1BC93129009E383A /* WeatherDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WeatherDetailController.h; sourceTree = "<group>"; };
 		C228D79F1BC93129009E383A /* WeatherDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeatherDetailController.m; sourceTree = "<group>"; };
 		C228D7A11BC93AD8009E383A /* w.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = w.png; sourceTree = "<group>"; };
+		C23EFCDD1BD117DD0082EF2D /* 4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 4.png; sourceTree = "<group>"; };
+		C23EFCDE1BD117DE0082EF2D /* 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 3.png; sourceTree = "<group>"; };
+		C23EFCDF1BD117DE0082EF2D /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
+		C23EFCE01BD117DE0082EF2D /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
+		C23EFCE51BD1182D0082EF2D /* SController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SController.h; sourceTree = "<group>"; };
+		C23EFCE61BD1182D0082EF2D /* SController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SController.m; sourceTree = "<group>"; };
+		C23EFCE81BD119B80082EF2D /* TabBarVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarVC.h; sourceTree = "<group>"; };
+		C23EFCE91BD119B80082EF2D /* TabBarVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarVC.m; sourceTree = "<group>"; };
 		C2429DD61BC5454C00151E6E /* FinderMainCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FinderMainCell.xib; sourceTree = "<group>"; };
 		C250741B1BC7631000F62844 /* 33.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 33.png; sourceTree = "<group>"; };
 		C250741C1BC7631000F62844 /* 44.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 44.png; sourceTree = "<group>"; };
@@ -714,6 +728,8 @@
 			children = (
 				16988D831BC3C864001A1077 /* AppDelegate.h */,
 				16988D841BC3C864001A1077 /* AppDelegate.mm */,
+				C23EFCE81BD119B80082EF2D /* TabBarVC.h */,
+				C23EFCE91BD119B80082EF2D /* TabBarVC.m */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -744,6 +760,8 @@
 		16988D871BC3C864001A1077 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				C23EFCE51BD1182D0082EF2D /* SController.h */,
+				C23EFCE61BD1182D0082EF2D /* SController.m */,
 				16EB2DE71BC6AD8300F51A9F /* ComDetailVC.h */,
 				16EB2DE81BC6AD8300F51A9F /* ComDetailVC.m */,
 				16EB2DE91BC6AD8300F51A9F /* DetailIntroduceController.h */,
@@ -1233,6 +1251,10 @@
 				16411AAA1BCB77AF00E7A54C /* shijian.png */,
 				16DBAC621BC7BE100082A143 /* tianqi.png */,
 				16EB2DC91BC6AB7800F51A9F /* xiiangqing.png */,
+				C23EFCDD1BD117DD0082EF2D /* 4.png */,
+				C23EFCDE1BD117DE0082EF2D /* 3.png */,
+				C23EFCDF1BD117DE0082EF2D /* 1.png */,
+				C23EFCE01BD117DE0082EF2D /* 2.png */,
 			);
 			path = CommonRes;
 			sourceTree = "<group>";
@@ -1555,6 +1577,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C23EFCE41BD117DE0082EF2D /* 2.png in Resources */,
 				165D66701BC5F8CB00BE6567 /* CommonCells.xib in Resources */,
 				C27358C51BC4F43900771457 /* option_arrow_up@2x.png in Resources */,
 				C2269A0B1BC512B1009BBAB0 /* PackageCell.xib in Resources */,
@@ -1567,6 +1590,7 @@
 				C2269A1B1BC5415B009BBAB0 /* city.png in Resources */,
 				C200B2FD1BCDE7760091CDA5 /* UMSLoginViewController.xib in Resources */,
 				C200B2FF1BCDE7760091CDA5 /* UMSShareListController.xib in Resources */,
+				C23EFCE11BD117DE0082EF2D /* 4.png in Resources */,
 				C200B2F81BCDE7760091CDA5 /* UMSCommentDetailController.xib in Resources */,
 				16DBAC631BC7BE100082A143 /* tianqi.png in Resources */,
 				C200B3001BCDE7760091CDA5 /* UMSocialSDKResourcesNew.bundle in Resources */,
@@ -1596,7 +1620,9 @@
 				C200B2FE1BCDE7760091CDA5 /* UMSnsAccountViewController.xib in Resources */,
 				16988D6C1BC3A994001A1077 /* LaunchScreen.xib in Resources */,
 				16E5D8F41BCEB4E500A96F70 /* shoucanged.png in Resources */,
+				C23EFCE21BD117DE0082EF2D /* 3.png in Resources */,
 				16DB11B01BC42505009D7C7D /* homepage.png in Resources */,
+				C23EFCE31BD117DE0082EF2D /* 1.png in Resources */,
 				C2269A1A1BC5415B009BBAB0 /* hot.png in Resources */,
 				16EB2DCC1BC6AB7800F51A9F /* xiiangqing.png in Resources */,
 				C200B2F61BCDE7760091CDA5 /* UMSocialLocalizable.strings in Resources */,
@@ -1704,6 +1730,7 @@
 				165D666F1BC5F8CB00BE6567 /* CommonCells.m in Sources */,
 				C2F2E4DC1BCD093D00A6D17C /* AroundDataBase.m in Sources */,
 				16DBAC5E1BC7ACE30082A143 /* FindPlaceVC.m in Sources */,
+				C23EFCEA1BD119B80082EF2D /* TabBarVC.m in Sources */,
 				16DB11951BC4228D009D7C7D /* SDWebImageManager.m in Sources */,
 				16DB11A71BC4230F009D7C7D /* FinderVC.m in Sources */,
 				16D13ACB1BCA60360022BC96 /* MealTicketCell.m in Sources */,
@@ -1791,6 +1818,7 @@
 				16B224D91BC67365004C125D /* CommonCells+SetModel.m in Sources */,
 				16EB2DEB1BC6AD8300F51A9F /* ComDetailVC.m in Sources */,
 				16DB11941BC4228D009D7C7D /* SDWebImageDownloaderOperation.m in Sources */,
+				C23EFCE71BD1182D0082EF2D /* SController.m in Sources */,
 				16DCCFB11BCB4CFA00A1420A /* ScenicDetailModel.m in Sources */,
 				16988DB31BC3F131001A1077 /* FinderMainCell.m in Sources */,
 				16DB119C1BC4228D009D7C7D /* UIImageView+WebCache.m in Sources */,

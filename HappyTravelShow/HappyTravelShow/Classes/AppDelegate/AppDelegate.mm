@@ -7,13 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "HomepageVC.h"
-#import "AroundVC2.h"
-#import "FinderVC.h"
-#import "MyselfVC.h"
 #import "UMSocial.h"
 #import "UMSocialQQHandler.h"
 #import "UMSocialWechatHandler.h"
+#import "SController.h"
+#import "TabBarVC.h"
 
 @interface AppDelegate ()
 
@@ -23,6 +21,32 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    //引导图
+    NSUserDefaults * userDefaults = [NSUserDefaults standardUserDefaults];
+    if (![userDefaults boolForKey:@"aa"]) {
+        NSLog(@"第一次启动"); //进入说明是第一次启动
+        SController *guideFigureVC=[SController new];
+        
+        //把根视图控制器赋予它
+        self.window.rootViewController =guideFigureVC;
+        [self.window makeKeyAndVisible];
+    }else{
+        
+        self.window.rootViewController = [TabBarVC new];
+
+        
+        [self.window makeKeyAndVisible];
+        
+    }
+
+    
+    
+    
+    
+    
+    
+    
     
         [UMSocialData setAppKey:@"561dd14067e58e135400590f"];
     [UMSocialWechatHandler setWXAppId:@"wxd930ea5d5a258f4f" appSecret:@"db426a9829e4b49a0dcac7b4162da6b6" url:@"http://www.umeng.com/social"];
@@ -41,31 +65,7 @@
     //加载LeanCloud sdk----------
     [AVOSCloud setApplicationId:@"QwqfqtxhKuQRaoqxSPig3cu8"
                       clientKey:@"3aCIY3mApCj2T4of6JJTJkGy"];
-    
-    //周边页
-    UINavigationController *AroundNV = [[UINavigationController alloc] initWithRootViewController:[AroundVC2 new]];
-    
-    
-    //首页
-    UINavigationController *HomepageNV = [[UINavigationController alloc] initWithRootViewController:[HomepageVC new]];
-    
-    
-    
-    //发现页
-    UINavigationController *FinderNV = [[UINavigationController alloc] initWithRootViewController:[FinderVC new]];
-    
-    
-    //我的
-    UINavigationController *MyselfNV = [[UINavigationController alloc] initWithRootViewController:[MyselfVC new]];
 
-    
-    //创建tabbar
-    UITabBarController *rootController = [[UITabBarController alloc] init];
-    rootController.viewControllers = @[HomepageNV,AroundNV,FinderNV,MyselfNV];
-    rootController.tabBar.tintColor = [UIColor orangeColor];
-    
-    
-    self.window.rootViewController = rootController;
 
     
     return YES;

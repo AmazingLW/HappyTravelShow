@@ -16,6 +16,7 @@
 #import "browsedController.h"
 #import "ChangePersonInfoVC.h"
 #import "FinderKindModel.h"
+#import "UMSocial.h"
 
 
 @interface MyselfVC ()<UITableViewDataSource,UITableViewDelegate,LoginDelegate,RegisterDelegate,UIAlertViewDelegate>
@@ -284,7 +285,14 @@
         bVC.hidesBottomBarWhenPushed = YES;
         
     }else if (indexPath.section==3&&indexPath.row==0){
-        NSLog(@"分享我们的App");
+        [UMSocialSnsService presentSnsIconSheetView:self
+                                             appKey:@"561dd14067e58e135400590f"
+                                          shareText:@"亲,这是一款不错的App--乐游show,可以给你推荐很多好玩的地方哦!"
+                                         shareImage:[UIImage imageNamed:@"1.png"]
+                                    shareToSnsNames:[NSArray arrayWithObjects:  UMShareToSina,UMShareToWechatTimeline,UMShareToWechatSession,UMShareToQzone,UMShareToQQ,UMShareToTencent,UMShareToRenren,UMShareToSms,UMShareToDouban,UMShareToEmail, nil ]
+                                           delegate:nil];
+
+        
     }else if (indexPath.section==3&&indexPath.row==1){
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"确认退出此账号么" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
         alertView.tag = 1002;
