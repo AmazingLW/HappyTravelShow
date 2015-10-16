@@ -300,14 +300,14 @@ static NSString *const reuse = @"cell";
                 return tmpArray;
             }];
         }else if (index == 1){
-            CGFloat Hight = 0;
-            if ((weakSelf.scenicArray.count + 1) <= 6) {
-                Hight = 40 * 6;
-            }else if ((weakSelf.scenicArray.count + 1) >= 13){
-                Hight = 515;
-            }else{
-                Hight = (weakSelf.scenicArray.count + 1) * 40;
-            }
+            CGFloat Hight = 240;
+//            if ((weakSelf.scenicArray.count + 1) <= 6) {
+//                Hight = 40 * 6;
+//            }else if ((weakSelf.scenicArray.count + 1) >= 13){
+//                Hight = 515;
+//            }else{
+//                Hight = (weakSelf.scenicArray.count + 1) * 40;
+//            }
             
             aView = [[XIOptionView alloc] initWithFrame:CGRectMake(0, py, dpW, Hight)];
             aView.backgroundColor = [UIColor whiteColor];
@@ -508,22 +508,6 @@ static NSString *const reuse = @"cell";
     [[AroundHelper new] requestDataFromURLStringWithScenicName:scenicName sort:sort tagName:tagName cityName:cityName finish:^(NSArray *array) {
         
         _allScenic = [array mutableCopy];
-        
-        //        UIView *aview = [[UIView alloc] initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height - 40)];
-        //
-        //        aview.backgroundColor = [UIColor whiteColor];
-        //
-        //        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(self.view.frame.size.width / 2, self.view.frame.size.height / 2, 200, 30)];
-        //        label.text = @"对不起我们正在努力开拓产品.....";
-        //        [aview addSubview:label];
-        //
-        //
-        //        if (_allScenic == nil){
-        //
-        //            [self.view insertSubview:aview aboveSubview:self.tableView];
-        //
-        //        }else{
-        //            [aview removeFromSuperview];
         
         
         [self.tableView reloadData];

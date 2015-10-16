@@ -270,14 +270,14 @@ static NSString *const reuse = @"cell";
                 return tmpArray;
             }];
         }else if (index == 1){
-            CGFloat Hight = 0;
-            if ((weakSelf.scenicArray.count + 1) <= 6) {
-                Hight = 40 * 6;
-            }else if ((weakSelf.scenicArray.count + 1) >= 13){
-                Hight = 515;
-            }else{
-                Hight = (weakSelf.scenicArray.count + 1) * 40;
-            }
+            CGFloat Hight = 240;
+//            if ((weakSelf.scenicArray.count + 1) <= 6) {
+//                Hight = 40 * 6;
+//            }else if ((weakSelf.scenicArray.count + 1) >= 13){
+//                Hight = 515;
+//            }else{
+//                Hight = (weakSelf.scenicArray.count + 1) * 40;
+//            }
 
             aView = [[XIOptionView alloc] initWithFrame:CGRectMake(0, py, dpW, Hight)];
             aView.backgroundColor = [UIColor whiteColor];
@@ -405,6 +405,7 @@ static NSString *const reuse = @"cell";
           [self requestDataWithScenicName:_tmpscenic sort:_tmpsort tagName:_tmptag cityName:self.cityName];
         //如果只点击了 筛选  景点全部 排序是默认 sort = n
     }else if ((_sort == 0 && _tag != 0 && _scenic == 0) || ([_tmpsort isEqualToString:@"默认排序"] &&[_tmpscenic isEqualToString:@"全部"])){
+        
         [self sortWithType:@"n" tagName:_tmptag];
         
        //如果只点击了 排序  景点全部 筛选是默认
