@@ -39,7 +39,8 @@
 -(void)setupcell{
     
     UILabel*Lable =[[UILabel alloc]initWithFrame:CGRectMake(0, 0, kWidth, 40)];
-    Lable.text=@"GPS定位: 北京";
+    //Lable.text=@"GPS定位: 北京";
+    Lable.text =@"请选择城市";
     Lable.backgroundColor =[UIColor whiteColor];
     
     UILabel*HotCityLable =[[UILabel alloc]initWithFrame:CGRectMake(5, 45, 50, 20)];

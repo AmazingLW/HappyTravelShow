@@ -15,5 +15,5 @@
 @property(nonatomic,strong)NSString*sort;
 @property(nonatomic,assign)NSInteger CitySort;
 @property(nonatomic,strong)NSMutableArray*CityArray;
-@property(nonatomic,strong)NSString*CityName,*CityCode;
+@property(nonatomic,strong)NSString*CityName,*CityCode,*titleW;
 @end

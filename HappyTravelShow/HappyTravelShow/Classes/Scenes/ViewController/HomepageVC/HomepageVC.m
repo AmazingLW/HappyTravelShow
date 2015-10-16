@@ -308,7 +308,7 @@
                 if ([header.app_url length] >12) {
                     CarouselWebViewVC*WebVC =[CarouselWebViewVC new];
                     WebVC.url = header.app_url;
-            
+                    WebVC.titleW = header.title;
                      WebVC.hidesBottomBarWhenPushed = YES;
                     [self.navigationController pushViewController:WebVC animated:YES];
                 }else if ([header.app_url length] ==3){
@@ -455,14 +455,16 @@
            CategoryVC*cateVC=[CategoryVC new];
             cateVC.urlNum = [self.ProductArr[indexPath.row] app_url];
             cateVC.CName = self.cityName;
-//            UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
-//            [self presentViewController:rootNC animated:YES completion:nil];
+            cateVC.titleW =header.title;
             cateVC.hidesBottomBarWhenPushed =YES;
             [self.navigationController pushViewController:cateVC animated:YES];
         }else if ([header.app_url length]>5){
         CarouselWebViewVC*WebVC =[CarouselWebViewVC new];
         WebVC.url = [self.ProductArr[indexPath.row] app_url];
+              WebVC.titleW = header.title;
             [self.navigationController pushViewController:WebVC animated:YES];
+        }else if ([header.app_url length]==4){
+            
         }else{
 //             NSLog(@"zhoubian");
             self.tabBarController.selectedIndex =1;
@@ -474,14 +476,18 @@
         if ([header.app_url length]>12) {
         CarouselWebViewVC*WebVC =[CarouselWebViewVC new];
         WebVC.url = [self.PackageArr[indexPath.row] app_url];
+        WebVC.titleW = header.title;
         [self.navigationController pushViewController:WebVC animated:YES];
         }else if ([header.app_url length]==2||[header.app_url length]==3) {
             CategoryVC*cateVC=[CategoryVC new];
             cateVC.urlNum = [self.ProductArr[indexPath.row] app_url];
             cateVC.CName = self.cityName;
+            cateVC.titleW =header.title;
             cateVC.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:cateVC animated:YES];
 
+        }else if ([header.app_url length]==4){
+            
         }else{
             
             NSString *str1 = [self.PackageArr[indexPath.row] app_url];
@@ -506,8 +512,6 @@
 
         
         HomepagePackageModel*package =self.RecommendationArr[indexPath.row];
-        
-
         NSInteger productld=package.productId;
         NSInteger nlinkId=package.channelLinkId;
 
@@ -535,6 +539,7 @@
     HomepageScenicModel*a = self.cityArr[0];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
+    cateVC.titleW=a.name;
     UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
     [self presentViewController:rootNC animated:YES completion:nil];
     
@@ -545,6 +550,7 @@
     HomepageScenicModel*a = self.cityArr[1];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
+    cateVC.titleW=a.name;
     UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
     [self presentViewController:rootNC animated:YES completion:nil];
 }
@@ -554,6 +560,7 @@
     HomepageScenicModel*a = self.cityArr[2];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
+    cateVC.titleW=a.name;
     UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
     [self presentViewController:rootNC animated:YES completion:nil];
 }
@@ -563,6 +570,7 @@
     HomepageScenicModel*a = self.cityArr[3];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
+    cateVC.titleW=a.name;
     UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
     [self presentViewController:rootNC animated:YES completion:nil];
 }
@@ -571,6 +579,7 @@
     HomepageScenicModel*a = self.cityArr[4];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
+    cateVC.titleW=a.name;
     UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
     [self presentViewController:rootNC animated:YES completion:nil];}
 - (void)getDetailControllerB14{
@@ -579,6 +588,7 @@
     HomepageScenicModel*a = self.cityArr[5];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
+    cateVC.titleW=a.name;
     UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
     [self presentViewController:rootNC animated:YES completion:nil];
 }
@@ -588,6 +598,7 @@
     HomepageScenicModel*a = self.cityArr[6];
     cateVC.CityName =a.name;
     cateVC.CityCode =a.cityCode;
+    cateVC.titleW=a.name;
     UINavigationController *rootNC = [[UINavigationController alloc] initWithRootViewController:cateVC];
     [self presentViewController:rootNC animated:YES completion:nil];
 }
