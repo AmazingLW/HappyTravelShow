@@ -143,7 +143,7 @@ static NSString *const reuse = @"cell";
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     
-    _allScenic = [NSMutableArray array];
+    //_allScenic = [NSMutableArray array];
 
     [self setupDropdownList];
     
@@ -209,32 +209,32 @@ static NSString *const reuse = @"cell";
     
    // [self requestData];
     
-#warning 修改
-    //刷新
-    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-         _currentPage = 1;
-        [[AroundHelper new] requsetAllScenicsWithPage:_currentPage CityName:_notiName finish:^(NSArray *scenic) {
-            
-            _allScenic = [scenic mutableCopy];
-            [self.tableView reloadData];
-        }];
-        
-        [[self.tableView header]endRefreshing];
-    }];
-    
-    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        _currentPage ++;
-        [[AroundHelper new] requsetAllScenicsWithPage:_currentPage CityName:_notiName finish:^(NSArray *scenic) {
-            
-            [_allScenic  addObjectsFromArray:scenic];
-            [self.tableView reloadData];
-        }];
-
-        
-        
-         [[self.tableView footer]endRefreshing];
-    }];
-    
+//#warning 修改
+//    //刷新
+//    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//         _currentPage = 1;
+//        [[AroundHelper new] requsetAllScenicsWithPage:_currentPage CityName:_notiName finish:^(NSArray *scenic) {
+//            
+//            _allScenic = [scenic mutableCopy];
+//            [self.tableView reloadData];
+//        }];
+//        
+//        [[self.tableView header]endRefreshing];
+//    }];
+//    
+//    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+//        _currentPage ++;
+//        [[AroundHelper new] requsetAllScenicsWithPage:_currentPage CityName:_notiName finish:^(NSArray *scenic) {
+//            
+//            [_allScenic  addObjectsFromArray:scenic];
+//            [self.tableView reloadData];
+//        }];
+//
+//        
+//        
+//         [[self.tableView footer]endRefreshing];
+//    }];
+//    
     
     
 }
@@ -406,8 +406,13 @@ static NSString *const reuse = @"cell";
         //如果只点击了 筛选  景点全部 排序是默认 sort = n
     }else if ((_sort == 0 && _tag != 0 && _scenic == 0) || ([_tmpsort isEqualToString:@"默认排序"] &&[_tmpscenic isEqualToString:@"全部"])){
         
-        [self sortWithType:@"n" tagName:_tmptag];
+        if ([_tmptag isEqualToString:@"全部"]) {
+             [self request];
+            //[self requestDataWithScenicName:_tmpscenic sort:_tmpsort tagName:nil cityName:self.cityName];
+        }else{
         
+        [self sortWithType:@"n" tagName:_tmptag];
+        }
        //如果只点击了 排序  景点全部 筛选是默认
     }else if ((_sort != 0 && _tag == 0 && _scenic == 0) ||([_tmptag isEqualToString:@"全部"] && [_tmpscenic isEqualToString:@"全部"])){
         
@@ -415,7 +420,19 @@ static NSString *const reuse = @"cell";
         // 当点击了 排序 和 筛选  景点全部时
     }else if ((_sort != 0 && _tag != 0 && _scenic == 0) || [_tmpscenic isEqualToString:@"全部"]){
         
+        if ([_tmptag isEqualToString:@"全部"] && [_tmpsort isEqualToString:@"默认排序"]) {
+            [self request];
+            
+        }else if ((![_tmptag isEqualToString:@"全部"]) && [_tmpsort isEqualToString:@"默认排序"]){
+            
+        [self sortWithType:@"n" tagName:_tmptag];
+        }else if (([_tmptag isEqualToString:@"全部"]) && (![_tmpsort isEqualToString:@"默认排序"])){
+            
+            [self onlySortWithType:_tmpsort];
+        }else{
+        //初始
         [self sortWithType:_tmpsort tagName:_tmptag];
+        }
         
         //当 点击 排序 和 景点 筛选是全部
     }else if ((_sort != 0 && _tag == 0 && _scenic != 0) || ([_tmptag isEqualToString:@"全部"])){
@@ -423,6 +440,7 @@ static NSString *const reuse = @"cell";
         [self requestDataWithScenicName:_tmpscenic sort:_tmpsort tagName:nil cityName:self.cityName];
         
     }
+    
 
     
     
@@ -457,7 +475,7 @@ static NSString *const reuse = @"cell";
 }
 
 
-#warning 修改
+//#warning 修改
 //筛选
 //当 目的城市为全部 景点全部  排序方式改变   筛选方式改变
 - (void)sortWithType:(NSString *)type tagName:(NSString *)tagName{
@@ -531,7 +549,7 @@ static NSString *const reuse = @"cell";
 
 
 #pragma mark ---请求数据
-#warning 不用刷新
+//#warning 不用刷新
 
 - (void)requestData{
     _dic = [[NSMutableDictionary alloc] init];
@@ -578,7 +596,7 @@ static NSString *const reuse = @"cell";
     
 }
 
-#warning 修改
+//#warning 修改
  //CityName 是请求到的目的城市
 - (void)request{
     
@@ -591,7 +609,7 @@ static NSString *const reuse = @"cell";
     [[AroundHelper new] requsetAllScenicsWithPage:_currentPage CityName:_notiName finish:^(NSArray *scenic) {
         
         
-        [_allScenic  addObjectsFromArray:scenic];
+        _allScenic = [scenic mutableCopy];
         [self.tableView reloadData];
     }];
     

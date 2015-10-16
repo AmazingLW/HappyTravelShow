@@ -15,14 +15,14 @@
 //取到全部景点 和 productId(详情页) cityName 是定位的city
 
 
-#warning 定位的位置 金五星 修改
+//#warning 定位的位置 金五星 修改
 #define AllScenic(page,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=%ld&longitude=116.343648&latitude=40.030561&version=4.3.1&sort=n&province=1&system=iOS&pageSize=20&channel=AppStore&city=%@",page,cityName]
 
 //详情页
 #define detailURL(productID) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetProductInfoById?productId=%ld&version=4.3.1&system=iOS&channel=AppStore",productID]
 
 //点击景点列表弹出的小景点列表
-#warning 定位的位置 金五星
+//#warning 定位的位置 金五星
 #define littleScenicURL(scenicName,cityName) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Product/GetAroundProductList?pageIndex=1&longitude=116.343658&latitude=40.030583&scenicName=%@&version=4.3.1&sort=n&province=0&system=iOS&pageSize=20&channel=AppStore&city=%@",scenicName,cityName]
 
 //当目的城市选定 景点全部时 列表
@@ -98,7 +98,7 @@
 
 
 //热门搜索
-#warning 修改
+
 //全部景点
 #define hotCityList(inPutCity,p, dingweiCity) [NSString stringWithFormat:@"http://appapi.yaochufa.com/v2/Search/Search?version=4.3.1&sort=1&keyWord=%@&minPrice=0&system=iOS&p=%ld&channel=AppStore&maxPrice=999999&city=%@&s=20",inPutCity,p,dingweiCity]
 

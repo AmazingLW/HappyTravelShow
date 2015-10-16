@@ -1,3 +1,4 @@
+
 //
 //  AroundVC2.m
 //  HappyTravelShow
@@ -94,7 +95,7 @@ static NSString *const reuse = @"cell";
         
         
         
-       _allScenic = [NSMutableArray array];
+     //  _allScenic = [NSMutableArray array];
 
     }
     return self;
@@ -113,7 +114,7 @@ static NSString *const reuse = @"cell";
     [super viewWillAppear:animated];
     [self setupDropdownList];
     [self request];
-    
+     [self requestData];
     [self.tableView reloadData];
     
 }
@@ -162,7 +163,7 @@ static NSString *const reuse = @"cell";
     
     UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame = CGRectMake(0, 0, 30, 29);
-    [button setBackgroundImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [button setBackgroundImage:[UIImage imageNamed:@"arrows"] forState:UIControlStateNormal];
     [button setBackgroundColor:[UIColor whiteColor]];
     [button addTarget:self action:@selector(back:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -224,30 +225,30 @@ static NSString *const reuse = @"cell";
    
     
     //刷新
-    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-         _currentPage = 1;
-        [[AroundHelper new] requsetAllScenicsWithPage:_currentPage CityName:_CITYNAME finish:^(NSArray *scenic) {
-            
-            _allScenic = [scenic mutableCopy];
-            
-            [self.tableView reloadData];
-        }];
-        
-        [[self.tableView header]endRefreshing];
-    }];
-    
-    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        _currentPage ++;
-        [[AroundHelper new] requsetAllScenicsWithPage:_currentPage CityName:_CITYNAME finish:^(NSArray *scenic) {
-            
-            [_allScenic  addObjectsFromArray:scenic];
-            [self.tableView reloadData];
-        }];
-        
-        
-        
-        [[self.tableView footer]endRefreshingWithNoMoreData];
-    }];
+//    self.tableView.header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+//         _currentPage = 1;
+//        [[AroundHelper new] requsetAllScenicsWithPage:_currentPage CityName:_CITYNAME finish:^(NSArray *scenic) {
+//            
+//            _allScenic = [scenic mutableCopy];
+//            
+//            [self.tableView reloadData];
+//        }];
+//        
+//        [[self.tableView header]endRefreshing];
+//    }];
+//    
+//    self.tableView.footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+//        _currentPage ++;
+//        [[AroundHelper new] requsetAllScenicsWithPage:_currentPage CityName:_CITYNAME finish:^(NSArray *scenic) {
+//            
+//            [_allScenic  addObjectsFromArray:scenic];
+//            [self.tableView reloadData];
+//        }];
+//        
+//        
+//        
+//        [[self.tableView footer]endRefreshingWithNoMoreData];
+//    }];
     
     
     
@@ -372,28 +373,62 @@ static NSString *const reuse = @"cell";
     }
     else if(segment==1){
         
+//        NSMutableArray *array = [NSMutableArray arrayWithObjects:@"全部", nil];
+//        
+//        [array addObjectsFromArray:self.scenicArray];
+//        
+//        [ddltView setTitle:array[index] forItem:segment];
+//        
+//        //_tmpscenic = array[index];
+//        //如果景点是全部那么就是全部景点
+//        //        if (!_scenic) {
+//        //
+//        //            [[AroundHelper new]requsetAllScenicsWithCityName:@"景德镇" finish:^(NSArray *scenic) {
+//        //
+//        //                NSArray *array = [NSArray arrayWithArray:scenic];
+//        //                _allScenic = [array mutableCopy];
+//        //                [self.tableView reloadData];
+//        //            }];
+//        //
+//        //        }else
+//        
+//        
+//        //{
+//        //在次点击全部
+//        if (index == 0) {
+//            
+//            [self request];
+//            
+//        }else{
+//            
+//            _tmpscenic = _scenicArray[index - 1];
+//            
+//            // NSString *sc = self.scenicName;
+//            
+//            for (NSString * cityName in self.dic) {
+//                NSArray *array = self.dic[cityName];
+//                for (NSString *scen in array) {
+//                    if (scen == _tmpscenic) {
+//                        
+//                        self.cityName = cityName;
+//                    }
+//                    
+//                }
+//                
+//            }
+//            
+//        }
+//        
+//        //}
+//        
+//        _scenic++;
+        
         NSMutableArray *array = [NSMutableArray arrayWithObjects:@"全部", nil];
         
         [array addObjectsFromArray:self.scenicArray];
         
         [ddltView setTitle:array[index] forItem:segment];
         
-        //_tmpscenic = array[index];
-        //如果景点是全部那么就是全部景点
-        //        if (!_scenic) {
-        //
-        //            [[AroundHelper new]requsetAllScenicsWithCityName:@"景德镇" finish:^(NSArray *scenic) {
-        //
-        //                NSArray *array = [NSArray arrayWithArray:scenic];
-        //                _allScenic = [array mutableCopy];
-        //                [self.tableView reloadData];
-        //            }];
-        //
-        //        }else
-        
-        
-        //{
-        //在次点击全部
         if (index == 0) {
             
             [self request];
@@ -401,8 +436,6 @@ static NSString *const reuse = @"cell";
         }else{
             
             _tmpscenic = _scenicArray[index - 1];
-            
-            // NSString *sc = self.scenicName;
             
             for (NSString * cityName in self.dic) {
                 NSArray *array = self.dic[cityName];
@@ -417,10 +450,9 @@ static NSString *const reuse = @"cell";
             }
             
         }
-        
-        //}
-        
+
         _scenic++;
+
     }
     else{
         
@@ -452,6 +484,50 @@ static NSString *const reuse = @"cell";
 - (void)aaa{
     
     
+//    //如果第一次进入程序
+//    if (_sort == 0 && _tag == 0 && _scenic == 0) {
+//        
+//        [self request];
+//    }
+//    
+//    //如果 只点击了 景点 排序是默认 sort = n 筛选是全部
+//    if ((_sort == 0 && _tag == 0 && _scenic != 0) || ([_tmpsort isEqualToString:@"默认排序"] && [_tmptag isEqualToString:@"全部"])) {
+//        
+//        [self requestDataWithScenicName:_tmpscenic sort:@"n" tagName:nil cityName:self.cityName];
+//        
+//        //如果 点击了 景点 和筛选  排序是默认 sort = n
+//    }else if ((_sort == 0 && _tag != 0 && _scenic != 0)|| [_tmpsort isEqualToString:@"默认排序"]){
+//        
+//        if ([_tmptag isEqualToString:@"全部"]) {
+//            
+//            [self requestDataWithScenicName:_tmpscenic sort:_tmpsort tagName:nil cityName:self.cityName];
+//        }
+//        [self requestDataWithScenicName:_tmpscenic sort:@"n" tagName:_tmptag cityName:self.cityName];
+//        
+//        //如果三个都点击了 并且都不是第一个
+//    }else if ((_sort != 0 && _tag != 0 && _scenic != 0) && ((![_tmpsort isEqualToString:@"默认排序"]) && (![_tmptag isEqualToString:@"全部"])&& (![_tmpscenic isEqualToString:@"全部"]))){
+//        
+//        [self requestDataWithScenicName:_tmpscenic sort:_tmpsort tagName:_tmptag cityName:self.cityName];
+//        //如果只点击了 筛选  景点全部 排序是默认 sort = n
+//    }else if ((_sort == 0 && _tag != 0 && _scenic == 0) || ([_tmpsort isEqualToString:@"默认排序"] &&[_tmpscenic isEqualToString:@"全部"])){
+//        [self sortWithType:@"n" tagName:_tmptag];
+//        
+//        //如果只点击了 排序  景点全部 筛选是默认
+//    }else if ((_sort != 0 && _tag == 0 && _scenic == 0) ||([_tmptag isEqualToString:@"全部"] && [_tmpscenic isEqualToString:@"全部"])){
+//        
+//        [self onlySortWithType:_tmpsort];
+//        // 当点击了 排序 和 筛选  景点全部时
+//    }else if ((_sort != 0 && _tag != 0 && _scenic == 0) || [_tmpscenic isEqualToString:@"全部"]){
+//        
+//        [self sortWithType:_tmpsort tagName:_tmptag];
+//        
+//        //当 点击 排序 和 景点 筛选是全部
+//    }else if ((_sort != 0 && _tag == 0 && _scenic != 0) || ([_tmptag isEqualToString:@"全部"])){
+//        
+//        [self requestDataWithScenicName:_tmpscenic sort:_tmpsort tagName:nil cityName:self.cityName];
+//        
+//    }
+    
     //如果第一次进入程序
     if (_sort == 0 && _tag == 0 && _scenic == 0) {
         
@@ -462,6 +538,8 @@ static NSString *const reuse = @"cell";
     if ((_sort == 0 && _tag == 0 && _scenic != 0) || ([_tmpsort isEqualToString:@"默认排序"] && [_tmptag isEqualToString:@"全部"])) {
         
         [self requestDataWithScenicName:_tmpscenic sort:@"n" tagName:nil cityName:self.cityName];
+        
+        
         
         //如果 点击了 景点 和筛选  排序是默认 sort = n
     }else if ((_sort == 0 && _tag != 0 && _scenic != 0)|| [_tmpsort isEqualToString:@"默认排序"]){
@@ -478,8 +556,14 @@ static NSString *const reuse = @"cell";
         [self requestDataWithScenicName:_tmpscenic sort:_tmpsort tagName:_tmptag cityName:self.cityName];
         //如果只点击了 筛选  景点全部 排序是默认 sort = n
     }else if ((_sort == 0 && _tag != 0 && _scenic == 0) || ([_tmpsort isEqualToString:@"默认排序"] &&[_tmpscenic isEqualToString:@"全部"])){
-        [self sortWithType:@"n" tagName:_tmptag];
         
+        if ([_tmptag isEqualToString:@"全部"]) {
+            [self request];
+            //[self requestDataWithScenicName:_tmpscenic sort:_tmpsort tagName:nil cityName:self.cityName];
+        }else{
+            
+            [self sortWithType:@"n" tagName:_tmptag];
+        }
         //如果只点击了 排序  景点全部 筛选是默认
     }else if ((_sort != 0 && _tag == 0 && _scenic == 0) ||([_tmptag isEqualToString:@"全部"] && [_tmpscenic isEqualToString:@"全部"])){
         
@@ -487,7 +571,19 @@ static NSString *const reuse = @"cell";
         // 当点击了 排序 和 筛选  景点全部时
     }else if ((_sort != 0 && _tag != 0 && _scenic == 0) || [_tmpscenic isEqualToString:@"全部"]){
         
-        [self sortWithType:_tmpsort tagName:_tmptag];
+        if ([_tmptag isEqualToString:@"全部"] && [_tmpsort isEqualToString:@"默认排序"]) {
+            [self request];
+            
+        }else if ((![_tmptag isEqualToString:@"全部"]) && [_tmpsort isEqualToString:@"默认排序"]){
+            
+            [self sortWithType:@"n" tagName:_tmptag];
+        }else if (([_tmptag isEqualToString:@"全部"]) && (![_tmpsort isEqualToString:@"默认排序"])){
+            
+            [self onlySortWithType:_tmpsort];
+        }else{
+            //初始
+            [self sortWithType:_tmpsort tagName:_tmptag];
+        }
         
         //当 点击 排序 和 景点 筛选是全部
     }else if ((_sort != 0 && _tag == 0 && _scenic != 0) || ([_tmptag isEqualToString:@"全部"])){
@@ -495,8 +591,7 @@ static NSString *const reuse = @"cell";
         [self requestDataWithScenicName:_tmpscenic sort:_tmpsort tagName:nil cityName:self.cityName];
         
     }
-    
-    
+
     
     
     
@@ -663,7 +758,7 @@ static NSString *const reuse = @"cell";
     
     [[AroundHelper new] requsetAllScenicsWithPage:_currentPage CityName:_CITYNAME finish:^(NSArray *scenic) {
         
-       [_allScenic  addObjectsFromArray:scenic];
+        _allScenic =[scenic mutableCopy];
         
         [self.tableView reloadData];
     }];
